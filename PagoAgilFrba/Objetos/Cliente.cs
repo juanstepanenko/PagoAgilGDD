@@ -56,6 +56,16 @@ namespace PagoAgilFrba.Objetos
             this.apellido = apellido;
         }
         //----
+        public String getDireccion()
+        {
+            return direccion;
+        }
+
+        public void setDireccion(String direc)
+        {
+            this.direccion = direc;
+        }
+        //----
         public String getCodPod()
         {
             return cod_postal;
@@ -137,7 +147,7 @@ namespace PagoAgilFrba.Objetos
 
         void Comunicable.CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
         {
-            this.dni = Convert.ToDecimal(reader["clie_dni"]); //esto no se si va asi, porq es pk pero creo que si
+            //this.dni = Convert.ToDecimal(reader["clie_dni"]); //esto no se si va asi, porq es pk pero creo que si
             this.nombre = Convert.ToString(reader["clie_nombre"]);
             this.apellido = Convert.ToString(reader["clie_apellido"]);
             this.fechaDeNacimiento = Convert.ToDateTime(reader["clie_fecha_nacimiento"]);

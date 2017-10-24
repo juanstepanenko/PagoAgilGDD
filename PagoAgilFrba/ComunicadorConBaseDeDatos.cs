@@ -31,6 +31,7 @@ namespace PagoAgilFrba
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
             command.ExecuteNonQuery(); // esta query al ejecutarse no devuelve nada, es un sp
+            //--------------> ME DIJO QUE crear_cliente TIENE DEMASIADOS ARGUMENTOS, EN ESTA LINEA
             return (Decimal)parametroOutput.Value; // devuelve el valor de parametroOutput, cual es? clie_dni? no, un sql parameter que es el dni? pero en numero
         }
 
@@ -49,5 +50,12 @@ namespace PagoAgilFrba
             return this.Crear(cliente);
         }
 
+        public Object SelectFromWhere(String que, String deDonde, String param1, String param2)
+        {
+            query = "SELECT " + que + " FROM AMBDA." + deDonde + " WHERE " + param1 + " = @" + param1;
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@" + param1, param2));
+            return builderDeComandos.Crear(query, parametros).ExecuteScalar();
+        }
     }
 }

@@ -13,11 +13,14 @@ namespace PagoAgilFrba
 
         public SqlConnection AbrirConexion()
         {
-            this.Conexion = new SqlConnection();
-            this.Conexion.ConnectionString = ConfigurationManager.ConnectionStrings["PagoAgilFrba.Properties.Settings.GD2C2017ConnectionString"].ConnectionString;
-            this.Conexion.Open();
-
-            return this.Conexion;
+            //this.Conexion = new SqlConnection();
+            //this.Conexion.ConnectionString = ConfigurationManager.ConnectionStrings["PagoAgilFrba.Properties.Settings.GD2C2017ConnectionString"].ConnectionString;
+            string configuracion = ConfigurationManager.AppSettings["configuracionSQL"].ToString();
+            SqlConnection conexion = new SqlConnection(configuracion);
+            conexion.Open();
+            SqlCommand comm = new SqlCommand("SET ARITHABORT ON", conexion);
+            comm.ExecuteNonQuery();
+            return conexion;
         }
 
         public void CerrarConexion()
