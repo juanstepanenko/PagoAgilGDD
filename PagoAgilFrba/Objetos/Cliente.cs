@@ -13,8 +13,7 @@ namespace PagoAgilFrba.Objetos
         private Decimal dni;
         private String nombre;
         private String apellido;
-        private String direccion;
-        private String cod_postal;
+        private Decimal direc_id;
         private DateTime fechaDeNacimiento;
         private String mail;
         private String telefono;
@@ -56,24 +55,14 @@ namespace PagoAgilFrba.Objetos
             this.apellido = apellido;
         }
         //----
-        public String getDireccion()
+        public Decimal getDireccionID()
         {
-            return direccion;
+            return direc_id;
         }
 
-        public void setDireccion(String direc)
+        public void setDireccion(Decimal direcID)
         {
-            this.direccion = direc;
-        }
-        //----
-        public String getCodPod()
-        {
-            return cod_postal;
-        }
-
-        public void setCodPod(String codPod)
-        {
-            this.cod_postal = codPod;
+            this.direc_id = direcID;
         }
         //----
         public DateTime getFechaDeNac()
@@ -147,14 +136,13 @@ namespace PagoAgilFrba.Objetos
 
         void Comunicable.CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
         {
-            //this.dni = Convert.ToDecimal(reader["clie_dni"]); //esto no se si va asi, porq es pk pero creo que si
+            this.dni = Convert.ToDecimal(reader["clie_dni"]); //esto no se si va asi, porq es pk pero creo que si
             this.nombre = Convert.ToString(reader["clie_nombre"]);
             this.apellido = Convert.ToString(reader["clie_apellido"]);
             this.fechaDeNacimiento = Convert.ToDateTime(reader["clie_fecha_nacimiento"]);
             this.mail = Convert.ToString(reader["clie_mail"]);
             this.telefono = Convert.ToString(reader["clie_telefono"]);
-            this.direccion = Convert.ToString(reader["clie_direccion"]);
-            this.cod_postal = Convert.ToString(reader["clie_cod_postal"]);
+            this.direc_id = Convert.ToDecimal(reader["clie_direccion"]);
             this.habilitado = Convert.ToBoolean(reader["clie_habilitado"]); //esto no se si va
         }
 
@@ -162,15 +150,13 @@ namespace PagoAgilFrba.Objetos
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Clear();
-            //parametros.Add(new SqlParameter("@dni", this.dni)); // nose si va, puede que no
+            parametros.Add(new SqlParameter("@dni", this.dni)); // nose si va, puede que no
+            parametros.Add(new SqlParameter("@mail", this.mail));
             parametros.Add(new SqlParameter("@nombre", this.nombre));
             parametros.Add(new SqlParameter("@apellido", this.apellido));
-            parametros.Add(new SqlParameter("@direccion", this.direccion));
-            parametros.Add(new SqlParameter("@cod_postal", this.cod_postal));
+            parametros.Add(new SqlParameter("@direccion", this.direc_id));
             parametros.Add(new SqlParameter("@fecha_nacimiento", this.fechaDeNacimiento));
-            parametros.Add(new SqlParameter("@mail", this.mail));
             parametros.Add(new SqlParameter("@telefono", this.telefono));
-            parametros.Add(new SqlParameter("@habilitado", this.habilitado));
             return parametros;
         }
     }

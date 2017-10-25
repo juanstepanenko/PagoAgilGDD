@@ -16,11 +16,12 @@ namespace PagoAgilFrba.AbmCliente
     {
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idCliente;
-
+        private Decimal idDireccion;
 
         public AgregarCliente()
         {
             InitializeComponent();
+            this.idDireccion = 0;
         }
 
         private void AgregarCliente_Load(object sender, EventArgs e)
@@ -35,12 +36,41 @@ namespace PagoAgilFrba.AbmCliente
             String mail = textBox_Mail.Text;
             String nombre = textBox_Nombre.Text;
             String apellido = textBox_Apellido.Text;
-            String direccion = textBox_Direccion.Text;
             String codigoPostal = textBox_CodigoPostal.Text;
             DateTime fechaDeNacimiento;
             DateTime.TryParse(textBox_FechaDeNacimiento.Text, out fechaDeNacimiento);
             String telefono = textBox_Telefono.Text;
+            String calleNro = textBox_CalleNro.Text;
+            String piso = textBox_Piso.Text;
+            String departamento = textBox_Departamento.Text;
+            String localidad = textBox_Localidad.Text;
 
+            // Crea una direccion y se guarda su id
+            Direccion direccion = new Direccion();
+            try
+            {
+                direccion.SetCalleNro(calleNro);
+                direccion.SetPiso(piso);
+                direccion.SetDepartamento(departamento);
+                direccion.SetCodigoPostal(codigoPostal);
+                direccion.SetLocalidad(localidad);
+            }
+
+            catch (CampoVacioException exception)
+            {
+                MessageBox.Show("Falta completar campo: " + exception.Message);
+                return;
+            }
+            catch (FormatoInvalidoException exception)
+            {
+                MessageBox.Show("Datos mal ingresados en: " + exception.Message);
+                return;
+            }
+            // Controla que no se haya creado ya la direccion
+            if (this.idDireccion == 0)
+            {
+                this.idDireccion = comunicador.CrearDireccion(direccion);
+            } 
             // Crear cliente
             try
             {
@@ -49,8 +79,7 @@ namespace PagoAgilFrba.AbmCliente
                 cliente.setMail(mail);
                 cliente.setNombre(nombre);
                 cliente.setApellido(apellido);
-                cliente.setDireccion(direccion);
-                cliente.setCodPod(codigoPostal);
+                cliente.setDireccion(idDireccion);
                 cliente.setFechaDeNac(fechaDeNacimiento);
                 cliente.setTelefono(telefono);
                 idCliente = comunicador.CrearCliente(cliente);
@@ -82,9 +111,12 @@ namespace PagoAgilFrba.AbmCliente
             textBox_FechaDeNacimiento.Text = "";
             textBox_Mail.Text = "";
             textBox_Telefono.Text = "";
-            textBox_CodigoPostal.Text = "";
             textBox_Dni.Text = "";
-            textBox_Direccion.Text = "";
+            textBox_CalleNro.Text = "";
+            textBox_Piso.Text = "";
+            textBox_Departamento.Text = "";
+            textBox_CodigoPostal.Text = "";
+            textBox_Localidad.Text = "";
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)

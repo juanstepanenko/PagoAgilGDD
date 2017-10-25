@@ -57,5 +57,10 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@" + param1, param2));
             return builderDeComandos.Crear(query, parametros).ExecuteScalar();
         }
+
+        public Decimal CrearDireccion(Direccion direccion)
+        {
+            return this.Crear(direccion);
+        }
     }
 }
