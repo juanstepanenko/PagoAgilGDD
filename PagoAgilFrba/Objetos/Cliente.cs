@@ -119,14 +119,14 @@ namespace PagoAgilFrba.Objetos
         
         /********** Interfaz Comunicable ***********/
 
-        string Comunicable.GetQueryCrear()
+        public string GetQueryCrear()
         {
             return "AMBDA.crear_cliente";
         }
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Cliente SET clie_nombre = @nombre, clie_apellido = @apellido, clie_direccion = @direccion, clie_cod_posta = @cod_postal clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_dni = @dni";
+            return "UPDATE AMBDA.Cliente SET clie_nombre = @nombre, clie_apellido = @apellido, clie_direc_id = @direccion_id, clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_dni = @dni";
         }
 
         string Comunicable.GetQueryObtener()
@@ -146,7 +146,7 @@ namespace PagoAgilFrba.Objetos
             this.habilitado = Convert.ToBoolean(reader["clie_habilitado"]); //esto no se si va
         }
 
-        IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros() // esto si que ni idea pero sino me rompe la interfaz #TODO 
+        public IList<System.Data.SqlClient.SqlParameter> GetParametros() // esto si que ni idea pero sino me rompe la interfaz #TODO 
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Clear();
@@ -154,7 +154,7 @@ namespace PagoAgilFrba.Objetos
             parametros.Add(new SqlParameter("@mail", this.mail));
             parametros.Add(new SqlParameter("@nombre", this.nombre));
             parametros.Add(new SqlParameter("@apellido", this.apellido));
-            parametros.Add(new SqlParameter("@direccion", this.direc_id));
+            parametros.Add(new SqlParameter("@direccion_id", this.direc_id));
             parametros.Add(new SqlParameter("@fecha_nacimiento", this.fechaDeNacimiento));
             parametros.Add(new SqlParameter("@telefono", this.telefono));
             return parametros;

@@ -86,6 +86,7 @@
     <Compile Include="Excepciones\CampoVacioException.cs" />
     <Compile Include="Excepciones\ClienteYaExisteException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
+    <Compile Include="Excepciones\MailYaExisteException.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

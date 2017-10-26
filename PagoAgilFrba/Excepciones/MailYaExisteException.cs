@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Excepciones
 {
-    class ClienteYaExisteException : Exception
+    class MailYaExisteException : Exception
     {
-        public ClienteYaExisteException()
+        public MailYaExisteException()
         {
-            Console.WriteLine("El documento ya existe");
+            Console.WriteLine("El mail ya existe");
         }
     }
 }
