@@ -78,7 +78,7 @@ namespace PagoAgilFrba.AbmCliente
                 cliente.setMail(mail);
                 cliente.setNombre(nombre);
                 cliente.setApellido(apellido);
-                cliente.setDireccion(idDireccion);
+                cliente.setDireccionID(idDireccion);
                 cliente.setFechaDeNac(fechaDeNacimiento);
                 cliente.setTelefono(telefono);
                 comunicador.CrearCliente(cliente);

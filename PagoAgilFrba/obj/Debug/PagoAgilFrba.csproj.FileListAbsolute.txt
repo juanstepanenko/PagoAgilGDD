@@ -9,3 +9,5 @@ C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoA
 C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
 C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
 C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.AgregarCliente.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarCliente.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.FiltroCliente.resources

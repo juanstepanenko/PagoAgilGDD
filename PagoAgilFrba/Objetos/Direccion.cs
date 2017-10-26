@@ -103,12 +103,12 @@ namespace PagoAgilFrba.Objetos
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Direccion SET calle = @calle, numero = @numero, piso = @piso, depto = @depto, cod_postal = @cod_postal, localidad = @localidad WHERE id = @id";
+            return "UPDATE AMBDA.Direccion SET direc_calleNro = @calleNro, direc_piso = @piso, direc_depto = @depto, direc_cod_postal = @cod_postal, direc_localidad = @localidad WHERE direc_id = @id";
         } // falta 
 
-        string Comunicable.GetQueryObtener()
+        public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.Direccion WHERE id = @id";
+            return "SELECT * FROM AMBDA.Direccion WHERE direc_id = @id";
         }
 
         IList<SqlParameter> Comunicable.GetParametros()
@@ -122,13 +122,13 @@ namespace PagoAgilFrba.Objetos
             return parametros;
         }
 
-        void Comunicable.CargarInformacion(SqlDataReader reader)
+        public void CargarInformacion(SqlDataReader reader)
         {
-            this.calleNro = Convert.ToString(reader["calleNro"]);
-            this.piso = Convert.ToString(reader["piso"]);
-            this.departamento = Convert.ToString(reader["depto"]);
-            this.codigoPostal = Convert.ToString(reader["cod_postal"]);
-            this.localidad = Convert.ToString(reader["localidad"]);
+            this.calleNro = Convert.ToString(reader["direc_calleNro"]);
+            this.piso = Convert.ToString(reader["direc_piso"]);
+            this.departamento = Convert.ToString(reader["direc_depto"]);
+            this.codigoPostal = Convert.ToString(reader["direc_cod_postal"]);
+            this.localidad = Convert.ToString(reader["direc_localidad"]);
         }
 
         #endregion
