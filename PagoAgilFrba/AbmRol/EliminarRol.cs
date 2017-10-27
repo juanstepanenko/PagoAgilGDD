@@ -69,7 +69,7 @@ namespace PagoAgilFrba.AbmRol
             {
                 MessageBox.Show("Error");
             }
-            /*
+            
             parametros.Clear();
             parametros.Add(new SqlParameter("@nombre", rolElegido));
 
@@ -84,7 +84,7 @@ namespace PagoAgilFrba.AbmRol
             else
             {
                 MessageBox.Show("Error");
-            }*/
+            }
             CargarRoles();
         }
 
