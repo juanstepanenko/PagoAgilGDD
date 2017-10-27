@@ -35,7 +35,7 @@ namespace PagoAgilFrba
             SqlDataAdapter adapter = new SqlDataAdapter();
 
             /* esto se completa cuando esten los roles y funcionalidades
-            String funcionalidadesUsuario = "select f.nombre from LOS_SUPER_AMIGOS.Rol r, LOS_SUPER_AMIGOS.Funcionalidad_x_Rol fr,LOS_SUPER_AMIGOS.Funcionalidad f where r.id = fr.rol_id and f.id = fr.funcionalidad_id and r.nombre = @unRol";
+            String funcionalidadesUsuario = "select f.func_descripcion from AMBDA.Rol r, AMBDA.RolxFunc fr, AMBDA.Funcionalidad f where r.rol_id = fr.rol_id and f.func_id = fr.func_id and r.rol_nombre = @unRol";
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@unRol", UsuarioSesion.Usuario.rol));
             comando = builderDeComandos.Crear(funcionalidadesUsuario, parametros);
@@ -43,7 +43,7 @@ namespace PagoAgilFrba
             adapter.SelectCommand = comando;
             adapter.Fill(acciones, "Funcionalidad");
             comboBoxAccion.DataSource = acciones.Tables[0].DefaultView;
-            comboBoxAccion.ValueMember = "nombre";
+            comboBoxAccion.ValueMember = "func_descripcion";
             */
         }
 

@@ -19,7 +19,8 @@ namespace PagoAgilFrba
             Application.Run(new MenuPrincipal());
             //Application.Run(new AbmCliente.ModificarCliente("40134522"));
             //Application.Run(new AbmCliente.FiltroCliente());
-
+            //Application.Run(new AbmRol.ModificarRol("serKpa"));
+            //Application.Run(new AbmRol.RolForm());
         }
     }
 }

@@ -75,11 +75,35 @@
     <Compile Include="AbmFactura\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Form1.cs">
+    <Compile Include="AbmRol\AgregarRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmRol\AgregarRol.Designer.cs">
+      <DependentUpon>AgregarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\EliminarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\EliminarRol.Designer.cs">
+      <DependentUpon>EliminarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ListadoModificarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ListadoModificarRol.Designer.cs">
+      <DependentUpon>ListadoModificarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.Designer.cs">
+      <DependentUpon>ModificarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\RolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\RolForm.Designer.cs">
+      <DependentUpon>RolForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmSucursal\Form1.cs">
       <SubType>Form</SubType>
