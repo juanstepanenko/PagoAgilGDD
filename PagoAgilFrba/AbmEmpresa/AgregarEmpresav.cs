@@ -12,17 +12,20 @@ using PagoAgilFrba.Excepciones;
 
 namespace PagoAgilFrba.AbmEmpresa
 {
-    public partial class AgregarEmpresa : Form
+    public partial class Form1 : Form
     {
-   
+        private String username;
+        private String contrasena;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idDireccion;
         private Decimal idUsuario;
         private Decimal idEmpresa;
 
-        public AgregarEmpresa()
+        public Form1(String username, String contrasena)
         {
             InitializeComponent();
+            this.username = username;
+            this.contrasena = contrasena;
             this.idDireccion = 0;
             this.idUsuario = 0;
         }
@@ -94,7 +97,6 @@ namespace PagoAgilFrba.AbmEmpresa
                 MessageBox.Show("Cuit ya existe");
                 return;
             }
-        }
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {

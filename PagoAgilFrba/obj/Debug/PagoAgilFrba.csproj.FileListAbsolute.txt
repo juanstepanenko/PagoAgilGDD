@@ -19,3 +19,6 @@ C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\ob
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Properties.Resources.resources
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb

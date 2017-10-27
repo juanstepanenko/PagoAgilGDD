@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmEmpresa
 {
-    partial class AgregarEmpresa
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -29,33 +29,34 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox_Rubro = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox_Telefono = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.textBox_Cuit = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.textBox_Localidad = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox_CalleNro = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
             this.textBox_Departamento = new System.Windows.Forms.TextBox();
             this.textBox_Piso = new System.Windows.Forms.TextBox();
+            this.textBox_CalleNro = new System.Windows.Forms.TextBox();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Cancelar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
-     
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-
+            
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox_Nombre);
             this.groupBox1.Controls.Add(this.label2);
@@ -120,8 +121,8 @@
             this.textBox_CalleNro.Name = "textBox_CalleNro";
             this.textBox_CalleNro.Size = new System.Drawing.Size(250, 20);
             this.textBox_CalleNro.TabIndex = 11;
-
-
+           
+            
             // 
             // label5
             // 
@@ -139,7 +140,7 @@
             this.textBox_Localidad.Name = "textBox_Localidad";
             this.textBox_Localidad.Size = new System.Drawing.Size(250, 20);
             this.textBox_Localidad.TabIndex = 20;
-
+          
             // 
             // textBox_Departamento
             // 
@@ -154,7 +155,7 @@
             this.textBox_Piso.Name = "textBox_Piso";
             this.textBox_Piso.Size = new System.Drawing.Size(250, 20);
             this.textBox_Piso.TabIndex = 13;
-
+            
             // 
             // button_Guardar
             // 
@@ -241,6 +242,6 @@
         private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.Button button_Cancelar;
         private System.Windows.Forms.Button button_Limpiar;
-
+      
     }
 }
