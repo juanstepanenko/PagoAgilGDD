@@ -9,6 +9,7 @@ C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoA
 C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
 C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
 C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.AgregarCliente.resources
+<<<<<<< HEAD
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
@@ -22,3 +23,16 @@ C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\ob
 C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
 C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
 C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
+=======
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarCliente.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.FiltroCliente.resources
+>>>>>>> master
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.AgregarCliente.resources
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.FiltroCliente.resources
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarCliente.resources
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Properties.Resources.resources
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe
+C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.pdb

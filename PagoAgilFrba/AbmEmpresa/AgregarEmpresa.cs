@@ -14,17 +14,15 @@ namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class AgregarEmpresa : Form
     {
-   
+
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idDireccion;
-        private Decimal idUsuario;
         private Decimal idEmpresa;
 
         public AgregarEmpresa()
         {
             InitializeComponent();
             this.idDireccion = 0;
-            this.idUsuario = 0;
         }
 
         private void AgregarEmpresa_Load(object sender, EventArgs e)
@@ -91,7 +89,7 @@ namespace PagoAgilFrba.AbmEmpresa
             }
             catch (CuitYaExisteException exception)
             {
-                MessageBox.Show("Cuit ya existe");
+                MessageBox.Show(exception.Message);
                 return;
             }
         }
@@ -108,8 +106,8 @@ namespace PagoAgilFrba.AbmEmpresa
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
-        {            
-                VolverAlMenuPrincipal();
+        {
+            VolverAlMenuPrincipal();
         }
 
         private void VolverAlMenuPrincipal()

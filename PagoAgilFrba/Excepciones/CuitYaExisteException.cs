@@ -7,5 +7,9 @@ namespace PagoAgilFrba.Excepciones
 {
     class CuitYaExisteException : Exception
     {
+        public CuitYaExisteException()
+        {
+            Console.WriteLine("El cuit ya existe");
+        }
     }
 }

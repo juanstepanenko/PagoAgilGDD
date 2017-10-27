@@ -24,13 +24,27 @@ namespace PagoAgilFrba
         {
             InitializeComponent();
             funcionalidades.Add("Agregar Cliente", new AbmCliente.AgregarCliente());
+            funcionalidades.Add("Editar cliente", new AbmCliente.FiltroCliente());
             //funcionalidades.Add("Comprar / Ofertar", new Comprar_Ofertar.BuscadorPublicaciones());
             // un formato asi pero anda saber que va aca
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
+            DataSet acciones = new DataSet();
+            SqlDataAdapter adapter = new SqlDataAdapter();
 
+            /* esto se completa cuando esten los roles y funcionalidades
+            String funcionalidadesUsuario = "select f.func_descripcion from AMBDA.Rol r, AMBDA.RolxFunc fr, AMBDA.Funcionalidad f where r.rol_id = fr.rol_id and f.func_id = fr.func_id and r.rol_nombre = @unRol";
+            IList<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@unRol", UsuarioSesion.Usuario.rol));
+            comando = builderDeComandos.Crear(funcionalidadesUsuario, parametros);
+
+            adapter.SelectCommand = comando;
+            adapter.Fill(acciones, "Funcionalidad");
+            comboBoxAccion.DataSource = acciones.Tables[0].DefaultView;
+            comboBoxAccion.ValueMember = "func_descripcion";
+            */
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)

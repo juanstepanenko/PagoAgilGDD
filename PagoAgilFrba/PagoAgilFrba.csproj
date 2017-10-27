@@ -51,17 +51,23 @@
     <Compile Include="AbmCliente\AgregarCliente.Designer.cs">
       <DependentUpon>AgregarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmCliente\FiltroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmCliente\FiltroCliente.Designer.cs">
+      <DependentUpon>FiltroCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmCliente\ModificarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AbmCliente\ModificarCliente.Designer.cs">
       <DependentUpon>ModificarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmEmpresa\Form1.cs">
+    <Compile Include="AbmEmpresa\AgregarEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmEmpresa\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmEmpresa\AgregarEmpresa.Designer.cs">
+      <DependentUpon>AgregarEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmFactura\Form1.cs">
       <SubType>Form</SubType>
@@ -69,11 +75,35 @@
     <Compile Include="AbmFactura\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Form1.cs">
+    <Compile Include="AbmRol\AgregarRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmRol\AgregarRol.Designer.cs">
+      <DependentUpon>AgregarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\EliminarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\EliminarRol.Designer.cs">
+      <DependentUpon>EliminarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ListadoModificarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ListadoModificarRol.Designer.cs">
+      <DependentUpon>ListadoModificarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificarRol.Designer.cs">
+      <DependentUpon>ModificarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\RolForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\RolForm.Designer.cs">
+      <DependentUpon>RolForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmSucursal\Form1.cs">
       <SubType>Form</SubType>
@@ -84,8 +114,10 @@
     <Compile Include="ComunicadorConBaseDeDatos.cs" />
     <Compile Include="ConexionDB.cs" />
     <Compile Include="Excepciones\CampoVacioException.cs" />
+    <Compile Include="Excepciones\CuitYaExisteException.cs" />
     <Compile Include="Excepciones\ClienteYaExisteException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
+    <Compile Include="Excepciones\MailYaExisteException.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +137,7 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Empresa.cs" />
     <Compile Include="Objetos\Cliente.cs" />
     <Compile Include="Objetos\Comunicable.cs" />
     <Compile Include="Objetos\Direccion.cs" />
@@ -126,9 +159,18 @@
     <Compile Include="BuilderDeComandos.cs" />
     <EmbeddedResource Include="AbmCliente\AgregarCliente.resx">
       <DependentUpon>AgregarCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\FiltroCliente.resx">
+      <DependentUpon>FiltroCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmCliente\ModificarCliente.resx">
+      <DependentUpon>ModificarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

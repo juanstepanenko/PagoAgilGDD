@@ -60,7 +60,7 @@ namespace PagoAgilFrba.Objetos
             return direc_id;
         }
 
-        public void setDireccion(Decimal direcID)
+        public void setDireccionID(Decimal direcID)
         {
             this.direc_id = direcID;
         }
@@ -119,44 +119,45 @@ namespace PagoAgilFrba.Objetos
         
         /********** Interfaz Comunicable ***********/
 
-        string Comunicable.GetQueryCrear()
+        public string GetQueryCrear()
         {
             return "AMBDA.crear_cliente";
         }
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Cliente SET clie_nombre = @nombre, clie_apellido = @apellido, clie_direccion = @direccion, clie_cod_posta = @cod_postal clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_dni = @dni";
+            return "UPDATE AMBDA.Cliente SET clie_nombre = @nombre, clie_apellido = @apellido, clie_direc_id = @direccion_id, clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_dni = @dni";
         }
 
-        string Comunicable.GetQueryObtener()
+        public string GetQueryObtener()
         {
             return "SELECT * FROM AMBDA.Cliente WHERE clie_dni = @dni";
         }
 
-        void Comunicable.CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
+        public void CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
         {
-            this.dni = Convert.ToDecimal(reader["clie_dni"]); //esto no se si va asi, porq es pk pero creo que si
+            this.dni = Convert.ToDecimal(reader["clie_dni"]); 
             this.nombre = Convert.ToString(reader["clie_nombre"]);
             this.apellido = Convert.ToString(reader["clie_apellido"]);
             this.fechaDeNacimiento = Convert.ToDateTime(reader["clie_fecha_nacimiento"]);
             this.mail = Convert.ToString(reader["clie_mail"]);
             this.telefono = Convert.ToString(reader["clie_telefono"]);
-            this.direc_id = Convert.ToDecimal(reader["clie_direccion"]);
-            this.habilitado = Convert.ToBoolean(reader["clie_habilitado"]); //esto no se si va
+            this.direc_id = Convert.ToDecimal(reader["clie_direc_id"]);
+            this.habilitado = Convert.ToBoolean(reader["clie_habilitado"]); 
         }
 
-        IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros() // esto si que ni idea pero sino me rompe la interfaz #TODO 
+        public IList<System.Data.SqlClient.SqlParameter> GetParametros()  
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@dni", this.dni)); // nose si va, puede que no
+            parametros.Add(new SqlParameter("@dni", this.dni));
             parametros.Add(new SqlParameter("@mail", this.mail));
             parametros.Add(new SqlParameter("@nombre", this.nombre));
             parametros.Add(new SqlParameter("@apellido", this.apellido));
-            parametros.Add(new SqlParameter("@direccion", this.direc_id));
+            parametros.Add(new SqlParameter("@direccion_id", this.direc_id));
             parametros.Add(new SqlParameter("@fecha_nacimiento", this.fechaDeNacimiento));
             parametros.Add(new SqlParameter("@telefono", this.telefono));
+            parametros.Add(new SqlParameter("@habilitado", this.habilitado));
             return parametros;
         }
     }

@@ -9,7 +9,7 @@ namespace PagoAgilFrba.Objetos
 {
     class Empresa : Objeto, Comunicable
     {
-        
+
         private String nombre;
         private String cuit;
         private String calleNro;
@@ -17,7 +17,7 @@ namespace PagoAgilFrba.Objetos
         private String departamento;
         private String localidad;
         private String rubro;
-      
+
 
         public void SetNombre(String nombre)
         {
@@ -31,7 +31,7 @@ namespace PagoAgilFrba.Objetos
             return this.nombre;
         }
 
-        
+
 
         public void SetCuit(String cuit)
         {
@@ -40,7 +40,8 @@ namespace PagoAgilFrba.Objetos
 
             /*if (!esCuit(cuit))
                 throw new FormatoInvalidoException("Cuit. Usar el siguiente formato: XX-XXXXXXXX-XX donde X es numero");
-           */ //agregar
+           */
+            //agregar
             this.cuit = cuit;
         }
 
@@ -124,7 +125,7 @@ namespace PagoAgilFrba.Objetos
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM LOS_SUPER_AMIGOS.Empresa WHERE id = @id";
+            return "SELECT * FROM AMBDA.Empresa WHERE id = @id";
         }
 
         IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros()
@@ -132,13 +133,13 @@ namespace PagoAgilFrba.Objetos
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@nombre", this.nombre));
             parametros.Add(new SqlParameter("@cuit", this.cuit));
-           // agregar los que faltan
+            // agregar los que faltan
             return parametros;
         }
 
         public void CargarInformacion(SqlDataReader reader)
         {
-            
+
             this.cuit = Convert.ToString(reader["cuit"]);
             // agregar los que faltan
         }

@@ -15,7 +15,6 @@ namespace PagoAgilFrba.AbmCliente
     public partial class AgregarCliente : Form
     {
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
-        private Decimal idCliente;
         private Decimal idDireccion;
 
         public AgregarCliente()
@@ -79,11 +78,11 @@ namespace PagoAgilFrba.AbmCliente
                 cliente.setMail(mail);
                 cliente.setNombre(nombre);
                 cliente.setApellido(apellido);
-                cliente.setDireccion(idDireccion);
+                cliente.setDireccionID(idDireccion);
                 cliente.setFechaDeNac(fechaDeNacimiento);
                 cliente.setTelefono(telefono);
-                idCliente = comunicador.CrearCliente(cliente);
-                if (idCliente > 0) MessageBox.Show("Se agrego el cliente correctamente");
+                comunicador.CrearCliente(cliente);
+                MessageBox.Show("Se agrego el cliente correctamente");
             }
             catch (CampoVacioException exception)
             {
