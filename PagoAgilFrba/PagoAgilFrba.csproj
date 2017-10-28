@@ -75,6 +75,12 @@
     <Compile Include="AbmEmpresa\AgregarEmpresa.Designer.cs">
       <DependentUpon>AgregarEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="AbmEmpresa\EmpresaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmEmpresa\EmpresaForm.Designer.cs">
+      <DependentUpon>EmpresaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AbmEmpresa\ModificarEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
