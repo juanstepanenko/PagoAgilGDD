@@ -56,11 +56,17 @@ namespace PagoAgilFrba.Objetos
 
         public void SetDireccionID(Decimal direcID)
         {
+           // if (direcID == null)
+             //   throw new CampoVacioException("Dirección");
+            
             this.direc_id = direcID;
         }
 
         public void SetRubro(String rubro)
         {
+            if (rubro == "")
+                throw new CampoVacioException("Rubro");
+            
             this.rubro = rubro;
         }
 
@@ -81,11 +87,9 @@ namespace PagoAgilFrba.Objetos
 
         /****************************************/
 
-        
+        #region Miembros de Comunicable
 
-      
-
-          string Comunicable.GetQueryCrear()
+        string Comunicable.GetQueryCrear()
         {
             return "AMBDA.crear_empresa";
         }
@@ -100,6 +104,7 @@ namespace PagoAgilFrba.Objetos
             return "SELECT * FROM AMBDA.Empresa WHERE empr_cuit = @cuit";
         }
 
+
         public void CargarInformacion(SqlDataReader reader)
         {
 
@@ -107,11 +112,10 @@ namespace PagoAgilFrba.Objetos
             this.nombre = Convert.ToString(reader["empr_nombre"]);
             this.direc_id = Convert.ToDecimal(reader["empr_direc_id"]);
             this.rubro = Convert.ToString(reader["empr_rubro"]);
-            this.habilitada = Convert.ToBoolean(reader["empr_habilitada"]); 
-          
+            this.habilitada = Convert.ToBoolean(reader["empr_habilitada"]);
+
         }
 
-        
 
         IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros()
         {
@@ -126,6 +130,8 @@ namespace PagoAgilFrba.Objetos
             return parametros;
         }
 
-        
+       
+
+        #endregion
     }
 }
