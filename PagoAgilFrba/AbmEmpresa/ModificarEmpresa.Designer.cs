@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmEmpresa
 {
-    partial class AgregarEmpresa
+    partial class ModificarEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,10 @@
             this.textBox_Cuit = new System.Windows.Forms.TextBox();
             this.textBox_Rubro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.textBox_CalleNro = new System.Windows.Forms.TextBox();
             this.textBox_Piso = new System.Windows.Forms.TextBox();
-            this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox_Departamento = new System.Windows.Forms.TextBox();
@@ -45,11 +44,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Cancelar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -60,20 +61,20 @@
             this.groupBox1.Controls.Add(this.textBox_Cuit);
             this.groupBox1.Controls.Add(this.textBox_Rubro);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(16, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(506, 133);
+            this.groupBox1.Size = new System.Drawing.Size(506, 124);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cargar Datos";
+            this.groupBox1.Text = "Cargue los datos que desee modificar";
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(129, 27);
+            this.textBox_Nombre.Location = new System.Drawing.Point(129, 57);
             this.textBox_Nombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(356, 22);
@@ -81,10 +82,10 @@
             // 
             // textBox_Cuit
             // 
-            this.textBox_Cuit.Location = new System.Drawing.Point(129, 57);
+            this.textBox_Cuit.Location = new System.Drawing.Point(219, 25);
             this.textBox_Cuit.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Cuit.Name = "textBox_Cuit";
-            this.textBox_Cuit.Size = new System.Drawing.Size(356, 22);
+            this.textBox_Cuit.Size = new System.Drawing.Size(266, 22);
             this.textBox_Cuit.TabIndex = 17;
             // 
             // textBox_Rubro
@@ -99,22 +100,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 30);
+            this.label1.Location = new System.Drawing.Point(12, 60);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 17);
             this.label1.TabIndex = 16;
             this.label1.Text = "Nombre";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 60);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 17);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Cuit";
             // 
             // label3
             // 
@@ -124,6 +115,16 @@
             this.label3.Size = new System.Drawing.Size(47, 17);
             this.label3.TabIndex = 12;
             this.label3.Text = "Rubro";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 28);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(199, 17);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Cuit de la empresa a modificar";
             // 
             // textBox_CalleNro
             // 
@@ -141,13 +142,6 @@
             this.textBox_Piso.Size = new System.Drawing.Size(356, 22);
             this.textBox_Piso.TabIndex = 13;
             // 
-            // textBox_CodigoPostal
-            // 
-            this.textBox_CodigoPostal.Location = new System.Drawing.Point(129, 123);
-            this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
-            this.textBox_CodigoPostal.Size = new System.Drawing.Size(356, 22);
-            this.textBox_CodigoPostal.TabIndex = 21;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -161,21 +155,21 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox_CodigoPostal);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.textBox_CalleNro);
             this.groupBox2.Controls.Add(this.textBox_Piso);
             this.groupBox2.Controls.Add(this.textBox_Departamento);
             this.groupBox2.Controls.Add(this.textBox_Localidad);
-            this.groupBox2.Controls.Add(this.textBox_CodigoPostal);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Location = new System.Drawing.Point(16, 141);
+            this.groupBox2.Location = new System.Drawing.Point(16, 156);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(506, 195);
+            this.groupBox2.Size = new System.Drawing.Size(506, 188);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Direccion";
@@ -190,7 +184,7 @@
             // 
             // textBox_Localidad
             // 
-            this.textBox_Localidad.Location = new System.Drawing.Point(129, 152);
+            this.textBox_Localidad.Location = new System.Drawing.Point(129, 151);
             this.textBox_Localidad.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Localidad.Name = "textBox_Localidad";
             this.textBox_Localidad.Size = new System.Drawing.Size(356, 22);
@@ -210,7 +204,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 155);
+            this.label7.Location = new System.Drawing.Point(12, 154);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 17);
@@ -229,19 +223,10 @@
             this.label6.Text = "Departamento";
             this.label6.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 126);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 17);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Codigo postal";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 374);
+            this.label8.Location = new System.Drawing.Point(10, 400);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(231, 17);
@@ -251,7 +236,7 @@
             // 
             // button_Guardar
             // 
-            this.button_Guardar.Location = new System.Drawing.Point(386, 395);
+            this.button_Guardar.Location = new System.Drawing.Point(386, 421);
             this.button_Guardar.Margin = new System.Windows.Forms.Padding(4);
             this.button_Guardar.Name = "button_Guardar";
             this.button_Guardar.Size = new System.Drawing.Size(133, 37);
@@ -262,7 +247,7 @@
             // 
             // button_Cancelar
             // 
-            this.button_Cancelar.Location = new System.Drawing.Point(13, 395);
+            this.button_Cancelar.Location = new System.Drawing.Point(13, 421);
             this.button_Cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.button_Cancelar.Name = "button_Cancelar";
             this.button_Cancelar.Size = new System.Drawing.Size(133, 37);
@@ -273,7 +258,7 @@
             // 
             // button_Limpiar
             // 
-            this.button_Limpiar.Location = new System.Drawing.Point(245, 395);
+            this.button_Limpiar.Location = new System.Drawing.Point(245, 421);
             this.button_Limpiar.Margin = new System.Windows.Forms.Padding(4);
             this.button_Limpiar.Name = "button_Limpiar";
             this.button_Limpiar.Size = new System.Drawing.Size(133, 37);
@@ -282,11 +267,40 @@
             this.button_Limpiar.UseVisualStyleBackColor = true;
             this.button_Limpiar.Click += new System.EventHandler(this.button_Limpiar_Click);
             // 
-            // AgregarEmpresa
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(16, 363);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(93, 21);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Habilitada";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // textBox_CodigoPostal
+            // 
+            this.textBox_CodigoPostal.Location = new System.Drawing.Point(129, 122);
+            this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
+            this.textBox_CodigoPostal.Size = new System.Drawing.Size(356, 22);
+            this.textBox_CodigoPostal.TabIndex = 23;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 125);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 17);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Codigo postal";
+            // 
+            // ModificarEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 445);
+            this.ClientSize = new System.Drawing.Size(535, 483);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.button_Cancelar);
@@ -294,9 +308,9 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "AgregarEmpresa";
-            this.Text = "Agregar Empresa";
-            this.Load += new System.EventHandler(this.AgregarEmpresa_Load);
+            this.Name = "ModificarEmpresa";
+            this.Text = "Modificar Empresa";
+            this.Load += new System.EventHandler(this.ModificarEmpresa_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -321,15 +335,16 @@
         private System.Windows.Forms.TextBox textBox_Piso;
         private System.Windows.Forms.TextBox textBox_Departamento;
         private System.Windows.Forms.TextBox textBox_Localidad;
-        private System.Windows.Forms.TextBox textBox_CodigoPostal;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.Button button_Cancelar;
         private System.Windows.Forms.Button button_Limpiar;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox_CodigoPostal;
+        private System.Windows.Forms.Label label10;
 
     }
 }

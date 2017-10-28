@@ -12,21 +12,40 @@ using PagoAgilFrba.Excepciones;
 
 namespace PagoAgilFrba.AbmEmpresa
 {
-    public partial class AgregarEmpresa : Form
+    public partial class ModificarEmpresa : Form
     {
-
+        private String cuit;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idDireccion;
 
-        public AgregarEmpresa()
+        public ModificarEmpresa(String unCuit)
         {
             InitializeComponent();
-            this.idDireccion = 0;
+            this.cuit = unCuit;
         }
 
-        private void AgregarEmpresa_Load(object sender, EventArgs e)
+        private void ModificarEmpresa_Load(object sender, EventArgs e)
         {
+            CargarDatos();
+        }
 
+        private void CargarDatos()
+        {
+            Empresa empresa = comunicador.ObtenerEmpresa(cuit);
+
+            this.idDireccion = empresa.GetDireccionID();
+            textBox_Nombre.Text = empresa.GetNombre();
+            CargarDireccion(idDireccion);
+            checkBox1.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("empr_habilitada", "Empresa", "empr_cuit", cuit));
+        }
+
+        private void CargarDireccion(Decimal idDireccion)
+        {
+            Direccion direccion = comunicador.ObtenerDireccion(idDireccion);
+            textBox_CalleNro.Text = direccion.GetCalleNro();
+            textBox_Piso.Text = direccion.GetPiso();
+            textBox_Departamento.Text = direccion.GetDepartamento();
+            textBox_Localidad.Text = direccion.GetLocalidad();
         }
 
         private void button_Guardar_Click(object sender, EventArgs e)
@@ -40,18 +59,20 @@ namespace PagoAgilFrba.AbmEmpresa
             String localidad = textBox_Localidad.Text;
             String codigoPostal = textBox_CodigoPostal.Text;
             String rubro = textBox_Rubro.Text;
+            Boolean habilitada = checkBox1.Checked;
+            Boolean pudoModificar;
 
-            // Crea una direccion y se guarda su id
-            Direccion direccion = new Direccion();
+            // Update direccion
             try
             {
+                Direccion direccion = new Direccion();
                 direccion.SetCalleNro(calleNro);
                 direccion.SetPiso(piso);
                 direccion.SetDepartamento(departamento);
                 direccion.SetLocalidad(localidad);
                 direccion.SetCodigoPostal(codigoPostal);
+                comunicador.Modificar(idDireccion, direccion);
             }
-
             catch (CampoVacioException exception)
             {
                 MessageBox.Show("Falta completar campo: " + exception.Message);
@@ -62,13 +83,9 @@ namespace PagoAgilFrba.AbmEmpresa
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
             }
-            // Controla que no se haya creado ya la direccion
-            if (this.idDireccion == 0)
-            {
-                this.idDireccion = comunicador.CrearDireccion(direccion);
-            }
 
-            // Crea empresa
+
+            // Update empresa
             try
             {
                 Empresa empresa = new Empresa();
@@ -76,7 +93,9 @@ namespace PagoAgilFrba.AbmEmpresa
                 empresa.SetCuit(cuit);
                 empresa.SetRubro(rubro);
                 empresa.SetDireccionID(idDireccion);
-                MessageBox.Show("Se agrego la empresa correctamente");
+                empresa.SetHabilitada(habilitada);
+                pudoModificar = comunicador.ModificarEmpresa(cuit, empresa); 
+                if (pudoModificar) MessageBox.Show("El cliente se modifico correctamente");
             }
             catch (CampoVacioException exception)
             {
@@ -130,6 +149,11 @@ namespace PagoAgilFrba.AbmEmpresa
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

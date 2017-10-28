@@ -122,6 +122,24 @@ namespace PagoAgilFrba
             return direc;
         }
 
+        public Empresa ObtenerEmpresa(String cuit)
+        {
+            Empresa objeto = new Empresa();
+            Type clase = objeto.GetType();
+
+            Empresa empresa = (Empresa)Activator.CreateInstance(clase);
+            query = empresa.GetQueryObtener();
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@cuit", cuit));
+            SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
+            if (reader.Read())
+            {
+                empresa.CargarInformacion(reader);
+                return empresa;
+            }
+            return empresa;
+        }
+
         /************MODIFICAR***************/
 
         public Boolean Modificar(Decimal id, Comunicable objeto)
@@ -134,6 +152,18 @@ namespace PagoAgilFrba
             if (filasAfectadas == 1) return true;
             return false;
         }
+
+        public Boolean ModificarEmpresa(String cuit, Comunicable objeto)
+        {
+            query = objeto.GetQueryModificar();
+            parametros.Clear();
+            parametros = objeto.GetParametros();
+            parametros.Add(new SqlParameter("@cuit", cuit));
+            int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
+            if (filasAfectadas == 1) return true;
+            return false;
+        }
+
         
         /************ELIMINAR*************/
         public Boolean EliminarCliente(Decimal id)

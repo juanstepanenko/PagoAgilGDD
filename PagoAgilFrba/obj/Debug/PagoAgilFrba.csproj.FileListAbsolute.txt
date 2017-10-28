@@ -11,3 +11,5 @@ C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\ob
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.ModificarEmpresa.resources
