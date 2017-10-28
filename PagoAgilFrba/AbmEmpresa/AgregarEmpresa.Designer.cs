@@ -143,7 +143,7 @@
             // 
             // textBox_CodigoPostal
             // 
-            this.textBox_CodigoPostal.Location = new System.Drawing.Point(129, 123);
+            this.textBox_CodigoPostal.Location = new System.Drawing.Point(129, 152);
             this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
             this.textBox_CodigoPostal.Size = new System.Drawing.Size(356, 22);
             this.textBox_CodigoPostal.TabIndex = 21;
@@ -168,9 +168,9 @@
             this.groupBox2.Controls.Add(this.textBox_Localidad);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Location = new System.Drawing.Point(16, 141);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -190,7 +190,7 @@
             // 
             // textBox_Localidad
             // 
-            this.textBox_Localidad.Location = new System.Drawing.Point(129, 152);
+            this.textBox_Localidad.Location = new System.Drawing.Point(129, 123);
             this.textBox_Localidad.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Localidad.Name = "textBox_Localidad";
             this.textBox_Localidad.Size = new System.Drawing.Size(356, 22);
@@ -210,7 +210,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 155);
+            this.label7.Location = new System.Drawing.Point(12, 126);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 17);
@@ -232,7 +232,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 126);
+            this.label10.Location = new System.Drawing.Point(12, 155);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(94, 17);
             this.label10.TabIndex = 19;
