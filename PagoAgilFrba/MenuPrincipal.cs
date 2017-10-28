@@ -66,6 +66,7 @@ namespace PagoAgilFrba
             UsuarioSesion.Usuario.id = 0;
             UsuarioSesion.Usuario.nombre = null;
             UsuarioSesion.Usuario.rol = null;
+            UsuarioSesion.Usuario.sucursal = null;
 
             this.Hide();
             new Login.LoginForm().ShowDialog();

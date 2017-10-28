@@ -12,7 +12,10 @@ namespace PagoAgilFrba
         public Decimal id { get; set; }
         public String rol { get; set; }
         public String nombre { get; set; }
+        public String sucursal { get; set; }
+
         private UsuarioSesion() { }
+
         public static UsuarioSesion Usuario
         {
             get

@@ -53,29 +53,32 @@ namespace PagoAgilFrba.Login
                 String usuario = this.textBoxUsuario.Text;
                 String contraseña = this.textBoxContaseña.Text;
 
-
-                String query = "AMBDA.login";
+                
                 IList<SqlParameter> parametros = new List<SqlParameter>();
                 SqlCommand command;
+
+                String query = "AMBDA.login";
                 parametros.Clear();
                 parametros.Add(new SqlParameter("@usuario", usuario));
                 parametros.Add(new SqlParameter("@password_ingresada", contraseña));
                 command = builderDeComandos.Crear(query, parametros);
                 command.CommandType = CommandType.StoredProcedure;
                 command.ExecuteNonQuery();
+                command.Parameters.Clear();
 
                 MessageBox.Show("Bienvenido " + usuario + "!");
 
                 UsuarioSesion.Usuario.nombre = usuario;
 
-                //String query2 = ("SELECT usua_id FROM AMBDA.Usuario WHERE usua_username = " + usuario);
-                //int id = (int)builderDeComandos.Crear(query, parametros).ExecuteScalar();
-                //UsuarioSesion.Usuario.id = id;
+                String query2 = ("SELECT usua_id FROM AMBDA.Usuario WHERE usua_username = @username");
+                parametros.Clear();
+                parametros.Add(new SqlParameter("@username", usuario));
+                Decimal id = (Decimal)builderDeComandos.Crear(query2, parametros).ExecuteScalar();
+                UsuarioSesion.Usuario.id = id;
 
                 // Busca los roles
                 parametros.Clear();
                 parametros.Add(new SqlParameter("@username", usuario));
-
                 String consultaRoles = "SELECT COUNT(rol_id) FROM AMBDA.RolxUsuario WHERE (SELECT usua_id FROM AMBDA.Usuario WHERE usua_username = @username) = usua_id";
                 int cantidadDeRoles = (int)builderDeComandos.Crear(consultaRoles, parametros).ExecuteScalar();
 
@@ -97,13 +100,35 @@ namespace PagoAgilFrba.Login
                         MessageBox.Show("Usted no tiene roles para iniciar sesion");
                         return;
                     }
+                    
+                    parametros.Clear();
+                    parametros.Add(new SqlParameter("@username", usuario));
+                    String consultaSucursales = "SELECT COUNT(sucu_id) FROM AMBDA.SucursalxUsuario WHERE (SELECT usua_id FROM AMBDA.Usuario WHERE usua_username = @username) = usua_id";
+                    int cantidadDeSucursales = (int)builderDeComandos.Crear(consultaSucursales, parametros).ExecuteScalar();
 
+                    if (cantidadDeSucursales > 1)
+                    {
+                        this.Hide();
+                        new ElegirSucursal().ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        parametros.Clear();
+                        parametros.Add(new SqlParameter("@username", usuario));
+                        String sucursalDeUsuario = "SELECT s.sucu_nombre FROM AMBDA.Sucursal s, AMBDA.SucursalxUsuario su, AMBDA.Usuario u WHERE s.sucu_id = su.sucu_id AND su.usua_id = u.usua_id AND u.usua_username = @username";
+                        String sucursalUser = (String)builderDeComandos.Crear(sucursalDeUsuario, parametros).ExecuteScalar();
+                        UsuarioSesion.Usuario.sucursal = sucursalUser;
+                    }
+                    
                     this.Hide();
                     new MenuPrincipal().ShowDialog();
                     this.Close();
-
                 }
+                
+
             }
+
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error", MessageBoxButtons.OK);

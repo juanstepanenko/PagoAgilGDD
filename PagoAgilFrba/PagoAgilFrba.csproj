@@ -136,6 +136,12 @@
     <Compile Include="Login\ElegirRol.Designer.cs">
       <DependentUpon>ElegirRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\ElegirSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\ElegirSucursal.Designer.cs">
+      <DependentUpon>ElegirSucursal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
