@@ -79,7 +79,7 @@ namespace PagoAgilFrba.AbmCliente
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new MenuPrincipal().ShowDialog();
+            new ClienteForm().ShowDialog();
             this.Close();
         }
 

@@ -39,3 +39,5 @@ C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.pd
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.FiltroCliente.resources
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarCliente.resources
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.AgregarEmpresa.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Login.LoginForm.resources
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Login.LoginForm.resources

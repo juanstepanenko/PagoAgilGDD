@@ -28,28 +28,5 @@ namespace PagoAgilFrba
 
             return this.command;
         }
-
-        /* ESTO SE USA ASI POR EJEMPLO: ------> esto iria en la clase ComunicadorConDB.cs
-        
-        private String query;
-        private IList<SqlParameter> parametros = new List<SqlParameter>();
-        private SqlParameter parametroOutput;
-        private SqlCommand command;
-        private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
-
-        public Decimal CrearUsuario()
-        {
-            query = "LOS_SUPER_AMIGOS.crear_usuario";
-            parametros.Clear();
-            parametroOutput = new SqlParameter("@usuario_id", SqlDbType.Decimal);
-            parametroOutput.Direction = ParameterDirection.Output;
-            parametros.Add(parametroOutput);
-            command = builderDeComandos.Crear(query, parametros);
-            command.CommandType = CommandType.StoredProcedure;
-            command.ExecuteNonQuery();
-            return (Decimal)parametroOutput.Value;
-        }
-         
-        */
     }
 }

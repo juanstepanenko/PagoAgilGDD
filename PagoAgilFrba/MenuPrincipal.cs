@@ -23,10 +23,15 @@ namespace PagoAgilFrba
         public MenuPrincipal()
         {
             InitializeComponent();
-            funcionalidades.Add("Agregar Cliente", new AbmCliente.AgregarCliente());
-            funcionalidades.Add("Editar cliente", new AbmCliente.FiltroCliente());
-            //funcionalidades.Add("Comprar / Ofertar", new Comprar_Ofertar.BuscadorPublicaciones());
-            // un formato asi pero anda saber que va aca
+            funcionalidades.Add("ABM Roles", new AbmRol.RolForm());
+            funcionalidades.Add("ABM Clientes", new AbmCliente.ClienteForm());
+            //funcionalidades.Add("ABM Empresas", new AbmCliente.ClienteForm());
+            //funcionalidades.Add("ABM Sucursales", new AbmCliente.ClienteForm());
+            //funcionalidades.Add("ABM Facturas", new AbmCliente.ClienteForm());
+            //funcionalidades.Add("Registro de Pago de Facturas", new AbmCliente.ClienteForm());
+            //funcionalidades.Add("Rendición de facturas cobradas", new AbmCliente.ClienteForm());
+            //funcionalidades.Add("Listado estadístico", new AbmCliente.ClienteForm());
+
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
@@ -34,7 +39,7 @@ namespace PagoAgilFrba
             DataSet acciones = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter();
 
-            /* esto se completa cuando esten los roles y funcionalidades
+            // esto se completa cuando esten los roles y funcionalidades
             String funcionalidadesUsuario = "select f.func_descripcion from AMBDA.Rol r, AMBDA.RolxFunc fr, AMBDA.Funcionalidad f where r.rol_id = fr.rol_id and f.func_id = fr.func_id and r.rol_nombre = @unRol";
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@unRol", UsuarioSesion.Usuario.rol));
@@ -44,7 +49,6 @@ namespace PagoAgilFrba
             adapter.Fill(acciones, "Funcionalidad");
             comboBoxAccion.DataSource = acciones.Tables[0].DefaultView;
             comboBoxAccion.ValueMember = "func_descripcion";
-            */
         }
 
         private void botonAceptar_Click(object sender, EventArgs e)
@@ -58,7 +62,7 @@ namespace PagoAgilFrba
         }
 
         private void botonCerrarSesion_Click(object sender, EventArgs e)
-        {/*
+        {
             UsuarioSesion.Usuario.id = 0;
             UsuarioSesion.Usuario.nombre = null;
             UsuarioSesion.Usuario.rol = null;
@@ -66,7 +70,6 @@ namespace PagoAgilFrba
             this.Hide();
             new Login.LoginForm().ShowDialog();
             this.Close();
-            */
         }
 
         private void comboBoxAccion_SelectedIndexChanged(object sender, EventArgs e)
