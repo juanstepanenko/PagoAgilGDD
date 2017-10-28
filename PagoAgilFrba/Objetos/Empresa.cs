@@ -12,11 +12,9 @@ namespace PagoAgilFrba.Objetos
 
         private String nombre;
         private String cuit;
-        private String calleNro;
-        private String piso;
-        private String departamento;
-        private String localidad;
+        private Decimal direc_id;
         private String rubro;
+        private Boolean habilitada;
 
 
         public void SetNombre(String nombre)
@@ -51,53 +49,15 @@ namespace PagoAgilFrba.Objetos
         }
 
 
-        public void SetCalleNro(String calleNro)
+        public Decimal GetDireccionID()
         {
-            if (calleNro == "")
-                throw new CampoVacioException("CalleNro");
-            this.calleNro = calleNro;
+            return direc_id;
         }
 
-        public String GetCiudad()
+        public void SetDireccionID(Decimal direcID)
         {
-            return this.calleNro;
+            this.direc_id = direcID;
         }
-
-        public void SetPiso(String piso)
-        {
-            if (piso == "")
-                throw new CampoVacioException("Piso");
-            this.piso = piso;
-        }
-
-        public String GetPiso()
-        {
-            return this.piso;
-        }
-
-        public void SetDepartamento(String departamento)
-        {
-            if (departamento == "")
-                throw new CampoVacioException("Departamento");
-
-            this.departamento = departamento;
-        }
-
-        public String GetDepartamento()
-        {
-            return this.departamento;
-        }
-
-        public void SetLocalidad(String localidad)
-        {
-            this.localidad = localidad;
-        }
-
-        public String GetLocalidad()
-        {
-            return this.localidad;
-        }
-
 
         public void SetRubro(String rubro)
         {
@@ -107,6 +67,16 @@ namespace PagoAgilFrba.Objetos
         public String GetRubro()
         {
             return this.rubro;
+        }
+
+        public Boolean GetHabilitada()
+        {
+            return habilitada;
+        }
+
+        public void SetHabilitada(Boolean hab)
+        {
+            this.habilitada = hab;
         }
 
         #region Miembros de Comunicable
@@ -120,21 +90,12 @@ namespace PagoAgilFrba.Objetos
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Empresa SET empr_cuit = @cuit, empr_nombre = @nombre,  empr_direc_id = @direccion, empr_rubro = @rubro  WHERE id = @id"; // preguntar where y direccion a Sol
+            return "UPDATE AMBDA.Empresa SET  empr_nombre = @nombre,  empr_direc_id = @direccion, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_cuit = @cuit"; // preguntar where 
         }
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.Empresa WHERE id = @id";
-        }
-
-        IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros()
-        {
-            IList<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(new SqlParameter("@nombre", this.nombre));
-            parametros.Add(new SqlParameter("@cuit", this.cuit));
-            // agregar los que faltan
-            return parametros;
+            return "SELECT * FROM AMBDA.Empresa WHERE empr_cuit = @cuit";
         }
 
         public void CargarInformacion(SqlDataReader reader)
@@ -142,10 +103,25 @@ namespace PagoAgilFrba.Objetos
 
             this.cuit = Convert.ToString(reader["empr_cuit"]);
             this.nombre = Convert.ToString(reader["empr_nombre"]);
-            // y la direccion?? 
+            this.direc_id = Convert.ToDecimal(reader["empr_direc_id"]);
             this.rubro = Convert.ToString(reader["empr_rubro"]);
-            // agregar los que faltan
+            this.habilitada = Convert.ToBoolean(reader["empr_habilitada"]); 
+          
         }
+
+        IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros()
+        {
+            IList<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@cuit", this.cuit));
+            parametros.Add(new SqlParameter("@nombre", this.nombre));
+            parametros.Add(new SqlParameter("@direccion_id", this.direc_id));
+            parametros.Add(new SqlParameter("@rubro", this.rubro));
+            parametros.Add(new SqlParameter("@habilitada", this.habilitada));
+            
+            return parametros;
+        }
+
+        
 
         #endregion
     }

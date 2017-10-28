@@ -17,7 +17,6 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idDireccion;
-        private Decimal idEmpresa;
 
         public AgregarEmpresa()
         {
@@ -74,8 +73,8 @@ namespace PagoAgilFrba.AbmEmpresa
                 empresa.SetNombre(nombre);
                 empresa.SetCuit(cuit);
                 empresa.SetRubro(rubro);
-                idEmpresa = comunicador.CrearEmpresa(empresa);
-                if (idEmpresa > 0) MessageBox.Show("Se agrego la empresa correctamente");
+                empresa.SetDireccionID(idDireccion);
+                MessageBox.Show("Se agrego la empresa correctamente");
             }
             catch (CampoVacioException exception)
             {
