@@ -34,14 +34,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxContaseña = new System.Windows.Forms.TextBox();
             this.labelTitulo = new System.Windows.Forms.Label();
-            this.botonRegistrarse = new System.Windows.Forms.Button();
-            this.labelPregunta = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // botonIngresar
             // 
             this.botonIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonIngresar.Location = new System.Drawing.Point(163, 170);
+            this.botonIngresar.Location = new System.Drawing.Point(153, 179);
             this.botonIngresar.Name = "botonIngresar";
             this.botonIngresar.Size = new System.Drawing.Size(140, 37);
             this.botonIngresar.TabIndex = 0;
@@ -100,34 +98,11 @@
             this.labelTitulo.Text = "Iniciar sesión";
             this.labelTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // botonRegistrarse
-            // 
-            this.botonRegistrarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonRegistrarse.Location = new System.Drawing.Point(298, 250);
-            this.botonRegistrarse.Name = "botonRegistrarse";
-            this.botonRegistrarse.Size = new System.Drawing.Size(130, 34);
-            this.botonRegistrarse.TabIndex = 6;
-            this.botonRegistrarse.Text = "Registrarse";
-            this.botonRegistrarse.UseVisualStyleBackColor = true;
-            this.botonRegistrarse.Click += new System.EventHandler(this.botonRegistrarse_Click);
-            // 
-            // labelPregunta
-            // 
-            this.labelPregunta.AutoSize = true;
-            this.labelPregunta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPregunta.Location = new System.Drawing.Point(83, 260);
-            this.labelPregunta.Name = "labelPregunta";
-            this.labelPregunta.Size = new System.Drawing.Size(209, 17);
-            this.labelPregunta.TabIndex = 7;
-            this.labelPregunta.Text = "¿Todavia no tenes una cuenta?";
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 307);
-            this.Controls.Add(this.labelPregunta);
-            this.Controls.Add(this.botonRegistrarse);
+            this.ClientSize = new System.Drawing.Size(456, 267);
             this.Controls.Add(this.labelTitulo);
             this.Controls.Add(this.textBoxContaseña);
             this.Controls.Add(this.label2);
@@ -150,7 +125,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxContaseña;
         private System.Windows.Forms.Label labelTitulo;
-        private System.Windows.Forms.Button botonRegistrarse;
-        private System.Windows.Forms.Label labelPregunta;
     }
 }

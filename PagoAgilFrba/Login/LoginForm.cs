@@ -63,7 +63,15 @@ namespace PagoAgilFrba.Login
                 command = builderDeComandos.Crear(query, parametros);
                 command.CommandType = CommandType.StoredProcedure;
                 command.ExecuteNonQuery();
-               
+
+                MessageBox.Show("Bienvenido " + usuario + "!");
+
+                UsuarioSesion.Usuario.nombre = usuario;
+
+                //String query2 = ("SELECT usua_id FROM AMBDA.Usuario WHERE usua_username = " + usuario);
+                //int id = (int)builderDeComandos.Crear(query, parametros).ExecuteScalar();
+                //UsuarioSesion.Usuario.id = id;
+
                 // Busca los roles
                 parametros.Clear();
                 parametros.Add(new SqlParameter("@username", usuario));
@@ -112,13 +120,6 @@ namespace PagoAgilFrba.Login
         private void textBoxUsuario_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void botonRegistrarse_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            //new Registro_de_Usuario.RegistrarUsuario().ShowDialog();
-            this.Close();
         }
     }
 }
