@@ -36,3 +36,6 @@ C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Pr
 C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache
 C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe
 C:\Users\Marina\gdd_workspace\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.pdb
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.FiltroCliente.resources
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarCliente.resources
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.AgregarEmpresa.resources

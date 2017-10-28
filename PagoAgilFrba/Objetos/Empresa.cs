@@ -26,7 +26,7 @@ namespace PagoAgilFrba.Objetos
             this.nombre = nombre;
         }
 
-        public String GetNnombre()
+        public String GetNombre()
         {
             return this.nombre;
         }
@@ -120,7 +120,7 @@ namespace PagoAgilFrba.Objetos
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Empresa SET razon_social = @razon_social, nombre_de_contacto = @nombre_de_contacto, cuit = @cuit, fecha_creacion = @fecha_creacion, mail = @mail, telefono = @telefono, ciudad = @ciudad, habilitado = @habilitado  WHERE id = @id";
+            return "UPDATE AMBDA.Empresa SET empr_cuit = @cuit, empr_nombre = @nombre,  empr_direc_id = @direccion, empr_rubro = @rubro  WHERE id = @id"; // preguntar where y direccion a Sol
         }
 
         public string GetQueryObtener()
@@ -140,7 +140,10 @@ namespace PagoAgilFrba.Objetos
         public void CargarInformacion(SqlDataReader reader)
         {
 
-            this.cuit = Convert.ToString(reader["cuit"]);
+            this.cuit = Convert.ToString(reader["empr_cuit"]);
+            this.nombre = Convert.ToString(reader["empr_nombre"]);
+            // y la direccion?? 
+            this.rubro = Convert.ToString(reader["empr_rubro"]);
             // agregar los que faltan
         }
 
