@@ -164,8 +164,8 @@
             this.groupBox2.Controls.Add(this.textBox_CalleNro);
             this.groupBox2.Controls.Add(this.textBox_Piso);
             this.groupBox2.Controls.Add(this.textBox_Departamento);
-            this.groupBox2.Controls.Add(this.textBox_Localidad);
             this.groupBox2.Controls.Add(this.textBox_CodigoPostal);
+            this.groupBox2.Controls.Add(this.textBox_Localidad);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label7);

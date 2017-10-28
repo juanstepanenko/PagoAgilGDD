@@ -13,3 +13,18 @@ C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\ob
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
 C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.ModificarEmpresa.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe.config
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.exe
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.pdb
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.exe
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\bin\Debug\PagoAgilFrba.pdb
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.AgregarCliente.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.FiltroCliente.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarCliente.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.AgregarEmpresa.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.ModificarEmpresa.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Login.LoginForm.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Properties.Resources.resources
+C:\Users\Usuario\Documents\Facu\3ro\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache

@@ -23,7 +23,7 @@ namespace PagoAgilFrba
 
         /****************CREAR***************/
 
-        public Decimal Crear(Comunicable objeto) //el general para todos los objetos
+        public Decimal Crear(Comunicable objeto) //el general para todos los objetos, sirve para los que tienen id como pk (como direccion)
         {
             query = objeto.GetQueryCrear();
             parametros.Clear();
@@ -62,13 +62,22 @@ namespace PagoAgilFrba
             return this.Crear(direccion);
         }
 
-        public Decimal CrearEmpresa(Empresa empresa)
+        public void CrearEmpresa(Empresa empresa)
         {
             if (!pasoControlDeRegistroDeCuit(empresa.GetCuit()))
                 throw new CuitYaExisteException();
             // ver si falta alguna restriccion mas desde la abm
-            return this.Crear(empresa);
+            //return this.Crear(empresa);
+
+            query = empresa.GetQueryCrear();
+            parametros.Clear();
+            parametros = empresa.GetParametros(); 
+            command = builderDeComandos.Crear(query, parametros);
+            command.CommandType = CommandType.StoredProcedure;
+            command.ExecuteNonQuery(); 
+
         }
+
         /**************OBTENER***************/
 
         public Comunicable Obtener(Decimal id, Type clase)

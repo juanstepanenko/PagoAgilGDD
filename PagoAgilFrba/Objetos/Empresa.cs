@@ -89,7 +89,7 @@ namespace PagoAgilFrba.Objetos
 
         #region Miembros de Comunicable
 
-        string Comunicable.GetQueryCrear()
+        public string GetQueryCrear()
         {
             return "AMBDA.crear_empresa";
         }
@@ -116,8 +116,7 @@ namespace PagoAgilFrba.Objetos
 
         }
 
-
-        IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros()
+        public IList<System.Data.SqlClient.SqlParameter> GetParametros()
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Clear();
