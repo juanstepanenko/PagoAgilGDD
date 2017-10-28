@@ -126,7 +126,7 @@ namespace PagoAgilFrba.AbmCliente
         private void VolverAlMenuPrincial()
         {
             this.Hide();
-            new MenuPrincipal().ShowDialog();
+            new ClienteForm().ShowDialog();
             this.Close();
         }
 
