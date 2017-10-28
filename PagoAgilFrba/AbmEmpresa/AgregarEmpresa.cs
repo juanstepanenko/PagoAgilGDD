@@ -76,6 +76,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 empresa.SetCuit(cuit);
                 empresa.SetRubro(rubro);
                 empresa.SetDireccionID(idDireccion);
+                comunicador.CrearEmpresa(empresa);
                 MessageBox.Show("Se agrego la empresa correctamente");
             }
             catch (CampoVacioException exception)

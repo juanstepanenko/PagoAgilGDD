@@ -16,7 +16,7 @@ namespace PagoAgilFrba.Objetos
         private String rubro;
         private Boolean habilitada;
 
-
+        /************* Getters y Setters **************/
         public void SetNombre(String nombre)
         {
             if (nombre == "")
@@ -36,9 +36,9 @@ namespace PagoAgilFrba.Objetos
             if (cuit == "")
                 throw new CampoVacioException("Cuit");
 
-            /*if (!esCuit(cuit))
+            if (!esCuit(cuit))
                 throw new FormatoInvalidoException("Cuit. Usar el siguiente formato: XX-XXXXXXXX-XX donde X es numero");
-           */
+           
             //agregar
             this.cuit = cuit;
         }
@@ -79,16 +79,18 @@ namespace PagoAgilFrba.Objetos
             this.habilitada = hab;
         }
 
-        #region Miembros de Comunicable
+        /****************************************/
 
-        // Poner nombres campos correctos
+        
 
-        string Comunicable.GetQueryCrear()
+      
+
+          string Comunicable.GetQueryCrear()
         {
             return "AMBDA.crear_empresa";
         }
 
-        string Comunicable.GetQueryModificar()
+         string Comunicable.GetQueryModificar()
         {
             return "UPDATE AMBDA.Empresa SET  empr_nombre = @nombre,  empr_direc_id = @direccion, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_cuit = @cuit"; // preguntar where 
         }
@@ -109,20 +111,21 @@ namespace PagoAgilFrba.Objetos
           
         }
 
+        
+
         IList<System.Data.SqlClient.SqlParameter> Comunicable.GetParametros()
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Clear();
             parametros.Add(new SqlParameter("@cuit", this.cuit));
             parametros.Add(new SqlParameter("@nombre", this.nombre));
-            parametros.Add(new SqlParameter("@direccion_id", this.direc_id));
             parametros.Add(new SqlParameter("@rubro", this.rubro));
+            parametros.Add(new SqlParameter("@direccion_id", this.direc_id));          
             parametros.Add(new SqlParameter("@habilitada", this.habilitada));
             
             return parametros;
         }
 
         
-
-        #endregion
     }
 }
