@@ -39,9 +39,11 @@ C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.F
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmCliente.ModificarCliente.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.AgregarEmpresa.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmEmpresa.ModificarEmpresa.resources
-C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.Form1.resources
-C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.Form2.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Login.LoginForm.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.MenuPrincipal.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.Properties.Resources.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.csproj.GenerateResource.Cache
+C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.FacturaForm.resources
+C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificarFactura.resources
+C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.FiltroFactura.resources
+C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.AgregarFactura.resources

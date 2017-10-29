@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmFactura
 {
-    partial class Form3
+    partial class AgregarFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -11,14 +11,14 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+          //  if (disposing && (components != null))
+           // {
+             //   components.Dispose();
+            //}
+            //base.Dispose(disposing);
+        //}
 
         #region Windows Form Designer generated code
 
@@ -304,7 +304,7 @@
             this.label6.Text = "Monto \r\nTotal";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Form3
+            // AgregarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -317,7 +317,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Name = "Form3";
+            this.Name = "AgregarFactura";
             this.Text = "Factura";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

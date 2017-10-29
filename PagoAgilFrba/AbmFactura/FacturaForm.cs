@@ -10,11 +10,32 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmFactura
 {
-    public partial class Form1 : Form
+    public partial class FacturaForm : Form
     {
-        public Form1()
+        public FacturaForm()
         {
             InitializeComponent();
+        }
+
+        private void botonEditarFactura_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FiltroFactura().ShowDialog();
+            this.Close();
+        }
+
+        private void botonVolver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new MenuPrincipal().ShowDialog();
+            this.Close();
+        }
+
+        private void botonAgregarFactura_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new AgregarFactura().ShowDialog();
+            this.Close();
         }
     }
 }

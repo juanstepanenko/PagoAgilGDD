@@ -10,12 +10,17 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmFactura
 {
-    public partial class Form4 : Form
+    public partial class ModificarFactura : Form
     {
-        public Form4()
+        Decimal nroFactura;
+
+
+        public ModificarFactura(String nroFactura)
         {
             InitializeComponent();
+            this.nroFactura = Convert.ToDecimal(nroFactura);
         }
+
 
        
     }

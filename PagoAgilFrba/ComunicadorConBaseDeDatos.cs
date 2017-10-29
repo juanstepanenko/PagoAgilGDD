@@ -173,15 +173,29 @@ namespace PagoAgilFrba
             return false;
         }
 
+
         
         /************ELIMINAR*************/
+        //retorna la cantidad de filas afectadas
+        public int eliminarGeneralId(String query, String var, Decimal id)
+        {
+            parametros.Clear();
+            parametros.Add(new SqlParameter(var, id));
+            return builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
+        }
+
         public Boolean EliminarCliente(Decimal id)
         {
-            query = "UPDATE AMBDA.Cliente SET clie_habilitado = 0 WHERE clie_dni = @dni";
-            parametros.Clear();
-            parametros.Add(new SqlParameter("@dni", id));
-            int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
-            if (filasAfectadas == 1) return true;
+            if (eliminarGeneralId("UPDATE AMBDA.Cliente SET clie_habilitado = 0 WHERE clie_dni = @dni", "@dni", id) == 1) 
+                return true;
+            return false;
+        }
+
+        public Boolean EliminarFactura(Decimal id)
+        {
+            int filasAfectadas1 = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_factura = (select fact_id from AMBDA.Factura where fact_nro = @nrofact)", "@nrofact", id);
+            int filasAfectadas2 = eliminarGeneralId("DELETE FROM AMBDA.Factura WHERE fact_nro = @nrofact2", "@nrofact2", id);
+            if (filasAfectadas1 == 1 || filasAfectadas2 == 1) return true;
             return false;
         }
 
@@ -281,6 +295,18 @@ namespace PagoAgilFrba
         public DataTable SelectClientesParaFiltro()
         {
             return this.SelectClientesParaFiltroConFiltro("");
+        }
+
+        public DataTable SelectFacturasParaFiltroConFiltro(String filtro)
+        {
+            return this.SelectDataTable("fact_nro as 'nro factura', fact_cliente as 'dni cliente', fact_empresa as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
+            , "AMBDA.Factura"
+            , "fact_cobrada <> 1 and fact_rendicion is null" + filtro);
+        }
+
+        public DataTable SelectFacturasParaFiltro()
+        {
+            return this.SelectFacturasParaFiltroConFiltro("");
         }
    }
 }

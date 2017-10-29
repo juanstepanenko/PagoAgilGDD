@@ -230,6 +230,9 @@
     <EmbeddedResource Include="AbmFactura\FacturaForm.resx">
       <DependentUpon>FacturaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\FiltroFactura.resx">
+      <DependentUpon>FiltroFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
       <DependentUpon>ModificarFactura.cs</DependentUpon>
     </EmbeddedResource>
