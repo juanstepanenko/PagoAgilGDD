@@ -27,7 +27,7 @@ namespace PagoAgilFrba.AbmEmpresa
         private void botonEditarRol_Click(object sender, EventArgs e)
         {
             this.Hide();
-           // new ModificarEmpresa().ShowDialog();
+            new FiltroEmpresa().ShowDialog();
             this.Close();
         }
 

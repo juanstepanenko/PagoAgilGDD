@@ -191,6 +191,13 @@ namespace PagoAgilFrba
             return false;
         }
 
+        public Boolean EliminarEmpresa(Decimal id)
+        {
+            if (eliminarGeneralId("UPDATE AMBDA.Cliente SET empr_habilitada = 0 WHERE empr_cuit = @cuit", "@cuit", id) == 1)
+                return true;
+            return false;
+        }
+
         public Boolean EliminarFactura(Decimal id)
         {
             int filasAfectadas1 = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_factura = (select fact_id from AMBDA.Factura where fact_nro = @nrofact)", "@nrofact", id);
@@ -307,6 +314,18 @@ namespace PagoAgilFrba
         public DataTable SelectFacturasParaFiltro()
         {
             return this.SelectFacturasParaFiltroConFiltro("");
+        }
+
+        public DataTable SelectEmpresasParaFiltroConFiltro(String filtro)
+        {
+            return this.SelectDataTable("e.empr_cuit Cuit, e.empr_nombre Nombre, e.empr_direc_id DireccionId, e.empr_rubro Rubro, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
+                , "AMBDA.Empresa e, AMBDA.Direccion d"
+                , "e.empr_direc_id = d.direc_id AND e.empr_habilitada = 1" + filtro);
+        }
+
+        public DataTable SelectEmpresasParaFiltro()
+        {
+            return this.SelectEmpresasParaFiltroConFiltro("");
         }
 
    }
