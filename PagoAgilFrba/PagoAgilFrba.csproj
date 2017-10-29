@@ -93,11 +93,23 @@
     <Compile Include="AbmFactura\FacturaForm.Designer.cs">
       <DependentUpon>FacturaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmFactura\Form2.cs">
+    <Compile Include="AbmFactura\AgregarFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmFactura\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="AbmFactura\AgregarFactura.Designer.cs">
+      <DependentUpon>AgregarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\FiltroFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\FiltroFactura.Designer.cs">
+      <DependentUpon>FiltroFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmFactura\ModificarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmFactura\ModificarFactura.Designer.cs">
+      <DependentUpon>ModificarFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="AbmRol\AgregarRol.cs">
       <SubType>Form</SubType>
@@ -214,9 +226,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\FacturaForm.resx">
       <DependentUpon>FacturaForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AbmFactura\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

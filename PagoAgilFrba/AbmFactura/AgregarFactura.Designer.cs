@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmFactura
 {
-    partial class Form2
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
@@ -85,152 +85,152 @@
             this.monthCalendar_FechaDeNacimiento.Location = new System.Drawing.Point(206, 3);
             this.monthCalendar_FechaDeNacimiento.Name = "monthCalendar_FechaDeNacimiento";
             this.monthCalendar_FechaDeNacimiento.TabIndex = 13;
-            this.monthCalendar_FechaDeNacimiento.Visible = false;
-            // 
-            // button_FechaDeNacimiento
-            // 
-            this.button_FechaDeNacimiento.Location = new System.Drawing.Point(305, 127);
-            this.button_FechaDeNacimiento.Name = "button_FechaDeNacimiento";
-            this.button_FechaDeNacimiento.Size = new System.Drawing.Size(80, 20);
-            this.button_FechaDeNacimiento.TabIndex = 12;
-            this.button_FechaDeNacimiento.Text = "Seleccionar";
-            this.button_FechaDeNacimiento.UseVisualStyleBackColor = true;
-            // 
-            // textBox_FechaDeNacimiento
-            // 
-            this.textBox_FechaDeNacimiento.Location = new System.Drawing.Point(124, 128);
-            this.textBox_FechaDeNacimiento.Name = "textBox_FechaDeNacimiento";
-            this.textBox_FechaDeNacimiento.Size = new System.Drawing.Size(175, 20);
-            this.textBox_FechaDeNacimiento.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 129);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Fecha de vencimiento";
-            // 
-            // textBox_Mail
-            // 
-            this.textBox_Mail.Location = new System.Drawing.Point(124, 102);
-            this.textBox_Mail.Name = "textBox_Mail";
-            this.textBox_Mail.Size = new System.Drawing.Size(260, 20);
-            this.textBox_Mail.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 103);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Fecha de alta";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "N° Factura";
-            // 
-            // textBox_nrofact
-            // 
-            this.textBox_nrofact.Location = new System.Drawing.Point(124, 72);
-            this.textBox_nrofact.Name = "textBox_nrofact";
-            this.textBox_nrofact.Size = new System.Drawing.Size(260, 20);
-            this.textBox_nrofact.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Empresa";
-            // 
-            // textBox_cliente
-            // 
-            this.textBox_cliente.Location = new System.Drawing.Point(124, 19);
-            this.textBox_cliente.Name = "textBox_cliente";
-            this.textBox_cliente.Size = new System.Drawing.Size(260, 20);
-            this.textBox_cliente.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DNI cliente";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dataGridView_Cliente);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(20, 184);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(398, 218);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Items";
-            // 
-            // dataGridView_Cliente
-            // 
-            this.dataGridView_Cliente.AllowUserToAddRows = false;
-            this.dataGridView_Cliente.AllowUserToDeleteRows = false;
-            this.dataGridView_Cliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView_Cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Cliente.Location = new System.Drawing.Point(19, 76);
-            this.dataGridView_Cliente.Name = "dataGridView_Cliente";
-            this.dataGridView_Cliente.RowTemplate.ReadOnly = true;
-            this.dataGridView_Cliente.Size = new System.Drawing.Size(365, 127);
-            this.dataGridView_Cliente.TabIndex = 19;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button1.Location = new System.Drawing.Point(319, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 25);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(19, 19);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(365, 51);
-            this.groupBox3.TabIndex = 15;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Nuevo Item";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(215, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(79, 20);
-            this.textBox2.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(160, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Cantidad";
+             this.monthCalendar_FechaDeNacimiento.Visible = false;
+               
+             // button_FechaDeNacimiento
+             // 
+             this.button_FechaDeNacimiento.Location = new System.Drawing.Point(305, 127);
+             this.button_FechaDeNacimiento.Name = "button_FechaDeNacimiento";
+             this.button_FechaDeNacimiento.Size = new System.Drawing.Size(80, 20);
+             this.button_FechaDeNacimiento.TabIndex = 12;
+             this.button_FechaDeNacimiento.Text = "Seleccionar";
+             this.button_FechaDeNacimiento.UseVisualStyleBackColor = true;
+             // 
+             // textBox_FechaDeNacimiento
+             // 
+             this.textBox_FechaDeNacimiento.Location = new System.Drawing.Point(124, 128);
+             this.textBox_FechaDeNacimiento.Name = "textBox_FechaDeNacimiento";
+             this.textBox_FechaDeNacimiento.Size = new System.Drawing.Size(175, 20);
+             this.textBox_FechaDeNacimiento.TabIndex = 11;
+             // 
+             // label5
+             // 
+             this.label5.AutoSize = true;
+             this.label5.Location = new System.Drawing.Point(6, 129);
+             this.label5.Name = "label5";
+             this.label5.Size = new System.Drawing.Size(112, 13);
+             this.label5.TabIndex = 10;
+             this.label5.Text = "Fecha de vencimiento";
+             // 
+             // textBox_Mail
+             // 
+             this.textBox_Mail.Location = new System.Drawing.Point(124, 102);
+             this.textBox_Mail.Name = "textBox_Mail";
+             this.textBox_Mail.Size = new System.Drawing.Size(260, 20);
+             this.textBox_Mail.TabIndex = 9;
+             // 
+             // label4
+             // 
+             this.label4.AutoSize = true;
+             this.label4.Location = new System.Drawing.Point(6, 103);
+             this.label4.Name = "label4";
+             this.label4.Size = new System.Drawing.Size(72, 13);
+             this.label4.TabIndex = 8;
+             this.label4.Text = "Fecha de alta";
+             // 
+             // label3
+             // 
+             this.label3.AutoSize = true;
+             this.label3.Location = new System.Drawing.Point(6, 76);
+             this.label3.Name = "label3";
+             this.label3.Size = new System.Drawing.Size(58, 13);
+             this.label3.TabIndex = 5;
+             this.label3.Text = "N° Factura";
+             // 
+             // textBox_nrofact
+             // 
+             this.textBox_nrofact.Location = new System.Drawing.Point(124, 72);
+             this.textBox_nrofact.Name = "textBox_nrofact";
+             this.textBox_nrofact.Size = new System.Drawing.Size(260, 20);
+             this.textBox_nrofact.TabIndex = 4;
+             // 
+             // label2
+             // 
+             this.label2.AutoSize = true;
+             this.label2.Location = new System.Drawing.Point(6, 48);
+             this.label2.Name = "label2";
+             this.label2.Size = new System.Drawing.Size(48, 13);
+             this.label2.TabIndex = 2;
+             this.label2.Text = "Empresa";
+             // 
+             // textBox_cliente
+             // 
+             this.textBox_cliente.Location = new System.Drawing.Point(124, 19);
+             this.textBox_cliente.Name = "textBox_cliente";
+             this.textBox_cliente.Size = new System.Drawing.Size(260, 20);
+             this.textBox_cliente.TabIndex = 1;
+             // 
+             // label1
+             // 
+             this.label1.AutoSize = true;
+             this.label1.Location = new System.Drawing.Point(6, 22);
+             this.label1.Name = "label1";
+             this.label1.Size = new System.Drawing.Size(60, 13);
+             this.label1.TabIndex = 0;
+             this.label1.Text = "DNI cliente";
+             // 
+             // groupBox2
+             // 
+             this.groupBox2.Controls.Add(this.dataGridView_Cliente);
+             this.groupBox2.Controls.Add(this.button1);
+             this.groupBox2.Controls.Add(this.groupBox3);
+             this.groupBox2.Location = new System.Drawing.Point(20, 184);
+             this.groupBox2.Name = "groupBox2";
+             this.groupBox2.Size = new System.Drawing.Size(398, 218);
+             this.groupBox2.TabIndex = 14;
+             this.groupBox2.TabStop = false;
+             this.groupBox2.Text = "Items";
+             // 
+             // dataGridView_Cliente
+             // 
+             this.dataGridView_Cliente.AllowUserToAddRows = false;
+             this.dataGridView_Cliente.AllowUserToDeleteRows = false;
+             this.dataGridView_Cliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+             this.dataGridView_Cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+             this.dataGridView_Cliente.Location = new System.Drawing.Point(19, 76);
+             this.dataGridView_Cliente.Name = "dataGridView_Cliente";
+             this.dataGridView_Cliente.RowTemplate.ReadOnly = true;
+             this.dataGridView_Cliente.Size = new System.Drawing.Size(365, 127);
+             this.dataGridView_Cliente.TabIndex = 19;
+             // 
+             // button1
+             // 
+             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+             this.button1.Location = new System.Drawing.Point(319, 32);
+             this.button1.Name = "button1";
+             this.button1.Size = new System.Drawing.Size(55, 25);
+             this.button1.TabIndex = 18;
+             this.button1.Text = "Agregar";
+             this.button1.UseVisualStyleBackColor = true;
+             // 
+             // groupBox3
+             // 
+             this.groupBox3.Controls.Add(this.textBox2);
+             this.groupBox3.Controls.Add(this.label7);
+             this.groupBox3.Controls.Add(this.textBox1);
+             this.groupBox3.Controls.Add(this.label6);
+             this.groupBox3.Location = new System.Drawing.Point(19, 19);
+             this.groupBox3.Name = "groupBox3";
+             this.groupBox3.Size = new System.Drawing.Size(365, 51);
+             this.groupBox3.TabIndex = 15;
+             this.groupBox3.TabStop = false;
+             this.groupBox3.Text = "Nuevo Item";
+             // 
+             // textBox2
+             // 
+             this.textBox2.Location = new System.Drawing.Point(215, 16);
+             this.textBox2.Name = "textBox2";
+             this.textBox2.Size = new System.Drawing.Size(79, 20);
+             this.textBox2.TabIndex = 17;
+             // 
+             // label7
+             // 
+             this.label7.AutoSize = true;
+             this.label7.Location = new System.Drawing.Point(160, 19);
+             this.label7.Name = "label7";
+             this.label7.Size = new System.Drawing.Size(49, 13);
+             this.label7.TabIndex = 16;
+             this.label7.Text = "Cantidad";
             // 
             // textBox1
             // 
@@ -326,11 +326,9 @@
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
-
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MonthCalendar monthCalendar_FechaDeNacimiento;
         private System.Windows.Forms.Label label5;

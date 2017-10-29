@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmFactura
 {
-    partial class Form2
+    partial class Form4
     {
         /// <summary>
         /// Required designer variable.
