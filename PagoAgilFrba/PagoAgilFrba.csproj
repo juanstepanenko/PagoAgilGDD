@@ -191,6 +191,7 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Factura.cs" />
     <Compile Include="Objetos\Item.cs" />
     <Compile Include="Objetos\Empresa.cs" />
     <Compile Include="Objetos\Cliente.cs" />

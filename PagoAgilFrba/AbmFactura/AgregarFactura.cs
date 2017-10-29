@@ -132,6 +132,21 @@ namespace PagoAgilFrba.AbmFactura
             textBox_cantidad.Text = "";
         }
 
+        private void button_Guardar_Click(object sender, EventArgs e)
+        {
+            // Guarda en variables todos los campos de entrada
+            String dni = textBox_cliente.Text;
+            String empresa = comboBoxEmpresas.Text;
+            String nrofactura = textBox_nrofact.Text;
+            DateTime fechaAlta, fechaVencimiento;
+            DateTime.TryParse(label10.Text, out fechaAlta);
+            DateTime.TryParse(textBox_venc.Text, out fechaVencimiento);
+            //items
+            //total
+            
+            //Crea Factura
+        }
+
 
     }
 }
