@@ -88,6 +88,22 @@ namespace PagoAgilFrba.AbmEmpresa
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
             }
+
+            // Si no se cumplen estas 2 condiciones no se tiene que crear
+            try
+            {
+                if (!comunicador.pasoControlDeRegistroDeCuit(Convert.ToString(cuit)))
+                    throw new CuitYaExisteException();
+
+            }
+
+            catch (CuitYaExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+            
+            //---------
             // Controla que no se haya creado ya la direccion
             if (this.idDireccion == 0)
             {
