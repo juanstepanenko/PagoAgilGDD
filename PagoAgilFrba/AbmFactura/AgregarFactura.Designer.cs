@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBoxEstadoRoles = new System.Windows.Forms.ComboBox();
-            this.monthCalendar_FechaDeNacimiento = new System.Windows.Forms.MonthCalendar();
-            this.button_FechaDeNacimiento = new System.Windows.Forms.Button();
-            this.textBox_FechaDeNacimiento = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.monthCalendar_FechaVenc = new System.Windows.Forms.MonthCalendar();
+            this.comboBoxEmpresas = new System.Windows.Forms.ComboBox();
+            this.button_FechaVenc = new System.Windows.Forms.Button();
+            this.textBox_venc = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox_Mail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_nrofact = new System.Windows.Forms.TextBox();
@@ -42,32 +42,32 @@
             this.textBox_cliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView_Cliente = new System.Windows.Forms.DataGridView();
+            this.dataGridView_Item = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox_cantidad = new System.Windows.Forms.TextBox();
+            this.textBox_monto = new System.Windows.Forms.TextBox();
+            this.button_agregar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox_TOTAL = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.button_Guardar = new System.Windows.Forms.Button();
-            this.button_Cancelar = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.button_Volver = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Cliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Item)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBoxEstadoRoles);
-            this.groupBox1.Controls.Add(this.monthCalendar_FechaDeNacimiento);
-            this.groupBox1.Controls.Add(this.button_FechaDeNacimiento);
-            this.groupBox1.Controls.Add(this.textBox_FechaDeNacimiento);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.monthCalendar_FechaVenc);
+            this.groupBox1.Controls.Add(this.comboBoxEmpresas);
+            this.groupBox1.Controls.Add(this.button_FechaVenc);
+            this.groupBox1.Controls.Add(this.textBox_venc);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox_Mail);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox_nrofact);
@@ -80,36 +80,45 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // comboBoxEstadoRoles
+            // label10
             // 
-            this.comboBoxEstadoRoles.FormattingEnabled = true;
-            this.comboBoxEstadoRoles.Location = new System.Drawing.Point(124, 45);
-            this.comboBoxEstadoRoles.Name = "comboBoxEstadoRoles";
-            this.comboBoxEstadoRoles.Size = new System.Drawing.Size(260, 21);
-            this.comboBoxEstadoRoles.TabIndex = 14;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(121, 103);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 13);
+            this.label10.TabIndex = 15;
             // 
-            // monthCalendar_FechaDeNacimiento
+            // monthCalendar_FechaVenc
             // 
-            this.monthCalendar_FechaDeNacimiento.Location = new System.Drawing.Point(206, 3);
-            this.monthCalendar_FechaDeNacimiento.Name = "monthCalendar_FechaDeNacimiento";
-            this.monthCalendar_FechaDeNacimiento.TabIndex = 13;
-            this.monthCalendar_FechaDeNacimiento.Visible = false;
+            this.monthCalendar_FechaVenc.Location = new System.Drawing.Point(206, -5);
+            this.monthCalendar_FechaVenc.Name = "monthCalendar_FechaVenc";
+            this.monthCalendar_FechaVenc.TabIndex = 13;
+            this.monthCalendar_FechaVenc.Visible = false;
             // 
-            // button_FechaDeNacimiento
+            // comboBoxEmpresas
             // 
-            this.button_FechaDeNacimiento.Location = new System.Drawing.Point(305, 127);
-            this.button_FechaDeNacimiento.Name = "button_FechaDeNacimiento";
-            this.button_FechaDeNacimiento.Size = new System.Drawing.Size(80, 20);
-            this.button_FechaDeNacimiento.TabIndex = 12;
-            this.button_FechaDeNacimiento.Text = "Seleccionar";
-            this.button_FechaDeNacimiento.UseVisualStyleBackColor = true;
+            this.comboBoxEmpresas.FormattingEnabled = true;
+            this.comboBoxEmpresas.Location = new System.Drawing.Point(124, 45);
+            this.comboBoxEmpresas.Name = "comboBoxEmpresas";
+            this.comboBoxEmpresas.Size = new System.Drawing.Size(260, 21);
+            this.comboBoxEmpresas.TabIndex = 14;
+            this.comboBoxEmpresas.SelectedIndexChanged += new System.EventHandler(this.comboBoxEmpresas_SelectedIndexChanged);
             // 
-            // textBox_FechaDeNacimiento
+            // button_FechaVenc
             // 
-            this.textBox_FechaDeNacimiento.Location = new System.Drawing.Point(124, 128);
-            this.textBox_FechaDeNacimiento.Name = "textBox_FechaDeNacimiento";
-            this.textBox_FechaDeNacimiento.Size = new System.Drawing.Size(175, 20);
-            this.textBox_FechaDeNacimiento.TabIndex = 11;
+            this.button_FechaVenc.Location = new System.Drawing.Point(305, 127);
+            this.button_FechaVenc.Name = "button_FechaVenc";
+            this.button_FechaVenc.Size = new System.Drawing.Size(80, 20);
+            this.button_FechaVenc.TabIndex = 12;
+            this.button_FechaVenc.Text = "Seleccionar";
+            this.button_FechaVenc.UseVisualStyleBackColor = true;
+            // 
+            // textBox_venc
+            // 
+            this.textBox_venc.Location = new System.Drawing.Point(124, 128);
+            this.textBox_venc.Name = "textBox_venc";
+            this.textBox_venc.Size = new System.Drawing.Size(175, 20);
+            this.textBox_venc.TabIndex = 11;
             // 
             // label5
             // 
@@ -119,13 +128,6 @@
             this.label5.Size = new System.Drawing.Size(112, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Fecha de vencimiento";
-            // 
-            // textBox_Mail
-            // 
-            this.textBox_Mail.Location = new System.Drawing.Point(124, 102);
-            this.textBox_Mail.Name = "textBox_Mail";
-            this.textBox_Mail.Size = new System.Drawing.Size(260, 20);
-            this.textBox_Mail.TabIndex = 9;
             // 
             // label4
             // 
@@ -179,7 +181,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView_Cliente);
+            this.groupBox2.Controls.Add(this.dataGridView_Item);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(20, 184);
             this.groupBox2.Name = "groupBox2";
@@ -188,23 +190,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Items";
             // 
-            // dataGridView_Cliente
+            // dataGridView_Item
             // 
-            this.dataGridView_Cliente.AllowUserToAddRows = false;
-            this.dataGridView_Cliente.AllowUserToDeleteRows = false;
-            this.dataGridView_Cliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView_Cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Cliente.Location = new System.Drawing.Point(19, 76);
-            this.dataGridView_Cliente.Name = "dataGridView_Cliente";
-            this.dataGridView_Cliente.RowTemplate.ReadOnly = true;
-            this.dataGridView_Cliente.Size = new System.Drawing.Size(365, 127);
-            this.dataGridView_Cliente.TabIndex = 19;
+            this.dataGridView_Item.AllowUserToAddRows = false;
+            this.dataGridView_Item.AllowUserToDeleteRows = false;
+            this.dataGridView_Item.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView_Item.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Item.Location = new System.Drawing.Point(19, 76);
+            this.dataGridView_Item.Name = "dataGridView_Item";
+            this.dataGridView_Item.RowTemplate.ReadOnly = true;
+            this.dataGridView_Item.Size = new System.Drawing.Size(365, 127);
+            this.dataGridView_Item.TabIndex = 19;
+            this.dataGridView_Item.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Item_CellClick);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.textBox_cantidad);
+            this.groupBox3.Controls.Add(this.textBox_monto);
+            this.groupBox3.Controls.Add(this.button_agregar);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Location = new System.Drawing.Point(19, 19);
@@ -213,6 +216,50 @@
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Nuevo Item";
+            // 
+            // textBox_cantidad
+            // 
+            this.textBox_cantidad.Location = new System.Drawing.Point(65, 17);
+            this.textBox_cantidad.Name = "textBox_cantidad";
+            this.textBox_cantidad.Size = new System.Drawing.Size(79, 20);
+            this.textBox_cantidad.TabIndex = 23;
+            // 
+            // textBox_monto
+            // 
+            this.textBox_monto.Location = new System.Drawing.Point(187, 19);
+            this.textBox_monto.Name = "textBox_monto";
+            this.textBox_monto.Size = new System.Drawing.Size(106, 20);
+            this.textBox_monto.TabIndex = 20;
+            // 
+            // button_agregar
+            // 
+            this.button_agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.button_agregar.Location = new System.Drawing.Point(303, 17);
+            this.button_agregar.Name = "button_agregar";
+            this.button_agregar.Size = new System.Drawing.Size(55, 25);
+            this.button_agregar.TabIndex = 24;
+            this.button_agregar.Text = "Agregar";
+            this.button_agregar.UseVisualStyleBackColor = true;
+            this.button_agregar.Click += new System.EventHandler(this.button_agregar_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(150, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 26);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Monto \r\nTotal";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Cantidad";
             // 
             // label8
             // 
@@ -224,15 +271,15 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "TOTAL $";
             // 
-            // textBox3
+            // textBox_TOTAL
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Menu;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox3.Location = new System.Drawing.Point(91, 416);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(116, 16);
-            this.textBox3.TabIndex = 18;
+            this.textBox_TOTAL.BackColor = System.Drawing.SystemColors.Menu;
+            this.textBox_TOTAL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_TOTAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.textBox_TOTAL.Location = new System.Drawing.Point(91, 416);
+            this.textBox_TOTAL.Name = "textBox_TOTAL";
+            this.textBox_TOTAL.Size = new System.Drawing.Size(116, 16);
+            this.textBox_TOTAL.TabIndex = 18;
             // 
             // label9
             // 
@@ -252,77 +299,35 @@
             this.button_Guardar.Text = "Guardar";
             this.button_Guardar.UseVisualStyleBackColor = true;
             // 
-            // button_Cancelar
+            // button_Volver
             // 
-            this.button_Cancelar.Location = new System.Drawing.Point(202, 460);
-            this.button_Cancelar.Name = "button_Cancelar";
-            this.button_Cancelar.Size = new System.Drawing.Size(100, 30);
-            this.button_Cancelar.TabIndex = 21;
-            this.button_Cancelar.Text = "Volver";
-            this.button_Cancelar.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(65, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(79, 20);
-            this.textBox2.TabIndex = 23;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button1.Location = new System.Drawing.Point(303, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 25);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Cantidad";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(187, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 20);
-            this.textBox1.TabIndex = 20;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(150, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 26);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Monto \r\nTotal";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Volver.Location = new System.Drawing.Point(202, 460);
+            this.button_Volver.Name = "button_Volver";
+            this.button_Volver.Size = new System.Drawing.Size(100, 30);
+            this.button_Volver.TabIndex = 21;
+            this.button_Volver.Text = "Volver";
+            this.button_Volver.UseVisualStyleBackColor = true;
             // 
             // AgregarFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 502);
-            this.Controls.Add(this.button_Cancelar);
+            this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button_Guardar);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox_TOTAL);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "AgregarFactura";
             this.Text = "Factura";
+            this.Load += new System.EventHandler(this.AgregarFactura_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Cliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Item)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -332,30 +337,30 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.MonthCalendar monthCalendar_FechaDeNacimiento;
+        private System.Windows.Forms.MonthCalendar monthCalendar_FechaVenc;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox_Mail;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox_nrofact;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_cliente;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button_FechaDeNacimiento;
-        private System.Windows.Forms.TextBox textBox_FechaDeNacimiento;
+        private System.Windows.Forms.Button button_FechaVenc;
+        private System.Windows.Forms.TextBox textBox_venc;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView_Cliente;
+        private System.Windows.Forms.DataGridView dataGridView_Item;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox_TOTAL;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button_Guardar;
-        private System.Windows.Forms.Button button_Cancelar;
-        private System.Windows.Forms.ComboBox comboBoxEstadoRoles;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_Volver;
+        private System.Windows.Forms.ComboBox comboBoxEmpresas;
+        private System.Windows.Forms.TextBox textBox_cantidad;
+        private System.Windows.Forms.TextBox textBox_monto;
+        private System.Windows.Forms.Button button_agregar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label10;
     }
 }
