@@ -150,6 +150,7 @@
     <Compile Include="ComunicadorConBaseDeDatos.cs" />
     <Compile Include="ConexionDB.cs" />
     <Compile Include="Excepciones\CampoVacioException.cs" />
+    <Compile Include="Excepciones\CantidadNulaException.cs" />
     <Compile Include="Excepciones\CuitYaExisteException.cs" />
     <Compile Include="Excepciones\ClienteYaExisteException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Item.cs" />
     <Compile Include="Objetos\Empresa.cs" />
     <Compile Include="Objetos\Cliente.cs" />
     <Compile Include="Objetos\Comunicable.cs" />
