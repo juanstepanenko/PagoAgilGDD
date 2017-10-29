@@ -42,13 +42,13 @@
             this.textBox_cliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView_Cliente = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView_Cliente = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@
             this.button_Cancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Cliente)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -180,7 +180,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView_Cliente);
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(20, 184);
             this.groupBox2.Name = "groupBox2";
@@ -188,61 +187,6 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Items";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Location = new System.Drawing.Point(19, 19);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(365, 51);
-            this.groupBox3.TabIndex = 15;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Nuevo Item";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(215, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(79, 20);
-            this.textBox2.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(160, 19);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Cantidad";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(48, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 20);
-            this.textBox1.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Monto";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button1.Location = new System.Drawing.Point(319, 32);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 25);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView_Cliente
             // 
@@ -255,6 +199,63 @@
             this.dataGridView_Cliente.RowTemplate.ReadOnly = true;
             this.dataGridView_Cliente.Size = new System.Drawing.Size(365, 127);
             this.dataGridView_Cliente.TabIndex = 19;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.button1.Location = new System.Drawing.Point(304, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 25);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Agregar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(19, 19);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(365, 51);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Nuevo Item";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(66, 16);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(79, 20);
+            this.textBox2.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 19);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Cantidad";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(188, 18);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(106, 20);
+            this.textBox1.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(151, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 26);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Monto \r\nTotal";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label8
             // 
@@ -303,7 +304,7 @@
             this.button_Cancelar.Text = "Volver";
             this.button_Cancelar.UseVisualStyleBackColor = true;
             // 
-            // Form2
+            // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -316,14 +317,14 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Name = "Form2";
+            this.Name = "Form4";
             this.Text = "Form2";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Cliente)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Cliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

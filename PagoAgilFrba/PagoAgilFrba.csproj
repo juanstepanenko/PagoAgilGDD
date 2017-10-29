@@ -224,8 +224,14 @@
     <EmbeddedResource Include="AbmEmpresa\ModificarEmpresa.resx">
       <DependentUpon>ModificarEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\AgregarFactura.resx">
+      <DependentUpon>AgregarFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\FacturaForm.resx">
       <DependentUpon>FacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
+      <DependentUpon>ModificarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

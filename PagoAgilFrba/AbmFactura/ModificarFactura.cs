@@ -16,5 +16,7 @@ namespace PagoAgilFrba.AbmFactura
         {
             InitializeComponent();
         }
+
+       
     }
 }
