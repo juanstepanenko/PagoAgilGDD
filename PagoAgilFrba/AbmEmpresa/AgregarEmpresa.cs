@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PagoAgilFrba.Objetos;
 using PagoAgilFrba.Excepciones;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmEmpresa
 {
@@ -17,16 +18,41 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idDireccion;
+        private SqlCommand command { get; set; }
+        private IList<SqlParameter> parametros = new List<SqlParameter>();
+        private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
 
         public AgregarEmpresa()
         {
             InitializeComponent();
-            this.idDireccion = 0;
+            //this.idDireccion = 0;
         }
 
         private void AgregarEmpresa_Load(object sender, EventArgs e)
         {
 
+        }
+        public Object SelectedItem { get; set; }
+
+       
+
+        private void AgregarEmpresaForm_Load(object sender, EventArgs e)
+        {
+            CargarRubro();
+        }
+
+
+        private void CargarRubro()
+        {
+            DataSet rubros = new DataSet();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            parametros = new List<SqlParameter>();
+            command = builderDeComandos.Crear("SELECT DISTINCT rubr_id FROM AMBDA.Rubro ", parametros);
+            adapter.SelectCommand = command;
+            adapter.Fill(rubros);
+            combo_Rubro.DataSource = rubros.Tables[0].DefaultView;
+            combo_Rubro.ValueMember = "rubr_id";
+            combo_Rubro.SelectedIndex = -1;
         }
 
         private void button_Guardar_Click(object sender, EventArgs e)
@@ -39,7 +65,7 @@ namespace PagoAgilFrba.AbmEmpresa
             String departamento = textBox_Departamento.Text;
             String localidad = textBox_Localidad.Text;
             String codigoPostal = textBox_CodigoPostal.Text;
-            String rubro = textBox_Rubro.Text;
+            String rubroElegido = combo_Rubro.Text;
 
             // Crea una direccion y se guarda su id
             Direccion direccion = new Direccion();
@@ -74,7 +100,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 Empresa empresa = new Empresa();
                 empresa.SetNombre(nombre);
                 empresa.SetCuit(cuit);
-                empresa.SetRubro(rubro);
+                empresa.SetRubro(rubroElegido);
                 empresa.SetDireccionID(idDireccion);
                 comunicador.CrearEmpresa(empresa);
                 MessageBox.Show("Se agrego la empresa correctamente");
@@ -105,7 +131,7 @@ namespace PagoAgilFrba.AbmEmpresa
             textBox_Departamento.Text = "";
             textBox_Localidad.Text = "";
             textBox_CodigoPostal.Text = "";
-            textBox_Rubro.Text = "";
+            combo_Rubro.Text = "";
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
@@ -120,7 +146,7 @@ namespace PagoAgilFrba.AbmEmpresa
             this.Close();
         }
 
-        private void textBox_Rubro_TextChanged(object sender, EventArgs e)
+        private void combo_Rubro_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

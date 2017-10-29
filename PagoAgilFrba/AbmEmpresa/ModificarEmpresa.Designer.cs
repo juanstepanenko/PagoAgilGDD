@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.textBox_Cuit = new System.Windows.Forms.TextBox();
-            this.textBox_Rubro = new System.Windows.Forms.TextBox();
+            this.combo_Rubro = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBox_Nombre);
             this.groupBox1.Controls.Add(this.textBox_Cuit);
-            this.groupBox1.Controls.Add(this.textBox_Rubro);
+            this.groupBox1.Controls.Add(this.combo_Rubro);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -88,14 +88,15 @@
             this.textBox_Cuit.Size = new System.Drawing.Size(266, 22);
             this.textBox_Cuit.TabIndex = 17;
             // 
-            // textBox_Rubro
+            // combo_Rubro
             // 
-            this.textBox_Rubro.Location = new System.Drawing.Point(129, 87);
-            this.textBox_Rubro.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_Rubro.Name = "textBox_Rubro";
-            this.textBox_Rubro.Size = new System.Drawing.Size(356, 22);
-            this.textBox_Rubro.TabIndex = 18;
-            this.textBox_Rubro.TextChanged += new System.EventHandler(this.textBox_Rubro_TextChanged);
+            this.combo_Rubro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_Rubro.FormattingEnabled = true;
+            this.combo_Rubro.Location = new System.Drawing.Point(129, 87);
+            this.combo_Rubro.Name = "combo_Rubro";
+            this.combo_Rubro.Size = new System.Drawing.Size(356, 22);
+            this.combo_Rubro.TabIndex = 14;
+            this.combo_Rubro.SelectedIndexChanged += new System.EventHandler(this.combo_Rubro_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -243,6 +244,7 @@
             this.button_Guardar.TabIndex = 2;
             this.button_Guardar.Text = "Guardar";
             this.button_Guardar.UseVisualStyleBackColor = true;
+            this.Load += new System.EventHandler(this.ModificarEmpresaForm_Load);
             this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
             // 
             // button_Cancelar
@@ -328,7 +330,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_Cuit;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_Rubro;
+        private System.Windows.Forms.ComboBox combo_Rubro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox_CalleNro;

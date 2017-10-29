@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
             this.textBox_Cuit = new System.Windows.Forms.TextBox();
-            this.textBox_Rubro = new System.Windows.Forms.TextBox();
+            this.combo_Rubro = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,9 +43,9 @@
             this.textBox_Departamento = new System.Windows.Forms.TextBox();
             this.textBox_Localidad = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Cancelar = new System.Windows.Forms.Button();
@@ -58,7 +58,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBox_Nombre);
             this.groupBox1.Controls.Add(this.textBox_Cuit);
-            this.groupBox1.Controls.Add(this.textBox_Rubro);
+            this.groupBox1.Controls.Add(this.combo_Rubro);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
@@ -73,7 +73,7 @@
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(129, 27);
+            this.textBox_Nombre.Location = new System.Drawing.Point(129, 30);
             this.textBox_Nombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Nombre.Name = "textBox_Nombre";
             this.textBox_Nombre.Size = new System.Drawing.Size(356, 22);
@@ -81,20 +81,25 @@
             // 
             // textBox_Cuit
             // 
-            this.textBox_Cuit.Location = new System.Drawing.Point(129, 57);
+            this.textBox_Cuit.Location = new System.Drawing.Point(129, 58);
             this.textBox_Cuit.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Cuit.Name = "textBox_Cuit";
             this.textBox_Cuit.Size = new System.Drawing.Size(356, 22);
             this.textBox_Cuit.TabIndex = 17;
             // 
-            // textBox_Rubro
+            // combo_Rubro
             // 
-            this.textBox_Rubro.Location = new System.Drawing.Point(129, 87);
-            this.textBox_Rubro.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_Rubro.Name = "textBox_Rubro";
-            this.textBox_Rubro.Size = new System.Drawing.Size(356, 22);
-            this.textBox_Rubro.TabIndex = 18;
-            this.textBox_Rubro.TextChanged += new System.EventHandler(this.textBox_Rubro_TextChanged);
+
+            this.combo_Rubro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_Rubro.FormattingEnabled = true;
+            this.combo_Rubro.Location = new System.Drawing.Point(129, 87);
+            this.combo_Rubro.Name = "combo_Rubro";
+            this.combo_Rubro.Size = new System.Drawing.Size(356, 24);
+            this.combo_Rubro.TabIndex = 14;
+            this.combo_Rubro.SelectedIndexChanged += new System.EventHandler(this.combo_Rubro_SelectedIndexChanged);
+
+            
+           
             // 
             // label1
             // 
@@ -207,6 +212,15 @@
             this.label5.Text = "Piso";
             this.label5.Click += new System.EventHandler(this.label4_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 155);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 17);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Codigo postal";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -229,15 +243,6 @@
             this.label6.Text = "Departamento";
             this.label6.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 155);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 17);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Codigo postal";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -258,6 +263,7 @@
             this.button_Guardar.TabIndex = 2;
             this.button_Guardar.Text = "Guardar";
             this.button_Guardar.UseVisualStyleBackColor = true;
+            this.Load += new System.EventHandler(this.AgregarEmpresaForm_Load);
             this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
             // 
             // button_Cancelar
@@ -314,7 +320,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_Cuit;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_Rubro;
+        private System.Windows.Forms.ComboBox combo_Rubro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox_CalleNro;

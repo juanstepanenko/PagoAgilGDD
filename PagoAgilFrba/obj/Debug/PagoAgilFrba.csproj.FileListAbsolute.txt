@@ -47,3 +47,7 @@ C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.F
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificarFactura.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.FiltroFactura.resources
 C:\Users\Rocío\GDD\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.AgregarFactura.resources
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.AgregarFactura.resources
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.FacturaForm.resources
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.FiltroFactura.resources
+C:\Users\Juan\Documents\Facultad\3er Año (2017)\gdd\PagoAgilGDD\PagoAgilFrba\obj\Debug\PagoAgilFrba.AbmFactura.ModificarFactura.resources
