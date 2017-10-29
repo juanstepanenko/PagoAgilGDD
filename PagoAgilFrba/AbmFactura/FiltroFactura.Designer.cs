@@ -98,6 +98,7 @@
             this.comboBoxEmpresas.Name = "comboBoxEmpresas";
             this.comboBoxEmpresas.Size = new System.Drawing.Size(220, 21);
             this.comboBoxEmpresas.TabIndex = 15;
+            this.comboBoxEmpresas.SelectedIndexChanged += new System.EventHandler(this.comboBoxEmpresas_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -188,7 +189,7 @@
             this.Name = "FiltroFactura";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Filtro de facturas";
-            this.Load += new System.EventHandler(this.FiltroFactura_Load);
+            this.Load += new System.EventHandler(this.Inicializacion_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Factura)).EndInit();

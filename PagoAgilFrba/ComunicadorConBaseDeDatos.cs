@@ -301,12 +301,13 @@ namespace PagoAgilFrba
         {
             return this.SelectDataTable("fact_nro as 'nro factura', fact_cliente as 'dni cliente', fact_empresa as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
             , "AMBDA.Factura"
-            , "fact_cobrada <> 1 and fact_rendicion is null" + filtro);
+            , "fact_cobrada <> 1 and fact_rendicion is null " + filtro);
         }
 
         public DataTable SelectFacturasParaFiltro()
         {
             return this.SelectFacturasParaFiltroConFiltro("");
         }
+
    }
 }

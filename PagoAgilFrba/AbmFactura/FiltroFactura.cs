@@ -7,22 +7,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmFactura
 {
     public partial class FiltroFactura : Form
     {
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
+        private SqlCommand command { get; set; }
+        private IList<SqlParameter> parametros = new List<SqlParameter>();
+        private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
+
+        public Object SelectedItem { get; set; }
 
         public FiltroFactura()
         {
             InitializeComponent();
         }
 
-        private void FiltroFactura_Load(object sender, EventArgs e)
+        private void Inicializacion_Load(object sender, EventArgs e)
         {
             CargarFacturas();
+            CargarEmpresas();
         }
+
+        private void CargarEmpresas()
+        {
+            DataSet empresas = new DataSet();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            parametros = new List<SqlParameter>();
+            command = builderDeComandos.Crear("SELECT DISTINCT empr_nombre FROM AMBDA.Empresa", parametros);
+            adapter.SelectCommand = command;
+            adapter.Fill(empresas);
+            comboBoxEmpresas.DataSource = empresas.Tables[0].DefaultView;
+            comboBoxEmpresas.ValueMember = "empr_nombre";
+            comboBoxEmpresas.SelectedIndex = -1;
+        }
+
 
         private void CargarFacturas()
         {
@@ -62,9 +83,9 @@ namespace PagoAgilFrba.AbmFactura
         private String CalcularFiltro()
         {
             String filtro = "";
-            if (textBox_dni.Text != "") filtro += "AND " + "c.fact_cliente LIKE '" + textBox_dni.Text + "%'";
-            //if (textBox_Apellido.Text != "") filtro += "AND " + "c.clie_apellido LIKE '" + textBox_Apellido.Text + "%'";
-            if (textBox_nrofact.Text != "") filtro += "AND " + "c.fact_nro LIKE '" + textBox_nrofact.Text + "%'";
+            if (textBox_dni.Text != "") filtro += "AND " + "fact_cliente LIKE '" + textBox_dni.Text + "%'";
+            if (this.comboBoxEmpresas.Text != "") filtro += "AND " + "fact_empresa LIKE (select empr_cuit from AMBDA.Empresa where empr_nombre = '" + this.comboBoxEmpresas.Text + "')";
+            if (textBox_nrofact.Text != "") filtro += "AND " + "fact_nro LIKE '" + textBox_nrofact.Text + "%'";
             return filtro;
         }
 
@@ -80,7 +101,7 @@ namespace PagoAgilFrba.AbmFactura
             }
             if (e.ColumnIndex == dataGridView_Factura.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
-                String nroFacturaAEliminar = dataGridView_Factura.Rows[e.RowIndex].Cells["nro factura"].Value.ToString(); //ojo ver
+                String nroFacturaAEliminar = dataGridView_Factura.Rows[e.RowIndex].Cells["nro factura"].Value.ToString();
                 Boolean resultado = comunicador.EliminarFactura(Convert.ToDecimal(nroFacturaAEliminar));
                 if (resultado) MessageBox.Show("Se elimino correctamente");
                 CargarFacturas();
@@ -91,7 +112,7 @@ namespace PagoAgilFrba.AbmFactura
         private void button_Limpiar_Click_1(object sender, EventArgs e)
         {
             textBox_dni.Text = "";
-            //textBox_Apellido.Text = "";
+            comboBoxEmpresas.Text = "";
             textBox_nrofact.Text = "";
             CargarFacturas();
         }
@@ -101,6 +122,11 @@ namespace PagoAgilFrba.AbmFactura
             this.Hide();
             new FacturaForm().ShowDialog();
             this.Close();
+        }
+
+        private void comboBoxEmpresas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
