@@ -44,6 +44,28 @@ namespace PagoAgilFrba.AbmCliente
             String departamento = textBox_Departamento.Text;
             String localidad = textBox_Localidad.Text;
 
+            // Si no se cumplen estas 2 condiciones no se tiene que crear
+            try
+            {
+                if (!comunicador.pasoControlDeRegistroDni(Convert.ToString(dni)))
+                    throw new ClienteYaExisteException();
+
+
+                if (!comunicador.pasoControlDeUnicidad(mail, "clie_mail", "Cliente"))
+                    throw new MailYaExisteException();
+            }
+
+            catch (ClienteYaExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+            catch (MailYaExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+            
             // Crea una direccion y se guarda su id
             Direccion direccion = new Direccion();
             try
@@ -74,13 +96,17 @@ namespace PagoAgilFrba.AbmCliente
             try
             {
                 Cliente cliente = new Cliente();
-                cliente.setDni(Convert.ToDecimal(dni));
-                cliente.setMail(mail);
                 cliente.setNombre(nombre);
                 cliente.setApellido(apellido);
-                cliente.setDireccionID(idDireccion);
+
+                if (dni == "")
+                    throw new CampoVacioException("Dni");
+
+                cliente.setDni(Convert.ToDecimal(dni));
                 cliente.setFechaDeNac(fechaDeNacimiento);
                 cliente.setTelefono(telefono);
+                cliente.setMail(mail);
+                cliente.setDireccionID(idDireccion);
                 comunicador.CrearCliente(cliente);
                 MessageBox.Show("Se agrego el cliente correctamente");
             }
@@ -92,11 +118,6 @@ namespace PagoAgilFrba.AbmCliente
             catch (FormatoInvalidoException exception)
             {
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
-                return;
-            }
-            catch (ClienteYaExisteException exception)
-            {
-                MessageBox.Show(exception.Message);
                 return;
             }
 

@@ -40,21 +40,12 @@ namespace PagoAgilFrba
 
         public void CrearCliente(Cliente cliente)
         {
-            if (!pasoControlDeRegistroDni(Convert.ToString(cliente.getDni())))
-                throw new ClienteYaExisteException();
-            //hay que elimiar direc
-
-            if (!pasoControlDeUnicidad(cliente.getMail(), "clie_mail", "Cliente"))
-                throw new MailYaExisteException();
-            //hay que elimiar direc
-             
             query = cliente.GetQueryCrear();
             parametros.Clear();
-            parametros = cliente.GetParametros(); //agarro todos los campos de cliente
+            parametros = cliente.GetParametros(); 
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
-            command.ExecuteNonQuery(); // esta query al ejecutarse no devuelve nada, es un sp
-
+            command.ExecuteNonQuery(); 
         }
 
         public Decimal CrearDireccion(Direccion direccion)
@@ -173,7 +164,6 @@ namespace PagoAgilFrba
             return false;
         }
 
-
         
         /************ELIMINAR*************/
         //retorna la cantidad de filas afectadas
@@ -182,6 +172,12 @@ namespace PagoAgilFrba
             parametros.Clear();
             parametros.Add(new SqlParameter(var, id));
             return builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
+        }
+        public Boolean EliminarDireccion(Decimal id)
+        {
+            if (eliminarGeneralId("DELETE AMBDA.Direccion WHERE direc_id = (SELECT clie_direc_id FROM AMBDA.Cliente WHERE clie_dni = @dni)", "@dni", id) == 1)
+                return true;
+            return false;
         }
 
         public Boolean EliminarCliente(Decimal id)
@@ -208,7 +204,7 @@ namespace PagoAgilFrba
 
         /**************CONTROLES**************/
 
-        private bool ControlDeUnicidad(String query, IList<SqlParameter> parametros)
+        public bool ControlDeUnicidad(String query, IList<SqlParameter> parametros)
         {
             int cantidad = (int)builderDeComandos.Crear(query, parametros).ExecuteScalar();
             if (cantidad > 0)
@@ -218,11 +214,19 @@ namespace PagoAgilFrba
             return true;
         }
 
-        private bool pasoControlDeUnicidad(String que, String aQue, String enDonde)
+        public bool pasoControlDeUnicidad(String que, String aQue, String enDonde)
         {
             query = "SELECT COUNT(*) FROM AMBDA." + enDonde + " WHERE " + aQue + " = @" + aQue;
             parametros.Clear();
             parametros.Add(new SqlParameter("@" + aQue, que));
+            return ControlDeUnicidad(query, parametros);
+        }
+
+        public bool pasoControlDeRegistroDni(String nrodni)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Cliente WHERE clie_dni = @" + nrodni;
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@" + nrodni, Convert.ToDecimal(nrodni)));
             return ControlDeUnicidad(query, parametros);
         }
 
@@ -233,8 +237,6 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@cuit", cuit));
             return ControlDeUnicidad(query, parametros);
         }
-
-        
 
 
         /**********SELECTS VARIOS************/
@@ -253,15 +255,6 @@ namespace PagoAgilFrba
             parametros.Clear();
             parametros.Add(new SqlParameter("@" + param2, param2));
             return builderDeComandos.Crear(query, parametros).ExecuteScalar();
-        }
-
-        
-        private bool pasoControlDeRegistroDni(String nrodni)
-        {
-            query = "SELECT COUNT(*) FROM AMBDA.Cliente WHERE clie_dni = @" + nrodni;
-            parametros.Clear();
-            parametros.Add(new SqlParameter("@" + nrodni, Convert.ToDecimal(nrodni)));
-            return ControlDeUnicidad(query, parametros);
         }
 
         public DataTable SelectDataTable(String que, String deDonde)
