@@ -65,11 +65,6 @@ namespace PagoAgilFrba
 
         public void CrearEmpresa(Empresa empresa)
         {
-            if (!pasoControlDeRegistroDeCuit(empresa.GetCuit()))
-                throw new CuitYaExisteException();
-            // ver si falta alguna restriccion mas desde la abm
-            //return this.Crear(empresa);
-
             query = empresa.GetQueryCrear();
             parametros.Clear();
             parametros = empresa.GetParametros(); 
@@ -168,7 +163,7 @@ namespace PagoAgilFrba
             query = objeto.GetQueryModificar();
             parametros.Clear();
             parametros = objeto.GetParametros();
-            parametros.Add(new SqlParameter("@cuit", cuit));
+           // parametros.Add(new SqlParameter("@cuit", cuit));
             int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
             if (filasAfectadas == 1) return true;
             return false;
@@ -240,7 +235,7 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-        private bool pasoControlDeRegistroDeCuit(String cuit)
+        public bool pasoControlDeRegistroDeCuit(String cuit)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Empresa WHERE empr_cuit = @cuit";
             parametros.Clear();

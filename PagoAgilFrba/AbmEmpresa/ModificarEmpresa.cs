@@ -56,6 +56,7 @@ namespace PagoAgilFrba.AbmEmpresa
 
             this.idDireccion = empresa.GetDireccionID();
             textBox_Nombre.Text = empresa.GetNombre();
+            textBox_Cuit.Text = empresa.GetCuit();
             CargarDireccion(idDireccion);
             checkBox1.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("empr_habilitada", "Empresa", "empr_cuit", cuit));
         }
@@ -66,6 +67,7 @@ namespace PagoAgilFrba.AbmEmpresa
             textBox_CalleNro.Text = direccion.GetCalleNro();
             textBox_Piso.Text = direccion.GetPiso();
             textBox_Departamento.Text = direccion.GetDepartamento();
+            textBox_CodigoPostal.Text = direccion.GetCodigoPostal();
             textBox_Localidad.Text = direccion.GetLocalidad();
         }
 
@@ -116,7 +118,7 @@ namespace PagoAgilFrba.AbmEmpresa
                 empresa.SetDireccionID(idDireccion);
                 empresa.SetHabilitada(habilitada);
                 pudoModificar = comunicador.ModificarEmpresa(cuit, empresa); 
-                if (pudoModificar) MessageBox.Show("El cliente se modifico correctamente");
+                if (pudoModificar) MessageBox.Show("La empresa se modifico correctamente");
             }
             catch (CampoVacioException exception)
             {
@@ -137,27 +139,22 @@ namespace PagoAgilFrba.AbmEmpresa
 
         private void button_Limpiar_Click(object sender, EventArgs e)
         {
-            textBox_Nombre.Text = "";
+            CargarDatos();
+            /*textBox_Nombre.Text = "";
             textBox_Cuit.Text = "";
             textBox_CalleNro.Text = "";
             textBox_Piso.Text = "";
             textBox_Departamento.Text = "";
             textBox_Localidad.Text = "";
             textBox_CodigoPostal.Text = "";
-            combo_Rubro.Text = "";
+            combo_Rubro.Text = "";*/
         }
 
         private void button_Cancelar_Click(object sender, EventArgs e)
         {
-            VolverAlMenuPrincipal();
-        }
-
-        private void VolverAlMenuPrincipal()
-        {
-            this.Hide();
-            new MenuPrincipal().ShowDialog();
             this.Close();
         }
+
 
         private void combo_Rubro_SelectedIndexChanged(object sender, EventArgs e)
         {

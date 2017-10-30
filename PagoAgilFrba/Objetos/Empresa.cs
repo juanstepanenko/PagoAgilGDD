@@ -96,7 +96,7 @@ namespace PagoAgilFrba.Objetos
 
          string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Empresa SET  empr_nombre = @nombre,  empr_direc_id = @direccion, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_cuit = @cuit"; // preguntar where 
+            return "UPDATE AMBDA.Empresa SET  empr_nombre = @nombre,  empr_direc_id = @direccion_id, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_cuit = @cuit"; // preguntar where 
         }
 
         public string GetQueryObtener()
