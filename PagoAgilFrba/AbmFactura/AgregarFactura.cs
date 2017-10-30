@@ -91,9 +91,12 @@ namespace PagoAgilFrba.AbmFactura
             if (e.ColumnIndex == dataGridView_Item.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
                 int indiceItemAEliminar = e.RowIndex;
+                total = total - Convert.ToDouble(this.items[indiceItemAEliminar].getMonto());
                 this.items.Remove(this.items[indiceItemAEliminar]);
                 MessageBox.Show("Se elimino correctamente");
                 dataGridView_Item.Rows.RemoveAt(indiceItemAEliminar);
+                textBox_TOTAL.Text = total.ToString();
+
                 return;
             }
         }
@@ -113,12 +116,12 @@ namespace PagoAgilFrba.AbmFactura
             }
             catch (CantidadNulaException exception)
             {
-                MessageBox.Show("No se puede ingresar una cantidad igual a 0 en "+exception.Message);
+                MessageBox.Show("No se puede ingresar una cantidad igual a 0 en: "+exception.Message);
                 return;
             }
             catch (CampoVacioException exception)
             {
-                MessageBox.Show("Falta ingresar el campo " + exception.Message);
+                MessageBox.Show("Falta completar campo: " + exception.Message);
                 return;
             }
             string[] row = new string[] { item.getCantidad(), item.getMonto()};
@@ -140,12 +143,44 @@ namespace PagoAgilFrba.AbmFactura
             DateTime fechaAlta, fechaVencimiento;
             DateTime.TryParse(label10.Text, out fechaAlta);
             DateTime.TryParse(textBox_venc.Text, out fechaVencimiento);
-            //items
-            //total
-            
+
             //Crea Factura
+            Factura factura = new Factura();
+            try
+            {
+                factura.setDniCliente(dni);
+                factura.setEmpresa(empresa);
+                factura.setNroFactura(nrofactura);
+                factura.setFechaAlta(fechaAlta);
+                factura.setFechaVencimiento(fechaVencimiento);
+                factura.setTotal(Convert.ToString(total));
+                //comunicador.CrearFactura(factura);
+                MessageBox.Show("Se agrego la factura correctamente");
+            }
+            catch (CampoVacioException exception)
+            {
+                MessageBox.Show("Falta completar campo: " + exception.Message);
+                return;
+            }
+            catch (FormatoInvalidoException exception)
+            {
+                MessageBox.Show("Datos mal ingresados en: " + exception.Message);
+                return;
+            }
+            catch (CantidadNulaException exception)
+            {
+                MessageBox.Show("No se puede ingresar una campo igual a 0 en: " + exception.Message);
+                return;
+            }
+   
         }
 
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FacturaForm().ShowDialog();
+            this.Close();
+        }
 
     }
 }

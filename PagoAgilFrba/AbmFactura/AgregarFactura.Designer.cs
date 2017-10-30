@@ -310,6 +310,7 @@
             this.button_Volver.TabIndex = 21;
             this.button_Volver.Text = "Volver";
             this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
             // AgregarFactura
             // 
