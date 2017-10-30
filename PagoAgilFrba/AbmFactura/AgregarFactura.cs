@@ -20,7 +20,7 @@ namespace PagoAgilFrba.AbmFactura
         private IList<SqlParameter> parametros = new List<SqlParameter>();
         private IList<Objetos.Item> items = new List<Objetos.Item>();
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
-        Decimal total = 0;
+        Double total = 0;
         public Object SelectedItem { get; set; }
 
         public AgregarFactura()
@@ -54,7 +54,7 @@ namespace PagoAgilFrba.AbmFactura
             monthCalendar_FechaVenc.Visible = true;
         }
 
-        private void monthCalendar_FechaDeNacimiento_DateSelected(object sender, System.Windows.Forms.DateRangeEventArgs e)
+        private void monthCalendar_FechaVenc_DateSelected(object sender, System.Windows.Forms.DateRangeEventArgs e)
         {
             textBox_venc.Text = e.Start.ToShortDateString();
             monthCalendar_FechaVenc.Visible = false;
@@ -100,33 +100,32 @@ namespace PagoAgilFrba.AbmFactura
 
         private void button_agregar_Click(object sender, EventArgs e)
         {
-            // Guarda en variables todos los campos de entrada
-            if (textBox_cantidad.Text == "" || textBox_monto.Text == "")
-            {
-                MessageBox.Show("Ingrese cantidad y monto para agregar un item");
-                return;
-            }
             Item item = new Item();
             try
             {
                 item.setMonto(textBox_monto.Text);
-                item.setCantidad(Convert.ToDecimal(textBox_cantidad.Text));
+                item.setCantidad(textBox_cantidad.Text);
             }
             catch (FormatoInvalidoException exception)
             {
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
             }
-            catch (CantidadNulaException)
+            catch (CantidadNulaException exception)
             {
-                MessageBox.Show("No se puede ingresar una cantidad igual a 0");
+                MessageBox.Show("No se puede ingresar una cantidad igual a 0 en "+exception.Message);
                 return;
             }
-            string[] row = new string[] { Convert.ToString(item.getCantidad()), item.getMonto()};
+            catch (CampoVacioException exception)
+            {
+                MessageBox.Show("Falta ingresar el campo " + exception.Message);
+                return;
+            }
+            string[] row = new string[] { item.getCantidad(), item.getMonto()};
             dataGridView_Item.Rows.Add(row);
             this.items.Add(item);
             CargarColumnaEliminar();
-            total = total + Convert.ToDecimal(item.getMonto());
+            total = total + Convert.ToDouble(item.getMonto());
             textBox_TOTAL.Text = total.ToString();
             textBox_monto.Text = "";
             textBox_cantidad.Text = "";
