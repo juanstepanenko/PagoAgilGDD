@@ -20,7 +20,7 @@ namespace PagoAgilFrba.RegistroPago
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
         private IList<SqlParameter> parametros = new List<SqlParameter>();
         private SqlCommand command { get; set; }
-        private Double importeTotal = 0;
+        private Decimal importeTotal = 0;
         private List<Decimal> facturas = new List<Decimal>();
 
         public RegistroPago()
@@ -130,8 +130,8 @@ namespace PagoAgilFrba.RegistroPago
                 //corroborar que ese nro de factura sea de esa empresa
                 //corroborar que la fechad e ven sea mayor o = ? a la de cobro
 
-                facturas.Add(Convert.ToDecimal(textBox_NroFact));
-                importeTotal += Convert.ToDouble(importe);
+                facturas.Add(Convert.ToDecimal(textBox_NroFact.Text));
+                importeTotal += Convert.ToDecimal(importe);
                 
             }
             catch (FormatoInvalidoException exception)
@@ -144,9 +144,9 @@ namespace PagoAgilFrba.RegistroPago
                 MessageBox.Show("No se puede ingresar una cantidad igual a 0");
                 return;
             }
-            string[] row = new string[] { textBox_NroFact.Text, textBox_Importe.Text,textBox_FechaDeVencimiento.Text, comboBox_Empresa.Text};
+            //string[] row = new string[] { textBox_NroFact.Text, textBox_Importe.Text,textBox_FechaDeVencimiento.Text, comboBox_Empresa.Text};
             
-            dataGridView_Factura.Rows.Add(row);
+            //dataGridView_Factura.Rows.Add(row);
             
             CargarColumnaEliminar();
             //total = total + Convert.ToDecimal(item.getMonto());
@@ -178,10 +178,11 @@ namespace PagoAgilFrba.RegistroPago
                 pago.setUsuario(UsuarioSesion.usuario.id);
                 pago.setSucursal(sucursal);
                 pago.setMedioPago(medio_pago);
+                pago.setImporte(importeTotal);
                 comunicador.CrearPago(pago);
-                
-                comunicador.PagarFacturas(facturas); 
-                MessageBox.Show("Se registro el pago correctamente");
+
+                comunicador.PagarFacturas(facturas, Convert.ToDecimal(cliente), Convert.ToDecimal(importe), sucursal, medio_pago); 
+                MessageBox.Show("Se registro el pago correctamente con un total de $" + Convert.ToString(importeTotal));
             }
             catch (CampoVacioException exception)
             {

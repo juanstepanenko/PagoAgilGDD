@@ -326,22 +326,27 @@ namespace PagoAgilFrba
             return this.SelectEmpresasParaFiltroConFiltro("");
         }
 
-        public void PagarFactura(Decimal usuarioId, Decimal idFactura)
+        public void PagarFactura(Decimal cliente, Decimal importe, Decimal sucursal, Decimal medio, Decimal idFactura)
         {
             String query = "AMBDA.pagar_factura";
             parametros.Clear();
-            parametros.Add(new SqlParameter("@usuarioId", usuarioId));
+            parametros.Add(new SqlParameter("@usuario", UsuarioSesion.usuario.id));
             parametros.Add(new SqlParameter("@factura", idFactura));
+            parametros.Add(new SqlParameter("@fecha", System.DateTime.Today));
+            parametros.Add(new SqlParameter("@cliente", cliente));
+            parametros.Add(new SqlParameter("@importe", importe));
+            parametros.Add(new SqlParameter("@sucursal", sucursal));
+            parametros.Add(new SqlParameter("@medio", medio));
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
             command.ExecuteNonQuery();
         }
 
-        public void PagarFacturas(List<Decimal> facturas)
+        public void PagarFacturas(List<Decimal> facturas, Decimal cliente, Decimal importe, Decimal sucursal, Decimal medio)
         {
             foreach (Decimal factura in facturas)
             {
-                PagarFactura(UsuarioSesion.usuario.id, factura);
+                PagarFactura(cliente, importe, sucursal, medio, factura);
             }
         }
 

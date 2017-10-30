@@ -121,8 +121,8 @@ namespace PagoAgilFrba.Objetos
             parametros.Clear();
             //parametros.Add(new SqlParameter("@id", this.id));
             parametros.Add(new SqlParameter("@fecha_cobro", this.fecha_cobro));
+            parametros.Add(new SqlParameter("@importe", this.importe));
             parametros.Add(new SqlParameter("@cliente", this.cliente));
-            //parametros.Add(new SqlParameter("@importe", this.importe));
             parametros.Add(new SqlParameter("@usuario", this.usuario));
             parametros.Add(new SqlParameter("@sucursal", this.sucursal));
             parametros.Add(new SqlParameter("@medio_pago", this.medio_pago));
