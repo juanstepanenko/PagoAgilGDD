@@ -155,6 +155,18 @@
     </Compile>
     <Compile Include="ComunicadorConBaseDeDatos.cs" />
     <Compile Include="ConexionDB.cs" />
+    <Compile Include="Devoluciones\Devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devoluciones\Devolucion.Designer.cs">
+      <DependentUpon>Devolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Devoluciones\IngresarFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devoluciones\IngresarFactura.Designer.cs">
+      <DependentUpon>IngresarFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Excepciones\CampoVacioException.cs" />
     <Compile Include="Excepciones\CantidadNulaException.cs" />
     <Compile Include="Excepciones\CuitYaExisteException.cs" />
@@ -253,6 +265,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
       <DependentUpon>ModificarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devoluciones\Devolucion.resx">
+      <DependentUpon>Devolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Devoluciones\IngresarFactura.resx">
+      <DependentUpon>IngresarFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
