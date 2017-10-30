@@ -281,6 +281,12 @@
     <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
       <DependentUpon>ModificarFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\AgregarSucursal.resx">
+      <DependentUpon>AgregarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\EditarSucursal.resx">
+      <DependentUpon>EditarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\SeleccionarSucursal.resx">
       <DependentUpon>SeleccionarSucursal.cs</DependentUpon>
     </EmbeddedResource>

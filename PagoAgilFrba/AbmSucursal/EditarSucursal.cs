@@ -46,7 +46,7 @@ namespace PagoAgilFrba.AbmSucursal
         private void CargarDireccion(Decimal idDireccion)
         {
             Direccion direccion = comunicador.ObtenerDireccion(idDireccion);
-            textBoxNum.Text = direccion.GetCalleNro();
+            textBoxCalleNro.Text = direccion.GetCalleNro();
             textBoxPiso.Text = direccion.GetPiso();
             textBoxDto.Text = direccion.GetDepartamento();
             textBoxCP.Text = direccion.GetCodigoPostal();
@@ -57,7 +57,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             // Guarda en variables todos los campos de entrada
             String nombre = textBoxName.Text;
-            String numero = textBoxNum.Text;
+            String numero = textBoxCalleNro.Text;
             String piso = textBoxPiso.Text;
             String departamento = textBoxDto.Text;
             String localidad = textBoxLoc.Text;

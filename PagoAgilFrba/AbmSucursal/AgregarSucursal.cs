@@ -34,11 +34,10 @@ namespace PagoAgilFrba.AbmSucursal
         {
             // Guarda en variables todos los campos de entrada
             String nombreSucursal = textBoxNombre.Text;
-            String calle = textBoxCalle.Text;
-            String numero = textBoxNumero.Text;
-            String piso = textBoxPiso.Text;
+            String calleNro = textBoxCalleNro.Text;
+            String piso = textBoxCP.Text;
             String departamento = textBoxDepartamento.Text;
-            String codigoPostal = textBoxPiso.Text;
+            String codigoPostal = textBoxCP.Text;
             String localidad = textBoxLocalidad.Text;
 
 
@@ -46,8 +45,7 @@ namespace PagoAgilFrba.AbmSucursal
             Direccion direccion = new Direccion();
             try
             {
-                direccion.SetCalle(calle);
-                direccion.SetCalleNro(numero);
+                direccion.SetCalleNro(calleNro);
                 direccion.SetPiso(piso);
                 direccion.SetDepartamento(departamento);
                 direccion.SetCodigoPostal(codigoPostal);
@@ -100,9 +98,9 @@ namespace PagoAgilFrba.AbmSucursal
         private void botonLimpiar_Click(object sender, EventArgs e)
         {
             textBoxNombre.Text = "";
-            textBoxCalle.Text = "";
-            textBoxNumero.Text = "";
+            textBoxCalleNro.Text = "";
             textBoxPiso.Text = "";
+            textBoxCP.Text = "";
             textBoxDepartamento.Text = "";
             textBoxCodPos.Text = "";
             textBoxLocalidad.Text = "";
