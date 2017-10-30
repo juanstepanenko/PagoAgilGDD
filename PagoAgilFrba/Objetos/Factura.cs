@@ -10,36 +10,31 @@ namespace PagoAgilFrba.Objetos
 {
     class Factura : Objeto, Comunicable
     {
-        private Decimal dni;
-        private Decimal cliente;
+        private String dniCliente;
         private String empresa;
-        private Decimal nroFactura;
+        private String nroFactura;
         private DateTime fechaAlta;
         private DateTime fechaVencimiento;
-        private Decimal total;
+        private String total;
         private Decimal idFactura;
 
         /************* Getters y Setters **************/
 
         //Getters y setters
-        public Decimal getDni()
+        public String getDniCliente()
         {
-            return dni;
+            return dniCliente;
         }
 
-        public void setDni(Decimal dni)
+        public void setDniCliente(String dniCliente)
         {
-            this.dni = dni;
-        }
-
-        public Decimal getCliente()
-        {
-            return cliente;
-        }
-
-        public void setCliente(Decimal cliente)
-        {
-            this.cliente = cliente;
+            if (dniCliente == "")
+                throw new CampoVacioException("dni cliente");
+            if (!esNumero(dniCliente))
+                throw new FormatoInvalidoException("dni cliente");
+            if (Convert.ToDecimal(dniCliente) == 0)
+                throw new CantidadNulaException("dni cliente");
+            this.dniCliente = dniCliente;
         }
 
         public String getEmpresa()
@@ -52,13 +47,17 @@ namespace PagoAgilFrba.Objetos
             this.empresa = empresa;
         }
 
-        public Decimal getNroFactura()
+        public String getNroFactura()
         {
             return nroFactura;
         }
 
-        public void setNroFactura(Decimal nroFactura)
+        public void setNroFactura(String nroFactura)
         {
+            if (nroFactura == "")
+                throw new CampoVacioException("N factura");
+            if (!esNumero(nroFactura))
+                throw new FormatoInvalidoException("N factura");
             this.nroFactura = nroFactura;
         }
 
@@ -88,12 +87,18 @@ namespace PagoAgilFrba.Objetos
             this.fechaVencimiento = fechaVencimiento;
         }
 
-        public Decimal getTotal()
+        public String getTotal()
         {
+            if (total == "")
+                throw new CampoVacioException("Total");
+            if (!esDouble(total))
+                throw new FormatoInvalidoException("Total");
+            if (Convert.ToDouble(total) == 0)
+                throw new CantidadNulaException("Total");
             return total;
         }
 
-        public void setTotal(Decimal total)
+        public void setTotal(String total)
         {
             this.total = total;
         }
@@ -118,21 +123,23 @@ namespace PagoAgilFrba.Objetos
         string Comunicable.GetQueryModificar()
         {
             return "UPDATE AMBDA.Factura SET fact_nro = @nroFactura, fact_fecha = @fechaAlta, fact_total = @total, fact_fecha_venc = @fechaVencimiento, fact_cliente = @cliente, fact_empresa = @empresa WHERE fact_id = @idFactura";
+            //ojo aca la empresa, tengo el nombre y yo necesito el id TODO
         }
 
         public string GetQueryObtener()
         {
             return "SELECT * FROM AMBDA.Factura WHERE fact_id = @idFactura";
+            //ojo aca la empresa, tengo el nombre y yo necesito el id TODO
         }
 
         public void CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
         {
-            this.nroFactura = Convert.ToDecimal(reader["fact_nro"]);
+            this.nroFactura = Convert.ToString(reader["fact_nro"]);
             this.fechaAlta = Convert.ToDateTime(reader["fact_fecha"]);
             this.fechaVencimiento = Convert.ToDateTime(reader["fact_fecha_venc"]);
-            this.total = Convert.ToDecimal(reader["fact_total"]);
-            this.cliente = Convert.ToDecimal(reader["fact_cliente"]);
-            this.empresa = Convert.ToString(reader["fact_empresa"]);
+            this.total = Convert.ToString(reader["fact_total"]);
+            this.dniCliente = Convert.ToString(reader["fact_cliente"]);
+            this.empresa = Convert.ToString(reader["fact_empresa"]); // este es el id, no el nombre!!
             this.idFactura = Convert.ToDecimal(reader["fact_id"]);
         }
 
@@ -140,11 +147,11 @@ namespace PagoAgilFrba.Objetos
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@nroFactura", this.nroFactura));
+            parametros.Add(new SqlParameter("@nroFactura", Convert.toDecimal(this.nroFactura)));
             parametros.Add(new SqlParameter("@fechaAlta", this.fechaAlta));
             parametros.Add(new SqlParameter("@fechaVencimiento", this.fechaVencimiento));
-            parametros.Add(new SqlParameter("@total", this.total));
-            parametros.Add(new SqlParameter("@cliente", this.cliente));
+            parametros.Add(new SqlParameter("@total", Convert.toDouble(this.total)));
+            parametros.Add(new SqlParameter("@cliente", Convert.toDecimal(this.dniCliente)));
             parametros.Add(new SqlParameter("@empresa", this.empresa));
             parametros.Add(new SqlParameter("@idFactura", this.idFactura));
             return parametros;

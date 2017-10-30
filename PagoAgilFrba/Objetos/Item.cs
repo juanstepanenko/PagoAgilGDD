@@ -40,7 +40,7 @@ namespace PagoAgilFrba.Objetos
 
         public void setCantidad(String cantidad)
         {
-            if (monto == "")
+            if (cantidad == "")
                 throw new CampoVacioException("Cantidad");
             if (!esNumero(cantidad))
                 throw new FormatoInvalidoException("Cantidad");
