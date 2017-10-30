@@ -53,6 +53,16 @@ namespace PagoAgilFrba
             return this.Crear(direccion);
         }
 
+        public void CrearPago(Pago pago)
+        {
+            query = pago.GetQueryCrear();
+            parametros.Clear();
+            parametros = pago.GetParametros();
+            command = builderDeComandos.Crear(query, parametros);
+            command.CommandType = CommandType.StoredProcedure;
+            command.ExecuteNonQuery();
+        }
+
         public void CrearEmpresa(Empresa empresa)
         {
             if (!pasoControlDeRegistroDeCuit(empresa.GetCuit()))
@@ -241,20 +251,20 @@ namespace PagoAgilFrba
 
         /**********SELECTS VARIOS************/
 
-        public Object SelectFromWhere(String que, String deDonde, String param1, String param2)
+        public Decimal SelectFromWhere(String que, String deDonde, String param1, String param2)
         {
             query = "SELECT " + que + " FROM AMBDA." + deDonde + " WHERE " + param1 + " = @" + param1;
             parametros.Clear();
             parametros.Add(new SqlParameter("@" + param1, param2));
-            return builderDeComandos.Crear(query, parametros).ExecuteScalar();
+            return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
         }
 
-        public Object SelectFromWhere(String que, String deDonde, String param1, Decimal param2)
+        public Decimal SelectFromWhere(String que, String deDonde, String param1, Decimal param2)
         {
-            query = "SELECT " + que + " FROM AMBDA." + deDonde + " WHERE " + param1 + " = @" + Convert.ToString(param2);
+            query = "SELECT " + que + " FROM AMBDA." + deDonde + " WHERE " + param1 + " = @" + param1;
             parametros.Clear();
-            parametros.Add(new SqlParameter("@" + param2, param2));
-            return builderDeComandos.Crear(query, parametros).ExecuteScalar();
+            parametros.Add(new SqlParameter("@" + param1, param2));
+            return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
         }
 
         public DataTable SelectDataTable(String que, String deDonde)
@@ -321,5 +331,16 @@ namespace PagoAgilFrba
             return this.SelectEmpresasParaFiltroConFiltro("");
         }
 
+        public void PagarFactura(Decimal idPago, Decimal idFactura, Decimal importe)
+        {
+            String query = "AMBDA.agregar_pagar_factura";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@pago", idPago));
+            parametros.Add(new SqlParameter("@factura", idFactura));
+            parametros.Add(new SqlParameter("@importe", importe));
+            command = builderDeComandos.Crear(query, parametros);
+            command.CommandType = CommandType.StoredProcedure;
+            command.ExecuteNonQuery();
+        }
    }
 }

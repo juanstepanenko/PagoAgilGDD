@@ -197,13 +197,20 @@
     <Compile Include="Objetos\Comunicable.cs" />
     <Compile Include="Objetos\Direccion.cs" />
     <Compile Include="Objetos\Objeto.cs" />
+    <Compile Include="Objetos\Pago.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistroPago\Form1.cs">
+    <Compile Include="RegistroPago\AgregarFactura.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistroPago\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="RegistroPago\AgregarFactura.Designer.cs">
+      <DependentUpon>AgregarFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroPago\RegistroPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroPago\RegistroPago.Designer.cs">
+      <DependentUpon>RegistroPago.cs</DependentUpon>
     </Compile>
     <Compile Include="Rendicion\Form1.cs">
       <SubType>Form</SubType>
@@ -263,6 +270,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegistroPago\AgregarFactura.resx">
+      <DependentUpon>AgregarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroPago\RegistroPago.resx">
+      <DependentUpon>RegistroPago.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
