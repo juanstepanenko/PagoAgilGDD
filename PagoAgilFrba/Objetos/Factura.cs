@@ -147,11 +147,11 @@ namespace PagoAgilFrba.Objetos
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@nroFactura", Convert.toDecimal(this.nroFactura)));
+            parametros.Add(new SqlParameter("@nroFactura", Convert.ToDecimal(this.nroFactura)));
             parametros.Add(new SqlParameter("@fechaAlta", this.fechaAlta));
             parametros.Add(new SqlParameter("@fechaVencimiento", this.fechaVencimiento));
-            parametros.Add(new SqlParameter("@total", Convert.toDouble(this.total)));
-            parametros.Add(new SqlParameter("@cliente", Convert.toDecimal(this.dniCliente)));
+            parametros.Add(new SqlParameter("@total", Convert.ToDouble(this.total)));
+            parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(this.dniCliente)));
             parametros.Add(new SqlParameter("@empresa", this.empresa));
             parametros.Add(new SqlParameter("@idFactura", this.idFactura));
             return parametros;
