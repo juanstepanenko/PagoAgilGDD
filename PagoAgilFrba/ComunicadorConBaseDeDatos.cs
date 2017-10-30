@@ -74,6 +74,18 @@ namespace PagoAgilFrba
 
         }
 
+        public void CrearSucursal(Sucursal sucursal)
+         {
+             if (!pasoControlSucursal(sucursal.GetId()))
+                 throw new SucursalYaExisteExcepcion();
+             query = sucursal.GetQueryCrear();
+             parametros.Clear();
+             parametros = sucursal.GetParametros();
+             command = builderDeComandos.Crear(query, parametros);
+             command.CommandType = CommandType.StoredProcedure;
+             command.ExecuteNonQuery();
+         }
+
         /**************OBTENER***************/
 
         public Comunicable Obtener(Decimal id, Type clase)
@@ -145,6 +157,24 @@ namespace PagoAgilFrba
             return empresa;
         }
 
+        public Sucursal ObtenerSucursal(Decimal id)
+         {
+             Sucursal objeto = new Sucursal();
+             Type clase = objeto.GetType();
+ 
+             Sucursal sucursal = (Sucursal)Activator.CreateInstance(clase);
+             query = sucursal.GetQueryObtener();
+             parametros.Clear();
+             parametros.Add(new SqlParameter("@id", id));
+             SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
+             if (reader.Read())
+             {
+                 sucursal.CargarInformacion(reader);
+                 return sucursal;
+             }
+             return sucursal;
+         }
+
         /************MODIFICAR***************/
 
         public Boolean Modificar(Decimal id, Comunicable objeto)
@@ -169,6 +199,16 @@ namespace PagoAgilFrba
             return false;
         }
 
+        public Boolean ModificarSucursal(Decimal id, Comunicable objeto)
+        {
+            query = objeto.GetQueryModificar();
+            parametros.Clear();
+            parametros = objeto.GetParametros();
+            parametros.Add(new SqlParameter("@id", id));
+            int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
+            if (filasAfectadas == 1) return true;
+            return false;
+        }
         
         /************ELIMINAR*************/
         //retorna la cantidad de filas afectadas
@@ -243,6 +283,13 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
+        private bool pasoControlSucursal(Decimal sucu_id)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Sucursal WHERE sucu_id = @id";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@id", sucu_id));
+            return ControlDeUnicidad(query, parametros);
+        }
 
         /**********SELECTS VARIOS************/
 

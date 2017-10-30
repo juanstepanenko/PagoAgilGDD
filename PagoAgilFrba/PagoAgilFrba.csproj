@@ -147,11 +147,23 @@
     <Compile Include="AbmRol\RolForm.Designer.cs">
       <DependentUpon>RolForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\Form1.cs">
+    <Compile Include="AbmSucursal\AgregarSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmSucursal\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmSucursal\AgregarSucursal.Designer.cs">
+      <DependentUpon>AgregarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\EditarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\EditarSucursal.Designer.cs">
+      <DependentUpon>EditarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\SeleccionarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\SeleccionarSucursal.Designer.cs">
+      <DependentUpon>SeleccionarSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="ComunicadorConBaseDeDatos.cs" />
     <Compile Include="ConexionDB.cs" />
@@ -169,10 +181,12 @@
     </Compile>
     <Compile Include="Excepciones\CampoVacioException.cs" />
     <Compile Include="Excepciones\CantidadNulaException.cs" />
+    <Compile Include="Excepciones\CodPosYaExisteException.cs" />
     <Compile Include="Excepciones\CuitYaExisteException.cs" />
     <Compile Include="Excepciones\ClienteYaExisteException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
     <Compile Include="Excepciones\MailYaExisteException.cs" />
+    <Compile Include="Excepciones\SucursalYaExisteException.cs" />
     <Compile Include="Login\ElegirRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +224,7 @@
     <Compile Include="Objetos\Direccion.cs" />
     <Compile Include="Objetos\Objeto.cs" />
     <Compile Include="Objetos\Pago.cs" />
+    <Compile Include="Objetos\Sucursal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroPago\AgregarFactura.cs">
@@ -265,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
       <DependentUpon>ModificarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\SeleccionarSucursal.resx">
+      <DependentUpon>SeleccionarSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Devoluciones\Devolucion.resx">
       <DependentUpon>Devolucion.cs</DependentUpon>

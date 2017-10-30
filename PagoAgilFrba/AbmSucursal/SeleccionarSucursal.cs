@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class Form1 : Form
+    public partial class SeleccionarSucursal : Form
     {
-        public Form1()
+        public SeleccionarSucursal()
         {
             InitializeComponent();
+        }
+        private void SeleccionarSucursal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
