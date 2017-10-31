@@ -20,7 +20,7 @@ namespace PagoAgilFrba.RegistroPago
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
         private IList<SqlParameter> parametros = new List<SqlParameter>();
         private SqlCommand command { get; set; }
-        private Decimal importeTotal = 0;
+        private Double importeTotal = 0;
         private List<Decimal> facturas = new List<Decimal>();
 
         public RegistroPago()
@@ -131,7 +131,7 @@ namespace PagoAgilFrba.RegistroPago
                 //corroborar que la fechad e ven sea mayor o = ? a la de cobro
 
                 facturas.Add(Convert.ToDecimal(textBox_NroFact.Text));
-                importeTotal += Convert.ToDecimal(importe);
+                importeTotal += Convert.ToDouble(importe);
                 
             }
             catch (FormatoInvalidoException exception)
@@ -181,7 +181,9 @@ namespace PagoAgilFrba.RegistroPago
                 pago.setImporte(importeTotal);
                 comunicador.CrearPago(pago);
 
-                comunicador.PagarFacturas(facturas, Convert.ToDecimal(cliente), Convert.ToDecimal(importe), sucursal, medio_pago); 
+                double q = Convert.ToDouble(importeTotal);
+                decimal c = Convert.ToDecimal(cliente);
+                comunicador.PagarFacturas(facturas, Convert.ToDecimal(cliente), Convert.ToDouble(importeTotal), sucursal, medio_pago); 
                 MessageBox.Show("Se registro el pago correctamente con un total de $" + Convert.ToString(importeTotal));
             }
             catch (CampoVacioException exception)

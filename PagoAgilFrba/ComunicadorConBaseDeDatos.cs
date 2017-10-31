@@ -326,7 +326,7 @@ namespace PagoAgilFrba
             return this.SelectEmpresasParaFiltroConFiltro("");
         }
 
-        public void PagarFactura(Decimal cliente, Decimal importe, Decimal sucursal, Decimal medio, Decimal idFactura)
+        public void PagarFactura(Decimal cliente, Double importe, Decimal sucursal, Decimal medio, Decimal idFactura)
         {
             String query = "AMBDA.pagar_factura";
             parametros.Clear();
@@ -342,7 +342,7 @@ namespace PagoAgilFrba
             command.ExecuteNonQuery();
         }
 
-        public void PagarFacturas(List<Decimal> facturas, Decimal cliente, Decimal importe, Decimal sucursal, Decimal medio)
+        public void PagarFacturas(List<Decimal> facturas, Decimal cliente, Double importe, Decimal sucursal, Decimal medio)
         {
             foreach (Decimal factura in facturas)
             {

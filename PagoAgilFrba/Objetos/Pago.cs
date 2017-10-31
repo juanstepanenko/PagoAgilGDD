@@ -12,7 +12,7 @@ namespace PagoAgilFrba.Objetos
         private Decimal id;
         private DateTime fecha_cobro;
         private Decimal cliente;
-        private Decimal importe;
+        private Double importe;
         private Decimal usuario;
         private Decimal sucursal;
         private Decimal medio_pago;
@@ -48,12 +48,12 @@ namespace PagoAgilFrba.Objetos
             return this.cliente;
         }
 
-        public void setImporte(Decimal importe)
+        public void setImporte(Double importe)
         {
             this.importe = importe;
         }
 
-        public Decimal getImporte()
+        public Double getImporte()
         {
             return this.importe;
         }
@@ -109,7 +109,7 @@ namespace PagoAgilFrba.Objetos
             //this.id = Convert.ToDecimal(reader["regi_id"]);
             this.fecha_cobro = Convert.ToDateTime(reader["regi_fecha_cobro"]);
             this.cliente = Convert.ToDecimal(reader["regi_cliente"]);
-            this.importe = Convert.ToDecimal(reader["regi_importe"]);
+            this.importe = Convert.ToDouble(reader["regi_importe"]);
             this.usuario = Convert.ToDecimal(reader["regi_usuario"]);
             this.sucursal = Convert.ToDecimal(reader["regi_sucursal"]);
             this.medio_pago = Convert.ToDecimal(reader["regi_medio_pago"]);
