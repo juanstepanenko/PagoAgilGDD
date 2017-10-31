@@ -128,5 +128,12 @@ namespace PagoAgilFrba.AbmFactura
         {
 
         }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FacturaForm().ShowDialog();
+            this.Close();
+        }
     }
 }

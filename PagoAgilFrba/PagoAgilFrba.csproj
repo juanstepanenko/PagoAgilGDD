@@ -169,6 +169,8 @@
     </Compile>
     <Compile Include="Excepciones\CampoVacioException.cs" />
     <Compile Include="Excepciones\CantidadNulaException.cs" />
+    <Compile Include="Excepciones\ClienteNoExisteException.cs" />
+    <Compile Include="Excepciones\FacturaYaExisteException.cs" />
     <Compile Include="Excepciones\FacturaYaFueRendida.cs" />
     <Compile Include="Excepciones\FacturaNoExisteException.cs" />
     <Compile Include="Excepciones\CuitYaExisteException.cs" />
@@ -207,6 +209,7 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Factura.cs" />
     <Compile Include="Objetos\Item.cs" />
     <Compile Include="Objetos\Empresa.cs" />
     <Compile Include="Objetos\Cliente.cs" />

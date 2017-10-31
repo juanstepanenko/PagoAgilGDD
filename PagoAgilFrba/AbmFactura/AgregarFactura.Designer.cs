@@ -94,6 +94,7 @@
             this.monthCalendar_FechaVenc.Name = "monthCalendar_FechaVenc";
             this.monthCalendar_FechaVenc.TabIndex = 13;
             this.monthCalendar_FechaVenc.Visible = false;
+            this.monthCalendar_FechaVenc.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_FechaVenc_DateSelected);
             // 
             // comboBoxEmpresas
             // 
@@ -112,6 +113,7 @@
             this.button_FechaVenc.TabIndex = 12;
             this.button_FechaVenc.Text = "Seleccionar";
             this.button_FechaVenc.UseVisualStyleBackColor = true;
+            this.button_FechaVenc.Click += new System.EventHandler(this.button_FechaVenc_Click);
             // 
             // textBox_venc
             // 
@@ -298,6 +300,7 @@
             this.button_Guardar.TabIndex = 19;
             this.button_Guardar.Text = "Guardar";
             this.button_Guardar.UseVisualStyleBackColor = true;
+            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
             // 
             // button_Volver
             // 
@@ -307,6 +310,7 @@
             this.button_Volver.TabIndex = 21;
             this.button_Volver.Text = "Volver";
             this.button_Volver.UseVisualStyleBackColor = true;
+            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
             // AgregarFactura
             // 
