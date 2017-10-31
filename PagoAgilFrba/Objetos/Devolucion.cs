@@ -12,7 +12,7 @@ namespace PagoAgilFrba.Objetos
     {
         private Decimal id;
         private DateTime fecha_devo;
-        private Decimal factura;
+        private String factura;
         private String motivo;
        
 
@@ -27,12 +27,20 @@ namespace PagoAgilFrba.Objetos
             return this.id;
         }
 
+        public void setFechaDevo(DateTime fecha_devo)
+        {
+            if (fecha_devo.Equals(DateTime.MinValue))
+                throw new CampoVacioException("Fecha devolucion");
+
+            this.fecha_devo = fecha_devo;
+        }
+
         public DateTime getFechaDevolucion()
         {
             return this.fecha_devo;
         }
 
-        public void setFactura(Decimal factura)
+        public void setFactura(String factura)
         {
             if (factura.Equals(null))
                 throw new CampoVacioException("Factura");
@@ -40,7 +48,7 @@ namespace PagoAgilFrba.Objetos
             this.factura = factura;
         }
 
-        public Decimal getFactura()
+        public String getFactura()
         {
             return this.factura;
         }
@@ -63,27 +71,24 @@ namespace PagoAgilFrba.Objetos
         {
             return "AMBDA.crear_devolucion";
         }
-/*
+
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.RegistroPago SET clie_nombre = @nombre, clie_apellido = @apellido, clie_direc_id = @direccion_id, clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_dni = @dni";
+            return "";
         }
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.RegistroPago WHERE regi_id = @id";
+            return "";
         }
 
-        public string GetQueryObtenerConFactura()
-        {
-            return "SELECT * FROM AMBDA.RegistroPago r join AMBDA.FacturaxPago p on (r.regi_id = p.regi_id) WHERE r.regi_id = @idFactura";
-        }
-        */
+       
+        
         public void CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
         {
             //this.id = Convert.ToDecimal(reader["regi_id"]);
             this.fecha_devo = Convert.ToDateTime(reader["devo_fecha"]);
-            this.factura = Convert.ToDecimal(reader["devo_factura"]);
+            this.factura = Convert.ToString(reader["devo_factura"]);
             this.motivo = Convert.ToString(reader["devo_motivo"]);
             }
 

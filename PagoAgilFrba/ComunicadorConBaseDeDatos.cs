@@ -91,6 +91,11 @@ namespace PagoAgilFrba
         {
             return this.Crear(item);
         }
+
+        public Decimal CrearDevolucion(Devolucion devolucion)
+        {
+             return this.Crear(devolucion);
+        }
         /**************OBTENER***************/
 
         public Comunicable Obtener(Decimal id, Type clase)
@@ -162,7 +167,7 @@ namespace PagoAgilFrba
             return empresa;
         }
 
-        public Factura ObtenerFactura(Decimal idFactura)
+        public Factura ObtenerFactura(String idFactura)
         {
             Factura objeto = new Factura();
             Type clase = objeto.GetType();
@@ -179,23 +184,24 @@ namespace PagoAgilFrba
             }
             return factura;
         }
-        public Pago ObtenerPagoConFactura(Decimal idFactura)
+         public Factura ObtenerFacturaConNumero(String nroFactura)
         {
             Factura objeto = new Factura();
             Type clase = objeto.GetType();
 
-            Pago pago= (Pago)Activator.CreateInstance(clase);
-            query = pago.GetQueryObtenerConFactura();
+            Factura factura = (Factura)Activator.CreateInstance(clase);
+            query = factura.GetQueryObtenerConNro();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@idFactura", idFactura));
+            parametros.Add(new SqlParameter("@nroFactura", nroFactura));
             SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
             if (reader.Read())
             {
-                pago.CargarInformacion(reader);
-                return pago;
+                factura.CargarInformacion(reader);
+                return factura;
             }
-            return pago;
+            return factura;
         }
+        
         
 
         /************MODIFICAR***************/
@@ -305,7 +311,7 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@cuit", cuit));
             return ControlDeUnicidad(query, parametros);
         }
-        public bool pasoControlDeRegistroFactura(Decimal nrofact)
+        public bool pasoControlDeRegistroFactura(String nrofact)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact";
             parametros.Clear();
@@ -331,7 +337,7 @@ namespace PagoAgilFrba
 			return ControlDeUnicidad(query, parametros);
         }
 		
-        public bool pasoControlDeRendidaFactura(Decimal nrofact)
+        public bool pasoControlDeRendidaFactura(String nrofact)
         {
 
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact and fact_rendicion is null";

@@ -54,7 +54,7 @@ namespace PagoAgilFrba.Devoluciones
         {
            
 
-            Decimal nroFact = Convert.ToDecimal(textBox1.Text);
+            String nroFact = textBox1.Text;
 
              try
             {
