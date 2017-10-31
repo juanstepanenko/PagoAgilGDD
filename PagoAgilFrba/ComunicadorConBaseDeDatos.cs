@@ -417,6 +417,7 @@ namespace PagoAgilFrba
 
         public DataTable SelectFacturasParaFiltroConFiltro(String filtro)
         {
+            //deberia funcionar con el generico
             parametros.Clear();
             command = builderDeComandos.Crear("SELECT fact_nro as 'nro factura', (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'dni cliente', (select empr_nombre from AMBDA.Empresa where empr_cuit = fact_empresa) as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
             + " FROM AMBDA.Factura WHERE fact_cobrada <> 1 and fact_rendicion is null " + filtro, parametros);
@@ -444,6 +445,12 @@ namespace PagoAgilFrba
         {
             return this.SelectEmpresasParaFiltroConFiltro("");
         }
+
+        public DataTable SelectItems(String nroFactura)
+        {
+            return this.SelectDataTable("reng_id as id, reng_cantidad as Cantidad, reng_monto as 'Monto Total'", "AMBDA.Renglon", "reng_factura = (select fact_id from AMBDA.Factura where fact_nro = " + nroFactura + ")");
+        }
+
 
         public void PagarFactura(Decimal cliente, Double importe, Decimal sucursal, Decimal medio, Decimal idFactura)
         {
