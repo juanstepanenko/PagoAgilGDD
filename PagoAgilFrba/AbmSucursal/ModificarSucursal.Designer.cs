@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.AbmSucursal
 {
-    partial class EditarSucursal
+    partial class ModificarSucursal
     {
         /// <summary>
         /// Required designer variable.

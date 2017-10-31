@@ -368,9 +368,21 @@ namespace PagoAgilFrba
                 , "e.empr_direc_id = d.direc_id AND e.empr_habilitada = 1" + filtro);
         }
 
+        public DataTable SelectSucursalParaFiltroConFiltro(String filtro)
+        {
+            return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc_id DireccionId, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
+                , "AMBDA.Sucursal s, AMBDA.Direccion d"
+                , "s.sucu_direc_id = d.direc_id AND s.sucu_habilitada = 1" + filtro);
+        }
+
         public DataTable SelectEmpresasParaFiltro()
         {
             return this.SelectEmpresasParaFiltroConFiltro("");
+        }
+
+        public DataTable SelectSucursalParaFiltro()
+        {
+            return this.SelectSucursalParaFiltroConFiltro("");
         }
 
         public void PagarFactura(Decimal idPago, Decimal idFactura, Decimal importe)

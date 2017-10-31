@@ -26,7 +26,7 @@ namespace PagoAgilFrba
             funcionalidades.Add("ABM Roles", new AbmRol.RolForm());
             funcionalidades.Add("ABM Clientes", new AbmCliente.ClienteForm());
             funcionalidades.Add("ABM Empresas", new AbmEmpresa.EmpresaForm());
-            //funcionalidades.Add("ABM Sucursales", new AbmCliente.ClienteForm());
+            funcionalidades.Add("ABM Sucursales", new AbmSucursal.SucursalForm());
             funcionalidades.Add("ABM Facturas", new AbmFactura.FacturaForm());
             funcionalidades.Add("Registro de Pago de Facturas", new RegistroPago.RegistroPago());
             funcionalidades.Add("Devoluciones", new Devoluciones.IngresarFactura());

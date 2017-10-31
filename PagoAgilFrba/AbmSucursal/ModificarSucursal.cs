@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 namespace PagoAgilFrba.AbmSucursal
 {
-    public partial class EditarSucursal : Form
+    public partial class ModificarSucursal : Form
     {
         private Decimal id;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
@@ -22,7 +22,7 @@ namespace PagoAgilFrba.AbmSucursal
         private IList<SqlParameter> parametros = new List<SqlParameter>();
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
 
-        public EditarSucursal(Decimal unId)
+        public ModificarSucursal(Decimal unId)
         {
             InitializeComponent();
             this.id = unId;
@@ -97,7 +97,7 @@ namespace PagoAgilFrba.AbmSucursal
                 sucursal.SetIdDireccion(idDireccion);
                 sucursal.SetHabilitada(habilitada);
                 pudoModificar = comunicador.ModificarSucursal(id, sucursal);
-                if (pudoModificar) MessageBox.Show("La empresa se modifico correctamente");
+                if (pudoModificar) MessageBox.Show("La sucursal se modifico correctamente");
             }
             catch (CampoVacioException exception)
             {

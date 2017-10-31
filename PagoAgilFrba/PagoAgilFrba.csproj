@@ -153,17 +153,23 @@
     <Compile Include="AbmSucursal\AgregarSucursal.Designer.cs">
       <DependentUpon>AgregarSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\EditarSucursal.cs">
+    <Compile Include="AbmSucursal\ModificarSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmSucursal\EditarSucursal.Designer.cs">
-      <DependentUpon>EditarSucursal.cs</DependentUpon>
+    <Compile Include="AbmSucursal\ModificarSucursal.Designer.cs">
+      <DependentUpon>ModificarSucursal.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmSucursal\SeleccionarSucursal.cs">
+    <Compile Include="AbmSucursal\FiltrarSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmSucursal\SeleccionarSucursal.Designer.cs">
-      <DependentUpon>SeleccionarSucursal.cs</DependentUpon>
+    <Compile Include="AbmSucursal\FiltrarSucursal.Designer.cs">
+      <DependentUpon>FiltrarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmSucursal\SucursalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmSucursal\SucursalForm.Designer.cs">
+      <DependentUpon>SucursalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ComunicadorConBaseDeDatos.cs" />
     <Compile Include="ConexionDB.cs" />
@@ -284,11 +290,14 @@
     <EmbeddedResource Include="AbmSucursal\AgregarSucursal.resx">
       <DependentUpon>AgregarSucursal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmSucursal\EditarSucursal.resx">
-      <DependentUpon>EditarSucursal.cs</DependentUpon>
+    <EmbeddedResource Include="AbmSucursal\ModificarSucursal.resx">
+      <DependentUpon>ModificarSucursal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AbmSucursal\SeleccionarSucursal.resx">
-      <DependentUpon>SeleccionarSucursal.cs</DependentUpon>
+    <EmbeddedResource Include="AbmSucursal\FiltrarSucursal.resx">
+      <DependentUpon>FiltrarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmSucursal\SucursalForm.resx">
+      <DependentUpon>SucursalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Devoluciones\Devolucion.resx">
       <DependentUpon>Devolucion.cs</DependentUpon>
