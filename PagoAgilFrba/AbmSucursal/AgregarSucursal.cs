@@ -74,7 +74,7 @@ namespace PagoAgilFrba.AbmSucursal
                 sucursal.SetNombreSucursal(nombreSucursal);
                 sucursal.SetIdDireccion(idDireccion);
                 sucursal.SetHabilitada(true);
-                comunicador.CrearSucursal(sucursal);
+                sucursal.SetId(comunicador.CrearSucursal(sucursal));
                 //ojo, nunca devuelv el id sucursal
                 MessageBox.Show("Se creó la sucursal correctamente");
             }

@@ -92,7 +92,7 @@ namespace PagoAgilFrba.Objetos
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@id", this.id));
+            //parametros.Add(new SqlParameter("@id", this.id));
             parametros.Add(new SqlParameter("@nombre", this.nombreSucursal));
             parametros.Add(new SqlParameter("@direccion_id", this.idDireccion));
             parametros.Add(new SqlParameter("@habilitada", this.habilitada));

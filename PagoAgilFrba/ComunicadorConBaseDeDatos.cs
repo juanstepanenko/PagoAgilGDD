@@ -74,16 +74,11 @@ namespace PagoAgilFrba
 
         }
 
-        public void CrearSucursal(Sucursal sucursal)
+        public Decimal CrearSucursal(Sucursal sucursal)
          {
              if (!pasoControlSucursal(sucursal.GetId()))
                  throw new SucursalYaExisteExcepcion();
-             query = sucursal.GetQueryCrear();
-             parametros.Clear();
-             parametros = sucursal.GetParametros();
-             command = builderDeComandos.Crear(query, parametros);
-             command.CommandType = CommandType.StoredProcedure;
-             command.ExecuteNonQuery();
+             return this.Crear(sucursal);
          }
 
         /**************OBTENER***************/
