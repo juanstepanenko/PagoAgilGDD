@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PagoAgilFrba.RegistroPago
+namespace PagoAgilFrba.Devoluciones
 {
-    public partial class Form1 : Form
+    public partial class Devolucion : Form
     {
-        public Form1()
+        public Devolucion()
         {
             InitializeComponent();
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
