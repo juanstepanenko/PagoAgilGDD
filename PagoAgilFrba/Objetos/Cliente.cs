@@ -28,6 +28,8 @@ namespace PagoAgilFrba.Objetos
 
         public void setDni(Decimal dni)
         {
+            if (dni.Equals(null))
+                throw new CampoVacioException("Dni");
             this.dni = dni;
         }
         //----
