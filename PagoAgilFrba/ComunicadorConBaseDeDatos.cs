@@ -259,6 +259,15 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
+        public Decimal pasoControlDeFacturaDeEmpresa(Decimal nroFactura, Decimal empresa)
+        {
+            String query = "Select count(*) From AMBDA.Factura Where fact_nro = @nroFactura And fact_empresa = @empresa";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nroFactura", nroFactura));
+            parametros.Add(new SqlParameter("@empresa", empresa));
+            return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
+        }
+        
 
         /**********SELECTS VARIOS************/
 

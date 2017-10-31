@@ -173,8 +173,10 @@
     <Compile Include="Excepciones\FacturaNoExisteException.cs" />
     <Compile Include="Excepciones\CuitYaExisteException.cs" />
     <Compile Include="Excepciones\ClienteYaExisteException.cs" />
+    <Compile Include="Excepciones\FechaPasadaException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
     <Compile Include="Excepciones\MailYaExisteException.cs" />
+    <Compile Include="Excepciones\SucursalInvalidaException.cs" />
     <Compile Include="Login\ElegirRol.cs">
       <SubType>Form</SubType>
     </Compile>

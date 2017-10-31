@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using PagoAgilFrba.Excepciones;
 
 namespace PagoAgilFrba.Objetos
 {
@@ -30,6 +31,9 @@ namespace PagoAgilFrba.Objetos
 
         public void setFechaCobro(DateTime fechaDeCobro)
         {
+            if (fechaDeCobro.Equals(DateTime.MinValue))
+                throw new CampoVacioException("Fecha De Cobro"); 
+
             this.fecha_cobro = fechaDeCobro;
         }
 
@@ -40,6 +44,9 @@ namespace PagoAgilFrba.Objetos
 
         public void setCliente(Decimal cliente)
         {
+            if (cliente.Equals(null))
+                throw new CampoVacioException("Cliente");
+
             this.cliente = cliente;
         }
 

@@ -112,43 +112,29 @@ namespace PagoAgilFrba.RegistroPago
 
         private void button_agregar_Click(object sender, EventArgs e)
         {
-            // Guarda en variables todos los campos de entrada
-            if (textBox_NroFact.Text == "" || textBox_Importe.Text == "" || textBox_FechaDeVencimiento.Text == "" 
-                || comboBox_Empresa.Text == "")
-            {
-                MessageBox.Show("Ingrese todos los datos para agregar una factura");
-                return;
-            }
-            
             try
             {
-                Double importe = double.Parse(textBox_Importe.Text, CultureInfo.InvariantCulture);
-                DateTime fechaDeVencimiento;
-                DateTime.TryParse(textBox_FechaDeVencimiento.Text, out fechaDeVencimiento);
-                //Decimal empresa = comunicador.SelectFromWhere("empr_cuit", "Empresa", "empr_nombre", comboBox_Empresa.Text);
-
-
-                //corroborar que ese nro de factura sea de esa empresa
-                //corroborar que la fechad e ven sea mayor o = ? a la de cobro
-
-                facturas.Add(Convert.ToDecimal(textBox_NroFact.Text));
-                importeTotal += importe;
-                
+                AgregarFactura();
             }
-            catch (FormatoInvalidoException exception)
+
+            catch (FacturaNoExisteException exception)
             {
-                MessageBox.Show("Datos mal ingresados en: " + exception.Message);
+                MessageBox.Show(exception.Message + " para esa empresa");
                 return;
             }
-            catch (CantidadNulaException)
+            catch (FechaPasadaException exception)
             {
-                MessageBox.Show("No se puede ingresar una cantidad igual a 0");
+                MessageBox.Show(exception.Message);
                 return;
             }
+            catch (CampoVacioException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+
             //string[] row = new string[] { textBox_NroFact.Text, textBox_Importe.Text,textBox_FechaDeVencimiento.Text, comboBox_Empresa.Text};
-            
             //dataGridView_Factura.Rows.Add(row);
-            
             CargarColumnaEliminar();
             //total = total + Convert.ToDecimal(item.getMonto());
             textBox_Importe.Text = "";
@@ -158,20 +144,55 @@ namespace PagoAgilFrba.RegistroPago
 
         }
 
+        private void AgregarFactura()
+        {
+            // Guarda en variables todos los campos de entrada
+            if (textBox_NroFact.Text == "" || textBox_Importe.Text == "" || textBox_FechaDeVencimiento.Text == ""
+                || comboBox_Empresa.Text == "")
+            {
+                throw new CampoVacioException("Datos de la factura");
+            }
+            Decimal nroFactura = Convert.ToDecimal(textBox_NroFact.Text);
+            Double importe = double.Parse(textBox_Importe.Text, CultureInfo.InvariantCulture);
+            DateTime fechaDeVencimiento;
+            DateTime.TryParse(textBox_FechaDeVencimiento.Text, out fechaDeVencimiento);
+            //Decimal empresa = comunicador.SelectFromWhere("empr_id", "Empresa", "empr_nombre", comboBox_Empresa.Text); 
+            //esperar a juan
+
+            //if (comunicador.pasoControlDeFacturaDeEmpresa(nroFactura, empresa) != 1)
+               //  throw new FacturaNoExisteException();
+
+            //if (FacturaVencida(fechaDeVencimiento))
+              //    throw new FechaPasadaException();
+
+            facturas.Add(nroFactura);
+            importeTotal += importe;
+            MessageBox.Show("La factura fue cargada con éxito");
+           
+        }
+
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
             String cliente = comboBox_Cliente.Text;
-            Decimal medio_pago = comunicador.SelectFromWhere("medi_id", "MedioDePago", "medi_descripcion", comboBox_MedioPago.Text);
-            Decimal sucursal = comunicador.SelectFromWhere("sucu_id", "Sucursal", "sucu_nombre", textBox_Sucursal.Text);
-            DateTime fechaDeVencimiento;
-            DateTime.TryParse(textBox_FechaDeVencimiento.Text, out fechaDeVencimiento);
-           
+            String medi_pago_elegido = comboBox_MedioPago.Text;
+            String sucursal_elegida = textBox_Sucursal.Text;
+
             // Crear pago
             try
             {
-                //corroborar que la sucursal sea donde trabaja el cobrador, si es adm meter la que ingresan--- > ver que no se pone bien la sucursal
+                if (cliente == "")
+                    throw new CampoVacioException("Cliente");
+                if (medi_pago_elegido == "")
+                    throw new CampoVacioException("Medio De Pago");
+                if (sucursal_elegida == "")
+                    throw new CampoVacioException("Sucursal");
+                ValidarSucursal(sucursal_elegida);
 
+                Decimal medio_pago = comunicador.SelectFromWhere("medi_id", "MedioDePago", "medi_descripcion", medi_pago_elegido);
+                Decimal sucursal = comunicador.SelectFromWhere("sucu_id", "Sucursal", "sucu_nombre", sucursal_elegida);
+
+                AgregarFactura();
                 Pago pago = new Pago();
                 pago.setFechaCobro(DateTime.Today);
                 pago.setCliente(Convert.ToDecimal(cliente));
@@ -186,12 +207,27 @@ namespace PagoAgilFrba.RegistroPago
             }
             catch (CampoVacioException exception)
             {
-                MessageBox.Show("Falta completar campo: " + exception.Message);
+                MessageBox.Show("Falta completar: " + exception.Message);
+                return;
+            }
+            catch (SucursalInvalidaException exception)
+            {
+                MessageBox.Show(exception.Message);
                 return;
             }
             catch (FormatoInvalidoException exception)
             {
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
+                return;
+            }
+            catch (FacturaNoExisteException exception)
+            {
+                MessageBox.Show(exception.Message + " para esa empresa");
+                return;
+            }
+            catch (FechaPasadaException)
+            {
+                MessageBox.Show("La factura esta vencida");
                 return;
             }
 
@@ -221,6 +257,18 @@ namespace PagoAgilFrba.RegistroPago
             textBox_FechaDeVencimiento.Text = e.Start.ToShortDateString();
             monthCalendar_FechaDeVencimiento.Visible = false;
         }
+
+        public void ValidarSucursal(String Sucursal)
+        {
+            if (UsuarioSesion.usuario.rol != "Administrador" && UsuarioSesion.usuario.sucursal != Sucursal)
+                throw new SucursalInvalidaException();
+        }
+
+        public Boolean FacturaVencida(DateTime dateTime)
+        {
+            return dateTime < System.DateTime.Today;
+        }
+
     }
 }
 
