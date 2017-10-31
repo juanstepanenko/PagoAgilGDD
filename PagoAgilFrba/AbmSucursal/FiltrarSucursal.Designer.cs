@@ -30,6 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBoxCalleNro = new System.Windows.Forms.TextBox();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.textBoxCodPos = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,10 +38,7 @@
             this.botonCancelar = new System.Windows.Forms.Button();
             this.botonBuscar = new System.Windows.Forms.Button();
             this.botonLimpiar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBoxCalleNro = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +66,13 @@
             this.label4.Size = new System.Drawing.Size(134, 18);
             this.label4.TabIndex = 2;
             this.label4.Text = "Calle y Número";
+            // 
+            // textBoxCalleNro
+            // 
+            this.textBoxCalleNro.Location = new System.Drawing.Point(156, 58);
+            this.textBoxCalleNro.Name = "textBoxCalleNro";
+            this.textBoxCalleNro.Size = new System.Drawing.Size(319, 28);
+            this.textBoxCalleNro.TabIndex = 1;
             // 
             // textBoxNombre
             // 
@@ -109,6 +114,7 @@
             this.botonCancelar.TabIndex = 1;
             this.botonCancelar.Text = "Cancelar";
             this.botonCancelar.UseVisualStyleBackColor = true;
+            this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
             // botonBuscar
             // 
@@ -118,6 +124,7 @@
             this.botonBuscar.TabIndex = 0;
             this.botonBuscar.Text = "Buscar";
             this.botonBuscar.UseVisualStyleBackColor = true;
+            this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
             // botonLimpiar
             // 
@@ -127,24 +134,7 @@
             this.botonLimpiar.TabIndex = 2;
             this.botonLimpiar.Text = "Limpiar";
             this.botonLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(382, 520);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 37);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(247, 520);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 37);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Editar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.botonLimpiar.Click += new System.EventHandler(this.botonLimpiar_Click);
             // 
             // dataGridView1
             // 
@@ -152,30 +142,22 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 224);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(500, 272);
+            this.dataGridView1.Size = new System.Drawing.Size(1308, 388);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // textBoxCalleNro
-            // 
-            this.textBoxCalleNro.Location = new System.Drawing.Point(156, 58);
-            this.textBoxCalleNro.Name = "textBoxCalleNro";
-            this.textBoxCalleNro.Size = new System.Drawing.Size(319, 28);
-            this.textBoxCalleNro.TabIndex = 1;
-            // 
-            // SeleccionarSucursal
+            // FiltrarSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 571);
+            this.ClientSize = new System.Drawing.Size(1343, 630);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.botonLimpiar);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.botonBuscar);
             this.Controls.Add(this.botonCancelar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "SeleccionarSucursal";
-            this.Text = "Seleccionar Sucursal";
+            this.Name = "FiltrarSucursal";
+            this.Text = "Filtrar Sucursal";
             this.Load += new System.EventHandler(this.SeleccionarSucursal_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -195,8 +177,6 @@
         private System.Windows.Forms.Button botonBuscar;
         private System.Windows.Forms.Button botonLimpiar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxCalleNro;
     }

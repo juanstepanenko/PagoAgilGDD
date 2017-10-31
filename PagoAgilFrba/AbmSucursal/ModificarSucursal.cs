@@ -116,21 +116,10 @@ namespace PagoAgilFrba.AbmSucursal
             }
         }
 
-        private void botonLimpiar_ClickM(object sender, EventArgs e)
+        private void botonCancelar_Click(object sender, EventArgs e)
         {
-            CargarDatos();
-            /*textBox_Nombre.Text = "";
-            textBox_Cuit.Text = "";
-            textBox_CalleNro.Text = "";
-            textBox_Piso.Text = "";
-            textBox_Departamento.Text = "";
-            textBox_Localidad.Text = "";
-            textBox_CodigoPostal.Text = "";
-            combo_Rubro.Text = "";*/
-        }
-
-        private void botonCancelarM_Click(object sender, EventArgs e)
-        {
+            this.Hide();
+            new SucursalForm().ShowDialog();
             this.Close();
         }
 
@@ -138,6 +127,11 @@ namespace PagoAgilFrba.AbmSucursal
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void botonLimpiar_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
         }
     }
 }

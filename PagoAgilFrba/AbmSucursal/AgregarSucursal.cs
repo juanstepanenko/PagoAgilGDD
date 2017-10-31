@@ -73,9 +73,8 @@ namespace PagoAgilFrba.AbmSucursal
                 Sucursal sucursal = new Sucursal();
                 sucursal.SetNombreSucursal(nombreSucursal);
                 sucursal.SetIdDireccion(idDireccion);
-                sucursal.SetHabilitada(true);
+                //sucursal.SetHabilitada(true);
                 sucursal.SetId(comunicador.CrearSucursal(sucursal));
-                //ojo, nunca devuelv el id sucursal
                 MessageBox.Show("Se creó la sucursal correctamente");
             }
             catch (CampoVacioException exception)
@@ -93,6 +92,7 @@ namespace PagoAgilFrba.AbmSucursal
                 MessageBox.Show("Ya existe sucursal con éste código Postal");
                 return;
             }
+            VolverAlMenuPrincipal();
         }
 
         private void botonLimpiar_Click(object sender, EventArgs e)
@@ -102,19 +102,20 @@ namespace PagoAgilFrba.AbmSucursal
             textBoxPiso.Text = "";
             textBoxCP.Text = "";
             textBoxDepartamento.Text = "";
-            textBoxCodPos.Text = "";
             textBoxLocalidad.Text = "";
         }
 
         private void botonCancelar_Click(object sender, EventArgs e)
         {
-            VolverAlMenuPrincipal();
+            this.Hide();
+            new SucursalForm().ShowDialog();
+            this.Close();
         }
 
         private void VolverAlMenuPrincipal()
         {
             this.Hide();
-            new MenuPrincipal().ShowDialog();
+            new SucursalForm().ShowDialog();
             this.Close();
         }
 

@@ -74,16 +74,18 @@ namespace PagoAgilFrba.Objetos
 
         public string GetQueryObtener()
         {
+            //CHEQUEAR
             return "SELECT * FROM AMBDA.Sucursal WHERE sucu_id = @id";
         }
 
 
         public void CargarInformacion(SqlDataReader reader)
         {
-
-            this.id = Convert.ToDecimal(reader["sucu_id"]);
+            //CHEQUEAR
+            //this.id = Convert.ToDecimal(reader["sucu_id"]);
             this.nombreSucursal = Convert.ToString(reader["sucu_nombre"]);
-            this.idDireccion = Convert.ToDecimal(reader["sucu_direc_id"]);
+            this.idDireccion = Convert.ToDecimal(reader["sucu_direc_id"]);//DIR CONCAT
+            //COD POS
             this.habilitada = Convert.ToBoolean(reader["sucu_habilitada"]);
 
         }

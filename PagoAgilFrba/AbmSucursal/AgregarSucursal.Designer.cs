@@ -41,9 +41,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBoxDepartamento = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxCP = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxLocalidad = new System.Windows.Forms.TextBox();
+            this.textBoxCP = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -60,7 +60,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información Sucursal";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox_Enter);
             // 
             // textBoxNombre
             // 
@@ -120,6 +119,7 @@
             this.botonLimpiar.TabIndex = 3;
             this.botonLimpiar.Text = "Limpiar";
             this.botonLimpiar.UseVisualStyleBackColor = true;
+            this.botonLimpiar.Click += new System.EventHandler(this.botonLimpiar_Click);
             // 
             // botonGuardar
             // 
@@ -129,6 +129,7 @@
             this.botonGuardar.TabIndex = 1;
             this.botonGuardar.Text = "Guardar";
             this.botonGuardar.UseVisualStyleBackColor = true;
+            this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
             // 
             // botonVolver
             // 
@@ -138,6 +139,7 @@
             this.botonVolver.TabIndex = 2;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
             // groupBox2
             // 
@@ -174,13 +176,6 @@
             this.label7.TabIndex = 3;
             this.label7.Text = "Departamento";
             // 
-            // textBoxCP
-            // 
-            this.textBoxCP.Location = new System.Drawing.Point(159, 129);
-            this.textBoxCP.Name = "textBoxCP";
-            this.textBoxCP.Size = new System.Drawing.Size(115, 28);
-            this.textBoxCP.TabIndex = 2;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -197,6 +192,13 @@
             this.textBoxLocalidad.Name = "textBoxLocalidad";
             this.textBoxLocalidad.Size = new System.Drawing.Size(115, 28);
             this.textBoxLocalidad.TabIndex = 2;
+            // 
+            // textBoxCP
+            // 
+            this.textBoxCP.Location = new System.Drawing.Point(159, 129);
+            this.textBoxCP.Name = "textBoxCP";
+            this.textBoxCP.Size = new System.Drawing.Size(115, 28);
+            this.textBoxCP.TabIndex = 2;
             // 
             // label8
             // 
@@ -239,11 +241,6 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void groupBox_Enter(object sender, System.EventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
 
         #endregion

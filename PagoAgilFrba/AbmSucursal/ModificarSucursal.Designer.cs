@@ -182,9 +182,9 @@
             this.checkBoxHab.AutoSize = true;
             this.checkBoxHab.Location = new System.Drawing.Point(34, 328);
             this.checkBoxHab.Name = "checkBoxHab";
-            this.checkBoxHab.Size = new System.Drawing.Size(196, 22);
+            this.checkBoxHab.Size = new System.Drawing.Size(133, 22);
             this.checkBoxHab.TabIndex = 1;
-            this.checkBoxHab.Text = "Volver a habilitar";
+            this.checkBoxHab.Text = "Rehabilitar";
             this.checkBoxHab.UseVisualStyleBackColor = true;
             // 
             // buttonVol
@@ -195,6 +195,7 @@
             this.buttonVol.TabIndex = 3;
             this.buttonVol.Text = "Volver";
             this.buttonVol.UseVisualStyleBackColor = true;
+            this.buttonVol.Click += new System.EventHandler(this.botonCancelar_Click);
             // 
             // buttonLimp
             // 
@@ -204,6 +205,7 @@
             this.buttonLimp.TabIndex = 4;
             this.buttonLimp.Text = "Limpiar";
             this.buttonLimp.UseVisualStyleBackColor = true;
+            this.buttonLimp.Click += new System.EventHandler(this.botonLimpiar_Click);
             // 
             // buttonGuar
             // 
@@ -213,8 +215,9 @@
             this.buttonGuar.TabIndex = 2;
             this.buttonGuar.Text = "Guardar";
             this.buttonGuar.UseVisualStyleBackColor = true;
+            this.buttonGuar.Click += new System.EventHandler(this.botonGuardar_Click);
             // 
-            // EditarSucursal
+            // ModificarSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -225,8 +228,8 @@
             this.Controls.Add(this.checkBoxHab);
             this.Controls.Add(this.groupBoxDir);
             this.Controls.Add(this.groupBoxIS);
-            this.Name = "EditarSucursal";
-            this.Text = "EditarSucursal";
+            this.Name = "ModificarSucursal";
+            this.Text = "ModificarSucursal";
             this.groupBoxIS.ResumeLayout(false);
             this.groupBoxIS.PerformLayout();
             this.groupBoxDir.ResumeLayout(false);

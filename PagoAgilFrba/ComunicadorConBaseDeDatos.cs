@@ -89,7 +89,7 @@ namespace PagoAgilFrba
 
         public Decimal CrearSucursal(Sucursal sucursal)
          {
-             if (!pasoControlSucursal(sucursal.GetId()))
+             if (!pasoControlSucursal(sucursal.GetIdDireccion()))
                  throw new SucursalYaExisteExcepcion();
              return this.Crear(sucursal);
          }
@@ -259,6 +259,14 @@ namespace PagoAgilFrba
             if (filasAfectadas1 == 1 || filasAfectadas2 == 1) return true;
             return false;
         }
+
+        public Boolean EliminarSucursal(Decimal id)//, Decimal direcc_id)
+        {
+            if (eliminarGeneralId("UPDATE AMBDA.Sucursal SET sucu_habilitada = 0 WHERE sucu_id = @id", "@id", id) == 1) return true;
+            //filasAfectadas2 = eliminarGeneralId("DELETE FROM AMBDA.Direccion WHERE direc_id = @dirID", "@dirID", direcc_id);
+            //if (filasAfectadas1 == 1 || filasAfectadas2 == 1) return true;
+            return false;
+        }
         /**************CONTROLES**************/
 
         public bool ControlDeUnicidad(String query, IList<SqlParameter> parametros)
@@ -303,15 +311,15 @@ namespace PagoAgilFrba
         }
 
 
-<<<<<<< HEAD
-        private bool pasoControlSucursal(Decimal sucu_id)
+
+        private bool pasoControlSucursal(Decimal direc_id)
         {
-            query = "SELECT COUNT(*) FROM AMBDA.Sucursal WHERE sucu_id = @id";
+            query = "select count(*) from AMBDA.Sucursal join AMBDA.Direccion as d1 on sucu_direc_id = d1.direc_id where d1.direc_cod_postal = (select d2.direc_cod_postal from AMBDA.Direccion as d2 where d2.direc_id = @id)";
             parametros.Clear();
-            parametros.Add(new SqlParameter("@id", sucu_id));
+            parametros.Add(new SqlParameter("@id", direc_id));
             return ControlDeUnicidad(query, parametros);
         }
-=======
+
         private bool pasoControlDeFacturaParaFactura(String empresa, String nroFactura)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_empresa = (select empr_cuit from AMBDA.Empresa where empr_nombre = @empresa) and fact_nro = @nroFactura";
@@ -347,7 +355,6 @@ namespace PagoAgilFrba
             return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
         }
         
->>>>>>> origin
 
         /**********SELECTS VARIOS************/
 
@@ -428,9 +435,11 @@ namespace PagoAgilFrba
 
         public DataTable SelectSucursalParaFiltroConFiltro(String filtro)
         {
-            return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc_id DireccionId, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
+            //"s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc_id DireccionId, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
+            //HABILITADO
+            return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc_id DireccionId, (case s.sucu_habilitada when 1 then 'Sí' else 'No' end) Habilitado,d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
                 , "AMBDA.Sucursal s, AMBDA.Direccion d"
-                , "s.sucu_direc_id = d.direc_id AND s.sucu_habilitada = 1" + filtro);
+                , "s.sucu_direc_id = d.direc_id " + filtro);
         }
 
         public DataTable SelectEmpresasParaFiltro()
@@ -438,16 +447,13 @@ namespace PagoAgilFrba
             return this.SelectEmpresasParaFiltroConFiltro("");
         }
 
-<<<<<<< HEAD
         public DataTable SelectSucursalParaFiltro()
         {
             return this.SelectSucursalParaFiltroConFiltro("");
         }
 
-        public void PagarFactura(Decimal idPago, Decimal idFactura, Decimal importe)
-=======
+
         public void PagarFactura(Decimal cliente, Double importe, Decimal sucursal, Decimal medio, Decimal idFactura)
->>>>>>> origin
         {
             String query = "AMBDA.pagar_factura";
             parametros.Clear();

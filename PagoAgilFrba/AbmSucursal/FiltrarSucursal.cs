@@ -32,7 +32,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             dataGridView1.DataSource = comunicador.SelectSucursalParaFiltro();
             CargarColumnaModificacion();
-            CargarColumnaEliminar();
+            CargarColumnaDeshabilitar();
         }
 
         private void CargarColumnaModificacion()
@@ -46,13 +46,13 @@ namespace PagoAgilFrba.AbmSucursal
             dataGridView1.Columns.Add(botonColumnaModificar);
         }
 
-        private void CargarColumnaEliminar()
+        private void CargarColumnaDeshabilitar()
         {
-            if (dataGridView1.Columns.Contains("Eliminar"))
-                dataGridView1.Columns.Remove("Eliminar");
+            if (dataGridView1.Columns.Contains("Deshabilitar"))
+                dataGridView1.Columns.Remove("Deshabilitar");
             DataGridViewButtonColumn botonColumnaEliminar = new DataGridViewButtonColumn();
-            botonColumnaEliminar.Text = "Eliminar";
-            botonColumnaEliminar.Name = "Eliminar";
+            botonColumnaEliminar.Text = "Deshabilitar";
+            botonColumnaEliminar.Name = "Deshabilitar";
             botonColumnaEliminar.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(botonColumnaEliminar);
         }
@@ -78,7 +78,6 @@ namespace PagoAgilFrba.AbmSucursal
             if (textBoxNombre.Text != "") filtro += "AND " + "s.sucu_nombre LIKE '" + textBoxNombre.Text + "%'";
             if (textBoxCalleNro.Text != "") filtro += "AND " + "d.direc_calleNro LIKE '" + textBoxCalleNro.Text + "%'";
             if (textBoxCodPos.Text != "") filtro += "AND " + "d.direc_cod_postal LIKE '" + textBoxCodPos.Text + "%'";
-            //TODO:  DEVOLVER TODO SI NO HAY NINGUN FILTRO APLICADO
             return filtro;
         }
 
@@ -90,31 +89,31 @@ namespace PagoAgilFrba.AbmSucursal
             CargarSucursal();
         }
 
-        private void boton_Cancelar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new SucursalForm().ShowDialog();
-            this.Close();
-        }
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Controla que la celda que se clickeo fue la de modificar
             if (e.ColumnIndex == dataGridView1.Columns["Modificar"].Index && e.RowIndex >= 0)
             {
-                Decimal idSucursalAModificar = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToDecimal();
-                new ModificarSucursal(idSucursalAModificar).ShowDialog();
+                String idSucursalAModificar = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                new ModificarSucursal(Convert.ToDecimal(idSucursalAModificar)).ShowDialog();
                 CargarSucursal();
                 return;
             }
             if (e.ColumnIndex == dataGridView1.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
-                Decimal idSucursalAModificar = dataGridView1.Rows[e.RowIndex].Cells["id"].Value.ToDecimal();
-                Boolean resultado = comunicador.EliminarEmpresa(Convert.ToDecimal(idSucursalAModificar));
+                String idSucursalAModificar = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
+                Boolean resultado = comunicador.EliminarSucursal(Convert.ToDecimal(idSucursalAModificar));
                 if (resultado) MessageBox.Show("Se elimino correctamente");
                 CargarSucursal();
                 return;
             }
+        }
+
+        private void botonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new SucursalForm().ShowDialog();
+            this.Close();
         }
         
     }
