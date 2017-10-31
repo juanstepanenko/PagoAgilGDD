@@ -29,6 +29,7 @@ namespace PagoAgilFrba
             parametros.Clear();
             parametros = objeto.GetParametros(); //agarro todos los campos del objeto
             //--- esto de parametroOutput se hace solo si tiene un id no generado, por ejemplo en cliente no (es el dni) CREO
+            //--soy ro, creo que te lo da si es autogenerado
             parametroOutput = new SqlParameter("@id", SqlDbType.Decimal);
             parametroOutput.Direction = ParameterDirection.Output;
             parametros.Add(parametroOutput);
@@ -38,14 +39,17 @@ namespace PagoAgilFrba
             return (Decimal)parametroOutput.Value;
         }
 
-        public void CrearCliente(Cliente cliente)
+        public Decimal CrearCliente(Cliente cliente)
         {
+            /*
             query = cliente.GetQueryCrear();
             parametros.Clear();
-            parametros = cliente.GetParametros(); 
+            parametros = cliente.GetParametros();
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
-            command.ExecuteNonQuery(); 
+            command.ExecuteNonQuery();
+             * */
+            return this.Crear(cliente);
         }
 
         public Decimal CrearDireccion(Direccion direccion)
@@ -67,11 +71,20 @@ namespace PagoAgilFrba
         {
             query = empresa.GetQueryCrear();
             parametros.Clear();
-            parametros = empresa.GetParametros(); 
+            parametros = empresa.GetParametros();
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
-            command.ExecuteNonQuery(); 
+            command.ExecuteNonQuery();
 
+        }
+
+        public Decimal CrearFactura(Factura factura)
+        {
+            if (pasoControlDeCliente(factura.getDniCliente()))
+                throw new ClienteNoExisteException();
+            if(!pasoControlDeFacturaParaFactura(factura.getEmpresa(), factura.getNroFactura()))
+                throw new FacturaYaExisteException();
+            return this.Crear(factura);
         }
 
         public Decimal CrearSucursal(Sucursal sucursal)
@@ -80,6 +93,11 @@ namespace PagoAgilFrba
                  throw new SucursalYaExisteExcepcion();
              return this.Crear(sucursal);
          }
+
+        public Decimal CrearItem(Item item)
+        {
+            return this.Crear(item);
+        }
 
         /**************OBTENER***************/
 
@@ -98,15 +116,15 @@ namespace PagoAgilFrba
             return objeto;
         }
 
-        public Cliente ObtenerCliente(Decimal dniCliente)
+        public Cliente ObtenerCliente(Decimal idCliente)
         {
             Cliente objeto = new Cliente();
             Type clase = objeto.GetType();
-           
+
             Cliente cliente = (Cliente)Activator.CreateInstance(clase);
             query = cliente.GetQueryObtener();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@dni", dniCliente));
+            parametros.Add(new SqlParameter("@id", idCliente));
             SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
             if (reader.Read())
             {
@@ -188,12 +206,13 @@ namespace PagoAgilFrba
             query = objeto.GetQueryModificar();
             parametros.Clear();
             parametros = objeto.GetParametros();
-           // parametros.Add(new SqlParameter("@cuit", cuit));
+            // parametros.Add(new SqlParameter("@cuit", cuit));
             int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
             if (filasAfectadas == 1) return true;
             return false;
         }
 
+<<<<<<< HEAD
         public Boolean ModificarSucursal(Decimal id, Comunicable objeto)
         {
             query = objeto.GetQueryModificar();
@@ -205,6 +224,9 @@ namespace PagoAgilFrba
             return false;
         }
         
+=======
+
+>>>>>>> origin
         /************ELIMINAR*************/
         //retorna la cantidad de filas afectadas
         public int eliminarGeneralId(String query, String var, Decimal id)
@@ -215,14 +237,14 @@ namespace PagoAgilFrba
         }
         public Boolean EliminarDireccion(Decimal id)
         {
-            if (eliminarGeneralId("DELETE AMBDA.Direccion WHERE direc_id = (SELECT clie_direc_id FROM AMBDA.Cliente WHERE clie_dni = @dni)", "@dni", id) == 1)
+            if (eliminarGeneralId("DELETE AMBDA.Direccion WHERE direc_id = (SELECT clie_direc_id FROM AMBDA.Cliente WHERE clie_id = @id)", "@", id) == 1)
                 return true;
             return false;
         }
 
         public Boolean EliminarCliente(Decimal id)
         {
-            if (eliminarGeneralId("UPDATE AMBDA.Cliente SET clie_habilitado = 0 WHERE clie_dni = @dni", "@dni", id) == 1) 
+            if (eliminarGeneralId("UPDATE AMBDA.Cliente SET clie_habilitado = 0 WHERE clie_id = @id", "@id", id) == 1)
                 return true;
             return false;
         }
@@ -234,14 +256,13 @@ namespace PagoAgilFrba
             return false;
         }
 
-        public Boolean EliminarFactura(Decimal id)
+        public Boolean EliminarFactura(Decimal nroFact)
         {
-            int filasAfectadas1 = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_factura = (select fact_id from AMBDA.Factura where fact_nro = @nrofact)", "@nrofact", id);
-            int filasAfectadas2 = eliminarGeneralId("DELETE FROM AMBDA.Factura WHERE fact_nro = @nrofact2", "@nrofact2", id);
+            int filasAfectadas1 = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_factura = (select fact_id from AMBDA.Factura where fact_nro = @nrofact)", "@nrofact", nroFact);
+            int filasAfectadas2 = eliminarGeneralId("DELETE FROM AMBDA.Factura WHERE fact_nro = @nrofact2", "@nrofact2", nroFact);
             if (filasAfectadas1 == 1 || filasAfectadas2 == 1) return true;
             return false;
         }
-
         /**************CONTROLES**************/
 
         public bool ControlDeUnicidad(String query, IList<SqlParameter> parametros)
@@ -277,7 +298,16 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@cuit", cuit));
             return ControlDeUnicidad(query, parametros);
         }
+        public bool pasoControlDeRegistroFactura(Decimal nrofact)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nrofact", nrofact));
+            return ControlDeUnicidad(query, parametros);
+        }
 
+
+<<<<<<< HEAD
         private bool pasoControlSucursal(Decimal sucu_id)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Sucursal WHERE sucu_id = @id";
@@ -285,6 +315,43 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@id", sucu_id));
             return ControlDeUnicidad(query, parametros);
         }
+=======
+        private bool pasoControlDeFacturaParaFactura(String empresa, String nroFactura)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_empresa = (select empr_cuit from AMBDA.Empresa where empr_nombre = @empresa) and fact_nro = @nroFactura";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@empresa", empresa));
+            parametros.Add(new SqlParameter("@nroFactura", Convert.ToDecimal(nroFactura)));
+            return ControlDeUnicidad(query, parametros);
+        }
+
+        private bool pasoControlDeCliente(String cliente)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Cliente WHERE clie_dni = @cliente";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(cliente)));
+			return ControlDeUnicidad(query, parametros);
+        }
+		
+        public bool pasoControlDeRendidaFactura(Decimal nrofact)
+        {
+
+            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact and fact_rendicion is null";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nrofact", nrofact));
+            return ControlDeUnicidad(query, parametros);
+        }
+
+        public Decimal pasoControlDeFacturaDeEmpresa(Decimal nroFactura, Decimal empresa)
+        {
+            String query = "Select count(*) From AMBDA.Factura Where fact_nro = @nroFactura And fact_empresa = @empresa";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nroFactura", nroFactura));
+            parametros.Add(new SqlParameter("@empresa", empresa));
+            return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
+        }
+        
+>>>>>>> origin
 
         /**********SELECTS VARIOS************/
 
@@ -336,7 +403,7 @@ namespace PagoAgilFrba
         {
             return this.SelectDataTable("c.clie_dni Dni, c.clie_nombre Nombre, c.clie_apellido Apellido, c.clie_fecha_nacimiento FechaDeNacimiento, c.clie_mail Mail, c.clie_telefono Telefono, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
                 , "AMBDA.Cliente c, AMBDA.Direccion d"
-                , "c.clie_direc_id = d.direc_id AND c.clie_habilitado = 1" + filtro);
+                , "c.clie_direc_id = d.direc_id " + filtro);
         }
 
         public DataTable SelectClientesParaFiltro()
@@ -375,21 +442,38 @@ namespace PagoAgilFrba
             return this.SelectEmpresasParaFiltroConFiltro("");
         }
 
+<<<<<<< HEAD
         public DataTable SelectSucursalParaFiltro()
         {
             return this.SelectSucursalParaFiltroConFiltro("");
         }
 
         public void PagarFactura(Decimal idPago, Decimal idFactura, Decimal importe)
+=======
+        public void PagarFactura(Decimal cliente, Double importe, Decimal sucursal, Decimal medio, Decimal idFactura)
+>>>>>>> origin
         {
-            String query = "AMBDA.agregar_pagar_factura";
+            String query = "AMBDA.pagar_factura";
             parametros.Clear();
-            parametros.Add(new SqlParameter("@pago", idPago));
+            parametros.Add(new SqlParameter("@usuario", UsuarioSesion.usuario.id));
             parametros.Add(new SqlParameter("@factura", idFactura));
+            parametros.Add(new SqlParameter("@fecha", System.DateTime.Today));
+            parametros.Add(new SqlParameter("@cliente", cliente));
             parametros.Add(new SqlParameter("@importe", importe));
+            parametros.Add(new SqlParameter("@sucursal", sucursal));
+            parametros.Add(new SqlParameter("@medio", medio));
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
             command.ExecuteNonQuery();
         }
-   }
+
+        public void PagarFacturas(List<Decimal> facturas, Decimal cliente, Double importe, Decimal sucursal, Decimal medio)
+        {
+            foreach (Decimal factura in facturas)
+            {
+                PagarFactura(cliente, importe, sucursal, medio, factura);
+            }
+        }
+
+    }
 }

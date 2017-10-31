@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PagoAgilFrba.Excepciones;
 
 namespace PagoAgilFrba.Devoluciones
 {
-    public partial class IngresarFactura : Form
+    public partial class IngresarFactura : Form   
     {
+        private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
+
         public IngresarFactura()
         {
             InitializeComponent();
@@ -50,6 +53,31 @@ namespace PagoAgilFrba.Devoluciones
         private void button1_Click(object sender, EventArgs e)
         {
             // agregar chequeo de facturas y usuarios
+            // factura no fue rendida
+            // es cobrador
+
+            Decimal nroFact = Convert.ToDecimal(textBox1.Text);
+
+             try
+            {
+                if (comunicador.pasoControlDeRegistroFactura(nroFact))
+                    throw new FacturaNoExisteException();
+                if (comunicador.pasoControlDeRendidaFactura(nroFact))
+                    throw new FacturaYaFueRendida();
+            }
+
+             catch (FacturaNoExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+             catch (FacturaYaFueRendida exception)
+             {
+                 MessageBox.Show(exception.Message);
+                 return;
+             }
+            
+
             this.Hide();
             new Devolucion().ShowDialog();
             this.Close();

@@ -47,6 +47,9 @@ namespace PagoAgilFrba.AbmCliente
             // Si no se cumplen estas 2 condiciones no se tiene que crear
             try
             {
+                if (dni == "")
+                    throw new CampoVacioException("Dni");
+
                 if (!comunicador.pasoControlDeRegistroDni(Convert.ToString(dni)))
                     throw new ClienteYaExisteException();
 
@@ -55,9 +58,14 @@ namespace PagoAgilFrba.AbmCliente
                     throw new MailYaExisteException();
             }
 
-            catch (ClienteYaExisteException exception)
+            catch (CampoVacioException exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Falta completar campo: " + exception.Message);
+                return;
+            }
+            catch (ClienteYaExisteException)
+            {
+                MessageBox.Show("El Cliente con ese Dni ya ha sido ingresado");
                 return;
             }
             catch (MailYaExisteException exception)
@@ -107,8 +115,8 @@ namespace PagoAgilFrba.AbmCliente
                 cliente.setTelefono(telefono);
                 cliente.setMail(mail);
                 cliente.setDireccionID(idDireccion);
-                comunicador.CrearCliente(cliente);
-                MessageBox.Show("Se agrego el cliente correctamente");
+                if(comunicador.CrearCliente(cliente) > 0)
+                    MessageBox.Show("Se agrego el cliente correctamente");
             }
             catch (CampoVacioException exception)
             {
@@ -161,5 +169,7 @@ namespace PagoAgilFrba.AbmCliente
             textBox_FechaDeNacimiento.Text = e.Start.ToShortDateString();
             monthCalendar_FechaDeNacimiento.Visible = false;
         }
+
+        
     }
 }

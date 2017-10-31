@@ -16,12 +16,12 @@ namespace PagoAgilFrba.AbmCliente
     {
         private Decimal idDireccion;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
-        private Decimal dniCliente;
+        private Decimal idCliente;
 
-        public ModificarCliente(String idCliente)
+        public ModificarCliente(Decimal idCliente)
         {
             InitializeComponent();
-            this.dniCliente = Convert.ToDecimal(idCliente);
+            this.idCliente = idCliente;
         }
 
         private void ModificarCliente_Load(object sender, EventArgs e)
@@ -31,16 +31,17 @@ namespace PagoAgilFrba.AbmCliente
 
         private void CargarDatos()
         {
-            Cliente cliente = comunicador.ObtenerCliente(dniCliente);
+            Cliente cliente = comunicador.ObtenerCliente(idCliente);
 
             this.idDireccion = cliente.getDireccionID();
+            textBox_Dni.Text = Convert.ToString(cliente.getDni());
             textBox_Nombre.Text = cliente.getNombre();
             textBox_Apellido.Text = cliente.getApellido();
             textBox_FechaDeNacimiento.Text = Convert.ToString(cliente.getFechaDeNac());
             textBox_Mail.Text = cliente.getMail();
             textBox_Telefono.Text = cliente.getTelefono();
             CargarDireccion(idDireccion);
-            checkBox_Habilitado.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("clie_habilitado", "Cliente", "clie_dni", dniCliente));
+            checkBox_Habilitado.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("clie_habilitado", "Cliente", "clie_id", idCliente));
         }
 
         private void CargarDireccion(Decimal idDireccion)
@@ -56,6 +57,7 @@ namespace PagoAgilFrba.AbmCliente
         private void button_Guardar_Click(object sender, EventArgs e)
         {
             // Guarda en variables todos los campos de entrada
+            String dni = textBox_Dni.Text;
             String nombre = textBox_Nombre.Text;
             String apellido = textBox_Apellido.Text;
             DateTime fechaDeNacimiento;
@@ -102,10 +104,10 @@ namespace PagoAgilFrba.AbmCliente
                 cliente.setFechaDeNac(fechaDeNacimiento);
                 cliente.setMail(mail);
                 cliente.setTelefono(telefono);
-                cliente.setDni(dniCliente);
+                cliente.setDni(Convert.ToDecimal(dni));
                 cliente.setDireccionID(idDireccion);
                 cliente.setHabilitado(habilitado);
-                pudoModificar = comunicador.Modificar(dniCliente, cliente);
+                pudoModificar = comunicador.Modificar(idCliente, cliente);
                 if (pudoModificar) MessageBox.Show("El cliente se modifico correctamente");
             }
             catch (CampoVacioException exception)

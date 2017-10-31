@@ -88,15 +88,17 @@ namespace PagoAgilFrba.AbmCliente
             // Controla que la celda que se clickeo fue la de modificar
             if (e.ColumnIndex == dataGridView_Cliente.Columns["Modificar"].Index && e.RowIndex >= 0)
             {
-                String idClienteAModificar = dataGridView_Cliente.Rows[e.RowIndex].Cells["Dni"].Value.ToString();
+                String dniClienteAModificar = dataGridView_Cliente.Rows[e.RowIndex].Cells["Dni"].Value.ToString();
+                Decimal idClienteAModificar = comunicador.SelectFromWhere("clie_id", "Cliente", "clie_dni", Convert.ToDecimal(dniClienteAModificar));
                 new ModificarCliente(idClienteAModificar).ShowDialog();
                 CargarClientes();
                 return;
             }
             if (e.ColumnIndex == dataGridView_Cliente.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
-                String idClienteAEliminar = dataGridView_Cliente.Rows[e.RowIndex].Cells["Dni"].Value.ToString();
-                Boolean resultado = comunicador.EliminarCliente(Convert.ToDecimal(idClienteAEliminar));
+                String dniClienteAEliminar = dataGridView_Cliente.Rows[e.RowIndex].Cells["Dni"].Value.ToString();
+                Decimal idClienteAEliminar = comunicador.SelectFromWhere("clie_id", "Cliente", "clie_dni", Convert.ToDecimal(dniClienteAEliminar));
+                Boolean resultado = comunicador.EliminarCliente(idClienteAEliminar);
                 if (resultado) MessageBox.Show("Se elimino correctamente");
                 CargarClientes();
                 return;

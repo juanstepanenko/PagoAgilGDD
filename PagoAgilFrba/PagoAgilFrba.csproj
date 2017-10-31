@@ -188,11 +188,17 @@
     <Compile Include="Excepciones\CampoVacioException.cs" />
     <Compile Include="Excepciones\CantidadNulaException.cs" />
     <Compile Include="Excepciones\CodPosYaExisteException.cs" />
+    <Compile Include="Excepciones\ClienteNoExisteException.cs" />
+    <Compile Include="Excepciones\FacturaYaExisteException.cs" />
+    <Compile Include="Excepciones\FacturaYaFueRendida.cs" />
+    <Compile Include="Excepciones\FacturaNoExisteException.cs" />
     <Compile Include="Excepciones\CuitYaExisteException.cs" />
     <Compile Include="Excepciones\ClienteYaExisteException.cs" />
+    <Compile Include="Excepciones\FechaPasadaException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
     <Compile Include="Excepciones\MailYaExisteException.cs" />
     <Compile Include="Excepciones\SucursalYaExisteException.cs" />
+    <Compile Include="Excepciones\SucursalInvalidaException.cs" />
     <Compile Include="Login\ElegirRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,7 @@
     <Compile Include="ListadoEstadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Factura.cs" />
     <Compile Include="Objetos\Item.cs" />
     <Compile Include="Objetos\Empresa.cs" />
     <Compile Include="Objetos\Cliente.cs" />
@@ -233,12 +240,6 @@
     <Compile Include="Objetos\Sucursal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistroPago\AgregarFactura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegistroPago\AgregarFactura.Designer.cs">
-      <DependentUpon>AgregarFactura.cs</DependentUpon>
-    </Compile>
     <Compile Include="RegistroPago\RegistroPago.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,9 +322,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegistroPago\AgregarFactura.resx">
-      <DependentUpon>AgregarFactura.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="RegistroPago\RegistroPago.resx">
       <DependentUpon>RegistroPago.cs</DependentUpon>
     </EmbeddedResource>

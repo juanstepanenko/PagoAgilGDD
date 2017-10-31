@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using PagoAgilFrba.Excepciones;
 
 namespace PagoAgilFrba.Objetos
 {
@@ -12,7 +13,7 @@ namespace PagoAgilFrba.Objetos
         private Decimal id;
         private DateTime fecha_cobro;
         private Decimal cliente;
-        private Decimal importe;
+        private Double importe;
         private Decimal usuario;
         private Decimal sucursal;
         private Decimal medio_pago;
@@ -30,6 +31,9 @@ namespace PagoAgilFrba.Objetos
 
         public void setFechaCobro(DateTime fechaDeCobro)
         {
+            if (fechaDeCobro.Equals(DateTime.MinValue))
+                throw new CampoVacioException("Fecha De Cobro"); 
+
             this.fecha_cobro = fechaDeCobro;
         }
 
@@ -40,6 +44,9 @@ namespace PagoAgilFrba.Objetos
 
         public void setCliente(Decimal cliente)
         {
+            if (cliente.Equals(null))
+                throw new CampoVacioException("Cliente");
+
             this.cliente = cliente;
         }
 
@@ -48,12 +55,12 @@ namespace PagoAgilFrba.Objetos
             return this.cliente;
         }
 
-        public void setImporte(Decimal importe)
+        public void setImporte(Double importe)
         {
             this.importe = importe;
         }
 
-        public Decimal getImporte()
+        public Double getImporte()
         {
             return this.importe;
         }
@@ -109,7 +116,7 @@ namespace PagoAgilFrba.Objetos
             //this.id = Convert.ToDecimal(reader["regi_id"]);
             this.fecha_cobro = Convert.ToDateTime(reader["regi_fecha_cobro"]);
             this.cliente = Convert.ToDecimal(reader["regi_cliente"]);
-            this.importe = Convert.ToDecimal(reader["regi_importe"]);
+            this.importe = Convert.ToDouble(reader["regi_importe"]);
             this.usuario = Convert.ToDecimal(reader["regi_usuario"]);
             this.sucursal = Convert.ToDecimal(reader["regi_sucursal"]);
             this.medio_pago = Convert.ToDecimal(reader["regi_medio_pago"]);
@@ -121,8 +128,8 @@ namespace PagoAgilFrba.Objetos
             parametros.Clear();
             //parametros.Add(new SqlParameter("@id", this.id));
             parametros.Add(new SqlParameter("@fecha_cobro", this.fecha_cobro));
+            parametros.Add(new SqlParameter("@importe", this.importe));
             parametros.Add(new SqlParameter("@cliente", this.cliente));
-            //parametros.Add(new SqlParameter("@importe", this.importe));
             parametros.Add(new SqlParameter("@usuario", this.usuario));
             parametros.Add(new SqlParameter("@sucursal", this.sucursal));
             parametros.Add(new SqlParameter("@medio_pago", this.medio_pago));

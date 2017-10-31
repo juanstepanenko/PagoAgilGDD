@@ -10,6 +10,7 @@ namespace PagoAgilFrba.Objetos
 {
     class Cliente : Objeto, Comunicable
     {
+        private Decimal id;
         private Decimal dni;
         private String nombre;
         private String apellido;
@@ -21,6 +22,16 @@ namespace PagoAgilFrba.Objetos
 
         /************* Getters y Setters **************/
 
+        public Decimal getId()
+        {
+            return id;
+        }
+
+        public void setId(Decimal id)
+        {
+            this.id = id;
+        }
+        //-----
         public Decimal getDni()
         {
             return dni;
@@ -128,16 +139,16 @@ namespace PagoAgilFrba.Objetos
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Cliente SET clie_nombre = @nombre, clie_apellido = @apellido, clie_direc_id = @direccion_id, clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_dni = @dni";
+            return "UPDATE AMBDA.Cliente SET clie_dni = @dni, clie_nombre = @nombre, clie_apellido = @apellido, clie_direc_id = @direccion_id, clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_id = @id";
         }
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.Cliente WHERE clie_dni = @dni";
+            return "SELECT * FROM AMBDA.Cliente WHERE clie_id = @id";
         }
 
         public void CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
-        {
+        { 
             this.dni = Convert.ToDecimal(reader["clie_dni"]); 
             this.nombre = Convert.ToString(reader["clie_nombre"]);
             this.apellido = Convert.ToString(reader["clie_apellido"]);

@@ -33,9 +33,9 @@
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.checkBox_Habilitado = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.monthCalendar_FechaDeNacimiento = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Telefono = new System.Windows.Forms.TextBox();
-            this.monthCalendar_FechaDeNacimiento = new System.Windows.Forms.MonthCalendar();
             this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox_Mail = new System.Windows.Forms.TextBox();
@@ -43,7 +43,7 @@
             this.button_FechaDeNacimiento = new System.Windows.Forms.Button();
             this.textBox_FechaDeNacimiento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox_NumeroDeDoc = new System.Windows.Forms.TextBox();
+            this.textBox_Dni = new System.Windows.Forms.TextBox();
             this.textBox_Apellido = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_Nombre = new System.Windows.Forms.TextBox();
@@ -116,7 +116,7 @@
             this.groupBox1.Controls.Add(this.button_FechaDeNacimiento);
             this.groupBox1.Controls.Add(this.textBox_FechaDeNacimiento);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox_NumeroDeDoc);
+            this.groupBox1.Controls.Add(this.textBox_Dni);
             this.groupBox1.Controls.Add(this.textBox_Apellido);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox_Nombre);
@@ -127,6 +127,14 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos personales";
+            // 
+            // monthCalendar_FechaDeNacimiento
+            // 
+            this.monthCalendar_FechaDeNacimiento.Location = new System.Drawing.Point(176, 19);
+            this.monthCalendar_FechaDeNacimiento.Name = "monthCalendar_FechaDeNacimiento";
+            this.monthCalendar_FechaDeNacimiento.TabIndex = 13;
+            this.monthCalendar_FechaDeNacimiento.Visible = false;
+            this.monthCalendar_FechaDeNacimiento.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_FechaDeNacimiento_DateSelected);
             // 
             // label1
             // 
@@ -143,14 +151,6 @@
             this.textBox_Telefono.Name = "textBox_Telefono";
             this.textBox_Telefono.Size = new System.Drawing.Size(250, 20);
             this.textBox_Telefono.TabIndex = 14;
-            // 
-            // monthCalendar_FechaDeNacimiento
-            // 
-            this.monthCalendar_FechaDeNacimiento.Location = new System.Drawing.Point(176, 19);
-            this.monthCalendar_FechaDeNacimiento.Name = "monthCalendar_FechaDeNacimiento";
-            this.monthCalendar_FechaDeNacimiento.TabIndex = 13;
-            this.monthCalendar_FechaDeNacimiento.Visible = false;
-            this.monthCalendar_FechaDeNacimiento.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_FechaDeNacimiento_DateSelected);
             // 
             // label11
             // 
@@ -210,12 +210,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Dni";
             // 
-            // textBox_NumeroDeDoc
+            // textBox_Dni
             // 
-            this.textBox_NumeroDeDoc.Location = new System.Drawing.Point(112, 74);
-            this.textBox_NumeroDeDoc.Name = "textBox_NumeroDeDoc";
-            this.textBox_NumeroDeDoc.Size = new System.Drawing.Size(250, 20);
-            this.textBox_NumeroDeDoc.TabIndex = 4;
+            this.textBox_Dni.Location = new System.Drawing.Point(112, 74);
+            this.textBox_Dni.Name = "textBox_Dni";
+            this.textBox_Dni.Size = new System.Drawing.Size(250, 20);
+            this.textBox_Dni.TabIndex = 4;
             // 
             // textBox_Apellido
             // 
@@ -396,7 +396,7 @@
         private System.Windows.Forms.Button button_FechaDeNacimiento;
         private System.Windows.Forms.TextBox textBox_FechaDeNacimiento;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_NumeroDeDoc;
+        private System.Windows.Forms.TextBox textBox_Dni;
         private System.Windows.Forms.TextBox textBox_Apellido;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_Nombre;
