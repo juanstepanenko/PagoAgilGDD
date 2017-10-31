@@ -39,14 +39,17 @@ namespace PagoAgilFrba
             return (Decimal)parametroOutput.Value;
         }
 
-        public void CrearCliente(Cliente cliente)
+        public Decimal CrearCliente(Cliente cliente)
         {
+            /*
             query = cliente.GetQueryCrear();
             parametros.Clear();
             parametros = cliente.GetParametros();
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
             command.ExecuteNonQuery();
+             * */
+            return this.Crear(cliente);
         }
 
         public Decimal CrearDireccion(Direccion direccion)
@@ -105,7 +108,7 @@ namespace PagoAgilFrba
             return objeto;
         }
 
-        public Cliente ObtenerCliente(Decimal dniCliente)
+        public Cliente ObtenerCliente(Decimal idCliente)
         {
             Cliente objeto = new Cliente();
             Type clase = objeto.GetType();
@@ -113,7 +116,7 @@ namespace PagoAgilFrba
             Cliente cliente = (Cliente)Activator.CreateInstance(clase);
             query = cliente.GetQueryObtener();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@dni", dniCliente));
+            parametros.Add(new SqlParameter("@id", idCliente));
             SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
             if (reader.Read())
             {
@@ -194,14 +197,14 @@ namespace PagoAgilFrba
         }
         public Boolean EliminarDireccion(Decimal id)
         {
-            if (eliminarGeneralId("DELETE AMBDA.Direccion WHERE direc_id = (SELECT clie_direc_id FROM AMBDA.Cliente WHERE clie_dni = @dni)", "@dni", id) == 1)
+            if (eliminarGeneralId("DELETE AMBDA.Direccion WHERE direc_id = (SELECT clie_direc_id FROM AMBDA.Cliente WHERE clie_id = @id)", "@", id) == 1)
                 return true;
             return false;
         }
 
         public Boolean EliminarCliente(Decimal id)
         {
-            if (eliminarGeneralId("UPDATE AMBDA.Cliente SET clie_habilitado = 0 WHERE clie_dni = @dni", "@dni", id) == 1)
+            if (eliminarGeneralId("UPDATE AMBDA.Cliente SET clie_habilitado = 0 WHERE clie_id = @id", "@id", id) == 1)
                 return true;
             return false;
         }
@@ -350,7 +353,7 @@ namespace PagoAgilFrba
         {
             return this.SelectDataTable("c.clie_dni Dni, c.clie_nombre Nombre, c.clie_apellido Apellido, c.clie_fecha_nacimiento FechaDeNacimiento, c.clie_mail Mail, c.clie_telefono Telefono, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
                 , "AMBDA.Cliente c, AMBDA.Direccion d"
-                , "c.clie_direc_id = d.direc_id AND c.clie_habilitado = 1" + filtro);
+                , "c.clie_direc_id = d.direc_id " + filtro);
         }
 
         public DataTable SelectClientesParaFiltro()

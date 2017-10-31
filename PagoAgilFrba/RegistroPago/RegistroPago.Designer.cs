@@ -63,7 +63,6 @@ namespace PagoAgilFrba.RegistroPago
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Factura)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -291,7 +290,6 @@ namespace PagoAgilFrba.RegistroPago
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.monthCalendar_FechaDeVencimiento);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.button_FechaDeVencimiento);
@@ -378,15 +376,6 @@ namespace PagoAgilFrba.RegistroPago
             this.label12.TabIndex = 0;
             this.label12.Text = "29/10/2017";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(162, 196);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(200, 13);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "* Debe agregar la factura antes de pagar";
-            // 
             // RegistroPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,6 +434,5 @@ namespace PagoAgilFrba.RegistroPago
         private Label label10;
         private Label label11;
         private Label label12;
-        private Label label13;
     }
 }

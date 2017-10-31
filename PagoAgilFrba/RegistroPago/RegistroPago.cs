@@ -174,14 +174,14 @@ namespace PagoAgilFrba.RegistroPago
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            String cliente = comboBox_Cliente.Text;
+            String cliente_elegido = comboBox_Cliente.Text;
             String medi_pago_elegido = comboBox_MedioPago.Text;
             String sucursal_elegida = textBox_Sucursal.Text;
 
             // Crear pago
             try
             {
-                if (cliente == "")
+                if (cliente_elegido == "")
                     throw new CampoVacioException("Cliente");
                 if (medi_pago_elegido == "")
                     throw new CampoVacioException("Medio De Pago");
@@ -189,20 +189,21 @@ namespace PagoAgilFrba.RegistroPago
                     throw new CampoVacioException("Sucursal");
                 ValidarSucursal(sucursal_elegida);
 
+                Decimal cliente = comunicador.SelectFromWhere("clie_id", "Cliente", "clie_dni", Convert.ToDecimal(cliente_elegido));
                 Decimal medio_pago = comunicador.SelectFromWhere("medi_id", "MedioDePago", "medi_descripcion", medi_pago_elegido);
                 Decimal sucursal = comunicador.SelectFromWhere("sucu_id", "Sucursal", "sucu_nombre", sucursal_elegida);
 
                 AgregarFactura();
                 Pago pago = new Pago();
                 pago.setFechaCobro(DateTime.Today);
-                pago.setCliente(Convert.ToDecimal(cliente));
+                pago.setCliente(cliente);
                 pago.setUsuario(UsuarioSesion.usuario.id);
                 pago.setSucursal(sucursal);
                 pago.setMedioPago(medio_pago);
                 pago.setImporte(importeTotal);
                 comunicador.CrearPago(pago);
 
-                comunicador.PagarFacturas(facturas, Convert.ToDecimal(cliente), importeTotal, sucursal, medio_pago); 
+                comunicador.PagarFacturas(facturas, cliente, importeTotal, sucursal, medio_pago); 
                 MessageBox.Show("Se registro el pago correctamente con un total de $" + Convert.ToString(importeTotal));
             }
             catch (CampoVacioException exception)
@@ -210,9 +211,9 @@ namespace PagoAgilFrba.RegistroPago
                 MessageBox.Show("Falta completar: " + exception.Message);
                 return;
             }
-            catch (SucursalInvalidaException exception)
+            catch (SucursalInvalidaException)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("La sucursal no es propia de ese usuario cobrador");
                 return;
             }
             catch (FormatoInvalidoException exception)
