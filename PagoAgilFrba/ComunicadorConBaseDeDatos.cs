@@ -243,8 +243,8 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-        public bool pasoControlDeRendidaFactura(Decimal nrofact)
-        {
+        public bool pasoControlDeRendidaFactura(Decimal nrofact){
+        
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact and fact_rendicion is null";
             parametros.Clear();
             parametros.Add(new SqlParameter("@nrofact", nrofact));
