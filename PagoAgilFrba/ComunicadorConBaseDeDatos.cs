@@ -212,7 +212,6 @@ namespace PagoAgilFrba
             return false;
         }
 
-<<<<<<< HEAD
         public Boolean ModificarSucursal(Decimal id, Comunicable objeto)
         {
             query = objeto.GetQueryModificar();
@@ -224,9 +223,6 @@ namespace PagoAgilFrba
             return false;
         }
         
-=======
-
->>>>>>> origin
         /************ELIMINAR*************/
         //retorna la cantidad de filas afectadas
         public int eliminarGeneralId(String query, String var, Decimal id)

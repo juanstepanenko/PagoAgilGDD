@@ -199,6 +199,12 @@
     <Compile Include="Excepciones\MailYaExisteException.cs" />
     <Compile Include="Excepciones\SucursalYaExisteException.cs" />
     <Compile Include="Excepciones\SucursalInvalidaException.cs" />
+    <Compile Include="ListadoEstadistico\Estadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoEstadistico\Estadisticas.Designer.cs">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\ElegirRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,12 +228,6 @@
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ListadoEstadistico\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListadoEstadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\Factura.cs" />
     <Compile Include="Objetos\Item.cs" />
