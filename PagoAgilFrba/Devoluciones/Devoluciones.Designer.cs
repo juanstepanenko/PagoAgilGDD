@@ -1,6 +1,6 @@
 ﻿namespace PagoAgilFrba.Devoluciones
 {
-    partial class Devolucion
+    partial class Devoluciones
     {
         /// <summary>
         /// Required designer variable.
@@ -61,6 +61,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Devolver";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Devolucion
             // 

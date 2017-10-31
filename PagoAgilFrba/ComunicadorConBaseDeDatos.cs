@@ -162,6 +162,42 @@ namespace PagoAgilFrba
             return empresa;
         }
 
+        public Factura ObtenerFactura(Decimal idFactura)
+        {
+            Factura objeto = new Factura();
+            Type clase = objeto.GetType();
+
+            Factura factura = (Factura)Activator.CreateInstance(clase);
+            query = factura.GetQueryObtener();
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@idFactura", idFactura));
+            SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
+            if (reader.Read())
+            {
+                factura.CargarInformacion(reader);
+                return factura;
+            }
+            return factura;
+        }
+        public Pago ObtenerPagoConFactura(Decimal idFactura)
+        {
+            Factura objeto = new Factura();
+            Type clase = objeto.GetType();
+
+            Pago pago= (Pago)Activator.CreateInstance(clase);
+            query = pago.GetQueryObtenerConFactura();
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@idFactura", idFactura));
+            SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
+            if (reader.Read())
+            {
+                pago.CargarInformacion(reader);
+                return pago;
+            }
+            return pago;
+        }
+        
+
         /************MODIFICAR***************/
 
         public Boolean Modificar(Decimal id, Comunicable objeto)
@@ -181,6 +217,17 @@ namespace PagoAgilFrba
             parametros.Clear();
             parametros = objeto.GetParametros();
             // parametros.Add(new SqlParameter("@cuit", cuit));
+            int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
+            if (filasAfectadas == 1) return true;
+            return false;
+        }
+
+        public Boolean DevolverPago(Decimal pago_id, Pago objeto)
+        {
+            query = "UPDATE AMBDA.RegistroPago SET regi_devuelto = '1' WHERE regi_id = @pago_id";
+            parametros.Clear();
+            parametros = objeto.GetParametros();
+            parametros.Add(new SqlParameter("@pago_id", pago_id));
             int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
             if (filasAfectadas == 1) return true;
             return false;

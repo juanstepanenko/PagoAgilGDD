@@ -77,7 +77,7 @@ namespace PagoAgilFrba.Devoluciones
             
 
             this.Hide();
-            new Devolucion().ShowDialog();
+            new Devoluciones(nroFact).ShowDialog();
             this.Close();
         }
     }
