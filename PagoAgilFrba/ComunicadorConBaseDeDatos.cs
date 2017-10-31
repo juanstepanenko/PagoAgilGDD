@@ -83,7 +83,7 @@ namespace PagoAgilFrba
         {
             if (pasoControlDeCliente(factura.getDniCliente()))
                 throw new ClienteNoExisteException();
-            if(!pasoControlDeFactura(factura.getEmpresa(), factura.getNroFactura()))
+            if(!pasoControlDeFacturaParaFactura(factura.getEmpresa(), factura.getNroFactura()))
                 throw new FacturaYaExisteException();
             return this.Crear(factura);
         }
@@ -247,7 +247,7 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-        private bool pasoControlDeFactura(String empresa, String nroFactura)
+        private bool pasoControlDeFacturaParaFactura(String empresa, String nroFactura)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_empresa = (select empr_cuit from AMBDA.Empresa where empr_nombre = @empresa) and fact_nro = @nroFactura";
             parametros.Clear();
