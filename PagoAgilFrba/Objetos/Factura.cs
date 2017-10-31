@@ -115,6 +115,7 @@ namespace PagoAgilFrba.Objetos
         
         /********** Interfaz Comunicable ***********/
 
+        //la use
         public string GetQueryCrear()
         {
             return "AMBDA.crear_factura";
@@ -143,6 +144,7 @@ namespace PagoAgilFrba.Objetos
             this.idFactura = Convert.ToDecimal(reader["fact_id"]);
         }
 
+        //la use
         public IList<System.Data.SqlClient.SqlParameter> GetParametros()  
         {
             IList<SqlParameter> parametros = new List<SqlParameter>();
@@ -153,7 +155,7 @@ namespace PagoAgilFrba.Objetos
             parametros.Add(new SqlParameter("@total", Convert.ToDouble(this.total)));
             parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(this.dniCliente)));
             parametros.Add(new SqlParameter("@empresa", this.empresa));
-            parametros.Add(new SqlParameter("@idFactura", this.idFactura));
+            //parametros.Add(new SqlParameter("@idFactura", this.idFactura));
             return parametros;
         }
     }

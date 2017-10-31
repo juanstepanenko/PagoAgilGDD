@@ -29,6 +29,7 @@ namespace PagoAgilFrba
             parametros.Clear();
             parametros = objeto.GetParametros(); //agarro todos los campos del objeto
             //--- esto de parametroOutput se hace solo si tiene un id no generado, por ejemplo en cliente no (es el dni) CREO
+            //--soy ro, creo que te lo da si es autogenerado
             parametroOutput = new SqlParameter("@id", SqlDbType.Decimal);
             parametroOutput.Direction = ParameterDirection.Output;
             parametros.Add(parametroOutput);
@@ -78,6 +79,19 @@ namespace PagoAgilFrba
 
         }
 
+        public Decimal CrearFactura(Factura factura)
+        {
+            if (pasoControlDeCliente(factura.getDniCliente()))
+                throw new ClienteNoExisteException();
+            if(!pasoControlDeFactura(factura.getEmpresa(), factura.getNroFactura()))
+                throw new FacturaYaExisteException();
+            return this.Crear(factura);
+        }
+
+        public Decimal CrearItem(Item item)
+        {
+            return this.Crear(item);
+        }
         /**************OBTENER***************/
 
         public Comunicable Obtener(Decimal id, Type clase)
@@ -198,14 +212,13 @@ namespace PagoAgilFrba
             return false;
         }
 
-        public Boolean EliminarFactura(Decimal id)
+        public Boolean EliminarFactura(Decimal nroFact)
         {
-            int filasAfectadas1 = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_factura = (select fact_id from AMBDA.Factura where fact_nro = @nrofact)", "@nrofact", id);
-            int filasAfectadas2 = eliminarGeneralId("DELETE FROM AMBDA.Factura WHERE fact_nro = @nrofact2", "@nrofact2", id);
+            int filasAfectadas1 = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_factura = (select fact_id from AMBDA.Factura where fact_nro = @nrofact)", "@nrofact", nroFact);
+            int filasAfectadas2 = eliminarGeneralId("DELETE FROM AMBDA.Factura WHERE fact_nro = @nrofact2", "@nrofact2", nroFact);
             if (filasAfectadas1 == 1 || filasAfectadas2 == 1) return true;
             return false;
         }
-
         /**************CONTROLES**************/
 
         private bool ControlDeUnicidad(String query, IList<SqlParameter> parametros)
@@ -234,7 +247,22 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-        
+        private bool pasoControlDeFactura(String empresa, String nroFactura)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_empresa = (select empr_cuit from AMBDA.Empresa where empr_nombre = @empresa) and fact_nro = @nroFactura";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@empresa", empresa));
+            parametros.Add(new SqlParameter("@nroFactura", Convert.ToDecimal(nroFactura)));
+            return ControlDeUnicidad(query, parametros);
+        }
+
+        private bool pasoControlDeCliente(String cliente)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Cliente WHERE clie_dni = @cliente";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(cliente)));
+            return ControlDeUnicidad(query, parametros);
+        }
 
 
         /**********SELECTS VARIOS************/

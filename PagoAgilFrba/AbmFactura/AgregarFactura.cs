@@ -136,6 +136,7 @@ namespace PagoAgilFrba.AbmFactura
 
         private void button_Guardar_Click(object sender, EventArgs e)
         {
+            Decimal idFactura = 0;
             // Guarda en variables todos los campos de entrada
             String dni = textBox_cliente.Text;
             String empresa = comboBoxEmpresas.Text;
@@ -154,8 +155,7 @@ namespace PagoAgilFrba.AbmFactura
                 factura.setFechaAlta(fechaAlta);
                 factura.setFechaVencimiento(fechaVencimiento);
                 factura.setTotal(Convert.ToString(total));
-                //comunicador.CrearFactura(factura);
-                MessageBox.Show("Se agrego la factura correctamente");
+                idFactura = comunicador.CrearFactura(factura);
             }
             catch (CampoVacioException exception)
             {
@@ -172,14 +172,38 @@ namespace PagoAgilFrba.AbmFactura
                 MessageBox.Show("No se puede ingresar una campo igual a 0 en: " + exception.Message);
                 return;
             }
-   
+            catch (FacturaYaExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+            catch (ClienteNoExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+            //guarda los items en las tablas, ya los tiene creados en la lista
+            foreach (Item item in items)
+            {
+                item.setIdFactura(idFactura);
+                item.setRenglonId(comunicador.CrearItem(item));
+            }
+            MessageBox.Show("Se agrego la factura correctamente");
+                        
+            VolverAlMenuPrincipal();
+
         }
 
-        private void button_Volver_Click(object sender, EventArgs e)
+        private void VolverAlMenuPrincipal()
         {
             this.Hide();
             new FacturaForm().ShowDialog();
             this.Close();
+        }
+
+        private void button_Volver_Click(object sender, EventArgs e)
+        {
+            VolverAlMenuPrincipal();
         }
 
     }

@@ -102,7 +102,7 @@ namespace PagoAgilFrba.Objetos
             parametros.Clear();
             parametros.Add(new SqlParameter("@monto", Convert.ToDouble(this.monto)));
             parametros.Add(new SqlParameter("@cantidad", Convert.ToDecimal(this.cantidad)));
-            //parametros.Add(new SqlParameter("@id_factura", this.id_factura));
+            parametros.Add(new SqlParameter("@id_factura", this.id_factura));
             //parametros.Add(new SqlParameter("@id_renglon", this.renglon_id));
             return parametros;
         }

@@ -157,6 +157,9 @@
     <Compile Include="ConexionDB.cs" />
     <Compile Include="Excepciones\CampoVacioException.cs" />
     <Compile Include="Excepciones\CantidadNulaException.cs" />
+    <Compile Include="Excepciones\ClienteNoExisteException.cs" />
+    <Compile Include="Excepciones\FacturaNoExisteException.cs" />
+    <Compile Include="Excepciones\FacturaYaExisteException.cs" />
     <Compile Include="Excepciones\CuitYaExisteException.cs" />
     <Compile Include="Excepciones\ClienteYaExisteException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
