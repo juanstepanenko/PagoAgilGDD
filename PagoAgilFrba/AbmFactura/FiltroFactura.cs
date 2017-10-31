@@ -83,9 +83,9 @@ namespace PagoAgilFrba.AbmFactura
         private String CalcularFiltro()
         {
             String filtro = "";
-            if (textBox_dni.Text != "") filtro += "AND " + "fact_cliente LIKE '" + textBox_dni.Text + "%'";
+            if (textBox_dni.Text != "") filtro += " AND " + "fact_cliente LIKE (select clie_id from AMBDA.Cliente where clie_dni = " + textBox_dni.Text + ")";
             if (this.comboBoxEmpresas.Text != "") filtro += "AND " + "fact_empresa LIKE (select empr_cuit from AMBDA.Empresa where empr_nombre = '" + this.comboBoxEmpresas.Text + "')";
-            if (textBox_nrofact.Text != "") filtro += "AND " + "fact_nro LIKE '" + textBox_nrofact.Text + "%'";
+            if (textBox_nrofact.Text != "") filtro += " AND " + "fact_nro LIKE " + textBox_nrofact.Text;
             return filtro;
         }
 

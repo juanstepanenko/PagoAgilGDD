@@ -52,11 +52,9 @@ namespace PagoAgilFrba.Devoluciones
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // agregar chequeo de facturas y usuarios
-            // factura no fue rendida
-            // es cobrador
+           
 
-            Decimal nroFact = Convert.ToDecimal(textBox1.Text);
+            String nroFact = textBox1.Text;
 
              try
             {
@@ -79,7 +77,7 @@ namespace PagoAgilFrba.Devoluciones
             
 
             this.Hide();
-            new Devolucion().ShowDialog();
+            new Devoluciones(nroFact).ShowDialog();
             this.Close();
         }
     }

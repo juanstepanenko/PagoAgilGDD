@@ -99,6 +99,11 @@ namespace PagoAgilFrba
             return this.Crear(item);
         }
 
+        public Decimal CrearDevolucion(Devolucion devolucion)
+        {
+             return this.Crear(devolucion);
+        }
+
         /**************OBTENER***************/
 
         public Comunicable Obtener(Decimal id, Type clase)
@@ -188,6 +193,42 @@ namespace PagoAgilFrba
              return sucursal;
          }
 
+        public Factura ObtenerFactura(String idFactura)
+        {
+            Factura objeto = new Factura();
+            Type clase = objeto.GetType();
+
+            Factura factura = (Factura)Activator.CreateInstance(clase);
+            query = factura.GetQueryObtener();
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@idFactura", idFactura));
+            SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
+            if (reader.Read())
+            {
+                factura.CargarInformacion(reader);
+                return factura;
+            }
+            return factura;
+        }
+
+         public Factura ObtenerFacturaConNumero(String nroFactura)
+        {
+            Factura objeto = new Factura();
+            Type clase = objeto.GetType();
+
+            Factura factura = (Factura)Activator.CreateInstance(clase);
+            query = factura.GetQueryObtenerConNro();
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nroFactura", nroFactura));
+            SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
+            if (reader.Read())
+            {
+                factura.CargarInformacion(reader);
+                return factura;
+            }
+            return factura;
+        }
+
         /************MODIFICAR***************/
 
         public Boolean Modificar(Decimal id, Comunicable objeto)
@@ -212,6 +253,7 @@ namespace PagoAgilFrba
             return false;
         }
 
+
         public Boolean ModificarSucursal(Decimal id, Comunicable objeto)
         {
             query = objeto.GetQueryModificar();
@@ -222,7 +264,18 @@ namespace PagoAgilFrba
             if (filasAfectadas == 1) return true;
             return false;
         }
-        
+
+        public Boolean DevolverPago(Decimal pago_id, Pago objeto)
+        {
+            query = "UPDATE AMBDA.RegistroPago SET regi_devuelto = '1' WHERE regi_id = @pago_id";
+            parametros.Clear();
+            parametros = objeto.GetParametros();
+            parametros.Add(new SqlParameter("@pago_id", pago_id));
+            int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
+            if (filasAfectadas == 1) return true;
+            return false;
+        }
+
         /************ELIMINAR*************/
         //retorna la cantidad de filas afectadas
         public int eliminarGeneralId(String query, String var, Decimal id)
@@ -302,7 +355,7 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@cuit", cuit));
             return ControlDeUnicidad(query, parametros);
         }
-        public bool pasoControlDeRegistroFactura(Decimal nrofact)
+        public bool pasoControlDeRegistroFactura(String nrofact)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact";
             parametros.Clear();
@@ -329,15 +382,15 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-        private bool pasoControlDeCliente(String cliente)
+        private bool pasoControlDeCliente(String dniCliente)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Cliente WHERE clie_dni = @cliente";
             parametros.Clear();
-            parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(cliente)));
+            parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(dniCliente)));
 			return ControlDeUnicidad(query, parametros);
         }
 		
-        public bool pasoControlDeRendidaFactura(Decimal nrofact)
+        public bool pasoControlDeRendidaFactura(String nrofact)
         {
 
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact and fact_rendicion is null";
@@ -416,9 +469,15 @@ namespace PagoAgilFrba
 
         public DataTable SelectFacturasParaFiltroConFiltro(String filtro)
         {
-            return this.SelectDataTable("fact_nro as 'nro factura', fact_cliente as 'dni cliente', fact_empresa as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
-            , "AMBDA.Factura"
-            , "fact_cobrada <> 1 and fact_rendicion is null " + filtro);
+            parametros.Clear();
+            command = builderDeComandos.Crear("SELECT fact_nro as 'nro factura', (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'dni cliente', (select empr_nombre from AMBDA.Empresa where empr_cuit = fact_empresa) as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
+            + " FROM AMBDA.Factura WHERE fact_cobrada <> 1 and fact_rendicion is null " + filtro, parametros);
+            command.CommandTimeout = 0;
+            DataSet datos = new DataSet();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            adapter.Fill(datos);
+            return datos.Tables[0];
         }
 
         public DataTable SelectFacturasParaFiltro()

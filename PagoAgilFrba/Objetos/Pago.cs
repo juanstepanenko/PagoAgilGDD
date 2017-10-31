@@ -111,6 +111,7 @@ namespace PagoAgilFrba.Objetos
             return "SELECT * FROM AMBDA.RegistroPago WHERE regi_id = @id";
         }
 
+       
         public void CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
         {
             //this.id = Convert.ToDecimal(reader["regi_id"]);

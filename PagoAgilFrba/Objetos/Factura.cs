@@ -133,6 +133,12 @@ namespace PagoAgilFrba.Objetos
             //ojo aca la empresa, tengo el nombre y yo necesito el id TODO
         }
 
+        public string GetQueryObtenerConNro()
+        {
+            return "SELECT * FROM AMBDA.Factura WHERE fact_nro = @nroFactura";
+            
+        }
+
         public void CargarInformacion(SqlDataReader reader) //el reader lee filas de la DB
         {
             this.nroFactura = Convert.ToString(reader["fact_nro"]);
