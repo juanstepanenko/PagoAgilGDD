@@ -184,6 +184,7 @@ namespace PagoAgilFrba
             }
             return factura;
         }
+
          public Factura ObtenerFacturaConNumero(String nroFactura)
         {
             Factura objeto = new Factura();
@@ -329,11 +330,11 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-        private bool pasoControlDeCliente(String cliente)
+        private bool pasoControlDeCliente(String dniCliente)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Cliente WHERE clie_dni = @cliente";
             parametros.Clear();
-            parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(cliente)));
+            parametros.Add(new SqlParameter("@cliente", Convert.ToDecimal(dniCliente)));
 			return ControlDeUnicidad(query, parametros);
         }
 		
@@ -416,9 +417,15 @@ namespace PagoAgilFrba
 
         public DataTable SelectFacturasParaFiltroConFiltro(String filtro)
         {
-            return this.SelectDataTable("fact_nro as 'nro factura', fact_cliente as 'dni cliente', fact_empresa as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
-            , "AMBDA.Factura"
-            , "fact_cobrada <> 1 and fact_rendicion is null " + filtro);
+            parametros.Clear();
+            command = builderDeComandos.Crear("SELECT fact_nro as 'nro factura', (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'dni cliente', (select empr_nombre from AMBDA.Empresa where empr_cuit = fact_empresa) as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
+            + " FROM AMBDA.Factura WHERE fact_cobrada <> 1 and fact_rendicion is null " + filtro, parametros);
+            command.CommandTimeout = 0;
+            DataSet datos = new DataSet();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            adapter.Fill(datos);
+            return datos.Tables[0];
         }
 
         public DataTable SelectFacturasParaFiltro()
