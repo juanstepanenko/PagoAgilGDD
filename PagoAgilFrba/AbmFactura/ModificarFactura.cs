@@ -20,10 +20,10 @@ namespace PagoAgilFrba.AbmFactura
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private SqlCommand command { get; set; }
         private IList<SqlParameter> parametros = new List<SqlParameter>();
-        private IList<Objetos.Item> items = new List<Objetos.Item>();
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
         Double total;
         public Object SelectedItem { get; set; }
+        Decimal idFactura;
 
 
         public ModificarFactura(String nroFactura)
@@ -44,19 +44,17 @@ namespace PagoAgilFrba.AbmFactura
         private void ModificarFactura_Load(object sender, EventArgs e)
         {
             CargarEmpresas();
-            InicializarDataGrind();
+            cargarDataGrind();
             //inicializar el total
-            /*Cliente cliente = comunicador.ObtenerCliente(idCliente);
-
-            this.idDireccion = cliente.getDireccionID();
-            textBox_Dni.Text = Convert.ToString(cliente.getDni());
-            textBox_Nombre.Text = cliente.getNombre();
-            textBox_Apellido.Text = cliente.getApellido();
-            textBox_FechaDeNacimiento.Text = Convert.ToString(cliente.getFechaDeNac());
-            textBox_Mail.Text = cliente.getMail();
-            textBox_Telefono.Text = cliente.getTelefono();
-            CargarDireccion(idDireccion);
-            checkBox_Habilitado.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("clie_habilitado", "Cliente", "clie_id", idCliente));*/
+            Factura factura = comunicador.ObtenerFacturaConNumero(Convert.ToString(nroFactura));
+            idFactura = factura.getIdFactura();
+            textBox_cliente.Text = factura.getDniCliente();
+            comboBoxEmpresas.Text = factura.getEmpresa();
+            textBox_nrofact.Text = factura.getNroFactura();
+            label10.Text = Convert.ToString(factura.getFechaAlta());
+            textBox_venc.Text = Convert.ToString(factura.getFechaVencimiento());
+            textBox_TOTAL.Text = factura.getTotal();
+            total = Convert.ToDouble(factura.getTotal());
         }
 
         private void CargarEmpresas()
@@ -88,13 +86,11 @@ namespace PagoAgilFrba.AbmFactura
 
         }
 
-        //toDo
-        private void InicializarDataGrind()
+        private void cargarDataGrind()
         {
             dataGridView_Item.DataSource = comunicador.SelectItems(Convert.ToString(nroFactura));
             dataGridView_Item.Columns[0].Visible = false;
             CargarColumnaEliminar();
-            
         }
 
         private void CargarColumnaEliminar()
@@ -108,23 +104,22 @@ namespace PagoAgilFrba.AbmFactura
             dataGridView_Item.Columns.Add(botonColumnaEliminar);
         }
 
-        //toDo
         private void dataGridView_Item_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dataGridView_Item.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
+                String idItemAEliminar = dataGridView_Item.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                Double monto = Convert.ToDouble(dataGridView_Item.Rows[e.RowIndex].Cells["Monto Total"].Value.ToString());
                 int indiceItemAEliminar = e.RowIndex;
-                total = total - Convert.ToDouble(this.items[indiceItemAEliminar].getMonto());
-                this.items.Remove(this.items[indiceItemAEliminar]);
-                MessageBox.Show("Se elimino correctamente");
+                Boolean resultado = comunicador.EliminarItem(Convert.ToDecimal(idItemAEliminar));
+                total = total - monto;
                 dataGridView_Item.Rows.RemoveAt(indiceItemAEliminar);
                 textBox_TOTAL.Text = total.ToString();
-
                 return;
             }
+            //saca el item de la base de datos y de la grilla
         }
 
-        //toDo
         private void button_agregar_Click(object sender, EventArgs e)
         {
             Item item = new Item();
@@ -148,11 +143,11 @@ namespace PagoAgilFrba.AbmFactura
                 MessageBox.Show("Falta completar campo: " + exception.Message);
                 return;
             }
-            string[] row = new string[] { item.getCantidad(), item.getMonto() };
-            dataGridView_Item.Rows.Add(row);
-            this.items.Add(item);
-            CargarColumnaEliminar();
             total = total + Convert.ToDouble(item.getMonto());
+            Factura factura = comunicador.ObtenerFacturaConNumero(Convert.ToString(nroFactura));
+            item.setIdFactura(factura.getIdFactura());
+            item.setRenglonId(comunicador.CrearItem(item));
+            cargarDataGrind();
             textBox_TOTAL.Text = total.ToString();
             textBox_monto.Text = "";
             textBox_cantidad.Text = "";
@@ -161,7 +156,6 @@ namespace PagoAgilFrba.AbmFactura
         //toDo
         private void button_Guardar_Click(object sender, EventArgs e)
         {
-            Decimal idFactura = 0;
             // Guarda en variables todos los campos de entrada
             String dni = textBox_cliente.Text;
             String empresa = comboBoxEmpresas.Text;
@@ -171,16 +165,19 @@ namespace PagoAgilFrba.AbmFactura
             DateTime.TryParse(textBox_venc.Text, out fechaVencimiento);
 
             //Crea Factura
-            Factura factura = new Factura();
             try
             {
+                Factura factura = new Factura();
                 factura.setDniCliente(dni);
                 factura.setEmpresa(empresa);
                 factura.setNroFactura(nrofactura);
                 factura.setFechaAlta(fechaAlta);
                 factura.setFechaVencimiento(fechaVencimiento);
                 factura.setTotal(Convert.ToString(total));
-                idFactura = comunicador.CrearFactura(factura);
+                factura.setidFactura(idFactura);
+                Boolean pudoModificar = comunicador.ModificarFactura(idFactura, factura);
+                if (pudoModificar)
+                    MessageBox.Show("El cliente se modifico correctamente");
             }
             catch (CampoVacioException exception)
             {
@@ -207,13 +204,6 @@ namespace PagoAgilFrba.AbmFactura
                 MessageBox.Show(exception.Message);
                 return;
             }
-            //guarda los items en las tablas, ya los tiene creados en la lista
-            foreach (Item item in items)
-            {
-                item.setIdFactura(idFactura);
-                item.setRenglonId(comunicador.CrearItem(item));
-            }
-            MessageBox.Show("Se agrego la factura correctamente");
 
             VolverAlMenuPrincipal();
 

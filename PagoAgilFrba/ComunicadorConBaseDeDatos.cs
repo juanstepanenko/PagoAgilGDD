@@ -218,6 +218,15 @@ namespace PagoAgilFrba
             return false;
         }
 
+        public Boolean ModificarFactura(Decimal id, Factura factura)
+        {
+            if (pasoControlDeCliente(factura.getDniCliente()))
+                throw new ClienteNoExisteException();
+            if (!pasoControlDeFacturaParaFactura(factura.getEmpresa(), factura.getNroFactura()))
+                throw new FacturaYaExisteException();
+            return this.Modificar(id, factura);
+        }
+
         public Boolean ModificarEmpresa(String cuit, Comunicable objeto)
         {
             query = objeto.GetQueryModificar();
@@ -275,6 +284,13 @@ namespace PagoAgilFrba
             int filasAfectadas1 = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_factura = (select fact_id from AMBDA.Factura where fact_nro = @nrofact)", "@nrofact", nroFact);
             int filasAfectadas2 = eliminarGeneralId("DELETE FROM AMBDA.Factura WHERE fact_nro = @nrofact2", "@nrofact2", nroFact);
             if (filasAfectadas1 == 1 || filasAfectadas2 == 1) return true;
+            return false;
+        }
+
+        public Boolean EliminarItem(Decimal id)
+        {
+            int filasAfectadas = eliminarGeneralId("DELETE FROM AMBDA.Renglon WHERE reng_id = @id", "@id", id);
+            if (filasAfectadas == 1) return true;
             return false;
         }
         /**************CONTROLES**************/
