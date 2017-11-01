@@ -15,17 +15,17 @@ namespace PagoAgilFrba.AbmEmpresa
 {
     public partial class ModificarEmpresa : Form
     {
-        private String cuit;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idDireccion;
         private SqlCommand command { get; set; }
         private IList<SqlParameter> parametros = new List<SqlParameter>();
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
+        private Decimal idEmpresa;
 
-        public ModificarEmpresa(String unCuit)
+        public ModificarEmpresa(Decimal idEmpresa)
         {
             InitializeComponent();
-            this.cuit = unCuit;
+            this.idEmpresa = idEmpresa;
         }
 
         private void ModificarEmpresa_Load(object sender, EventArgs e)
@@ -43,22 +43,22 @@ namespace PagoAgilFrba.AbmEmpresa
             DataSet rubros = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter();
             parametros = new List<SqlParameter>();
-            command = builderDeComandos.Crear("SELECT DISTINCT rubr_id FROM AMBDA.Rubro ", parametros);
+            command = builderDeComandos.Crear("SELECT DISTINCT rubr_descripcion FROM AMBDA.Rubro ", parametros);
             adapter.SelectCommand = command;
             adapter.Fill(rubros);
             combo_Rubro.DataSource = rubros.Tables[0].DefaultView;
-            combo_Rubro.ValueMember = "rubr_id";
+            combo_Rubro.ValueMember = "rubr_descripcion";
             combo_Rubro.SelectedIndex = -1;
         }
         private void CargarDatos()
         {
-            Empresa empresa = comunicador.ObtenerEmpresa(cuit);
+            Empresa empresa = comunicador.ObtenerEmpresa(idEmpresa);
 
             this.idDireccion = empresa.GetDireccionID();
             textBox_Nombre.Text = empresa.GetNombre();
             textBox_Cuit.Text = empresa.GetCuit();
             CargarDireccion(idDireccion);
-            checkBox1.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("empr_habilitada", "Empresa", "empr_cuit", cuit));
+            checkBox1.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("empr_habilitada", "Empresa", "empr_id", idEmpresa));
         }
 
         private void CargarDireccion(Decimal idDireccion)
@@ -114,10 +114,10 @@ namespace PagoAgilFrba.AbmEmpresa
                 Empresa empresa = new Empresa();
                 empresa.SetNombre(nombre);
                 empresa.SetCuit(cuit);
-                empresa.SetRubro(rubroElegido);
+                empresa.SetRubro(comunicador.SelectFromWhere("rubr_id", "Rubro", "rubr_descripcion", rubroElegido));
                 empresa.SetDireccionID(idDireccion);
                 empresa.SetHabilitada(habilitada);
-                pudoModificar = comunicador.ModificarEmpresa(cuit, empresa); 
+                pudoModificar = comunicador.ModificarEmpresa(idEmpresa, empresa); 
                 if (pudoModificar) MessageBox.Show("La empresa se modifico correctamente");
             }
             catch (CampoVacioException exception)

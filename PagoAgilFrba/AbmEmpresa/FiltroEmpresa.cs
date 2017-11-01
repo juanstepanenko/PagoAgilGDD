@@ -117,14 +117,16 @@ namespace PagoAgilFrba.AbmEmpresa
             if (e.ColumnIndex == dataGridView_Empresa.Columns["Modificar"].Index && e.RowIndex >= 0)
             {
                 String cuitEmpresaAModificar = dataGridView_Empresa.Rows[e.RowIndex].Cells["Cuit"].Value.ToString();
-                new ModificarEmpresa(cuitEmpresaAModificar).ShowDialog();
+                Decimal idEmpresaAModificar = comunicador.SelectFromWhere("empr_id", "Empresa", "empr_cuit", cuitEmpresaAModificar);
+                new ModificarEmpresa(idEmpresaAModificar).ShowDialog();
                 CargarEmpresas();
                 return;
             }
             if (e.ColumnIndex == dataGridView_Empresa.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
-                String cuitEmpresaAModificar = dataGridView_Empresa.Rows[e.RowIndex].Cells["Cuit"].Value.ToString();
-                Boolean resultado = comunicador.EliminarEmpresa(Convert.ToDecimal(cuitEmpresaAModificar));
+                String cuitEmpresaAEliminar = dataGridView_Empresa.Rows[e.RowIndex].Cells["Cuit"].Value.ToString();
+                Decimal idEmpresaAEliminar = comunicador.SelectFromWhere("empr_id", "Empresa", "empr_cuit", cuitEmpresaAEliminar);
+                Boolean resultado = comunicador.EliminarEmpresa(idEmpresaAEliminar);
                 if (resultado) MessageBox.Show("Se elimino correctamente");
                 CargarEmpresas();
                 return;
