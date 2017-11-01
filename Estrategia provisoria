@@ -1,0 +1,6 @@
+Redactar mejor:
+-No se aceptaran en el sistema dos facturas con el mismo número pero de distintas empresas. por ejemplo fact nro 1 de cablevision y fact nro 1 de telecentro.
+-Ante los dos usuarios con mismo mail se tomó la decisión de...
+-Los pagos efectuados anteriormente al armado del nuevo sistema se tomó como que el usuario fue...
+-Al realizar un pago si en un mismo pago se paga la factura A B y C, las tres tendrán el mismo numero de pago. Si se devuelven y se vuelven a pagar (no hace falta las tres juntas) se le asignará un nuevo numero de pago.
+Por lo que ante un nro de factura para saber el ultimo pago se debera ver en el historial de pagos para esa factura el de la fecha mas reciente y chequear que este cobrado. Cuando se paga el bit de cobrado se pone en 1 y cuando se devuelve en 0.

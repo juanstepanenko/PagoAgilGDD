@@ -41,7 +41,6 @@
             this.dataGridView_Factura = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button_Volver = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Factura)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -176,22 +175,11 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Atención";
             // 
-            // button_Volver
-            // 
-            this.button_Volver.Location = new System.Drawing.Point(502, 387);
-            this.button_Volver.Name = "button_Volver";
-            this.button_Volver.Size = new System.Drawing.Size(100, 30);
-            this.button_Volver.TabIndex = 22;
-            this.button_Volver.Text = "Volver";
-            this.button_Volver.UseVisualStyleBackColor = true;
-            this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
-            // 
             // FiltroFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 428);
-            this.Controls.Add(this.button_Volver);
+            this.ClientSize = new System.Drawing.Size(620, 399);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView_Factura);
             this.Controls.Add(this.button_Cancelar);
@@ -226,6 +214,5 @@
         private System.Windows.Forms.TextBox textBox_dni;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxEmpresas;
-        private System.Windows.Forms.Button button_Volver;
     }
 }

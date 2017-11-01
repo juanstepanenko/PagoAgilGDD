@@ -182,6 +182,11 @@ namespace PagoAgilFrba.AbmFactura
                 MessageBox.Show(exception.Message);
                 return;
             }
+            catch (EmpresaNoExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
             //guarda los items en las tablas, ya los tiene creados en la lista
             foreach (Item item in items)
             {

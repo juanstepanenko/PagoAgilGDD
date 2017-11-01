@@ -44,6 +44,8 @@ namespace PagoAgilFrba.Objetos
 
         public void setEmpresa(String empresa)
         {
+            if (empresa == "")
+                throw new CampoVacioException("empresa");
             this.empresa = empresa;
         }
 
@@ -70,6 +72,8 @@ namespace PagoAgilFrba.Objetos
         {
             if (fechaAlta.Equals(DateTime.MinValue))
                 throw new CampoVacioException("Fecha alta");
+            if (Convert.ToString(fechaAlta) == "")
+                throw new CampoVacioException("Fecha alta");
 
             this.fechaAlta = fechaAlta;
         }
@@ -83,6 +87,8 @@ namespace PagoAgilFrba.Objetos
         {
             if (fechaVencimiento.Equals(DateTime.MinValue))
                 throw new CampoVacioException("Fecha Vencimiento");
+            if (Convert.ToString(fechaVencimiento) == "")
+                throw new CampoVacioException("Fecha vencimiento");
 
             this.fechaVencimiento = fechaVencimiento;
         }
@@ -123,19 +129,19 @@ namespace PagoAgilFrba.Objetos
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Factura SET fact_nro = @nroFactura, fact_fecha = @fechaAlta, fact_total = @total, fact_fecha_venc = @fechaVencimiento, fact_cliente = @cliente, fact_empresa = @empresa WHERE fact_id = @idFactura";
-            //ojo aca la empresa, tengo el nombre y yo necesito el id TODO
+            return "UPDATE AMBDA.Factura SET fact_nro = @nroFactura, fact_fecha = @fechaAlta, fact_total = @total, fact_fecha_venc = @fechaVencimiento, fact_cliente = (select clie_id from AMBDA.Cliente where clie_dni = @cliente), fact_empresa = (select empr_id from AMBDA.Empresa where empr_nombre = @empresa) WHERE fact_id = @id";
+            //ojo aca la empresa, tengo el nombre y yo necesito el cuit TODO
+            //mismo con cliente
         }
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.Factura WHERE fact_id = @idFactura";
-            //ojo aca la empresa, tengo el nombre y yo necesito el id TODO
+            return "SELECT fact_id, fact_nro, fact_fecha, fact_fecha_venc, fact_total, (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'cliente', (select empr_nombre from AMBDA.Empresa where empr_id = fact_empresa) as 'empresa' FROM AMBDA.Factura WHERE fact_id = @id";
         }
 
         public string GetQueryObtenerConNro()
         {
-            return "SELECT * FROM AMBDA.Factura WHERE fact_nro = @nroFactura";
+            return "SELECT fact_id, fact_nro, fact_fecha, fact_fecha_venc, fact_total, (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'cliente', (select empr_nombre from AMBDA.Empresa where empr_id = fact_empresa) as 'empresa' FROM AMBDA.Factura WHERE fact_nro = @nroFactura";
             
         }
 
@@ -145,8 +151,8 @@ namespace PagoAgilFrba.Objetos
             this.fechaAlta = Convert.ToDateTime(reader["fact_fecha"]);
             this.fechaVencimiento = Convert.ToDateTime(reader["fact_fecha_venc"]);
             this.total = Convert.ToString(reader["fact_total"]);
-            this.dniCliente = Convert.ToString(reader["fact_cliente"]);
-            this.empresa = Convert.ToString(reader["fact_empresa"]); // este es el id, no el nombre!!
+            this.dniCliente = Convert.ToString(reader["cliente"]); //que el select pase de clie id a dni
+            this.empresa = Convert.ToString(reader["empresa"]); // que el select pase de cuit a nombre
             this.idFactura = Convert.ToDecimal(reader["fact_id"]);
         }
 

@@ -15,12 +15,10 @@ namespace PagoAgilFrba.AbmCliente
     public partial class AgregarCliente : Form
     {
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
-        private Decimal idDireccion;
-
+        
         public AgregarCliente()
         {
             InitializeComponent();
-            this.idDireccion = 0;
         }
 
         private void AgregarCliente_Load(object sender, EventArgs e)
@@ -74,32 +72,6 @@ namespace PagoAgilFrba.AbmCliente
                 return;
             }
             
-            // Crea una direccion y se guarda su id
-            Direccion direccion = new Direccion();
-            try
-            {
-                direccion.SetCalleNro(calleNro);
-                direccion.SetPiso(piso);
-                direccion.SetDepartamento(departamento);
-                direccion.SetCodigoPostal(codigoPostal);
-                direccion.SetLocalidad(localidad);
-            }
-
-            catch (CampoVacioException exception)
-            {
-                MessageBox.Show("Falta completar campo: " + exception.Message);
-                return;
-            }
-            catch (FormatoInvalidoException exception)
-            {
-                MessageBox.Show("Datos mal ingresados en: " + exception.Message);
-                return;
-            }
-            // Controla que no se haya creado ya la direccion
-            if (this.idDireccion == 0)
-            {
-                this.idDireccion = comunicador.CrearDireccion(direccion);
-            } 
             // Crear cliente
             try
             {
@@ -114,7 +86,8 @@ namespace PagoAgilFrba.AbmCliente
                 cliente.setFechaDeNac(fechaDeNacimiento);
                 cliente.setTelefono(telefono);
                 cliente.setMail(mail);
-                cliente.setDireccionID(idDireccion);
+                cliente.setDireccion(cliente.crearDireccion(calleNro, piso, departamento, localidad));
+                cliente.setCodPostal(Convert.ToDecimal(codigoPostal));
                 if(comunicador.CrearCliente(cliente) > 0)
                     MessageBox.Show("Se agrego el cliente correctamente");
             }

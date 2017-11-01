@@ -14,7 +14,8 @@ namespace PagoAgilFrba.Objetos
         private Decimal dni;
         private String nombre;
         private String apellido;
-        private Decimal direc_id;
+        private String direc;
+        private Decimal cod_postal;
         private DateTime fechaDeNacimiento;
         private String mail;
         private String telefono;
@@ -68,14 +69,26 @@ namespace PagoAgilFrba.Objetos
             this.apellido = apellido;
         }
         //----
-        public Decimal getDireccionID()
+        public String getDireccion()
         {
-            return direc_id;
+            return direc;
         }
 
-        public void setDireccionID(Decimal direcID)
+        public void setDireccion(String direc)
         {
-            this.direc_id = direcID;
+            if (direc == "")
+                throw new CampoVacioException("Dirección");
+            this.direc = direc;
+        }
+        //----
+        public Decimal getCodPostal()
+        {
+            return cod_postal;
+        }
+
+        public void setCodPostal(Decimal cod)
+        {
+            this.cod_postal = cod;
         }
         //----
         public DateTime getFechaDeNac()
@@ -139,7 +152,7 @@ namespace PagoAgilFrba.Objetos
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Cliente SET clie_dni = @dni, clie_nombre = @nombre, clie_apellido = @apellido, clie_direc_id = @direccion_id, clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_id = @id";
+            return "UPDATE AMBDA.Cliente SET clie_dni = @dni, clie_nombre = @nombre, clie_apellido = @apellido, clie_direc = @direccion, clie_cod_postal = @cod_postal, clie_fecha_nacimiento = @fecha_nacimiento, clie_mail = @mail, clie_telefono = @telefono, clie_habilitado = @habilitado WHERE clie_id = @id";
         }
 
         public string GetQueryObtener()
@@ -155,7 +168,8 @@ namespace PagoAgilFrba.Objetos
             this.fechaDeNacimiento = Convert.ToDateTime(reader["clie_fecha_nacimiento"]);
             this.mail = Convert.ToString(reader["clie_mail"]);
             this.telefono = Convert.ToString(reader["clie_telefono"]);
-            this.direc_id = Convert.ToDecimal(reader["clie_direc_id"]);
+            this.direc = Convert.ToString(reader["clie_direc"]);
+            this.cod_postal = Convert.ToDecimal(reader["clie_cod_postal"]);
             this.habilitado = Convert.ToBoolean(reader["clie_habilitado"]); 
         }
 
@@ -167,7 +181,8 @@ namespace PagoAgilFrba.Objetos
             parametros.Add(new SqlParameter("@mail", this.mail));
             parametros.Add(new SqlParameter("@nombre", this.nombre));
             parametros.Add(new SqlParameter("@apellido", this.apellido));
-            parametros.Add(new SqlParameter("@direccion_id", this.direc_id));
+            parametros.Add(new SqlParameter("@direccion", this.direc));
+            parametros.Add(new SqlParameter("@cod_postal", this.cod_postal));
             parametros.Add(new SqlParameter("@fecha_nacimiento", this.fechaDeNacimiento));
             parametros.Add(new SqlParameter("@telefono", this.telefono));
             parametros.Add(new SqlParameter("@habilitado", this.habilitado));

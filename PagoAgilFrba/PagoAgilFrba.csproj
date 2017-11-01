@@ -189,6 +189,8 @@
     <Compile Include="Excepciones\CantidadNulaException.cs" />
     <Compile Include="Excepciones\CodPosYaExisteException.cs" />
     <Compile Include="Excepciones\ClienteNoExisteException.cs" />
+    <Compile Include="Excepciones\EmpresaNoExisteException.cs" />
+    <Compile Include="Excepciones\FacturaNoFueCobrada.cs" />
     <Compile Include="Excepciones\FacturaYaExisteException.cs" />
     <Compile Include="Excepciones\FacturaYaFueRendida.cs" />
     <Compile Include="Excepciones\FacturaNoExisteException.cs" />
@@ -270,6 +272,9 @@
     <EmbeddedResource Include="AbmEmpresa\AgregarEmpresa.resx">
       <DependentUpon>AgregarEmpresa.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\EmpresaForm.resx">
+      <DependentUpon>EmpresaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmEmpresa\FiltroEmpresa.resx">
       <DependentUpon>FiltroEmpresa.cs</DependentUpon>

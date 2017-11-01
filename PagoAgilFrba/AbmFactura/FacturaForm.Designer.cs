@@ -63,6 +63,7 @@
             this.botonVolver.TabIndex = 12;
             this.botonVolver.Text = "< Volver al Menú Principal";
             this.botonVolver.UseVisualStyleBackColor = true;
+            this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
             // botonEditarFactura
             // 

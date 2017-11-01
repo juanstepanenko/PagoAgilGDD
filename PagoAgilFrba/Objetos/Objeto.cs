@@ -42,6 +42,18 @@ namespace PagoAgilFrba.Objetos
                 return campo;
             }
         }
+
+        public String crearDireccion(String calleNro, String piso, String depto, String localidad)
+        {
+            if (piso == "")
+            {
+                return calleNro + " " + depto + ", " + localidad;
+            }
+            else
+            {
+                return calleNro + " " + piso + "º " + depto + ", " + localidad;
+            }
+        }
         
     }
 }

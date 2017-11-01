@@ -87,8 +87,8 @@
             this.Controls.Add(this.botonBajaRol);
             this.Controls.Add(this.botonEditarRol);
             this.Controls.Add(this.botonAgregarRol);
-            this.Name = "ClienteForm";
-            this.Text = "ClienteForm";
+            this.Name = "EmpresaForm";
+            this.Text = "EmpresaForm";
             this.Load += new System.EventHandler(this.EmpresaForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

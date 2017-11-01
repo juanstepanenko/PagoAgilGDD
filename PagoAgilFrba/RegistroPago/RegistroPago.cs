@@ -117,19 +117,19 @@ namespace PagoAgilFrba.RegistroPago
                 AgregarFactura();
             }
 
-            catch (FacturaNoExisteException exception)
+            catch (FacturaNoExisteException)
             {
-                MessageBox.Show(exception.Message + " para esa empresa");
+                MessageBox.Show("La factura no existe para esa empresa");
                 return;
             }
-            catch (FechaPasadaException exception)
+            catch (FechaPasadaException)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("La factura esta vencida");
                 return;
             }
             catch (CampoVacioException exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Falta completar: " + exception.Message);
                 return;
             }
 
@@ -156,11 +156,10 @@ namespace PagoAgilFrba.RegistroPago
             Double importe = double.Parse(textBox_Importe.Text, CultureInfo.InvariantCulture);
             DateTime fechaDeVencimiento;
             DateTime.TryParse(textBox_FechaDeVencimiento.Text, out fechaDeVencimiento);
-            //Decimal empresa = comunicador.SelectFromWhere("empr_id", "Empresa", "empr_nombre", comboBox_Empresa.Text); 
-            //esperar a juan
-
-            //if (comunicador.pasoControlDeFacturaDeEmpresa(nroFactura, empresa) != 1)
-               //  throw new FacturaNoExisteException();
+            Decimal empresa = comunicador.SelectFromWhere("empr_id", "Empresa", "empr_nombre", comboBox_Empresa.Text); 
+            
+            if (comunicador.pasoControlDeFacturaDeEmpresa(nroFactura, empresa) != 1)
+                 throw new FacturaNoExisteException();
 
             //if (FacturaVencida(fechaDeVencimiento))
               //    throw new FechaPasadaException();
@@ -221,9 +220,9 @@ namespace PagoAgilFrba.RegistroPago
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
             }
-            catch (FacturaNoExisteException exception)
+            catch (FacturaNoExisteException)
             {
-                MessageBox.Show(exception.Message + " para esa empresa");
+                MessageBox.Show("La Factura no existe para esa empresa");
                 return;
             }
             catch (FechaPasadaException)
@@ -268,6 +267,11 @@ namespace PagoAgilFrba.RegistroPago
         public Boolean FacturaVencida(DateTime dateTime)
         {
             return dateTime < System.DateTime.Today;
+        }
+
+        private void button_FechaDeVencimiento_Click(object sender, EventArgs e)
+        {
+            monthCalendar_FechaDeVencimiento.Visible = true;
         }
 
     }

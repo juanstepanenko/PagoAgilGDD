@@ -9,14 +9,25 @@ namespace PagoAgilFrba.Objetos
 {
     class Empresa : Objeto, Comunicable
     {
-
+        private Decimal id;
         private String nombre;
         private String cuit;
-        private Decimal direc_id;
-        private String rubro;
+        private String direc;
+        private Decimal cod_postal;
+        private Decimal rubro;
         private Boolean habilitada;
 
         /************* Getters y Setters **************/
+        public Decimal GetId()
+        {
+            return id;
+        }
+
+        public void SetId(Decimal id)
+        {
+            this.id = id;
+        }
+
         public void SetNombre(String nombre)
         {
             if (nombre == "")
@@ -28,8 +39,6 @@ namespace PagoAgilFrba.Objetos
         {
             return this.nombre;
         }
-
-
 
         public void SetCuit(String cuit)
         {
@@ -49,28 +58,37 @@ namespace PagoAgilFrba.Objetos
         }
 
 
-        public Decimal GetDireccionID()
+        public String getDireccion()
         {
-            return direc_id;
+            return direc;
         }
 
-        public void SetDireccionID(Decimal direcID)
+        public void setDireccion(String direc)
         {
-           // if (direcID == null)
-             //   throw new CampoVacioException("Dirección");
-            
-            this.direc_id = direcID;
+            if (direc == "")
+                throw new CampoVacioException("Dirección");
+            this.direc = direc;
+        }
+        //----
+        public Decimal getCodPostal()
+        {
+            return cod_postal;
         }
 
-        public void SetRubro(String rubro)
+        public void setCodPostal(Decimal cod)
         {
-            if (rubro == "")
+            this.cod_postal = cod;
+        }
+        //----
+        public void SetRubro(Decimal rubro)
+        {
+            if (rubro.Equals(null))
                 throw new CampoVacioException("Rubro");
             
             this.rubro = rubro;
         }
 
-        public String GetRubro()
+        public Decimal GetRubro()
         {
             return this.rubro;
         }
@@ -96,12 +114,12 @@ namespace PagoAgilFrba.Objetos
 
          string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Empresa SET  empr_nombre = @nombre,  empr_direc_id = @direccion_id, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_cuit = @cuit"; // preguntar where 
+            return "UPDATE AMBDA.Empresa SET empr_cuit = @cuit, empr_nombre = @nombre, empr_direc = @direccion, empr_cod_postal = @cod_postal, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_id = @id"; // preguntar where 
         }
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.Empresa WHERE empr_cuit = @cuit";
+            return "SELECT * FROM AMBDA.Empresa WHERE empr_id = @id";
         }
 
 
@@ -110,8 +128,9 @@ namespace PagoAgilFrba.Objetos
 
             this.cuit = Convert.ToString(reader["empr_cuit"]);
             this.nombre = Convert.ToString(reader["empr_nombre"]);
-            this.direc_id = Convert.ToDecimal(reader["empr_direc_id"]);
-            this.rubro = Convert.ToString(reader["empr_rubro"]);
+            this.direc = Convert.ToString(reader["empr_direc"]);
+            this.cod_postal = Convert.ToDecimal(reader["empr_cod_postal"]);
+            this.rubro = Convert.ToDecimal(reader["empr_rubro"]);
             this.habilitada = Convert.ToBoolean(reader["empr_habilitada"]);
 
         }
@@ -123,7 +142,8 @@ namespace PagoAgilFrba.Objetos
             parametros.Add(new SqlParameter("@cuit", this.cuit));
             parametros.Add(new SqlParameter("@nombre", this.nombre));
             parametros.Add(new SqlParameter("@rubro", this.rubro));
-            parametros.Add(new SqlParameter("@direccion_id", this.direc_id));          
+            parametros.Add(new SqlParameter("@direccion", this.direc));
+            parametros.Add(new SqlParameter("@cod_postal", this.cod_postal));         
             parametros.Add(new SqlParameter("@habilitada", this.habilitada));
             
             return parametros;
