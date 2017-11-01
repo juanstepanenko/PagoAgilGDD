@@ -26,10 +26,7 @@ namespace PagoAgilFrba.Devoluciones
            
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void ModificarFactura()
         {
@@ -42,6 +39,8 @@ namespace PagoAgilFrba.Devoluciones
            // Pago pago = comunicador.ObtenerPagoConFactura(factura.getIdFactura());
             //comunicador.DevolverPago(pago.getIdPago(), pago);
         }
+
+       
 
         private void AgregarDevolucion()
         {
@@ -79,8 +78,18 @@ namespace PagoAgilFrba.Devoluciones
             
            // ModificarPago(); --> falta arreglarlo eh
             AgregarDevolucion();
+            // falta verificar que no este devuelta ya 
             // funciona el agregar devolucion falta hacer que cierre la ventana
             //agregar motivo
+
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new IngresarFactura().ShowDialog();
+            this.Close();
         }
     }
 }
