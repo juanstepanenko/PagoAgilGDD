@@ -47,11 +47,11 @@ namespace PagoAgilFrba.AbmEmpresa
             DataSet rubros = new DataSet();
             SqlDataAdapter adapter = new SqlDataAdapter();
             parametros = new List<SqlParameter>();
-            command = builderDeComandos.Crear("SELECT DISTINCT rubr_id FROM AMBDA.Rubro ", parametros);
+            command = builderDeComandos.Crear("SELECT DISTINCT rubr_descripcion FROM AMBDA.Rubro ", parametros);
             adapter.SelectCommand = command;
             adapter.Fill(rubros);
             combo_Rubro.DataSource = rubros.Tables[0].DefaultView;
-            combo_Rubro.ValueMember = "rubr_id";
+            combo_Rubro.ValueMember = "rubr_descripcion";
             combo_Rubro.SelectedIndex = -1;
         }
 
@@ -116,10 +116,10 @@ namespace PagoAgilFrba.AbmEmpresa
                 Empresa empresa = new Empresa();
                 empresa.SetNombre(nombre);
                 empresa.SetCuit(cuit);
-                empresa.SetRubro(rubroElegido);
+                empresa.SetRubro(comunicador.SelectFromWhere("rubr_id", "Rubro", "rubr_descripcion", rubroElegido));
                 empresa.SetDireccionID(idDireccion);
-                comunicador.CrearEmpresa(empresa);
-                MessageBox.Show("Se agrego la empresa correctamente");
+                if(comunicador.CrearEmpresa(empresa) > 0)
+                    MessageBox.Show("Se agrego la empresa correctamente");
             }
             catch (CampoVacioException exception)
             {
