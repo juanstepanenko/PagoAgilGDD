@@ -102,11 +102,11 @@ namespace PagoAgilFrba.AbmSucursal
                 CargarSucursal();
                 return;
             }
-            if (e.ColumnIndex == dataGridView1.Columns["Eliminar"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["Deshabilitar"].Index && e.RowIndex >= 0)
             {
                 String idSucursalAModificar = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
                 Boolean resultado = comunicador.EliminarSucursal(Convert.ToDecimal(idSucursalAModificar));
-                if (resultado) MessageBox.Show("Se elimino correctamente");
+                if (resultado) MessageBox.Show("Se deshabilito correctamente");
                 CargarSucursal();
                 return;
             }

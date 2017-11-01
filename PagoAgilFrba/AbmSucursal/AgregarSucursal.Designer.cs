@@ -66,7 +66,7 @@
             this.textBoxNombre.Location = new System.Drawing.Point(159, 30);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(319, 28);
-            this.textBoxNombre.TabIndex = 0;
+            this.textBoxNombre.TabIndex = 1;
             // 
             // label1
             // 
@@ -116,7 +116,7 @@
             this.botonLimpiar.Location = new System.Drawing.Point(223, 370);
             this.botonLimpiar.Name = "botonLimpiar";
             this.botonLimpiar.Size = new System.Drawing.Size(138, 43);
-            this.botonLimpiar.TabIndex = 3;
+            this.botonLimpiar.TabIndex = 4;
             this.botonLimpiar.Text = "Limpiar";
             this.botonLimpiar.UseVisualStyleBackColor = true;
             this.botonLimpiar.Click += new System.EventHandler(this.botonLimpiar_Click);
@@ -126,7 +126,7 @@
             this.botonGuardar.Location = new System.Drawing.Point(376, 370);
             this.botonGuardar.Name = "botonGuardar";
             this.botonGuardar.Size = new System.Drawing.Size(138, 43);
-            this.botonGuardar.TabIndex = 1;
+            this.botonGuardar.TabIndex = 2;
             this.botonGuardar.Text = "Guardar";
             this.botonGuardar.UseVisualStyleBackColor = true;
             this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
@@ -136,7 +136,7 @@
             this.botonVolver.Location = new System.Drawing.Point(15, 370);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(139, 43);
-            this.botonVolver.TabIndex = 2;
+            this.botonVolver.TabIndex = 3;
             this.botonVolver.Text = "Volver";
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonCancelar_Click);
@@ -156,7 +156,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 104);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(502, 213);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dirección";
             // 
@@ -165,7 +165,7 @@
             this.textBoxDepartamento.Location = new System.Drawing.Point(159, 95);
             this.textBoxDepartamento.Name = "textBoxDepartamento";
             this.textBoxDepartamento.Size = new System.Drawing.Size(115, 28);
-            this.textBoxDepartamento.TabIndex = 4;
+            this.textBoxDepartamento.TabIndex = 2;
             // 
             // label7
             // 
@@ -191,14 +191,14 @@
             this.textBoxLocalidad.Location = new System.Drawing.Point(159, 163);
             this.textBoxLocalidad.Name = "textBoxLocalidad";
             this.textBoxLocalidad.Size = new System.Drawing.Size(115, 28);
-            this.textBoxLocalidad.TabIndex = 2;
+            this.textBoxLocalidad.TabIndex = 4;
             // 
             // textBoxCP
             // 
             this.textBoxCP.Location = new System.Drawing.Point(159, 129);
             this.textBoxCP.Name = "textBoxCP";
             this.textBoxCP.Size = new System.Drawing.Size(115, 28);
-            this.textBoxCP.TabIndex = 2;
+            this.textBoxCP.TabIndex = 3;
             // 
             // label8
             // 

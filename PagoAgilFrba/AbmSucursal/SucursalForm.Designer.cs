@@ -52,7 +52,7 @@
             this.botonEditarSucu.Margin = new System.Windows.Forms.Padding(4);
             this.botonEditarSucu.Name = "botonEditarSucu";
             this.botonEditarSucu.Size = new System.Drawing.Size(202, 75);
-            this.botonEditarSucu.TabIndex = 5;
+            this.botonEditarSucu.TabIndex = 1;
             this.botonEditarSucu.Text = "Modificar o Eliminar Sucursal";
             this.botonEditarSucu.UseVisualStyleBackColor = true;
             this.botonEditarSucu.Click += new System.EventHandler(this.botonEditarSucu_Click);
@@ -64,7 +64,7 @@
             this.botonAgregarSucu.Margin = new System.Windows.Forms.Padding(4);
             this.botonAgregarSucu.Name = "botonAgregarSucu";
             this.botonAgregarSucu.Size = new System.Drawing.Size(202, 75);
-            this.botonAgregarSucu.TabIndex = 4;
+            this.botonAgregarSucu.TabIndex = 0;
             this.botonAgregarSucu.Text = "Agregar Sucursal";
             this.botonAgregarSucu.UseVisualStyleBackColor = true;
             this.botonAgregarSucu.Click += new System.EventHandler(this.botonAgregarSucu_Click);
@@ -75,7 +75,7 @@
             this.botonVolver.Margin = new System.Windows.Forms.Padding(4);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(216, 48);
-            this.botonVolver.TabIndex = 8;
+            this.botonVolver.TabIndex = 2;
             this.botonVolver.Text = "< Volver al Menú Principal";
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);

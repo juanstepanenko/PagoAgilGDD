@@ -101,28 +101,28 @@
             this.textBoxLoc.Location = new System.Drawing.Point(159, 163);
             this.textBoxLoc.Name = "textBoxLoc";
             this.textBoxLoc.Size = new System.Drawing.Size(115, 28);
-            this.textBoxLoc.TabIndex = 5;
+            this.textBoxLoc.TabIndex = 4;
             // 
             // textBoxCP
             // 
             this.textBoxCP.Location = new System.Drawing.Point(160, 129);
             this.textBoxCP.Name = "textBoxCP";
             this.textBoxCP.Size = new System.Drawing.Size(115, 28);
-            this.textBoxCP.TabIndex = 4;
+            this.textBoxCP.TabIndex = 3;
             // 
             // textBoxDto
             // 
             this.textBoxDto.Location = new System.Drawing.Point(159, 95);
             this.textBoxDto.Name = "textBoxDto";
             this.textBoxDto.Size = new System.Drawing.Size(115, 28);
-            this.textBoxDto.TabIndex = 3;
+            this.textBoxDto.TabIndex = 2;
             // 
             // textBoxPiso
             // 
             this.textBoxPiso.Location = new System.Drawing.Point(159, 61);
             this.textBoxPiso.Name = "textBoxPiso";
             this.textBoxPiso.Size = new System.Drawing.Size(115, 28);
-            this.textBoxPiso.TabIndex = 2;
+            this.textBoxPiso.TabIndex = 1;
             // 
             // textBoxCalleNro
             // 
@@ -191,7 +191,7 @@
             this.buttonVol.Location = new System.Drawing.Point(12, 365);
             this.buttonVol.Name = "buttonVol";
             this.buttonVol.Size = new System.Drawing.Size(139, 43);
-            this.buttonVol.TabIndex = 3;
+            this.buttonVol.TabIndex = 1;
             this.buttonVol.Text = "Volver";
             this.buttonVol.UseVisualStyleBackColor = true;
             this.buttonVol.Click += new System.EventHandler(this.botonCancelar_Click);
@@ -201,7 +201,7 @@
             this.buttonLimp.Location = new System.Drawing.Point(230, 365);
             this.buttonLimp.Name = "buttonLimp";
             this.buttonLimp.Size = new System.Drawing.Size(139, 43);
-            this.buttonLimp.TabIndex = 4;
+            this.buttonLimp.TabIndex = 2;
             this.buttonLimp.Text = "Limpiar";
             this.buttonLimp.UseVisualStyleBackColor = true;
             this.buttonLimp.Click += new System.EventHandler(this.botonLimpiar_Click);
@@ -211,7 +211,7 @@
             this.buttonGuar.Location = new System.Drawing.Point(375, 365);
             this.buttonGuar.Name = "buttonGuar";
             this.buttonGuar.Size = new System.Drawing.Size(139, 43);
-            this.buttonGuar.TabIndex = 2;
+            this.buttonGuar.TabIndex = 0;
             this.buttonGuar.Text = "Guardar";
             this.buttonGuar.UseVisualStyleBackColor = true;
             this.buttonGuar.Click += new System.EventHandler(this.botonGuardar_Click);

@@ -86,7 +86,7 @@
             this.textBoxCodPos.Location = new System.Drawing.Point(156, 92);
             this.textBoxCodPos.Name = "textBoxCodPos";
             this.textBoxCodPos.Size = new System.Drawing.Size(128, 28);
-            this.textBoxCodPos.TabIndex = 3;
+            this.textBoxCodPos.TabIndex = 2;
             // 
             // label2
             // 
@@ -111,7 +111,7 @@
             this.botonCancelar.Location = new System.Drawing.Point(12, 168);
             this.botonCancelar.Name = "botonCancelar";
             this.botonCancelar.Size = new System.Drawing.Size(129, 37);
-            this.botonCancelar.TabIndex = 1;
+            this.botonCancelar.TabIndex = 2;
             this.botonCancelar.Text = "Cancelar";
             this.botonCancelar.UseVisualStyleBackColor = true;
             this.botonCancelar.Click += new System.EventHandler(this.botonCancelar_Click);
@@ -121,7 +121,7 @@
             this.botonBuscar.Location = new System.Drawing.Point(382, 168);
             this.botonBuscar.Name = "botonBuscar";
             this.botonBuscar.Size = new System.Drawing.Size(129, 37);
-            this.botonBuscar.TabIndex = 0;
+            this.botonBuscar.TabIndex = 1;
             this.botonBuscar.Text = "Buscar";
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
@@ -131,7 +131,7 @@
             this.botonLimpiar.Location = new System.Drawing.Point(247, 168);
             this.botonLimpiar.Name = "botonLimpiar";
             this.botonLimpiar.Size = new System.Drawing.Size(129, 37);
-            this.botonLimpiar.TabIndex = 2;
+            this.botonLimpiar.TabIndex = 3;
             this.botonLimpiar.Text = "Limpiar";
             this.botonLimpiar.UseVisualStyleBackColor = true;
             this.botonLimpiar.Click += new System.EventHandler(this.botonLimpiar_Click);
@@ -143,7 +143,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 30;
             this.dataGridView1.Size = new System.Drawing.Size(1308, 388);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // FiltrarSucursal
