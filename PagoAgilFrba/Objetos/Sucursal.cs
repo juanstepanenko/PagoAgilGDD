@@ -105,13 +105,11 @@ namespace PagoAgilFrba.Objetos
 
         public void CargarInformacion(SqlDataReader reader)
         {
-            //CHEQUEAR
             //this.id = Convert.ToDecimal(reader["sucu_id"]);
             this.nombreSucursal = Convert.ToString(reader["sucu_nombre"]);
-            this.idDireccion = Convert.ToDecimal(reader["sucu_direc_id"]);//DIR CONCAT
+            this.idDireccion = Convert.ToDecimal(reader["sucu_direc_id"]);
             //this.direccion = Convert.ToString(reader["sucu_direccion"]);
             //this.codPostal = Convert.ToDecimal(reader["sucu_cod_Postal"]);
-            //COD POS
             this.habilitada = Convert.ToBoolean(reader["sucu_habilitada"]);
 
         }

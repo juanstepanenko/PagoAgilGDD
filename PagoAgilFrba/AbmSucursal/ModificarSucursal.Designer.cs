@@ -229,6 +229,7 @@
             this.Controls.Add(this.groupBoxIS);
             this.Name = "ModificarSucursal";
             this.Text = "ModificarSucursal";
+            this.Load += new System.EventHandler(this.ModificarSucursal_Load);
             this.groupBoxIS.ResumeLayout(false);
             this.groupBoxIS.PerformLayout();
             this.groupBoxDir.ResumeLayout(false);

@@ -89,7 +89,7 @@ namespace PagoAgilFrba
 
         public Decimal CrearSucursal(Sucursal sucursal)
          {
-             if (!pasoControlSucursal(sucursal.GetIdDireccion()))
+             if (!pasoControlSucursal(sucursal.GetIdDireccion()))//GetId
                  throw new SucursalYaExisteExcepcion();
              return this.Crear(sucursal);
          }
@@ -363,13 +363,12 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-
-
-        private bool pasoControlSucursal(Decimal direc_id)
+        public bool pasoControlSucursal(Decimal dir_id) //sucu_id
         {
             query = "select count(*) from AMBDA.Sucursal join AMBDA.Direccion as d1 on sucu_direc_id = d1.direc_id where d1.direc_cod_postal = (select d2.direc_cod_postal from AMBDA.Direccion as d2 where d2.direc_id = @id)";
+            //query = "SELECT COUNT(*) FROM AMBDA.Sucursal WHERE sucu_id = @id";
             parametros.Clear();
-            parametros.Add(new SqlParameter("@id", direc_id));
+            parametros.Add(new SqlParameter("@id", dir_id));//sucu_id
             return ControlDeUnicidad(query, parametros);
         }
 
@@ -407,7 +406,16 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@empresa", empresa));
             return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
         }
-        
+
+        public bool pasoControlDeCodPostalDeSucu(String cp, Decimal sucuID)
+        {
+            String query = "Select count(*) From AMBDA.Direccion d, AMBDA.Sucursal s Where d.direc_id = s.sucu_direc_id AND d.direc_cod_postal = @codPostal And sucu_id <> @sucu";
+            //String query = "Select count(*) From AMBDA.Sucursal Where sucu_cod_postal = @codPostal And sucu_id <> @sucu";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@codPostal", Convert.ToDecimal(cp)));
+            parametros.Add(new SqlParameter("@sucu", sucuID));
+            return ControlDeUnicidad(query, parametros);
+        }
 
         /**********SELECTS VARIOS************/
 

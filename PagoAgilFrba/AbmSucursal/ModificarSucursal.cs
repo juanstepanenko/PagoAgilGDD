@@ -85,7 +85,7 @@ namespace PagoAgilFrba.AbmSucursal
             //chequeo cod postal con la tabla direccion
             try
             {
-                if (!comunicador.pasoControlDeUnicidad(codigoPostal, "direc_cod_postal", "Direccion"))
+                if (!comunicador.pasoControlDeCodPostalDeSucu(codigoPostal, id))
                 //SELECT COUNT(*) FROM AMBDA.Direccion WHERE direc_cod_postal = @codigoPostal;
                 throw new CodPosYaExisteException();
             }
