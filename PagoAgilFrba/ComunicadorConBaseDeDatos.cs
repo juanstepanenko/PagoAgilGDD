@@ -81,6 +81,8 @@ namespace PagoAgilFrba
 
         public Decimal CrearFactura(Factura factura)
         {
+            if (pasoControlDeEmpresaConNombre(factura.getEmpresa()))
+                throw new EmpresaNoExisteException();
             if (pasoControlDeCliente(factura.getDniCliente()))
                 throw new ClienteNoExisteException();
             if(!pasoControlDeFacturaParaFactura(factura.getEmpresa(), factura.getNroFactura()))
@@ -176,7 +178,7 @@ namespace PagoAgilFrba
             Factura factura = (Factura)Activator.CreateInstance(clase);
             query = factura.GetQueryObtener();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@idFactura", idFactura));
+            parametros.Add(new SqlParameter("@id", idFactura));
             SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
             if (reader.Read())
             {
@@ -222,10 +224,16 @@ namespace PagoAgilFrba
 
         public Boolean ModificarFactura(Decimal id, Factura factura)
         {
+            Factura facturaOriginal = ObtenerFactura(Convert.ToString(id));
+            if (pasoControlDeEmpresaConNombre(factura.getEmpresa()))
+                throw new EmpresaNoExisteException();
             if (pasoControlDeCliente(factura.getDniCliente()))
                 throw new ClienteNoExisteException();
-            if (!pasoControlDeFacturaParaFactura(factura.getEmpresa(), factura.getNroFactura()))
-                throw new FacturaYaExisteException();
+            if (facturaOriginal.getNroFactura() != factura.getNroFactura() && facturaOriginal.getEmpresa() != factura.getEmpresa())
+            {
+                if (!pasoControlDeFacturaParaFactura(factura.getEmpresa(), factura.getNroFactura()))
+                    throw new FacturaYaExisteException();
+            }
             return this.Modificar(id, factura);
         }
 
@@ -260,6 +268,7 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter(var, id));
             return builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
         }
+
         public Boolean EliminarDireccion(Decimal id)
         {
             if (eliminarGeneralId("DELETE AMBDA.Direccion WHERE direc_id = (SELECT clie_direc_id FROM AMBDA.Cliente WHERE clie_id = @id)", "@", id) == 1)
@@ -330,6 +339,14 @@ namespace PagoAgilFrba
             parametros.Add(new SqlParameter("@cuit", cuit));
             return ControlDeUnicidad(query, parametros);
         }
+
+        public bool pasoControlDeEmpresaConNombre(String nombre)
+        {
+            query = "SELECT COUNT(*) FROM AMBDA.Empresa WHERE empr_nombre = @empresa";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@empresa", nombre));
+            return ControlDeUnicidad(query, parametros);
+        }
         public bool pasoControlDeRegistroFactura(String nrofact)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact";
@@ -341,7 +358,7 @@ namespace PagoAgilFrba
 
         private bool pasoControlDeFacturaParaFactura(String empresa, String nroFactura)
         {
-            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_empresa = (select empr_cuit from AMBDA.Empresa where empr_nombre = @empresa) and fact_nro = @nroFactura";
+            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_empresa = (select empr_id from AMBDA.Empresa where empr_nombre = @empresa) and fact_nro = @nroFactura";
             parametros.Clear();
             parametros.Add(new SqlParameter("@empresa", empresa));
             parametros.Add(new SqlParameter("@nroFactura", Convert.ToDecimal(nroFactura)));
@@ -468,7 +485,6 @@ namespace PagoAgilFrba
         {
             return this.SelectDataTable("reng_id as id, reng_cantidad as Cantidad, reng_monto as 'Monto Total'", "AMBDA.Renglon", "reng_factura = (select fact_id from AMBDA.Factura where fact_nro = " + nroFactura + ")");
         }
-
 
         public void PagarFactura(Decimal cliente, Double importe, Decimal sucursal, Decimal medio, Decimal idFactura)
         {

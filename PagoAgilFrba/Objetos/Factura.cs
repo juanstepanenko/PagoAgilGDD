@@ -129,19 +129,19 @@ namespace PagoAgilFrba.Objetos
 
         string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Factura SET fact_nro = @nroFactura, fact_fecha = @fechaAlta, fact_total = @total, fact_fecha_venc = @fechaVencimiento, fact_cliente = (select clie_id from AMBDA.Cliente where clie_dni = @cliente), fact_empresa = (select empr_cuit from AMBDA.Empresa where empr_nombre = @empresa) WHERE fact_id = @id";
+            return "UPDATE AMBDA.Factura SET fact_nro = @nroFactura, fact_fecha = @fechaAlta, fact_total = @total, fact_fecha_venc = @fechaVencimiento, fact_cliente = (select clie_id from AMBDA.Cliente where clie_dni = @cliente), fact_empresa = (select empr_id from AMBDA.Empresa where empr_nombre = @empresa) WHERE fact_id = @id";
             //ojo aca la empresa, tengo el nombre y yo necesito el cuit TODO
             //mismo con cliente
         }
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.Factura WHERE fact_id = @id";
+            return "SELECT fact_id, fact_nro, fact_fecha, fact_fecha_venc, fact_total, (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'cliente', (select empr_nombre from AMBDA.Empresa where empr_id = fact_empresa) as 'empresa' FROM AMBDA.Factura WHERE fact_id = @id";
         }
 
         public string GetQueryObtenerConNro()
         {
-            return "SELECT fact_id, fact_nro, fact_fecha, fact_fecha_venc, fact_total, (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'cliente', (select empr_nombre from AMBDA.Empresa where empr_cuit = fact_empresa) as 'empresa' FROM AMBDA.Factura WHERE fact_nro = @nroFactura";
+            return "SELECT fact_id, fact_nro, fact_fecha, fact_fecha_venc, fact_total, (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'cliente', (select empr_nombre from AMBDA.Empresa where empr_id = fact_empresa) as 'empresa' FROM AMBDA.Factura WHERE fact_nro = @nroFactura";
             
         }
 

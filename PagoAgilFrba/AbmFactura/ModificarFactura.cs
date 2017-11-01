@@ -204,7 +204,11 @@ namespace PagoAgilFrba.AbmFactura
                 MessageBox.Show(exception.Message);
                 return;
             }
-
+            catch (EmpresaNoExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
             VolverAlMenuPrincipal();
 
         }
