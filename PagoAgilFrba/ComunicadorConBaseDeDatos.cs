@@ -499,6 +499,9 @@ namespace PagoAgilFrba
             return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc_id DireccionId, (case s.sucu_habilitada when 1 then 'Sí' else 'No' end) Habilitado,d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
                 , "AMBDA.Sucursal s, AMBDA.Direccion d"
                 , "s.sucu_direc_id = d.direc_id " + filtro);
+            /*return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc!!! Dirección, s.sucu_cod_postal [Código Postal] (case s.sucu_habilitada when 1 then 'Sí' else 'No' end) Habilitado,"
+                , "AMBDA.Sucursal s"
+                , filtro);*/
         }
 
         public DataTable SelectEmpresasParaFiltro()

@@ -139,7 +139,6 @@
             this.labelLoc.Size = new System.Drawing.Size(89, 18);
             this.labelLoc.TabIndex = 0;
             this.labelLoc.Text = "Localidad";
-            this.labelLoc.Click += new System.EventHandler(this.label7_Click);
             // 
             // labelCodPos
             // 
@@ -182,9 +181,9 @@
             this.checkBoxHab.AutoSize = true;
             this.checkBoxHab.Location = new System.Drawing.Point(34, 328);
             this.checkBoxHab.Name = "checkBoxHab";
-            this.checkBoxHab.Size = new System.Drawing.Size(133, 22);
+            this.checkBoxHab.Size = new System.Drawing.Size(124, 22);
             this.checkBoxHab.TabIndex = 1;
-            this.checkBoxHab.Text = "Rehabilitar";
+            this.checkBoxHab.Text = "Habilitado";
             this.checkBoxHab.UseVisualStyleBackColor = true;
             // 
             // buttonVol

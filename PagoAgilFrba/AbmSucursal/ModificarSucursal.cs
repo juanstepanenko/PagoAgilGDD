@@ -18,9 +18,9 @@ namespace PagoAgilFrba.AbmSucursal
         private Decimal id;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idDireccion;
-        private SqlCommand command { get; set; }
-        private IList<SqlParameter> parametros = new List<SqlParameter>();
-        private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
+        //private SqlCommand command { get; set; }
+        //private IList<SqlParameter> parametros = new List<SqlParameter>();
+        //private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
 
         public ModificarSucursal(Decimal unId)
         {
@@ -28,19 +28,22 @@ namespace PagoAgilFrba.AbmSucursal
             this.id = unId;
         }
 
-        private void EditarSucursal_Load(object sender, EventArgs e)
+        private void ModificarSucursal_Load(object sender, EventArgs e)
         {
             CargarDatos();
         }
 
         private void CargarDatos()
         {
+            //obtengo el sucursal seleccionados y los completo en los textboxs de esta ventana.
             Sucursal sucursal = comunicador.ObtenerSucursal(id);
 
             this.idDireccion = sucursal.GetIdDireccion();
             textBoxName.Text = sucursal.GetNombreSucursal();
             CargarDireccion(idDireccion);
+            //pero esto realiza una query a la bd y trae los campos de direccion... si no existiera direccion, donde saco esos campos x separado??
             checkBoxHab.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("sucu_habilitada", "Sucursal", "sucu_id", id));
+            //select sucu_habilitada from Sucursal Where sucu_id = @id
         }
 
         private void CargarDireccion(Decimal idDireccion)
@@ -51,6 +54,7 @@ namespace PagoAgilFrba.AbmSucursal
             textBoxDto.Text = direccion.GetDepartamento();
             textBoxCP.Text = direccion.GetCodigoPostal();
             textBoxLoc.Text = direccion.GetLocalidad();
+            
         }
 
         private void botonGuardar_Click(object sender, EventArgs e)
@@ -64,6 +68,32 @@ namespace PagoAgilFrba.AbmSucursal
             String codigoPostal = textBoxCP.Text; ;
             Boolean habilitada = checkBoxHab.Checked;
             Boolean pudoModificar;
+
+            // Si no se cumpleunicidad de codigo postal no se tiene que crear
+            //try
+            //{
+                //if (!comunicador.pasoControlDeUnicidad(codigoPostal, "sucu_cod_postal", "Sucursal"))
+                    //throw new CodPosYaExisteException();
+            //}
+
+            //catch (CampoVacioException exception)
+            //{
+            //    MessageBox.Show("Falta completar campo: " + exception.Message);
+            //    return;
+            //}
+           
+            //chequeo cod postal con la tabla direccion
+            try
+            {
+                if (!comunicador.pasoControlDeUnicidad(codigoPostal, "direc_cod_postal", "Direccion"))
+                //SELECT COUNT(*) FROM AMBDA.Direccion WHERE direc_cod_postal = @codigoPostal;
+                throw new CodPosYaExisteException();
+            }
+            catch (CodPosYaExisteException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
 
             // Update direccion
             try
@@ -109,24 +139,20 @@ namespace PagoAgilFrba.AbmSucursal
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
             }
-            catch (CuitYaExisteException exception)
+            /*catch (CodPosYaExisteException exception)
             {
                 MessageBox.Show(exception.Message);
                 return;
-            }
+            }*/
+
+            this.Close();
         }
 
         private void botonCancelar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            new SucursalForm().ShowDialog();
+            //this.Hide();
+            //new FiltrarSucursal().ShowDialog();
             this.Close();
-        }
-
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void botonLimpiar_Click(object sender, EventArgs e)
