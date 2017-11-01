@@ -341,13 +341,30 @@ namespace PagoAgilFrba
 		
         public bool pasoControlDeRendidaFactura(String nrofact)
         {
-
+           
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact and fact_rendicion is null";
             parametros.Clear();
             parametros.Add(new SqlParameter("@nrofact", nrofact));
             return ControlDeUnicidad(query, parametros);
         }
 
+        public bool pasoControlDeCobradaFactura(String nrofact)
+        {
+
+            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact and  fact_cobrada = 1";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nrofact", nrofact));
+            return ControlDeUnicidad(query, parametros);
+        }
+      /*  public bool pasoControlDeDevueltaFactura(String nrofact)
+        {
+
+            query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_nro = @nrofact and fact_rendicion is null";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nrofact", nrofact));
+            return ControlDeUnicidad(query, parametros);
+        }
+        */
         public Decimal pasoControlDeFacturaDeEmpresa(Decimal nroFactura, Decimal empresa)
         {
             String query = "Select count(*) From AMBDA.Factura Where fact_nro = @nroFactura And fact_empresa = @empresa";

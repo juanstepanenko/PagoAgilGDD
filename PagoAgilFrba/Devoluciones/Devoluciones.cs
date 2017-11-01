@@ -16,40 +16,36 @@ namespace PagoAgilFrba.Devoluciones
     public partial class Devoluciones : Form
     {
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
-        private String motivo;
         private Factura factura;
-        
+
         public Devoluciones(String nroFact)
         {
             InitializeComponent();
-            factura = comunicador.ObtenerFacturaConNumero(nroFact); // aca no es numero, se hace con id
-           
-        }
+            factura = comunicador.ObtenerFacturaConNumero(nroFact);
 
+        }
         
-
-        private void ModificarFactura()
-        {
-            // esperar a Ro           
-        }
-
-        private void ModificarPago()
-        {
-            // obtengo el pago
-           // Pago pago = comunicador.ObtenerPagoConFactura(factura.getIdFactura());
-            //comunicador.DevolverPago(pago.getIdPago(), pago);
-        }
-
-       
-
         private void AgregarDevolucion()
         {
-            Decimal idDevolucion = 0;
-            motivo = richTextBox1.Text;
+            String  motivo = richTextBox1.Text;
             String nroFactura = factura.getNroFactura();
             DateTime fecha_devolucion = DateTime.Now;
-          
 
+            // Si esto no pasa no se tiene que crear
+
+            try
+            {
+                if (motivo == "")
+                    throw new CampoVacioException("Motivo");
+            }
+
+            catch (CampoVacioException exception)
+            {
+                MessageBox.Show("Falta completar campo: " + exception.Message);
+                return;
+            }
+
+            
             //Crea Devolucion
             Devolucion devolucion = new Devolucion();
             try
@@ -57,7 +53,8 @@ namespace PagoAgilFrba.Devoluciones
                 devolucion.setFactura(nroFactura);
                 devolucion.setMotivo(motivo);
                 devolucion.setFechaDevo(fecha_devolucion);
-                idDevolucion = comunicador.CrearDevolucion(devolucion);
+                if (comunicador.CrearDevolucion(devolucion) > 0)
+                    MessageBox.Show("Se agrego la devolución correctamente");
             }
             catch (CampoVacioException exception)
             {
@@ -73,19 +70,20 @@ namespace PagoAgilFrba.Devoluciones
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //poner factura cmomo no pagada 
 
-            
-           // ModificarPago(); --> falta arreglarlo eh
             AgregarDevolucion();
+            volverAlMenuPrincipal();
             // falta verificar que no este devuelta ya 
-            // funciona el agregar devolucion falta hacer que cierre la ventana
-            //agregar motivo
-
             
+
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            volverAlMenuPrincipal();
+        }
+
+        private void volverAlMenuPrincipal()
         {
             this.Hide();
             new IngresarFactura().ShowDialog();

@@ -33,6 +33,8 @@ namespace PagoAgilFrba.Devoluciones
                     throw new FacturaNoExisteException();
                 if (comunicador.pasoControlDeRendidaFactura(nroFact))
                     throw new FacturaYaFueRendida();
+                if(comunicador.pasoControlDeCobradaFactura(nroFact))
+                    throw new FacturaNoFueCobrada();
                  // ver que no este devuelta ya
             }
 
