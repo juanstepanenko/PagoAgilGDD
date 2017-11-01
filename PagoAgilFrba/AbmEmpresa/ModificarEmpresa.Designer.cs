@@ -35,224 +35,148 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_CalleNro = new System.Windows.Forms.TextBox();
-            this.textBox_Piso = new System.Windows.Forms.TextBox();
+            this.textBox_Direccion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox_Departamento = new System.Windows.Forms.TextBox();
-            this.textBox_Localidad = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button_Guardar = new System.Windows.Forms.Button();
             this.button_Cancelar = new System.Windows.Forms.Button();
             this.button_Limpiar = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox_CodigoPostal = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox_CodigoPostal);
             this.groupBox1.Controls.Add(this.textBox_Nombre);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.textBox_Cuit);
+            this.groupBox1.Controls.Add(this.textBox_Direccion);
             this.groupBox1.Controls.Add(this.combo_Rubro);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(16, 13);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(506, 124);
+            this.groupBox1.Size = new System.Drawing.Size(441, 182);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cargue los datos que desee modificar";
             // 
             // textBox_Nombre
             // 
-            this.textBox_Nombre.Location = new System.Drawing.Point(129, 57);
-            this.textBox_Nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_Nombre.Location = new System.Drawing.Point(97, 46);
             this.textBox_Nombre.Name = "textBox_Nombre";
-            this.textBox_Nombre.Size = new System.Drawing.Size(356, 22);
+            this.textBox_Nombre.Size = new System.Drawing.Size(338, 20);
             this.textBox_Nombre.TabIndex = 1;
             // 
             // textBox_Cuit
             // 
-            this.textBox_Cuit.Location = new System.Drawing.Point(219, 25);
-            this.textBox_Cuit.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_Cuit.Location = new System.Drawing.Point(164, 20);
             this.textBox_Cuit.Name = "textBox_Cuit";
-            this.textBox_Cuit.Size = new System.Drawing.Size(266, 22);
+            this.textBox_Cuit.Size = new System.Drawing.Size(271, 20);
             this.textBox_Cuit.TabIndex = 17;
             // 
             // combo_Rubro
             // 
             this.combo_Rubro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_Rubro.FormattingEnabled = true;
-            this.combo_Rubro.Location = new System.Drawing.Point(129, 87);
+            this.combo_Rubro.Location = new System.Drawing.Point(97, 71);
+            this.combo_Rubro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.combo_Rubro.Name = "combo_Rubro";
-            this.combo_Rubro.Size = new System.Drawing.Size(356, 22);
+            this.combo_Rubro.Size = new System.Drawing.Size(338, 23);
             this.combo_Rubro.TabIndex = 14;
             this.combo_Rubro.SelectedIndexChanged += new System.EventHandler(this.combo_Rubro_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 60);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 16;
             this.label1.Text = "Nombre";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 90);
+            this.label3.Location = new System.Drawing.Point(9, 73);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 17);
+            this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Rubro";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 28);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(9, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 17);
+            this.label2.Size = new System.Drawing.Size(148, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "Cuit de la empresa a modificar";
             // 
-            // textBox_CalleNro
+            // textBox_Direccion
             // 
-            this.textBox_CalleNro.Location = new System.Drawing.Point(129, 33);
-            this.textBox_CalleNro.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_CalleNro.Name = "textBox_CalleNro";
-            this.textBox_CalleNro.Size = new System.Drawing.Size(356, 22);
-            this.textBox_CalleNro.TabIndex = 11;
-            // 
-            // textBox_Piso
-            // 
-            this.textBox_Piso.Location = new System.Drawing.Point(129, 63);
-            this.textBox_Piso.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_Piso.Name = "textBox_Piso";
-            this.textBox_Piso.Size = new System.Drawing.Size(356, 22);
-            this.textBox_Piso.TabIndex = 13;
+            this.textBox_Direccion.Location = new System.Drawing.Point(97, 105);
+            this.textBox_Direccion.Name = "textBox_Direccion";
+            this.textBox_Direccion.Size = new System.Drawing.Size(338, 20);
+            this.textBox_Direccion.TabIndex = 11;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 36);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(9, 108);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 17);
+            this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 21;
-            this.label4.Text = "Calle y Numero";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.label4.Text = "Direccion";
             // 
-            // groupBox2
+            // textBox_CodigoPostal
             // 
-            this.groupBox2.Controls.Add(this.textBox_CodigoPostal);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox_CalleNro);
-            this.groupBox2.Controls.Add(this.textBox_Piso);
-            this.groupBox2.Controls.Add(this.textBox_Departamento);
-            this.groupBox2.Controls.Add(this.textBox_Localidad);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(16, 156);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(506, 188);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Direccion";
+            this.textBox_CodigoPostal.Location = new System.Drawing.Point(97, 133);
+            this.textBox_CodigoPostal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
+            this.textBox_CodigoPostal.Size = new System.Drawing.Size(338, 20);
+            this.textBox_CodigoPostal.TabIndex = 23;
             // 
-            // textBox_Departamento
+            // label10
             // 
-            this.textBox_Departamento.Location = new System.Drawing.Point(129, 93);
-            this.textBox_Departamento.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_Departamento.Name = "textBox_Departamento";
-            this.textBox_Departamento.Size = new System.Drawing.Size(356, 22);
-            this.textBox_Departamento.TabIndex = 14;
-            // 
-            // textBox_Localidad
-            // 
-            this.textBox_Localidad.Location = new System.Drawing.Point(129, 151);
-            this.textBox_Localidad.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_Localidad.Name = "textBox_Localidad";
-            this.textBox_Localidad.Size = new System.Drawing.Size(356, 22);
-            this.textBox_Localidad.TabIndex = 20;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 66);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 17);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Piso";
-            this.label5.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 154);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 17);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "Localidad";
-            this.label7.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 96);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 17);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Departamento";
-            this.label6.Click += new System.EventHandler(this.label4_Click);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 140);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Codigo postal";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 400);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(9, 252);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(231, 17);
+            this.label8.Size = new System.Drawing.Size(174, 13);
             this.label8.TabIndex = 5;
             this.label8.Text = "* Debe completar todos los campos";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // button_Guardar
             // 
-            this.button_Guardar.Location = new System.Drawing.Point(386, 421);
-            this.button_Guardar.Margin = new System.Windows.Forms.Padding(4);
+            this.button_Guardar.Location = new System.Drawing.Point(347, 285);
             this.button_Guardar.Name = "button_Guardar";
-            this.button_Guardar.Size = new System.Drawing.Size(133, 37);
+            this.button_Guardar.Size = new System.Drawing.Size(100, 30);
             this.button_Guardar.TabIndex = 2;
             this.button_Guardar.Text = "Guardar";
             this.button_Guardar.UseVisualStyleBackColor = true;
-            this.Load += new System.EventHandler(this.ModificarEmpresaForm_Load);
             this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
             // 
             // button_Cancelar
             // 
-            this.button_Cancelar.Location = new System.Drawing.Point(13, 421);
-            this.button_Cancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.button_Cancelar.Location = new System.Drawing.Point(12, 285);
             this.button_Cancelar.Name = "button_Cancelar";
-            this.button_Cancelar.Size = new System.Drawing.Size(133, 37);
+            this.button_Cancelar.Size = new System.Drawing.Size(100, 30);
             this.button_Cancelar.TabIndex = 3;
             this.button_Cancelar.Text = "Volver";
             this.button_Cancelar.UseVisualStyleBackColor = true;
@@ -260,10 +184,9 @@
             // 
             // button_Limpiar
             // 
-            this.button_Limpiar.Location = new System.Drawing.Point(245, 421);
-            this.button_Limpiar.Margin = new System.Windows.Forms.Padding(4);
+            this.button_Limpiar.Location = new System.Drawing.Point(241, 285);
             this.button_Limpiar.Name = "button_Limpiar";
-            this.button_Limpiar.Size = new System.Drawing.Size(133, 37);
+            this.button_Limpiar.Size = new System.Drawing.Size(100, 30);
             this.button_Limpiar.TabIndex = 4;
             this.button_Limpiar.Text = "Limpiar";
             this.button_Limpiar.UseVisualStyleBackColor = true;
@@ -272,51 +195,30 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(16, 363);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox1.Location = new System.Drawing.Point(12, 208);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 21);
+            this.checkBox1.Size = new System.Drawing.Size(73, 17);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "Habilitada";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // textBox_CodigoPostal
-            // 
-            this.textBox_CodigoPostal.Location = new System.Drawing.Point(129, 122);
-            this.textBox_CodigoPostal.Name = "textBox_CodigoPostal";
-            this.textBox_CodigoPostal.Size = new System.Drawing.Size(356, 22);
-            this.textBox_CodigoPostal.TabIndex = 23;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 125);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 17);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Codigo postal";
-            // 
             // ModificarEmpresa
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 483);
+            this.ClientSize = new System.Drawing.Size(465, 344);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button_Limpiar);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Guardar);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ModificarEmpresa";
             this.Text = "Modificar Empresa";
             this.Load += new System.EventHandler(this.ModificarEmpresa_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,14 +234,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox combo_Rubro;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox_CalleNro;
-        private System.Windows.Forms.TextBox textBox_Piso;
-        private System.Windows.Forms.TextBox textBox_Departamento;
-        private System.Windows.Forms.TextBox textBox_Localidad;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox_Direccion;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button_Guardar;
         private System.Windows.Forms.Button button_Cancelar;

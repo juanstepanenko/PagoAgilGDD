@@ -167,7 +167,7 @@ namespace PagoAgilFrba.RegistroPago
             // 
             // monthCalendar_FechaDeVencimiento
             // 
-            this.monthCalendar_FechaDeVencimiento.Location = new System.Drawing.Point(155, 19);
+            this.monthCalendar_FechaDeVencimiento.Location = new System.Drawing.Point(133, 10);
             this.monthCalendar_FechaDeVencimiento.Name = "monthCalendar_FechaDeVencimiento";
             this.monthCalendar_FechaDeVencimiento.TabIndex = 13;
             this.monthCalendar_FechaDeVencimiento.Visible = false;
@@ -190,6 +190,7 @@ namespace PagoAgilFrba.RegistroPago
             this.button_FechaDeVencimiento.TabIndex = 7;
             this.button_FechaDeVencimiento.Text = "Seleccionar";
             this.button_FechaDeVencimiento.UseVisualStyleBackColor = true;
+            this.button_FechaDeVencimiento.Click += new System.EventHandler(this.button_FechaDeVencimiento_Click);
             // 
             // textBox_FechaDeVencimiento
             // 
@@ -251,17 +252,17 @@ namespace PagoAgilFrba.RegistroPago
             // button_AgregarFactura
             // 
             this.button_AgregarFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button_AgregarFactura.Location = new System.Drawing.Point(296, 157);
+            this.button_AgregarFactura.Location = new System.Drawing.Point(167, 414);
             this.button_AgregarFactura.Name = "button_AgregarFactura";
-            this.button_AgregarFactura.Size = new System.Drawing.Size(66, 36);
+            this.button_AgregarFactura.Size = new System.Drawing.Size(111, 36);
             this.button_AgregarFactura.TabIndex = 24;
-            this.button_AgregarFactura.Text = "Agregar";
+            this.button_AgregarFactura.Text = "Agregar otra factura";
             this.button_AgregarFactura.UseVisualStyleBackColor = true;
             this.button_AgregarFactura.Click += new System.EventHandler(this.button_agregar_Click);
             // 
             // button_Guardar
             // 
-            this.button_Guardar.Location = new System.Drawing.Point(284, 450);
+            this.button_Guardar.Location = new System.Drawing.Point(284, 412);
             this.button_Guardar.Name = "button_Guardar";
             this.button_Guardar.Size = new System.Drawing.Size(90, 38);
             this.button_Guardar.TabIndex = 2;
@@ -271,7 +272,7 @@ namespace PagoAgilFrba.RegistroPago
             // 
             // button_Cancelar
             // 
-            this.button_Cancelar.Location = new System.Drawing.Point(12, 450);
+            this.button_Cancelar.Location = new System.Drawing.Point(12, 414);
             this.button_Cancelar.Name = "button_Cancelar";
             this.button_Cancelar.Size = new System.Drawing.Size(71, 38);
             this.button_Cancelar.TabIndex = 3;
@@ -282,7 +283,7 @@ namespace PagoAgilFrba.RegistroPago
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 423);
+            this.label14.Location = new System.Drawing.Point(9, 383);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(174, 13);
             this.label14.TabIndex = 5;
@@ -300,10 +301,9 @@ namespace PagoAgilFrba.RegistroPago
             this.groupBox3.Controls.Add(this.textBox_Importe);
             this.groupBox3.Controls.Add(this.textBox_NroFact);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.button_AgregarFactura);
             this.groupBox3.Location = new System.Drawing.Point(12, 190);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(368, 220);
+            this.groupBox3.Size = new System.Drawing.Size(368, 180);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Agregar Factura";
@@ -380,12 +380,13 @@ namespace PagoAgilFrba.RegistroPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 500);
+            this.ClientSize = new System.Drawing.Size(408, 468);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button_Cancelar);
             this.Controls.Add(this.button_Guardar);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.button_AgregarFactura);
             this.Name = "RegistroPago";
             this.Text = "Cargar Pago";
             this.Load += new System.EventHandler(this.RegistroPago_Load);

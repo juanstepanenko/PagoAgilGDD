@@ -17,7 +17,6 @@ namespace PagoAgilFrba.AbmEmpresa
     {
 
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
-        private Decimal idDireccion;
         private SqlCommand command { get; set; }
         private IList<SqlParameter> parametros = new List<SqlParameter>();
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
@@ -103,12 +102,6 @@ namespace PagoAgilFrba.AbmEmpresa
                 return;
             }
             
-            //---------
-            // Controla que no se haya creado ya la direccion
-            if (this.idDireccion == 0)
-            {
-                this.idDireccion = comunicador.CrearDireccion(direccion);
-            }
 
             // Crea empresa
             try
@@ -117,7 +110,8 @@ namespace PagoAgilFrba.AbmEmpresa
                 empresa.SetNombre(nombre);
                 empresa.SetCuit(cuit);
                 empresa.SetRubro(comunicador.SelectFromWhere("rubr_id", "Rubro", "rubr_descripcion", rubroElegido));
-                empresa.SetDireccionID(idDireccion);
+                empresa.setDireccion(empresa.crearDireccion(calleNro, piso, departamento, localidad));
+                empresa.setCodPostal(Convert.ToDecimal(codigoPostal));
                 if(comunicador.CrearEmpresa(empresa) > 0)
                     MessageBox.Show("Se agrego la empresa correctamente");
             }
@@ -136,6 +130,8 @@ namespace PagoAgilFrba.AbmEmpresa
                 MessageBox.Show(exception.Message);
                 return;
             }
+
+            VolverAlMenuPrincipal();
         }
 
         private void button_Limpiar_Click(object sender, EventArgs e)
@@ -158,7 +154,7 @@ namespace PagoAgilFrba.AbmEmpresa
         private void VolverAlMenuPrincipal()
         {
             this.Hide();
-            new MenuPrincipal().ShowDialog();
+            new EmpresaForm().ShowDialog();
             this.Close();
         }
 

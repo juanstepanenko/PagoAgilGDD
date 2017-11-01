@@ -181,6 +181,12 @@
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
     <Compile Include="Excepciones\MailYaExisteException.cs" />
     <Compile Include="Excepciones\SucursalInvalidaException.cs" />
+    <Compile Include="ListadoEstadistico\Estadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoEstadistico\Estadisticas.Designer.cs">
+      <DependentUpon>Estadisticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\ElegirRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,9 +311,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ListadoEstadistico\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

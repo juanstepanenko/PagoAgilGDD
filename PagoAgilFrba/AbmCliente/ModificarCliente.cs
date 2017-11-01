@@ -14,7 +14,6 @@ namespace PagoAgilFrba.AbmCliente
 {
     public partial class ModificarCliente : Form
     {
-        private Decimal idDireccion;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
         private Decimal idCliente;
 
@@ -33,25 +32,15 @@ namespace PagoAgilFrba.AbmCliente
         {
             Cliente cliente = comunicador.ObtenerCliente(idCliente);
 
-            this.idDireccion = cliente.getDireccionID();
             textBox_Dni.Text = Convert.ToString(cliente.getDni());
             textBox_Nombre.Text = cliente.getNombre();
             textBox_Apellido.Text = cliente.getApellido();
             textBox_FechaDeNacimiento.Text = Convert.ToString(cliente.getFechaDeNac());
             textBox_Mail.Text = cliente.getMail();
             textBox_Telefono.Text = cliente.getTelefono();
-            CargarDireccion(idDireccion);
+            textBox_Direccion.Text = cliente.getDireccion();
+            textBox_CodigoPostal.Text =  Convert.ToString(cliente.getCodPostal());
             checkBox_Habilitado.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("clie_habilitado", "Cliente", "clie_id", idCliente));
-        }
-
-        private void CargarDireccion(Decimal idDireccion)
-        {
-            Direccion direccion = comunicador.ObtenerDireccion(idDireccion);
-            textBox_Calle.Text = direccion.GetCalleNro();
-            textBox_Piso.Text = direccion.GetPiso();
-            textBox_Departamento.Text = direccion.GetDepartamento();
-            textBox_CodigoPostal.Text = direccion.GetCodigoPostal();
-            textBox_Localidad.Text = direccion.GetLocalidad();
         }
 
         private void button_Guardar_Click(object sender, EventArgs e)
@@ -64,37 +53,11 @@ namespace PagoAgilFrba.AbmCliente
             DateTime.TryParse(textBox_FechaDeNacimiento.Text, out fechaDeNacimiento);
             String mail = textBox_Mail.Text;
             String telefono = textBox_Telefono.Text;
-            String calle = textBox_Calle.Text;
-            String piso = textBox_Piso.Text;
-            String departamento = textBox_Departamento.Text;
+            String direccion = textBox_Direccion.Text;
             String codigoPostal = textBox_CodigoPostal.Text;
-            String localidad = textBox_Localidad.Text;
             Boolean habilitado = checkBox_Habilitado.Checked;
 
             Boolean pudoModificar;
-
-            // Update direccion
-            try
-            {
-                Direccion direccion = new Direccion();
-                direccion.SetCalleNro(calle);
-                direccion.SetPiso(piso);
-                direccion.SetDepartamento(departamento);
-                direccion.SetCodigoPostal(codigoPostal);
-                direccion.SetLocalidad(localidad);
-                comunicador.Modificar(idDireccion, direccion);
-            }
-            catch (CampoVacioException exception)
-            {
-                MessageBox.Show("Falta completar campo: " + exception.Message);
-                return;
-            }
-            catch (FormatoInvalidoException exception)
-            {
-                MessageBox.Show("Datos mal ingresados en: " + exception.Message);
-                return;
-            }
-
             // Update cliente
             try
             {
@@ -105,7 +68,8 @@ namespace PagoAgilFrba.AbmCliente
                 cliente.setMail(mail);
                 cliente.setTelefono(telefono);
                 cliente.setDni(Convert.ToDecimal(dni));
-                cliente.setDireccionID(idDireccion);
+                cliente.setDireccion(direccion);
+                cliente.setCodPostal(Convert.ToDecimal(codigoPostal));
                 cliente.setHabilitado(habilitado);
                 pudoModificar = comunicador.Modificar(idCliente, cliente);
                 if (pudoModificar) MessageBox.Show("El cliente se modifico correctamente");
@@ -153,5 +117,6 @@ namespace PagoAgilFrba.AbmCliente
             textBox_FechaDeNacimiento.Text = e.Start.ToShortDateString();
             monthCalendar_FechaDeNacimiento.Visible = false;
         }
+
     }
 }

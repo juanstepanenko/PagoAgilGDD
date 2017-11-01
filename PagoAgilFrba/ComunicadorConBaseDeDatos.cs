@@ -41,14 +41,6 @@ namespace PagoAgilFrba
 
         public Decimal CrearCliente(Cliente cliente)
         {
-            /*
-            query = cliente.GetQueryCrear();
-            parametros.Clear();
-            parametros = cliente.GetParametros();
-            command = builderDeComandos.Crear(query, parametros);
-            command.CommandType = CommandType.StoredProcedure;
-            command.ExecuteNonQuery();
-             * */
             return this.Crear(cliente);
         }
 
@@ -69,14 +61,7 @@ namespace PagoAgilFrba
 
         public Decimal CrearEmpresa(Empresa empresa)
         {
-            /*query = empresa.GetQueryCrear();
-            parametros.Clear();
-            parametros = empresa.GetParametros();
-            command = builderDeComandos.Crear(query, parametros);
-            command.CommandType = CommandType.StoredProcedure;
-            command.ExecuteNonQuery();*/
             return this.Crear(empresa);
-
         }
 
         public Decimal CrearFactura(Factura factura)
@@ -457,9 +442,9 @@ namespace PagoAgilFrba
 
         public DataTable SelectClientesParaFiltroConFiltro(String filtro)
         {
-            return this.SelectDataTable("c.clie_dni Dni, c.clie_nombre Nombre, c.clie_apellido Apellido, c.clie_fecha_nacimiento FechaDeNacimiento, c.clie_mail Mail, c.clie_telefono Telefono, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
-                , "AMBDA.Cliente c, AMBDA.Direccion d"
-                , "c.clie_direc_id = d.direc_id " + filtro);
+            return this.SelectDataTable("c.clie_dni Dni, c.clie_nombre Nombre, c.clie_apellido Apellido, c.clie_fecha_nacimiento FechaDeNacimiento, c.clie_mail Mail, c.clie_telefono Telefono, c.clie_direc Direccion, c.clie_cod_postal CodigoPostal, c.clie_habilitado Habilitado"
+                , "AMBDA.Cliente c"
+                , "c.clie_dni > 0" + filtro);
         }
 
         public DataTable SelectClientesParaFiltro()
@@ -488,9 +473,9 @@ namespace PagoAgilFrba
 
         public DataTable SelectEmpresasParaFiltroConFiltro(String filtro)
         {
-            return this.SelectDataTable("e.empr_cuit Cuit, e.empr_nombre Nombre, e.empr_direc_id DireccionId, e.empr_rubro Rubro, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
-                , "AMBDA.Empresa e, AMBDA.Direccion d"
-                , "e.empr_direc_id = d.direc_id " + filtro);
+            return this.SelectDataTable("e.empr_cuit Cuit, e.empr_nombre Nombre, e.empr_direc Direccion, e.empr_rubro Rubro, e.empr_cod_postal CodigoPostal, e.empr_habilitada Habilitada"
+                , "AMBDA.Empresa e"
+                , "e.empr_id > 0" + filtro);
         }
 
         public DataTable SelectEmpresasParaFiltro()
