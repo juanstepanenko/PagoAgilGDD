@@ -244,6 +244,9 @@
       <DependentUpon>AgregarEmpresa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmEmpresa\EmpresaForm.resx">
+      <DependentUpon>EmpresaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmEmpresa\FiltroEmpresa.resx">
       <DependentUpon>FiltroEmpresa.cs</DependentUpon>
     </EmbeddedResource>

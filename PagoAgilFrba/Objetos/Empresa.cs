@@ -9,14 +9,24 @@ namespace PagoAgilFrba.Objetos
 {
     class Empresa : Objeto, Comunicable
     {
-
+        private Decimal id;
         private String nombre;
         private String cuit;
         private Decimal direc_id;
-        private String rubro;
+        private Decimal rubro;
         private Boolean habilitada;
 
         /************* Getters y Setters **************/
+        public Decimal GetId()
+        {
+            return id;
+        }
+
+        public void SetId(Decimal id)
+        {
+            this.id = id;
+        }
+
         public void SetNombre(String nombre)
         {
             if (nombre == "")
@@ -28,8 +38,6 @@ namespace PagoAgilFrba.Objetos
         {
             return this.nombre;
         }
-
-
 
         public void SetCuit(String cuit)
         {
@@ -62,15 +70,15 @@ namespace PagoAgilFrba.Objetos
             this.direc_id = direcID;
         }
 
-        public void SetRubro(String rubro)
+        public void SetRubro(Decimal rubro)
         {
-            if (rubro == "")
+            if (rubro.Equals(null))
                 throw new CampoVacioException("Rubro");
             
             this.rubro = rubro;
         }
 
-        public String GetRubro()
+        public Decimal GetRubro()
         {
             return this.rubro;
         }
@@ -96,12 +104,12 @@ namespace PagoAgilFrba.Objetos
 
          string Comunicable.GetQueryModificar()
         {
-            return "UPDATE AMBDA.Empresa SET  empr_nombre = @nombre,  empr_direc_id = @direccion_id, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_cuit = @cuit"; // preguntar where 
+            return "UPDATE AMBDA.Empresa SET empr_cuit = @cuit, empr_nombre = @nombre, empr_direc_id = @direccion_id, empr_rubro = @rubro, empr_habilitada = @habilitada  WHERE empr_id = @id"; // preguntar where 
         }
 
         public string GetQueryObtener()
         {
-            return "SELECT * FROM AMBDA.Empresa WHERE empr_cuit = @cuit";
+            return "SELECT * FROM AMBDA.Empresa WHERE empr_id = @id";
         }
 
 
@@ -111,7 +119,7 @@ namespace PagoAgilFrba.Objetos
             this.cuit = Convert.ToString(reader["empr_cuit"]);
             this.nombre = Convert.ToString(reader["empr_nombre"]);
             this.direc_id = Convert.ToDecimal(reader["empr_direc_id"]);
-            this.rubro = Convert.ToString(reader["empr_rubro"]);
+            this.rubro = Convert.ToDecimal(reader["empr_rubro"]);
             this.habilitada = Convert.ToBoolean(reader["empr_habilitada"]);
 
         }

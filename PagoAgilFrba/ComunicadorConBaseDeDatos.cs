@@ -67,14 +67,15 @@ namespace PagoAgilFrba
             command.ExecuteNonQuery();
         }
 
-        public void CrearEmpresa(Empresa empresa)
+        public Decimal CrearEmpresa(Empresa empresa)
         {
-            query = empresa.GetQueryCrear();
+            /*query = empresa.GetQueryCrear();
             parametros.Clear();
             parametros = empresa.GetParametros();
             command = builderDeComandos.Crear(query, parametros);
             command.CommandType = CommandType.StoredProcedure;
-            command.ExecuteNonQuery();
+            command.ExecuteNonQuery();*/
+            return this.Crear(empresa);
 
         }
 
@@ -149,7 +150,7 @@ namespace PagoAgilFrba
             return direc;
         }
 
-        public Empresa ObtenerEmpresa(String cuit)
+        public Empresa ObtenerEmpresa(Decimal id)
         {
             Empresa objeto = new Empresa();
             Type clase = objeto.GetType();
@@ -157,7 +158,7 @@ namespace PagoAgilFrba
             Empresa empresa = (Empresa)Activator.CreateInstance(clase);
             query = empresa.GetQueryObtener();
             parametros.Clear();
-            parametros.Add(new SqlParameter("@cuit", cuit));
+            parametros.Add(new SqlParameter("@id", id));
             SqlDataReader reader = builderDeComandos.Crear(query, parametros).ExecuteReader();
             if (reader.Read())
             {
@@ -218,12 +219,12 @@ namespace PagoAgilFrba
             return false;
         }
 
-        public Boolean ModificarEmpresa(String cuit, Comunicable objeto)
+        public Boolean ModificarEmpresa(Decimal idEmpresa, Comunicable objeto)
         {
             query = objeto.GetQueryModificar();
             parametros.Clear();
             parametros = objeto.GetParametros();
-            // parametros.Add(new SqlParameter("@cuit", cuit));
+            parametros.Add(new SqlParameter("@id", idEmpresa));
             int filasAfectadas = builderDeComandos.Crear(query, parametros).ExecuteNonQuery();
             if (filasAfectadas == 1) return true;
             return false;
@@ -265,7 +266,7 @@ namespace PagoAgilFrba
 
         public Boolean EliminarEmpresa(Decimal id)
         {
-            if (eliminarGeneralId("UPDATE AMBDA.Cliente SET empr_habilitada = 0 WHERE empr_cuit = @cuit", "@cuit", id) == 1)
+            if (eliminarGeneralId("UPDATE AMBDA.Empresa SET empr_habilitada = 0 WHERE empr_id = @id", "@id", id) == 1)
                 return true;
             return false;
         }
@@ -418,7 +419,7 @@ namespace PagoAgilFrba
         public DataTable SelectFacturasParaFiltroConFiltro(String filtro)
         {
             parametros.Clear();
-            command = builderDeComandos.Crear("SELECT fact_nro as 'nro factura', (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'dni cliente', (select empr_nombre from AMBDA.Empresa where empr_cuit = fact_empresa) as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
+            command = builderDeComandos.Crear("SELECT fact_nro as 'nro factura', (select clie_dni from AMBDA.Cliente where clie_id = fact_cliente) as 'dni cliente', (select empr_nombre from AMBDA.Empresa where empr_id = fact_empresa) as 'empresa', fact_fecha as 'fecha alta', fact_fecha_venc as 'fecha vencimiento', fact_total as 'importe total'"
             + " FROM AMBDA.Factura WHERE fact_cobrada <> 1 and fact_rendicion is null " + filtro, parametros);
             command.CommandTimeout = 0;
             DataSet datos = new DataSet();
@@ -437,7 +438,7 @@ namespace PagoAgilFrba
         {
             return this.SelectDataTable("e.empr_cuit Cuit, e.empr_nombre Nombre, e.empr_direc_id DireccionId, e.empr_rubro Rubro, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
                 , "AMBDA.Empresa e, AMBDA.Direccion d"
-                , "e.empr_direc_id = d.direc_id AND e.empr_habilitada = 1" + filtro);
+                , "e.empr_direc_id = d.direc_id " + filtro);
         }
 
         public DataTable SelectEmpresasParaFiltro()
