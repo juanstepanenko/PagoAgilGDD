@@ -43,7 +43,6 @@ namespace PagoAgilFrba.AbmSucursal
             CargarDireccion(idDireccion);
             //pero esto realiza una query a la bd y trae los campos de direccion... si no existiera direccion, donde saco esos campos x separado??
             checkBoxHab.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("sucu_habilitada", "Sucursal", "sucu_id", id));
-            //select sucu_habilitada from Sucursal Where sucu_id = @id
         }
 
         private void CargarDireccion(Decimal idDireccion)
@@ -139,19 +138,11 @@ namespace PagoAgilFrba.AbmSucursal
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
             }
-            /*catch (CodPosYaExisteException exception)
-            {
-                MessageBox.Show(exception.Message);
-                return;
-            }*/
-
             this.Close();
         }
 
         private void botonCancelar_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //new FiltrarSucursal().ShowDialog();
             this.Close();
         }
 
