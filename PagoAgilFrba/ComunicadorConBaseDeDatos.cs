@@ -77,7 +77,9 @@ namespace PagoAgilFrba
 
         public Decimal CrearSucursal(Sucursal sucursal)
          {
-             if (!pasoControlSucursal(sucursal.GetIdDireccion()))//GetId
+             //if (!pasoControlSucursal(sucursal.GetId()))
+                 //throw new SucursalYaExisteExcepcion();
+             if (!pasoControlCodPostalDeSucu(Convert.ToString(sucursal.GetCodPostal()),sucursal.GetId()))
                  throw new SucursalYaExisteExcepcion();
              return this.Crear(sucursal);
          }
@@ -383,15 +385,6 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
-        public bool pasoControlSucursal(Decimal dir_id) //sucu_id
-        {
-            query = "select count(*) from AMBDA.Sucursal join AMBDA.Direccion as d1 on sucu_direc_id = d1.direc_id where d1.direc_cod_postal = (select d2.direc_cod_postal from AMBDA.Direccion as d2 where d2.direc_id = @id)";
-            //query = "SELECT COUNT(*) FROM AMBDA.Sucursal WHERE sucu_id = @id";
-            parametros.Clear();
-            parametros.Add(new SqlParameter("@id", dir_id));//sucu_id
-            return ControlDeUnicidad(query, parametros);
-        }
-
         private bool pasoControlDeFacturaParaFactura(String empresa, String nroFactura)
         {
             query = "SELECT COUNT(*) FROM AMBDA.Factura WHERE fact_empresa = (select empr_id from AMBDA.Empresa where empr_nombre = @empresa) and fact_nro = @nroFactura";
@@ -444,10 +437,17 @@ namespace PagoAgilFrba
             return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
         }
 
-        public bool pasoControlDeCodPostalDeSucu(String cp, Decimal sucuID)
+        /*public bool pasoControlSucursal(Decimal sucu_id)
         {
-            String query = "Select count(*) From AMBDA.Direccion d, AMBDA.Sucursal s Where d.direc_id = s.sucu_direc_id AND d.direc_cod_postal = @codPostal And sucu_id <> @sucu";
-            //String query = "Select count(*) From AMBDA.Sucursal Where sucu_cod_postal = @codPostal And sucu_id <> @sucu";
+            query = "SELECT COUNT(*) FROM AMBDA.Sucursal WHERE sucu_id = @id";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@id", sucu_id));//sucu_id
+            return ControlDeUnicidad(query, parametros);
+        }*/
+
+        public bool pasoControlCodPostalDeSucu(String cp, Decimal sucuID)
+        {
+            String query = "Select count(*) From AMBDA.Sucursal Where sucu_cod_postal = @codPostal And sucu_id <> @sucu";
             parametros.Clear();
             parametros.Add(new SqlParameter("@codPostal", Convert.ToDecimal(cp)));
             parametros.Add(new SqlParameter("@sucu", sucuID));
@@ -538,21 +538,16 @@ namespace PagoAgilFrba
                 , "e.empr_id > 0" + filtro);
         }
 
-        public DataTable SelectSucursalParaFiltroConFiltro(String filtro)
-        {
-            //"s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc_id DireccionId, d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
-            //HABILITADO
-            return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc_id DireccionId, (case s.sucu_habilitada when 1 then 'Sí' else 'No' end) Habilitado,d.direc_calleNro Calle, d.direc_piso Piso, d.direc_depto Departamento, d.direc_cod_postal CodigoPostal, d.direc_localidad Localidad"
-                , "AMBDA.Sucursal s, AMBDA.Direccion d"
-                , "s.sucu_direc_id = d.direc_id " + filtro);
-            /*return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc!!! Dirección, s.sucu_cod_postal [Código Postal] (case s.sucu_habilitada when 1 then 'Sí' else 'No' end) Habilitado,"
-                , "AMBDA.Sucursal s"
-                , filtro);*/
-        }
-
         public DataTable SelectEmpresasParaFiltro()
         {
             return this.SelectEmpresasParaFiltroConFiltro("");
+        }
+
+        public DataTable SelectSucursalParaFiltroConFiltro(String filtro)
+        {
+            return this.SelectDataTable("s.sucu_id ID, s.sucu_nombre Nombre, s.sucu_direc Direccion, s.sucu_cod_postal CodigoPostal, (case s.sucu_habilitada when 1 then 'Sí' else 'No' end) Habilitado"
+                , "AMBDA.Sucursal s"
+                , "s.sucu_id > 0" + filtro);
         }
 
         public DataTable SelectSucursalParaFiltro()

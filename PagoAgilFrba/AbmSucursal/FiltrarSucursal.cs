@@ -73,15 +73,10 @@ namespace PagoAgilFrba.AbmSucursal
         private String CalcularFiltro()
         {
             String filtro = "";
-            if (textBoxNombre.Text != "") filtro += "AND " + "s.sucu_nombre LIKE '" + textBoxNombre.Text + "%'";
-            if (textBoxCalleNro.Text != "") filtro += "AND " + "d.direc_calleNro LIKE '" + textBoxCalleNro.Text + "%'";
-            if (textBoxCodPos.Text != "") filtro += "AND " + "d.direc_cod_postal LIKE '" + textBoxCodPos.Text + "%'";
+            if (textBoxNombre.Text != "") filtro = "sucu_nombre LIKE '" + textBoxNombre.Text + "%'";
+            if (textBoxCalleNro.Text != "") filtro += "AND " + "sucu_direc LIKE '" + textBoxCalleNro.Text + "%'";
+            if (textBoxCodPos.Text != "") filtro += "AND " + "sucu_cod_postal LIKE '" + textBoxCodPos.Text + "%'";
             return filtro;
-            /*String filtro = "";
-            if (textBoxNombre.Text != "") filtro += "s.sucu_nombre LIKE '" + textBoxNombre.Text + "%'";
-            if (textBoxCalleNro.Text != "") filtro += "AND " + "s.sucu_direc!!!! LIKE '" + textBoxCalleNro.Text + "%'";
-            if (textBoxCodPos.Text != "") filtro += "AND " + "s.sucu_cod_postal LIKE '" + textBoxCodPos.Text + "%'";
-            return filtro;*/
         }
 
         private void botonLimpiar_Click(object sender, EventArgs e)

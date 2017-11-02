@@ -39,25 +39,12 @@ namespace PagoAgilFrba.AbmSucursal
             String departamento = textBoxDepartamento.Text;
             String codigoPostal = textBoxCP.Text;
             String localidad = textBoxLocalidad.Text;
-            String dir = calleNro + ", " + piso + ", " + departamento + ", " + localidad;
+            String dir = ConcatenarDir(calleNro, piso, departamento, localidad, codigoPostal);
 
-            // Si no se cumple unicidad de codigo postal no se tiene que crear
-            //try
-            //{
-            //if (!comunicador.pasoControlDeUnicidad(codigoPostal, "sucu_cod_postal", "Sucursal"))
-            //throw new CodPosYaExisteException();
-            //}
-
-            //catch (CampoVacioException exception)
-            //{
-            //    MessageBox.Show("Falta completar campo: " + exception.Message);
-            //    return;
-            //}
-
-            //chequeo cod postal con la tabla direccion
             try
             {
-                if (!comunicador.pasoControlDeUnicidad(codigoPostal, "direc_cod_postal", "Direccion"))
+                //uso paso control de unicidad porque no tngo id todavia, y ni existo todavia
+                if (!comunicador.pasoControlDeUnicidad(codigoPostal, "sucu_cod_postal", "Sucursal"))
                     throw new CodPosYaExisteException();
             }
             catch (CodPosYaExisteException exception)
@@ -65,7 +52,7 @@ namespace PagoAgilFrba.AbmSucursal
                 MessageBox.Show("Ya existe sucursal en éste área");
                 return;
             }
-
+            
             // Crea una direccion y se guarda su id
             Direccion direccion = new Direccion();
             try
@@ -88,10 +75,10 @@ namespace PagoAgilFrba.AbmSucursal
             }
 
             //Controla que no se haya creado ya la direccion
-            if (this.idDireccion == 0)
+            /*if (this.idDireccion == 0)
             {
                 this.idDireccion = comunicador.CrearDireccion(direccion);
-            }
+            }*/
 
             // Crea sucursal
             try
@@ -100,7 +87,7 @@ namespace PagoAgilFrba.AbmSucursal
                 sucursal.SetNombreSucursal(nombreSucursal);
                 sucursal.SetIdDireccion(idDireccion);
                 sucursal.SetDireccion(dir);
-                //sucursal.SetHabilitada(true);
+                sucursal.SetCodPostal(codigoPostal);
                 sucursal.SetId(comunicador.CrearSucursal(sucursal));
                 MessageBox.Show("Se creó la sucursal correctamente");
             }
@@ -115,6 +102,11 @@ namespace PagoAgilFrba.AbmSucursal
                 return;
             }
             catch (CodPosYaExisteException exception)
+            {
+                MessageBox.Show("Ya existe sucursal con éste código Postal" + exception.Message);
+                return;
+            }
+            catch (SucursalYaExisteExcepcion exception)
             {
                 MessageBox.Show("Ya existe sucursal con éste código Postal" + exception.Message);
                 return;
@@ -145,14 +137,14 @@ namespace PagoAgilFrba.AbmSucursal
             this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private String ConcatenarDir(String calleNro, String piso, String dto, String loc, String cp)
         {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
+            String dir = calleNro;
+            if(piso != " ") dir += (", " + piso);
+            if(dto != " ") dir += (", " + dto);
+            dir += ", " + loc + ", " + cp;
+            return dir;
+            
         }
     }
 }

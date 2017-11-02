@@ -46,12 +46,18 @@
             this.textBoxCP = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.textBoxNombre);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -76,7 +82,6 @@
             this.label1.Size = new System.Drawing.Size(62, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBoxCalleNro
             // 
@@ -100,16 +105,15 @@
             this.label2.Size = new System.Drawing.Size(134, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "Calle y Número";
-            this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(28, 328);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(305, 18);
+            this.label4.Size = new System.Drawing.Size(197, 18);
             this.label4.TabIndex = 1;
-            this.label4.Text = "* Debe completar todos los campos";
+            this.label4.Text = "* Campos obligatorios";
             // 
             // botonLimpiar
             // 
@@ -143,6 +147,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBoxDepartamento);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
@@ -184,7 +192,6 @@
             this.label6.Size = new System.Drawing.Size(44, 18);
             this.label6.TabIndex = 3;
             this.label6.Text = "Piso";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // textBoxLocalidad
             // 
@@ -208,7 +215,6 @@
             this.label8.Size = new System.Drawing.Size(89, 18);
             this.label8.TabIndex = 0;
             this.label8.Text = "Localidad";
-            this.label8.Click += new System.EventHandler(this.label1_Click);
             // 
             // label5
             // 
@@ -218,7 +224,51 @@
             this.label5.Size = new System.Drawing.Size(125, 18);
             this.label5.TabIndex = 0;
             this.label5.Text = "Código Postal";
-            this.label5.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(280, 173);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 18);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(280, 139);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(17, 18);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(280, 139);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(17, 18);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(484, 37);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(17, 18);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(484, 40);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(17, 18);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "*";
             // 
             // AgregarSucursal
             // 
@@ -256,7 +306,6 @@
         private System.Windows.Forms.Button botonGuardar;
         private System.Windows.Forms.Button botonVolver;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBoxCodPos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxCP;
         private System.Windows.Forms.Label label6;
@@ -264,5 +313,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxLocalidad;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -32,16 +32,10 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelNombre = new System.Windows.Forms.Label();
             this.groupBoxDir = new System.Windows.Forms.GroupBox();
-            this.textBoxLoc = new System.Windows.Forms.TextBox();
             this.textBoxCP = new System.Windows.Forms.TextBox();
-            this.textBoxDto = new System.Windows.Forms.TextBox();
-            this.textBoxPiso = new System.Windows.Forms.TextBox();
-            this.textBoxCalleNro = new System.Windows.Forms.TextBox();
-            this.labelLoc = new System.Windows.Forms.Label();
+            this.textBoxDirec = new System.Windows.Forms.TextBox();
             this.labelCodPos = new System.Windows.Forms.Label();
-            this.labelDto = new System.Windows.Forms.Label();
-            this.labelPiso = new System.Windows.Forms.Label();
-            this.labelCalleNro = new System.Windows.Forms.Label();
+            this.labelDirec = new System.Windows.Forms.Label();
             this.checkBoxHab = new System.Windows.Forms.CheckBox();
             this.buttonVol = new System.Windows.Forms.Button();
             this.buttonLimp = new System.Windows.Forms.Button();
@@ -56,7 +50,7 @@
             this.groupBoxIS.Controls.Add(this.labelNombre);
             this.groupBoxIS.Location = new System.Drawing.Point(12, 12);
             this.groupBoxIS.Name = "groupBoxIS";
-            this.groupBoxIS.Size = new System.Drawing.Size(502, 75);
+            this.groupBoxIS.Size = new System.Drawing.Size(577, 75);
             this.groupBoxIS.TabIndex = 0;
             this.groupBoxIS.TabStop = false;
             this.groupBoxIS.Text = "Información Sucursal";
@@ -65,7 +59,7 @@
             // 
             this.textBoxName.Location = new System.Drawing.Point(159, 30);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(319, 28);
+            this.textBoxName.Size = new System.Drawing.Size(412, 28);
             this.textBoxName.TabIndex = 0;
             // 
             // labelNombre
@@ -79,107 +73,53 @@
             // 
             // groupBoxDir
             // 
-            this.groupBoxDir.Controls.Add(this.textBoxLoc);
             this.groupBoxDir.Controls.Add(this.textBoxCP);
-            this.groupBoxDir.Controls.Add(this.textBoxDto);
-            this.groupBoxDir.Controls.Add(this.textBoxPiso);
-            this.groupBoxDir.Controls.Add(this.textBoxCalleNro);
-            this.groupBoxDir.Controls.Add(this.labelLoc);
+            this.groupBoxDir.Controls.Add(this.textBoxDirec);
             this.groupBoxDir.Controls.Add(this.labelCodPos);
-            this.groupBoxDir.Controls.Add(this.labelDto);
-            this.groupBoxDir.Controls.Add(this.labelPiso);
-            this.groupBoxDir.Controls.Add(this.labelCalleNro);
+            this.groupBoxDir.Controls.Add(this.labelDirec);
             this.groupBoxDir.Location = new System.Drawing.Point(12, 104);
             this.groupBoxDir.Name = "groupBoxDir";
-            this.groupBoxDir.Size = new System.Drawing.Size(502, 208);
+            this.groupBoxDir.Size = new System.Drawing.Size(577, 120);
             this.groupBoxDir.TabIndex = 1;
             this.groupBoxDir.TabStop = false;
             this.groupBoxDir.Text = "Dirección";
             // 
-            // textBoxLoc
-            // 
-            this.textBoxLoc.Location = new System.Drawing.Point(159, 163);
-            this.textBoxLoc.Name = "textBoxLoc";
-            this.textBoxLoc.Size = new System.Drawing.Size(115, 28);
-            this.textBoxLoc.TabIndex = 4;
-            // 
             // textBoxCP
             // 
-            this.textBoxCP.Location = new System.Drawing.Point(160, 129);
+            this.textBoxCP.Location = new System.Drawing.Point(159, 61);
             this.textBoxCP.Name = "textBoxCP";
             this.textBoxCP.Size = new System.Drawing.Size(115, 28);
             this.textBoxCP.TabIndex = 3;
             // 
-            // textBoxDto
+            // textBoxDirec
             // 
-            this.textBoxDto.Location = new System.Drawing.Point(159, 95);
-            this.textBoxDto.Name = "textBoxDto";
-            this.textBoxDto.Size = new System.Drawing.Size(115, 28);
-            this.textBoxDto.TabIndex = 2;
-            // 
-            // textBoxPiso
-            // 
-            this.textBoxPiso.Location = new System.Drawing.Point(159, 61);
-            this.textBoxPiso.Name = "textBoxPiso";
-            this.textBoxPiso.Size = new System.Drawing.Size(115, 28);
-            this.textBoxPiso.TabIndex = 1;
-            // 
-            // textBoxCalleNro
-            // 
-            this.textBoxCalleNro.Location = new System.Drawing.Point(159, 27);
-            this.textBoxCalleNro.Name = "textBoxCalleNro";
-            this.textBoxCalleNro.Size = new System.Drawing.Size(319, 28);
-            this.textBoxCalleNro.TabIndex = 0;
-            // 
-            // labelLoc
-            // 
-            this.labelLoc.AutoSize = true;
-            this.labelLoc.Location = new System.Drawing.Point(19, 173);
-            this.labelLoc.Name = "labelLoc";
-            this.labelLoc.Size = new System.Drawing.Size(89, 18);
-            this.labelLoc.TabIndex = 0;
-            this.labelLoc.Text = "Localidad";
+            this.textBoxDirec.Location = new System.Drawing.Point(159, 27);
+            this.textBoxDirec.Name = "textBoxDirec";
+            this.textBoxDirec.Size = new System.Drawing.Size(412, 28);
+            this.textBoxDirec.TabIndex = 0;
             // 
             // labelCodPos
             // 
             this.labelCodPos.AutoSize = true;
-            this.labelCodPos.Location = new System.Drawing.Point(19, 139);
+            this.labelCodPos.Location = new System.Drawing.Point(18, 71);
             this.labelCodPos.Name = "labelCodPos";
             this.labelCodPos.Size = new System.Drawing.Size(125, 18);
             this.labelCodPos.TabIndex = 0;
             this.labelCodPos.Text = "Código Postal";
             // 
-            // labelDto
+            // labelDirec
             // 
-            this.labelDto.AutoSize = true;
-            this.labelDto.Location = new System.Drawing.Point(19, 105);
-            this.labelDto.Name = "labelDto";
-            this.labelDto.Size = new System.Drawing.Size(116, 18);
-            this.labelDto.TabIndex = 0;
-            this.labelDto.Text = "Departamento";
-            // 
-            // labelPiso
-            // 
-            this.labelPiso.AutoSize = true;
-            this.labelPiso.Location = new System.Drawing.Point(19, 71);
-            this.labelPiso.Name = "labelPiso";
-            this.labelPiso.Size = new System.Drawing.Size(44, 18);
-            this.labelPiso.TabIndex = 0;
-            this.labelPiso.Text = "Piso";
-            // 
-            // labelCalleNro
-            // 
-            this.labelCalleNro.AutoSize = true;
-            this.labelCalleNro.Location = new System.Drawing.Point(19, 37);
-            this.labelCalleNro.Name = "labelCalleNro";
-            this.labelCalleNro.Size = new System.Drawing.Size(134, 18);
-            this.labelCalleNro.TabIndex = 0;
-            this.labelCalleNro.Text = "Calle y Número";
+            this.labelDirec.AutoSize = true;
+            this.labelDirec.Location = new System.Drawing.Point(19, 37);
+            this.labelDirec.Name = "labelDirec";
+            this.labelDirec.Size = new System.Drawing.Size(89, 18);
+            this.labelDirec.TabIndex = 0;
+            this.labelDirec.Text = "Dirección";
             // 
             // checkBoxHab
             // 
             this.checkBoxHab.AutoSize = true;
-            this.checkBoxHab.Location = new System.Drawing.Point(34, 328);
+            this.checkBoxHab.Location = new System.Drawing.Point(40, 239);
             this.checkBoxHab.Name = "checkBoxHab";
             this.checkBoxHab.Size = new System.Drawing.Size(124, 22);
             this.checkBoxHab.TabIndex = 1;
@@ -188,7 +128,7 @@
             // 
             // buttonVol
             // 
-            this.buttonVol.Location = new System.Drawing.Point(12, 365);
+            this.buttonVol.Location = new System.Drawing.Point(18, 276);
             this.buttonVol.Name = "buttonVol";
             this.buttonVol.Size = new System.Drawing.Size(139, 43);
             this.buttonVol.TabIndex = 1;
@@ -198,7 +138,7 @@
             // 
             // buttonLimp
             // 
-            this.buttonLimp.Location = new System.Drawing.Point(230, 365);
+            this.buttonLimp.Location = new System.Drawing.Point(305, 276);
             this.buttonLimp.Name = "buttonLimp";
             this.buttonLimp.Size = new System.Drawing.Size(139, 43);
             this.buttonLimp.TabIndex = 2;
@@ -208,7 +148,7 @@
             // 
             // buttonGuar
             // 
-            this.buttonGuar.Location = new System.Drawing.Point(375, 365);
+            this.buttonGuar.Location = new System.Drawing.Point(450, 276);
             this.buttonGuar.Name = "buttonGuar";
             this.buttonGuar.Size = new System.Drawing.Size(139, 43);
             this.buttonGuar.TabIndex = 0;
@@ -220,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 421);
+            this.ClientSize = new System.Drawing.Size(601, 344);
             this.Controls.Add(this.buttonGuar);
             this.Controls.Add(this.buttonLimp);
             this.Controls.Add(this.buttonVol);
@@ -244,17 +184,11 @@
         private System.Windows.Forms.GroupBox groupBoxIS;
         private System.Windows.Forms.GroupBox groupBoxDir;
         private System.Windows.Forms.Label labelNombre;
-        private System.Windows.Forms.Label labelLoc;
         private System.Windows.Forms.Label labelCodPos;
-        private System.Windows.Forms.Label labelDto;
-        private System.Windows.Forms.Label labelPiso;
-        private System.Windows.Forms.Label labelCalleNro;
+        private System.Windows.Forms.Label labelDirec;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxCalleNro;
-        private System.Windows.Forms.TextBox textBoxLoc;
+        private System.Windows.Forms.TextBox textBoxDirec;
         private System.Windows.Forms.TextBox textBoxCP;
-        private System.Windows.Forms.TextBox textBoxDto;
-        private System.Windows.Forms.TextBox textBoxPiso;
         private System.Windows.Forms.CheckBox checkBoxHab;
         private System.Windows.Forms.Button buttonVol;
         private System.Windows.Forms.Button buttonLimp;

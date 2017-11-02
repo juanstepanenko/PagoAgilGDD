@@ -38,14 +38,13 @@ namespace PagoAgilFrba.AbmSucursal
             //obtengo el sucursal seleccionados y los completo en los textboxs de esta ventana.
             Sucursal sucursal = comunicador.ObtenerSucursal(id);
 
-            this.idDireccion = sucursal.GetIdDireccion();
             textBoxName.Text = sucursal.GetNombreSucursal();
-            CargarDireccion(idDireccion);
-            //pero esto realiza una query a la bd y trae los campos de direccion... si no existiera direccion, donde saco esos campos x separado??
+            textBoxDirec.Text = sucursal.GetDireccion();
+            textBoxCP.Text = sucursal.GetCodPostal();
             checkBoxHab.Checked = Convert.ToBoolean(comunicador.SelectFromWhere("sucu_habilitada", "Sucursal", "sucu_id", id));
         }
 
-        private void CargarDireccion(Decimal idDireccion)
+        /*private void CargarDireccion(Decimal idDireccion)
         {
             Direccion direccion = comunicador.ObtenerDireccion(idDireccion);
             textBoxCalleNro.Text = direccion.GetCalleNro();
@@ -54,48 +53,34 @@ namespace PagoAgilFrba.AbmSucursal
             textBoxCP.Text = direccion.GetCodigoPostal();
             textBoxLoc.Text = direccion.GetLocalidad();
             
-        }
+        }*/
 
         private void botonGuardar_Click(object sender, EventArgs e)
         {
             // Guarda en variables todos los campos de entrada
             String nombre = textBoxName.Text;
-            String numero = textBoxCalleNro.Text;
-            String piso = textBoxPiso.Text;
-            String departamento = textBoxDto.Text;
-            String localidad = textBoxLoc.Text;
+            String dir = textBoxDirec.Text;
+            //String piso = textBoxPiso.Text;
+            //String departamento = textBoxDto.Text;
+            //String localidad = textBoxLoc.Text;
             String codigoPostal = textBoxCP.Text; ;
             Boolean habilitada = checkBoxHab.Checked;
             Boolean pudoModificar;
 
-            // Si no se cumpleunicidad de codigo postal no se tiene que crear
-            //try
-            //{
-                //if (!comunicador.pasoControlDeUnicidad(codigoPostal, "sucu_cod_postal", "Sucursal"))
-                    //throw new CodPosYaExisteException();
-            //}
-
-            //catch (CampoVacioException exception)
-            //{
-            //    MessageBox.Show("Falta completar campo: " + exception.Message);
-            //    return;
-            //}
-           
             //chequeo cod postal con la tabla direccion
             try
             {
-                if (!comunicador.pasoControlDeCodPostalDeSucu(codigoPostal, id))
-                //SELECT COUNT(*) FROM AMBDA.Direccion WHERE direc_cod_postal = @codigoPostal;
+                if (!comunicador.pasoControlCodPostalDeSucu(codigoPostal, id))
                 throw new CodPosYaExisteException();
             }
             catch (CodPosYaExisteException exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show("Ya existe sucursal en éste área");
                 return;
             }
 
             // Update direccion
-            try
+            /*try
             {
                 Direccion direccion = new Direccion();
                 direccion.SetCalleNro(numero);
@@ -114,7 +99,7 @@ namespace PagoAgilFrba.AbmSucursal
             {
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
-            }
+            }*/
 
 
             // Update sucursal
@@ -123,7 +108,9 @@ namespace PagoAgilFrba.AbmSucursal
                 Sucursal sucursal = new Sucursal();
                 sucursal.SetNombreSucursal(nombre);
                 sucursal.SetId(id);
-                sucursal.SetIdDireccion(idDireccion);
+                //sucursal.SetIdDireccion(idDireccion);
+                sucursal.SetDireccion(dir);
+                sucursal.SetCodPostal(codigoPostal);
                 sucursal.SetHabilitada(habilitada);
                 pudoModificar = comunicador.ModificarSucursal(id, sucursal);
                 if (pudoModificar) MessageBox.Show("La sucursal se modifico correctamente");
