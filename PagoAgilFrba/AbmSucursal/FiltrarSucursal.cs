@@ -32,7 +32,7 @@ namespace PagoAgilFrba.AbmSucursal
         {
             dataGridView1.DataSource = comunicador.SelectSucursalParaFiltro();
             CargarColumnaModificacion();
-            CargarColumnaDeshabilitar();
+            CargarColumnaEliminar();
         }
 
         private void CargarColumnaModificacion()
@@ -46,13 +46,13 @@ namespace PagoAgilFrba.AbmSucursal
             dataGridView1.Columns.Add(botonColumnaModificar);
         }
 
-        private void CargarColumnaDeshabilitar()
+        private void CargarColumnaEliminar()
         {
-            if (dataGridView1.Columns.Contains("Deshabilitar"))
-                dataGridView1.Columns.Remove("Deshabilitar");
+            if (dataGridView1.Columns.Contains("Eliminar"))
+                dataGridView1.Columns.Remove("Eliminar");
             DataGridViewButtonColumn botonColumnaEliminar = new DataGridViewButtonColumn();
-            botonColumnaEliminar.Text = "Deshabilitar";
-            botonColumnaEliminar.Name = "Deshabilitar";
+            botonColumnaEliminar.Text = "Eliminar";
+            botonColumnaEliminar.Name = "Eliminar";
             botonColumnaEliminar.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(botonColumnaEliminar);
         }
@@ -97,11 +97,11 @@ namespace PagoAgilFrba.AbmSucursal
                 CargarSucursal();
                 return;
             }
-            if (e.ColumnIndex == dataGridView1.Columns["Deshabilitar"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["Eliminar"].Index && e.RowIndex >= 0)
             {
                 String idSucursalAModificar = dataGridView1.Rows[e.RowIndex].Cells["ID"].Value.ToString();
                 Boolean resultado = comunicador.EliminarSucursal(Convert.ToDecimal(idSucursalAModificar));
-                if (resultado) MessageBox.Show("Se deshabilito correctamente");
+                if (resultado) MessageBox.Show("Se Elimino correctamente, la puede volver a habilitar en Modificación");
                 CargarSucursal();
                 return;
             }
