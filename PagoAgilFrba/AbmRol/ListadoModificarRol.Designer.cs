@@ -67,9 +67,9 @@
             // 
             // botonCancelar
             // 
-            this.botonCancelar.Location = new System.Drawing.Point(23, 76);
+            this.botonCancelar.Location = new System.Drawing.Point(23, 66);
             this.botonCancelar.Name = "botonCancelar";
-            this.botonCancelar.Size = new System.Drawing.Size(73, 23);
+            this.botonCancelar.Size = new System.Drawing.Size(73, 33);
             this.botonCancelar.TabIndex = 3;
             this.botonCancelar.Text = "Cancelar";
             this.botonCancelar.UseVisualStyleBackColor = true;
@@ -77,15 +77,15 @@
             // 
             // botonBuscar
             // 
-            this.botonBuscar.Location = new System.Drawing.Point(191, 77);
+            this.botonBuscar.Location = new System.Drawing.Point(214, 66);
             this.botonBuscar.Name = "botonBuscar";
-            this.botonBuscar.Size = new System.Drawing.Size(94, 21);
+            this.botonBuscar.Size = new System.Drawing.Size(71, 33);
             this.botonBuscar.TabIndex = 4;
             this.botonBuscar.Text = "Buscar";
             this.botonBuscar.UseVisualStyleBackColor = true;
             this.botonBuscar.Click += new System.EventHandler(this.botonBuscar_Click);
             // 
-            // ListadoEditarRol
+            // ListadoModificarRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,7 +95,7 @@
             this.Controls.Add(this.labelEstadoRoles);
             this.Controls.Add(this.comboBoxEstadoRoles);
             this.Controls.Add(this.dataGridViewResultadosBusqueda);
-            this.Name = "ListadoEditarRol";
+            this.Name = "ListadoModificarRol";
             this.Text = "ListadoEditarRol";
             this.Load += new System.EventHandler(this.ListadoModificarRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultadosBusqueda)).EndInit();

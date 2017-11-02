@@ -47,7 +47,7 @@ namespace PagoAgilFrba.AbmSucursal
                 if (!comunicador.pasoControlDeUnicidad(codigoPostal, "sucu_cod_postal", "Sucursal"))
                     throw new CodPosYaExisteException();
             }
-            catch (CodPosYaExisteException exception)
+            catch (CodPosYaExisteException)
             {
                 MessageBox.Show("Ya existe sucursal en éste área");
                 return;

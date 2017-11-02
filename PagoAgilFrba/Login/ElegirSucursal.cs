@@ -52,5 +52,6 @@ namespace PagoAgilFrba.Login
             new MenuPrincipal().ShowDialog();
             this.Close();
         }
+
     }
 }

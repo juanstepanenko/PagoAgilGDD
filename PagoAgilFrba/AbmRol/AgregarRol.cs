@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using PagoAgilFrba.Excepciones;
 
 namespace PagoAgilFrba.AbmRol
 {
@@ -47,25 +48,49 @@ namespace PagoAgilFrba.AbmRol
 
         private void botonGuardar_Click(object sender, EventArgs e)
         {
-            String sql = "INSERT INTO AMBDA.Rol(rol_nombre, rol_habilitado) VALUES (@rol, 1)";
-            String nombreRol = this.textBoxRol.Text;
-            parametros.Clear();
-            parametros.Add(new SqlParameter("@rol", nombreRol));
-            builderDeComandos.Crear(sql, parametros).ExecuteNonQuery();
-
-            foreach (DataRowView funcionalidad in this.checkedListBoxFuncionalidades.CheckedItems)
+            try
             {
+                if (this.textBoxRol.Text == "")
+                    throw new CampoVacioException("Nombre");
+
+                if (this.checkedListBoxFuncionalidades.CheckedItems.Count == 0)
+                    throw new NoSeleccionoNadaException("Debe seleccionar alguna funcionalidad");
+
+                String sql = "INSERT INTO AMBDA.Rol(rol_nombre, rol_habilitado) VALUES (@rol, 1)";
+                String nombreRol = this.textBoxRol.Text;
                 parametros.Clear();
                 parametros.Add(new SqlParameter("@rol", nombreRol));
+                builderDeComandos.Crear(sql, parametros).ExecuteNonQuery();
 
-                parametros.Add(new SqlParameter("@funcionalidad", funcionalidad.Row["func_descripcion"] as String));
+                foreach (DataRowView funcionalidad in this.checkedListBoxFuncionalidades.CheckedItems)
+                {
+                    parametros.Clear();
+                    parametros.Add(new SqlParameter("@rol", nombreRol));
 
-                String sql2 = "INSERT INTO AMBDA.RolxFunc(func_id, rol_id) VALUES ((SELECT func_id FROM AMBDA.Funcionalidad WHERE func_descripcion = @funcionalidad), (SELECT rol_id FROM AMBDA.Rol WHERE rol_nombre = @rol))";
+                    parametros.Add(new SqlParameter("@funcionalidad", funcionalidad.Row["func_descripcion"] as String));
 
-                builderDeComandos.Crear(sql2, parametros).ExecuteNonQuery();
+                    String sql2 = "INSERT INTO AMBDA.RolxFunc(func_id, rol_id) VALUES ((SELECT func_id FROM AMBDA.Funcionalidad WHERE func_descripcion = @funcionalidad), (SELECT rol_id FROM AMBDA.Rol WHERE rol_nombre = @rol))";
+
+                    builderDeComandos.Crear(sql2, parametros).ExecuteNonQuery();
+                }
+                MessageBox.Show("Se creo el rol " + nombreRol);
+                BorrarDatosIngresados();
             }
-            MessageBox.Show("Se creo el rol " + nombreRol);
-            BorrarDatosIngresados();
+
+            catch (CampoVacioException)
+            {
+                MessageBox.Show("Falta completar el nombre");
+                return;
+            }
+            catch (NoSeleccionoNadaException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+
+            this.Hide();
+            new RolForm().ShowDialog();
+            this.Close();
         }
 
         private void checkedListBoxFuncionalidades_SelectedIndexChanged(object sender, EventArgs e)

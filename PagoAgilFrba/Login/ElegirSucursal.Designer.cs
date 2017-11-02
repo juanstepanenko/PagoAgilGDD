@@ -37,15 +37,15 @@
             // 
             this.comboBoxRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxRol.FormattingEnabled = true;
-            this.comboBoxRol.Location = new System.Drawing.Point(107, 70);
+            this.comboBoxRol.Location = new System.Drawing.Point(77, 72);
             this.comboBoxRol.Name = "comboBoxRol";
-            this.comboBoxRol.Size = new System.Drawing.Size(145, 32);
+            this.comboBoxRol.Size = new System.Drawing.Size(253, 32);
             this.comboBoxRol.TabIndex = 0;
             // 
             // botonAceptar
             // 
             this.botonAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonAceptar.Location = new System.Drawing.Point(107, 119);
+            this.botonAceptar.Location = new System.Drawing.Point(131, 122);
             this.botonAceptar.Name = "botonAceptar";
             this.botonAceptar.Size = new System.Drawing.Size(145, 40);
             this.botonAceptar.TabIndex = 1;
@@ -59,15 +59,15 @@
             this.labelEnunciado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEnunciado.Location = new System.Drawing.Point(12, 30);
             this.labelEnunciado.Name = "labelEnunciado";
-            this.labelEnunciado.Size = new System.Drawing.Size(345, 20);
+            this.labelEnunciado.Size = new System.Drawing.Size(387, 20);
             this.labelEnunciado.TabIndex = 2;
             this.labelEnunciado.Text = "Seleccione la sucursal con la cual quiere iniciar sesion";
             // 
-            // ElegirRol
+            // ElegirSucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 212);
+            this.ClientSize = new System.Drawing.Size(414, 212);
             this.Controls.Add(this.labelEnunciado);
             this.Controls.Add(this.botonAceptar);
             this.Controls.Add(this.comboBoxRol);

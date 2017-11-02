@@ -93,6 +93,10 @@ namespace PagoAgilFrba.AbmRol
             CargarTodosLosDatos();
             textBoxRol.Clear();
 
+            this.Hide();
+            new RolForm().ShowDialog();
+            this.Close();
+
         }
 
         private bool estaHabilitado()

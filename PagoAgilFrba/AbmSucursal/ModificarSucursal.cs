@@ -17,7 +17,6 @@ namespace PagoAgilFrba.AbmSucursal
     {
         private Decimal id;
         private ComunicadorConBaseDeDatos comunicador = new ComunicadorConBaseDeDatos();
-        private Decimal idDireccion;
         //private SqlCommand command { get; set; }
         //private IList<SqlParameter> parametros = new List<SqlParameter>();
         //private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
@@ -73,7 +72,7 @@ namespace PagoAgilFrba.AbmSucursal
                 if (!comunicador.pasoControlCodPostalDeSucu(codigoPostal, id))
                 throw new CodPosYaExisteException();
             }
-            catch (CodPosYaExisteException exception)
+            catch (CodPosYaExisteException)
             {
                 MessageBox.Show("Ya existe sucursal en éste área");
                 return;

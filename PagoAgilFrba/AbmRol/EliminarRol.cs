@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using PagoAgilFrba.Excepciones;
 
 namespace PagoAgilFrba.AbmRol
 {
@@ -51,41 +52,57 @@ namespace PagoAgilFrba.AbmRol
 
         private void botonDeshabilitar_Click(object sender, EventArgs e)
         {
-            String rolElegido = this.comboBoxRol.Text;
-
-            parametros.Clear();
-            parametros.Add(new SqlParameter("@rol_nombre", rolElegido));
-
-            String sql = "UPDATE AMBDA.Rol SET rol_habilitado = 0 WHERE rol_nombre = @rol_nombre";
-
-            int filas_afectadas = 0;
-
-            filas_afectadas = builderDeComandos.Crear(sql, parametros).ExecuteNonQuery();
-            if (filas_afectadas != -1)
+            try
             {
-                MessageBox.Show("Deshabilitado rol " + rolElegido);
-            }
-            else
-            {
-                MessageBox.Show("Error");
-            }
-            
-            parametros.Clear();
-            parametros.Add(new SqlParameter("@nombre", rolElegido));
+                if (this.comboBoxRol.Text == "")
+                    throw new CampoVacioException("");
 
-            // Borramos el rol en los usuarios que lo tienen
-            String sql2 = "DELETE AMBDA.RolxUsuario WHERE rol_id = (SELECT rol_id FROM AMBDA.Rol WHERE rol_nombre = @nombre and rol_habilitado = 0)";
+                String rolElegido = this.comboBoxRol.Text;
 
-            filas_afectadas = builderDeComandos.Crear(sql2, parametros).ExecuteNonQuery();
-            if (filas_afectadas != -1)
-            {
-                MessageBox.Show("Se quito el rol " + rolElegido + " a " + filas_afectadas + " usuarios porque fue deshabilitado");
+                parametros.Clear();
+                parametros.Add(new SqlParameter("@rol_nombre", rolElegido));
+
+                String sql = "UPDATE AMBDA.Rol SET rol_habilitado = 0 WHERE rol_nombre = @rol_nombre";
+
+                int filas_afectadas = 0;
+
+                filas_afectadas = builderDeComandos.Crear(sql, parametros).ExecuteNonQuery();
+                if (filas_afectadas != -1)
+                {
+                    MessageBox.Show("Deshabilitado rol " + rolElegido);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+                parametros.Clear();
+                parametros.Add(new SqlParameter("@nombre", rolElegido));
+
+                // Borramos el rol en los usuarios que lo tienen
+                String sql2 = "DELETE AMBDA.RolxUsuario WHERE rol_id = (SELECT rol_id FROM AMBDA.Rol WHERE rol_nombre = @nombre and rol_habilitado = 0)";
+
+                filas_afectadas = builderDeComandos.Crear(sql2, parametros).ExecuteNonQuery();
+                if (filas_afectadas != -1)
+                {
+                    MessageBox.Show("Se quito el rol " + rolElegido + " a " + filas_afectadas + " usuarios porque fue deshabilitado");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+                this.Hide();
+                new RolForm().ShowDialog();
+                this.Close();
             }
-            else
+
+            catch (CampoVacioException)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Debe especificar un Rol");
+                return;
             }
-            CargarRoles();
+
         }
 
         private void comboBoxRol_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,10 +110,6 @@ namespace PagoAgilFrba.AbmRol
 
         }
 
-        private void labelRol_Click(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }

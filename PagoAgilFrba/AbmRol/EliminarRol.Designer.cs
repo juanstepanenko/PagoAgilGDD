@@ -36,8 +36,8 @@
             // 
             // botonDeshabilitar
             // 
-            this.botonDeshabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonDeshabilitar.Location = new System.Drawing.Point(154, 138);
+            this.botonDeshabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.botonDeshabilitar.Location = new System.Drawing.Point(169, 134);
             this.botonDeshabilitar.Name = "botonDeshabilitar";
             this.botonDeshabilitar.Size = new System.Drawing.Size(106, 35);
             this.botonDeshabilitar.TabIndex = 1;
@@ -64,20 +64,19 @@
             this.labelRol.Size = new System.Drawing.Size(33, 20);
             this.labelRol.TabIndex = 3;
             this.labelRol.Text = "Rol";
-            this.labelRol.Click += new System.EventHandler(this.labelRol_Click);
             // 
             // botonVolver
             // 
-            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonVolver.Location = new System.Drawing.Point(13, 228);
+            this.botonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.botonVolver.Location = new System.Drawing.Point(13, 206);
             this.botonVolver.Name = "botonVolver";
-            this.botonVolver.Size = new System.Drawing.Size(141, 23);
+            this.botonVolver.Size = new System.Drawing.Size(102, 45);
             this.botonVolver.TabIndex = 4;
             this.botonVolver.Text = "< Volver a menu de rol";
             this.botonVolver.UseVisualStyleBackColor = true;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // BajaRol
+            // EliminarRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

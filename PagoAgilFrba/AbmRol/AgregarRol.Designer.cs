@@ -51,8 +51,8 @@
             // 
             this.checkedListBoxFuncionalidades.FormattingEnabled = true;
             this.checkedListBoxFuncionalidades.Location = new System.Drawing.Point(132, 77);
-            this.checkedListBoxFuncionalidades.Name = "checkedListBox1";
-            this.checkedListBoxFuncionalidades.Size = new System.Drawing.Size(193, 199);
+            this.checkedListBoxFuncionalidades.Name = "checkedListBoxFuncionalidades";
+            this.checkedListBoxFuncionalidades.Size = new System.Drawing.Size(230, 214);
             this.checkedListBoxFuncionalidades.TabIndex = 1;
             this.checkedListBoxFuncionalidades.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxFuncionalidades_SelectedIndexChanged);
             // 
@@ -61,41 +61,41 @@
             this.labelRol.AutoSize = true;
             this.labelRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRol.Location = new System.Drawing.Point(80, 28);
-            this.labelRol.Name = "label1";
+            this.labelRol.Name = "labelRol";
             this.labelRol.Size = new System.Drawing.Size(33, 20);
             this.labelRol.TabIndex = 2;
             this.labelRol.Text = "Rol";
             // 
-            // textBox1
+            // textBoxRol
             // 
             this.textBoxRol.Location = new System.Drawing.Point(132, 28);
-            this.textBoxRol.Name = "textBox1";
+            this.textBoxRol.Name = "textBoxRol";
             this.textBoxRol.Size = new System.Drawing.Size(94, 20);
             this.textBoxRol.TabIndex = 3;
             // 
-            // label2
+            // labelFuncionalidades
             // 
             this.labelFuncionalidades.AutoSize = true;
             this.labelFuncionalidades.Location = new System.Drawing.Point(29, 77);
-            this.labelFuncionalidades.Name = "label2";
+            this.labelFuncionalidades.Name = "labelFuncionalidades";
             this.labelFuncionalidades.Size = new System.Drawing.Size(84, 13);
             this.labelFuncionalidades.TabIndex = 4;
             this.labelFuncionalidades.Text = "Funcionalidades";
             // 
-            // button2
+            // botonGuardar
             // 
-            this.botonGuardar.Location = new System.Drawing.Point(229, 334);
-            this.botonGuardar.Name = "button2";
+            this.botonGuardar.Location = new System.Drawing.Point(266, 332);
+            this.botonGuardar.Name = "botonGuardar";
             this.botonGuardar.Size = new System.Drawing.Size(96, 30);
             this.botonGuardar.TabIndex = 5;
             this.botonGuardar.Text = "Guardar";
             this.botonGuardar.UseVisualStyleBackColor = true;
             this.botonGuardar.Click += new System.EventHandler(this.botonGuardar_Click);
             // 
-            // button3
+            // botonLimpiar
             // 
-            this.botonLimpiar.Location = new System.Drawing.Point(230, 293);
-            this.botonLimpiar.Name = "button3";
+            this.botonLimpiar.Location = new System.Drawing.Point(165, 334);
+            this.botonLimpiar.Name = "botonLimpiar";
             this.botonLimpiar.Size = new System.Drawing.Size(95, 26);
             this.botonLimpiar.TabIndex = 6;
             this.botonLimpiar.Text = "Limpiar";
@@ -106,7 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 376);
+            this.ClientSize = new System.Drawing.Size(390, 376);
             this.Controls.Add(this.botonLimpiar);
             this.Controls.Add(this.botonGuardar);
             this.Controls.Add(this.labelFuncionalidades);

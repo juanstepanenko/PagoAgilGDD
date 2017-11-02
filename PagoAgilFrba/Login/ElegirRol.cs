@@ -48,8 +48,6 @@ namespace PagoAgilFrba.Login
             String rolElegido = comboBoxRol.SelectedValue.ToString();
             UsuarioSesion.Usuario.rol = rolElegido;
 
-            this.Hide();
-            new MenuPrincipal().ShowDialog();
             this.Close();
         }
     }

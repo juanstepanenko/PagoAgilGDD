@@ -428,13 +428,20 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
         */
-        public Decimal pasoControlDeFacturaDeEmpresa(Decimal nroFactura, Decimal empresa)
+        public Boolean pasoControlDeFacturaDeEmpresa(Decimal nroFactura, Decimal empresa)
         {
             String query = "Select count(*) From AMBDA.Factura Where fact_nro = @nroFactura And fact_empresa = @empresa";
             parametros.Clear();
             parametros.Add(new SqlParameter("@nroFactura", nroFactura));
             parametros.Add(new SqlParameter("@empresa", empresa));
-            return Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar());
+            if (Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar()) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /*public bool pasoControlSucursal(Decimal sucu_id)
@@ -454,6 +461,37 @@ namespace PagoAgilFrba
             return ControlDeUnicidad(query, parametros);
         }
 
+        public Boolean importeFacturaCorrecto(Decimal nroFactura, Double importe)
+        {
+            String query = "Select count(*) From AMBDA.Factura Where fact_nro = @nroFactura And fact_total = @importe";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nroFactura", nroFactura));
+            parametros.Add(new SqlParameter("@importe", importe));
+            if (Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar()) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public Boolean fechaFacturaCorrecta(Decimal nroFactura, DateTime fecha)
+        {
+            String query = "Select count(*) From AMBDA.Factura Where fact_nro = @nroFactura And fact_fecha_venc = @fecha";
+            parametros.Clear();
+            parametros.Add(new SqlParameter("@nroFactura", nroFactura));
+            parametros.Add(new SqlParameter("@fecha", fecha));
+            if (Convert.ToDecimal(builderDeComandos.Crear(query, parametros).ExecuteScalar()) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         /**********SELECTS VARIOS************/
 
         public Decimal SelectFromWhere(String que, String deDonde, String param1, String param2)

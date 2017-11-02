@@ -199,6 +199,7 @@
     <Compile Include="Excepciones\FechaPasadaException.cs" />
     <Compile Include="Excepciones\FormatoInvalidoException.cs" />
     <Compile Include="Excepciones\MailYaExisteException.cs" />
+    <Compile Include="Excepciones\NoSeleccionoNadaException.cs" />
     <Compile Include="Excepciones\SucursalYaExisteException.cs" />
     <Compile Include="Excepciones\SucursalInvalidaException.cs" />
     <Compile Include="ListadoEstadistico\Estadisticas.cs">
@@ -294,6 +295,21 @@
     <EmbeddedResource Include="AbmFactura\ModificarFactura.resx">
       <DependentUpon>ModificarFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\AgregarRol.resx">
+      <DependentUpon>AgregarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\EliminarRol.resx">
+      <DependentUpon>EliminarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ListadoModificarRol.resx">
+      <DependentUpon>ListadoModificarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ModificarRol.resx">
+      <DependentUpon>ModificarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\RolForm.resx">
+      <DependentUpon>RolForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AbmSucursal\AgregarSucursal.resx">
       <DependentUpon>AgregarSucursal.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Devoluciones\IngresarFactura.resx">
       <DependentUpon>IngresarFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\ElegirSucursal.resx">
+      <DependentUpon>ElegirSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

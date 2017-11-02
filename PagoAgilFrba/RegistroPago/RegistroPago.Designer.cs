@@ -162,8 +162,7 @@ namespace PagoAgilFrba.RegistroPago
             this.labelFechaCuadro.Location = new System.Drawing.Point(121, 29);
             this.labelFechaCuadro.Name = "labelFechaCuadro";
             this.labelFechaCuadro.Size = new System.Drawing.Size(65, 13);
-            this.labelFechaCuadro.TabIndex = 0;
-            this.labelFechaCuadro.Text = "29/10/2017";
+            this.labelFechaCuadro.TabIndex = 15;
             // 
             // monthCalendar_FechaDeVencimiento
             // 
@@ -373,8 +372,7 @@ namespace PagoAgilFrba.RegistroPago
             this.label12.Location = new System.Drawing.Point(121, 29);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "29/10/2017";
+            this.label12.TabIndex = 15;
             // 
             // RegistroPago
             // 

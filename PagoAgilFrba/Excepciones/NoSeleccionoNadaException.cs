@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace PagoAgilFrba.Excepciones
 {
-    class FacturaNoExisteException : Exception
+    class NoSeleccionoNadaException : Exception
     {
-        public FacturaNoExisteException(String mensaje)
+        public NoSeleccionoNadaException(String mensaje)
             : base(mensaje)
         {
-            Console.WriteLine("La factura solicitada no existe");
         }
     }
 }

@@ -34,6 +34,7 @@ namespace PagoAgilFrba.RegistroPago
             CargarMediosPago();
             CargarEmpresas();
             CargarClientes();
+            labelFechaCuadro.Text = DateTime.Today.ToShortDateString();
         }
 
         private void CargarMediosPago()
@@ -154,12 +155,19 @@ namespace PagoAgilFrba.RegistroPago
             }
             Decimal nroFactura = Convert.ToDecimal(textBox_NroFact.Text);
             Double importe = double.Parse(textBox_Importe.Text, CultureInfo.InvariantCulture);
-            DateTime fechaDeVencimiento;
+            DateTime fechaDeVencimiento, fechaCobro;
             DateTime.TryParse(textBox_FechaDeVencimiento.Text, out fechaDeVencimiento);
+            DateTime.TryParse(labelFechaCuadro.Text, out fechaCobro);
             Decimal empresa = comunicador.SelectFromWhere("empr_id", "Empresa", "empr_nombre", comboBox_Empresa.Text); 
             
-            if (comunicador.pasoControlDeFacturaDeEmpresa(nroFactura, empresa) != 1)
-                 throw new FacturaNoExisteException();
+            if (!comunicador.pasoControlDeFacturaDeEmpresa(nroFactura, empresa))
+                 throw new FacturaNoExisteException("Número de factura");
+
+            if(!comunicador.importeFacturaCorrecto(nroFactura, importe))
+                throw new FacturaNoExisteException("Importe");
+
+            if (!comunicador.fechaFacturaCorrecta(nroFactura, fechaDeVencimiento))
+                throw new FacturaNoExisteException("Fecha de vencimiento");
 
             //if (FacturaVencida(fechaDeVencimiento))
               //    throw new FechaPasadaException();
@@ -220,9 +228,9 @@ namespace PagoAgilFrba.RegistroPago
                 MessageBox.Show("Datos mal ingresados en: " + exception.Message);
                 return;
             }
-            catch (FacturaNoExisteException)
+            catch (FacturaNoExisteException exception)
             {
-                MessageBox.Show("La Factura no existe para esa empresa");
+                MessageBox.Show("La Factura no existe para esa empresa. Campo Incorrecto: " + exception.Message);
                 return;
             }
             catch (FechaPasadaException)

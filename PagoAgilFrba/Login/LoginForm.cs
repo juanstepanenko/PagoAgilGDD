@@ -53,7 +53,7 @@ namespace PagoAgilFrba.Login
                 String usuario = this.textBoxUsuario.Text;
                 String contraseña = this.textBoxContaseña.Text;
 
-                
+
                 IList<SqlParameter> parametros = new List<SqlParameter>();
                 SqlCommand command;
 
@@ -86,7 +86,6 @@ namespace PagoAgilFrba.Login
                 {
                     this.Hide();
                     new ElegirRol().ShowDialog();
-                    this.Close();
                 }
                 else
                 {
@@ -100,33 +99,32 @@ namespace PagoAgilFrba.Login
                         MessageBox.Show("Usted no tiene roles para iniciar sesion");
                         return;
                     }
-                    
-                    parametros.Clear();
-                    parametros.Add(new SqlParameter("@username", usuario));
-                    String consultaSucursales = "SELECT COUNT(sucu_id) FROM AMBDA.SucursalxUsuario WHERE (SELECT usua_id FROM AMBDA.Usuario WHERE usua_username = @username) = usua_id";
-                    int cantidadDeSucursales = (int)builderDeComandos.Crear(consultaSucursales, parametros).ExecuteScalar();
 
-                    if (cantidadDeSucursales > 1)
-                    {
-                        this.Hide();
-                        new ElegirSucursal().ShowDialog();
-                        this.Close();
-                    }
-                    else
-                    {
-                        parametros.Clear();
-                        parametros.Add(new SqlParameter("@username", usuario));
-                        String sucursalDeUsuario = "SELECT s.sucu_nombre FROM AMBDA.Sucursal s, AMBDA.SucursalxUsuario su, AMBDA.Usuario u WHERE s.sucu_id = su.sucu_id AND su.usua_id = u.usua_id AND u.usua_username = @username";
-                        String sucursalUser = (String)builderDeComandos.Crear(sucursalDeUsuario, parametros).ExecuteScalar();
-                        UsuarioSesion.Usuario.sucursal = sucursalUser;
-                    }
-                    
+                }
+
+                parametros.Clear();
+                parametros.Add(new SqlParameter("@username", usuario));
+                String consultaSucursales = "SELECT COUNT(sucu_id) FROM AMBDA.SucursalxUsuario WHERE (SELECT usua_id FROM AMBDA.Usuario WHERE usua_username = @username) = usua_id";
+                int cantidadDeSucursales = (int)builderDeComandos.Crear(consultaSucursales, parametros).ExecuteScalar();
+
+                if (cantidadDeSucursales > 1)
+                {
                     this.Hide();
-                    new MenuPrincipal().ShowDialog();
+                    new ElegirSucursal().ShowDialog();
                     this.Close();
                 }
-                
+                else
+                {
+                    parametros.Clear();
+                    parametros.Add(new SqlParameter("@username", usuario));
+                    String sucursalDeUsuario = "SELECT s.sucu_nombre FROM AMBDA.Sucursal s, AMBDA.SucursalxUsuario su, AMBDA.Usuario u WHERE s.sucu_id = su.sucu_id AND su.usua_id = u.usua_id AND u.usua_username = @username";
+                    String sucursalUser = (String)builderDeComandos.Crear(sucursalDeUsuario, parametros).ExecuteScalar();
+                    UsuarioSesion.Usuario.sucursal = sucursalUser;
+                }
 
+                this.Hide();
+                new MenuPrincipal().ShowDialog();
+                this.Close();
             }
 
             catch (Exception err)

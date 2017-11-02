@@ -30,7 +30,7 @@ namespace PagoAgilFrba.Devoluciones
              try
             {
                 if (comunicador.pasoControlDeRegistroFactura(nroFact))
-                    throw new FacturaNoExisteException();
+                    throw new FacturaNoExisteException("La factura no existe");
                 if (comunicador.pasoControlDeRendidaFactura(nroFact))
                     throw new FacturaYaFueRendida();
                 if(comunicador.pasoControlDeCobradaFactura(nroFact))

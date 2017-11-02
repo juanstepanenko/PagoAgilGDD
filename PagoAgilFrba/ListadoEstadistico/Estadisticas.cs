@@ -15,7 +15,6 @@ namespace PagoAgilFrba.ListadoEstadistico
     {
         private String query;
         private IList<SqlParameter> parametros = new List<SqlParameter>();
-        private SqlParameter parametroOutput;
         private SqlCommand command; // se usa para interactuar con la DB
         private BuilderDeComandos builderDeComandos = new BuilderDeComandos();
         List<string> meses = new List<string>();
