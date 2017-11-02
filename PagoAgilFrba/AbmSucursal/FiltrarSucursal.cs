@@ -73,7 +73,7 @@ namespace PagoAgilFrba.AbmSucursal
         private String CalcularFiltro()
         {
             String filtro = "";
-            if (textBoxNombre.Text != "") filtro = "sucu_nombre LIKE '" + textBoxNombre.Text + "%'";
+            if (textBoxNombre.Text != "") filtro = "AND " + "sucu_nombre LIKE '" + textBoxNombre.Text + "%'";
             if (textBoxCalleNro.Text != "") filtro += "AND " + "sucu_direc LIKE '" + textBoxCalleNro.Text + "%'";
             if (textBoxCodPos.Text != "") filtro += "AND " + "sucu_cod_postal LIKE '" + textBoxCodPos.Text + "%'";
             return filtro;

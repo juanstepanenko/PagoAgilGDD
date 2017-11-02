@@ -35,11 +35,11 @@ namespace PagoAgilFrba.AbmSucursal
             // Guarda en variables todos los campos de entrada
             String nombreSucursal = textBoxNombre.Text;
             String calleNro = textBoxCalleNro.Text;
-            String piso = textBoxCP.Text;
+            String piso = textBoxPiso.Text;
             String departamento = textBoxDepartamento.Text;
             String codigoPostal = textBoxCP.Text;
             String localidad = textBoxLocalidad.Text;
-            String dir = ConcatenarDir(calleNro, piso, departamento, localidad, codigoPostal);
+            String dir = ConcatenarDir(calleNro, piso, departamento, localidad);
 
             try
             {
@@ -137,12 +137,13 @@ namespace PagoAgilFrba.AbmSucursal
             this.Close();
         }
 
-        private String ConcatenarDir(String calleNro, String piso, String dto, String loc, String cp)
+        private String ConcatenarDir(String calleNro, String piso, String dto, String loc)
         {
             String dir = calleNro;
-            if(piso != " ") dir += (", " + piso);
-            if(dto != " ") dir += (", " + dto);
-            dir += ", " + loc + ", " + cp;
+            if (piso != " " && dto != " ") dir += ", " + piso + dto;
+            else if (piso != " ") dir += ", " + piso;
+            else if(dto != " ") dir += (", " + dto);
+            dir += ", " + loc;
             return dir;
             
         }
